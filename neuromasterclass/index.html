@@ -468,7 +468,7 @@
   })();
 
   // ===== FORM SUBMISSION =====
-  const WEBHOOK_URL = window.WEBHOOK_URL || '';  // Set via window.WEBHOOK_URL = '...' before this script, or configure below
+  const WEBHOOK_URL = window.WEBHOOK_URL || 'https://n8n.flowstudio.cloud/webhook/neuromasterclass-leads';
 
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
