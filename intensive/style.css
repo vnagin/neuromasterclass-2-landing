@@ -41,6 +41,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -49,6 +50,7 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 img {
@@ -1204,6 +1206,33 @@ a {
   /* Убираем CTA-кнопку из хедера на маленьких экранах — она перекрывает лого */
   .header-cta {
     display: none;
+  }
+
+  /* Hero: кнопки стекуются вертикально и растягиваются на полную ширину */
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Thank You: h1 слишком крупный на 320px */
+  .ty-card h1 {
+    font-size: 26px;
+    letter-spacing: -0.5px;
+  }
+
+  /* Уменьшаем padding btn-lg ещё сильнее на самых маленьких экранах */
+  .btn-lg {
+    padding: 14px 20px;
+    font-size: 16px;
+  }
+
+  /* stats-bar: числа компактнее */
+  .stats-bar .num {
+    font-size: 36px;
   }
 }
 
