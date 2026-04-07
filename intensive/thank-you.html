@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO (no-index — служебная страница) -->
+  <title>Регистрация подтверждена! | AI-Интенсив 28–29 апреля</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Вы зарегистрированы на AI-Интенсив!" />
+  <meta property="og:description" content="Следующий шаг — подписаться на Telegram-бот и получить ссылку на Zoom." />
+
+  <!-- Шрифты -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Стили (общий файл) -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════
+       ШАПКА
+  ════════════════════════════════════ -->
+  <header class="site-header">
+    <div class="container">
+      <a href="/intensive/" class="logo" style="text-decoration:none; color: inherit;">
+        <div class="logo-icon">⚡</div>
+        LeadUp AI
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ════════════════════════════════════
+       THANK YOU CONTENT
+  ════════════════════════════════════ -->
+  <main class="ty-page">
+    <div class="ty-card">
+
+      <!-- Иконка успеха -->
+      <span class="ty-icon">🎉</span>
+
+      <!-- Заголовок -->
+      <h1>Вы зарегистрированы!</h1>
+
+      <p class="ty-sub">
+        Спасибо! Место на AI-интенсиве
+        <strong>«AI-компании будущего»</strong><br>
+        28–29 апреля 2026 зарезервировано за вами.
+      </p>
+
+      <!-- Блок Telegram-бота -->
+      <div class="ty-tg-block">
+        <div class="tg-label">Важный следующий шаг</div>
+        <h2>Подпишитесь на Telegram-бот</h2>
+        <p>
+          Для <strong>завершения регистрации</strong> подпишитесь на наш бот.
+          Там вы получите ссылку на Zoom и все материалы перед интенсивом.
+        </p>
+
+        <ul class="ty-bot-features">
+          <li>Ссылка на Zoom за 24 часа до старта</li>
+          <li>Напоминания в день мероприятия</li>
+          <li>Материалы и задания до интенсива</li>
+          <li>Доступ в закрытый Telegram-канал участников</li>
+          <li>Уведомление об открытии VIP-доступа</li>
+        </ul>
+
+        <!--
+          PLACEHOLDER: замените #PLACEHOLDER_TELEGRAM_BOT на реальную ссылку бота.
+          Пример: https://t.me/leadup_ai_bot
+        -->
+        <a
+          href="#PLACEHOLDER_TELEGRAM_BOT"
+          class="btn btn-accent btn-full btn-lg"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="tg-btn"
+        >
+          📲 Открыть Telegram-бот
+        </a>
+      </div>
+
+      <!-- Детали события -->
+      <div style="
+        background: rgba(124, 92, 255, 0.08);
+        border: 1px solid rgba(124, 92, 255, 0.2);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 24px;
+        text-align: left;
+      ">
+        <div style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #7c5cff; margin-bottom: 12px;">
+          Детали мероприятия
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; gap: 12px; align-items: center; font-size: 15px;">
+            <span style="font-size: 20px;">📅</span>
+            <span><strong>28–29 апреля 2026</strong>, 18:00–20:00 МСК</span>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center; font-size: 15px;">
+            <span style="font-size: 20px;">🖥️</span>
+            <span>Онлайн · <strong>Zoom</strong> (ссылка придёт в Telegram-боте)</span>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center; font-size: 15px;">
+            <span style="font-size: 20px;">🎙️</span>
+            <span>Спикер: <strong>Алекс</strong>, CEO LeadUp AI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ссылка назад -->
+      <span class="ty-back">
+        Вернуться на <a href="/intensive/">страницу интенсива</a>
+      </span>
+    </div>
+  </main>
+
+
+  <!-- ════════════════════════════════════
+       ФУТЕР
+  ════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-copy">© 2026 LeadUp AI · Все права защищены</div>
+      <div class="footer-links">
+        <a href="/privacy">Политика конфиденциальности</a>
+        <!-- PLACEHOLDER: ссылка на Telegram-канал -->
+        <a href="#PLACEHOLDER_TELEGRAM_CHANNEL" target="_blank">Telegram</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ════════════════════════════════════
+       JAVASCRIPT
+  ════════════════════════════════════ -->
+  <script>
+    // ─── UTM tracking через sessionStorage ─────────────
+    // Передаём UTM-параметры с лендинга на thank-you page
+    // чтобы не терять источник трафика
+    (function () {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var utm_keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+        utm_keys.forEach(function (key) {
+          if (params.get(key)) {
+            sessionStorage.setItem(key, params.get(key));
+          }
+        });
+      } catch (e) {}
+    })();
+
+    // ─── Отслеживание клика на Telegram-бот ────────────
+    var tgBtn = document.getElementById('tg-btn');
+    if (tgBtn) {
+      tgBtn.addEventListener('click', function () {
+        // Google Analytics / GA4 event (если подключён)
+        if (typeof gtag === 'function') {
+          gtag('event', 'telegram_bot_click', {
+            event_category: 'thank_you_page',
+            event_label: 'intensive_april_2026'
+          });
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
