@@ -17,6 +17,7 @@
   <meta property="og:image" content="https://ads.leadup.guru/intensive/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AI-Интенсив 28–29 апреля 2026 — LeadUp AI" />
   <meta property="og:url" content="https://ads.leadup.guru/intensive/" />
   <meta property="og:site_name" content="LeadUp AI" />
   <meta property="og:locale" content="ru_RU" />
@@ -51,10 +52,10 @@
   ════════════════════════════════════ -->
   <header class="site-header">
     <div class="container">
-      <div class="logo">
+      <a href="/intensive/" class="logo logo-link">
         <div class="logo-icon">⚡</div>
         LeadUp AI
-      </div>
+      </a>
       <a href="#registration" class="btn btn-primary header-cta">Зарегистрироваться</a>
     </div>
   </header>
@@ -539,7 +540,9 @@
                 placeholder="Например, Иван"
                 required
                 autocomplete="given-name"
+                aria-describedby="fname-error"
               />
+              <span class="form-error" id="fname-error" role="alert" aria-live="polite"></span>
             </div>
 
             <div class="form-group">
@@ -551,7 +554,9 @@
                 placeholder="ivan@example.com"
                 required
                 autocomplete="email"
+                aria-describedby="email-error"
               />
+              <span class="form-error" id="email-error" role="alert" aria-live="polite"></span>
             </div>
 
             <div class="form-group">
@@ -778,6 +783,33 @@
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
+        // Очистка предыдущих ошибок
+        document.querySelectorAll('.form-error').forEach(function (el) {
+          el.textContent = '';
+        });
+        document.querySelectorAll('.form-group input').forEach(function (inp) {
+          inp.classList.remove('input-error');
+        });
+
+        // Валидация с inline-ошибками
+        var valid = true;
+        if (!form.firstname.value.trim()) {
+          document.getElementById('fname-error').textContent = 'Пожалуйста, введите ваше имя';
+          document.getElementById('fname').classList.add('input-error');
+          valid = false;
+        }
+        var emailVal = form.email.value.trim();
+        if (!emailVal) {
+          document.getElementById('email-error').textContent = 'Пожалуйста, введите email';
+          document.getElementById('email').classList.add('input-error');
+          valid = false;
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+          document.getElementById('email-error').textContent = 'Введите корректный email';
+          document.getElementById('email').classList.add('input-error');
+          valid = false;
+        }
+        if (!valid) return;
+
         var btn = document.getElementById('submit-btn');
         btn.disabled = true;
         btn.textContent = 'Отправляем...';
@@ -787,14 +819,6 @@
           { name: 'email',     value: form.email.value.trim() },
           { name: 'phone',     value: form.phone.value.trim() }
         ].filter(function (f) { return f.value; });
-
-        // Валидация
-        if (!form.firstname.value.trim() || !form.email.value.trim()) {
-          alert('Пожалуйста, заполните имя и email.');
-          btn.disabled = false;
-          btn.textContent = 'Зарегистрироваться бесплатно →';
-          return;
-        }
 
         var PORTAL_ID = 'PLACEHOLDER_PORTAL_ID';
         var FORM_GUID = 'PLACEHOLDER_FORM_GUID';

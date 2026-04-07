@@ -822,6 +822,19 @@ a {
   box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.15);
 }
 
+.form-error {
+  display: block;
+  font-size: 13px;
+  color: var(--color-accent-2);
+  margin-top: 5px;
+  min-height: 18px;
+}
+
+.form-group input.input-error {
+  border-color: var(--color-accent-2);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+}
+
 .form-privacy {
   font-size: 13px;
   color: var(--color-text-muted);
