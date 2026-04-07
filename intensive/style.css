@@ -157,6 +157,11 @@ a {
   letter-spacing: -0.5px;
 }
 
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .logo-icon {
   width: 36px;
   height: 36px;
@@ -1175,4 +1180,53 @@ a {
   }
 
   .countdown-unit .num { font-size: 36px; }
+
+  /* for-who-grid: минимальный размер уменьшаем на очень маленьких экранах */
+  .for-who-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Убираем CTA-кнопку из хедера на маленьких экранах — она перекрывает лого */
+  .header-cta {
+    display: none;
+  }
+}
+
+/* ─── Стили Thank You page event details ─── */
+.ty-event-details {
+  background: rgba(124, 92, 255, 0.08);
+  border: 1px solid rgba(124, 92, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.ty-event-details-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+.ty-event-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ty-event-detail-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-size: 15px;
+}
+
+.ty-event-detail-item .detail-icon {
+  font-size: 20px;
+  flex-shrink: 0;
 }

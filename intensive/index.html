@@ -15,15 +15,23 @@
   <meta property="og:title" content="AI-Интенсив 28–29 апреля | AI-компании будущего" />
   <meta property="og:description" content="Бесплатный 2-дневный интенсив. Как построить многоагентную AI-команду в вашем бизнесе. Регистрируйтесь сейчас!" />
   <meta property="og:image" content="https://ads.leadup.guru/intensive/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="https://ads.leadup.guru/intensive/" />
   <meta property="og:site_name" content="LeadUp AI" />
   <meta property="og:locale" content="ru_RU" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@leadupai" />
   <meta name="twitter:title" content="AI-Интенсив 28–29 апреля | AI-компании будущего" />
   <meta name="twitter:description" content="Бесплатный 2-дневный интенсив. Как построить многоагентную AI-команду в вашем бизнесе." />
   <meta name="twitter:image" content="https://ads.leadup.guru/intensive/og-image.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
   <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,8 +41,8 @@
   <!-- Стили -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- HubSpot Forms SDK (замените PORTAL_ID) -->
-  <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+  <!-- HubSpot Forms SDK — подключить когда Дима предоставит Portal ID -->
+  <!-- <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script> -->
 </head>
 <body>
 
@@ -511,16 +519,15 @@
           <p class="form-subtitle">28–29 апреля · 18:00–20:00 МСК · Zoom</p>
 
           <!--
-            ВАРИАНТ 1 — Встроенная форма HubSpot (рекомендуется)
-            Замените PORTAL_ID и FORM_GUID на реальные значения из HubSpot.
-            После загрузки страницы скрипт автоматически заменит этот блок.
+            ВАРИАНТ 1 — Встроенная форма HubSpot (подключить когда Дима пришлёт Portal ID + Form GUID)
+            1. Раскомментировать <script> HubSpot SDK в <head>
+            2. Раскомментировать hbspt.forms.create() в <script> внизу страницы
+            3. Закомментировать или удалить <form id="reg-form"> ниже
           -->
-          <div id="hubspot-form-container"></div>
+          <!-- <div id="hubspot-form-container"></div> -->
 
           <!--
-            ВАРИАНТ 2 — Своя HTML-форма (fallback / альтернатива)
-            Раскомментируйте и настройте action у <form>, если используете
-            собственный бэкенд вместо HubSpot embed.
+            ВАРИАНТ 2 — HTML-форма (активна сейчас, отправляет через HubSpot Forms API)
           -->
           <form id="reg-form" class="reg-form" novalidate>
             <div class="form-group">

@@ -11,6 +11,14 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Вы зарегистрированы на AI-Интенсив!" />
   <meta property="og:description" content="Следующий шаг — подписаться на Telegram-бот и получить ссылку на Zoom." />
+  <meta property="og:image" content="https://ads.leadup.guru/intensive/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 
   <!-- Шрифты -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +27,17 @@
 
   <!-- Стили (общий файл) -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- GA4/GTM — подключить перед деплоем (раскомментировать и вставить реальный ID) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  -->
 </head>
 <body>
 
@@ -27,7 +46,7 @@
   ════════════════════════════════════ -->
   <header class="site-header">
     <div class="container">
-      <a href="/intensive/" class="logo" style="text-decoration:none; color: inherit;">
+      <a href="/intensive/" class="logo logo-link">
         <div class="logo-icon">⚡</div>
         LeadUp AI
       </a>
@@ -86,28 +105,19 @@
       </div>
 
       <!-- Детали события -->
-      <div style="
-        background: rgba(124, 92, 255, 0.08);
-        border: 1px solid rgba(124, 92, 255, 0.2);
-        border-radius: 16px;
-        padding: 24px;
-        margin-bottom: 24px;
-        text-align: left;
-      ">
-        <div style="font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #7c5cff; margin-bottom: 12px;">
-          Детали мероприятия
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <div style="display: flex; gap: 12px; align-items: center; font-size: 15px;">
-            <span style="font-size: 20px;">📅</span>
+      <div class="ty-event-details">
+        <div class="ty-event-details-label">Детали мероприятия</div>
+        <div class="ty-event-details-list">
+          <div class="ty-event-detail-item">
+            <span class="detail-icon">📅</span>
             <span><strong>28–29 апреля 2026</strong>, 18:00–20:00 МСК</span>
           </div>
-          <div style="display: flex; gap: 12px; align-items: center; font-size: 15px;">
-            <span style="font-size: 20px;">🖥️</span>
+          <div class="ty-event-detail-item">
+            <span class="detail-icon">🖥️</span>
             <span>Онлайн · <strong>Zoom</strong> (ссылка придёт в Telegram-боте)</span>
           </div>
-          <div style="display: flex; gap: 12px; align-items: center; font-size: 15px;">
-            <span style="font-size: 20px;">🎙️</span>
+          <div class="ty-event-detail-item">
+            <span class="detail-icon">🎙️</span>
             <span>Спикер: <strong>Алекс</strong>, CEO LeadUp AI</span>
           </div>
         </div>
@@ -141,16 +151,12 @@
   ════════════════════════════════════ -->
   <script>
     // ─── UTM tracking через sessionStorage ─────────────
-    // Передаём UTM-параметры с лендинга на thank-you page
-    // чтобы не терять источник трафика
     (function () {
       try {
         var params = new URLSearchParams(window.location.search);
         var utm_keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
         utm_keys.forEach(function (key) {
-          if (params.get(key)) {
-            sessionStorage.setItem(key, params.get(key));
-          }
+          if (params.get(key)) sessionStorage.setItem(key, params.get(key));
         });
       } catch (e) {}
     })();
@@ -159,7 +165,7 @@
     var tgBtn = document.getElementById('tg-btn');
     if (tgBtn) {
       tgBtn.addEventListener('click', function () {
-        // Google Analytics / GA4 event (если подключён)
+        // GA4 — срабатывает только если gtag подключён (см. <head>)
         if (typeof gtag === 'function') {
           gtag('event', 'telegram_bot_click', {
             event_category: 'thank_you_page',
