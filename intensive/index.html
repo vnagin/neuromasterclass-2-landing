@@ -528,7 +528,7 @@
           <!-- <div id="hubspot-form-container"></div> -->
 
           <!--
-            ВАРИАНТ 2 — HTML-форма (активна сейчас, отправляет через HubSpot Forms API)
+            ВАРИАНТ 2 — HTML-форма (активна сейчас, отправляет через server-side webhook.php → HubSpot Contacts API)
           -->
           <form id="reg-form" class="reg-form" novalidate>
             <div class="form-group">
@@ -814,38 +814,30 @@
         btn.disabled = true;
         btn.textContent = 'Отправляем...';
 
-        var fields = [
-          { name: 'firstname', value: form.firstname.value.trim() },
-          { name: 'email',     value: form.email.value.trim() },
-          { name: 'phone',     value: form.phone.value.trim() }
-        ].filter(function (f) { return f.value; });
+        var urlParams = new URLSearchParams(window.location.search);
+        var payload = {
+          firstname:    form.firstname.value.trim(),
+          lastname:     '',
+          email:        form.email.value.trim(),
+          phone:        form.phone.value.trim(),
+          utm_source:   urlParams.get('utm_source') || '',
+          utm_campaign: urlParams.get('utm_campaign') || ''
+        };
 
-        var PORTAL_ID = 'PLACEHOLDER_PORTAL_ID';
-        var FORM_GUID = 'PLACEHOLDER_FORM_GUID';
-
-        fetch('https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_GUID, {
+        fetch('https://n8n.flowstudio.cloud/webhook/intensiv-register', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields: fields,
-            context: {
-              pageUri:  window.location.href,
-              pageName: document.title
-            }
-          })
+          body: JSON.stringify(payload)
         })
         .then(function (res) {
-          if (res.ok || res.status === 200) {
-            window.location.href = '/intensive/thank-you.html';
-          } else {
-            return res.json().then(function (data) {
-              throw new Error(data.message || 'Ошибка отправки');
-            });
-          }
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function (data) {
+          // Редирект независимо от ответа — не блокировать пользователя
+          window.location.href = (data && data.redirectTo) ? data.redirectTo : '/intensive/thank-you.html';
         })
         .catch(function (err) {
-          console.error('HubSpot submit error:', err);
-          // Fallback — редирект даже при ошибке, чтобы не блокировать пользователя
+          console.error('Registration webhook error:', err);
           window.location.href = '/intensive/thank-you.html';
         });
       });
