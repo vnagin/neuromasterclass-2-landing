@@ -66,8 +66,10 @@ a {
 /* ─── Контейнер ─── */
 .container {
   max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
   padding: 0 24px;
+  box-sizing: border-box;
 }
 
 /* ─── Кнопки ─── */
@@ -1211,11 +1213,16 @@ a {
   /* Hero: кнопки стекуются вертикально и растягиваются на полную ширину */
   .hero-actions {
     flex-direction: column;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .hero-actions .btn {
     width: 100%;
+    max-width: 100%;
+    white-space: normal;
     text-align: center;
+    word-break: break-word;
   }
 
   /* Thank You: h1 слишком крупный на 320px */
