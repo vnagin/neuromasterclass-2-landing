@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Сотрудники by LeadUp AI — Нейрокоманда под ключ для вашего бизнеса</title>
+  <meta name="description" content="Внедряем AI-команду в ваш бизнес за 2–3 недели. Заменяет целый отдел. Работает 24/7. От 30 000 ₽/мес. Запишитесь на бесплатную диагностику." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Аналитика инициализируется из конфига в конце страницы (см. КОНФИГ ниже) -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0e1a;
+      --bg2: #0f1525;
+      --bg3: #141929;
+      --accent: #4f8ef7;
+      --accent2: #7b5cf7;
+      --accent-glow: rgba(79,142,247,0.18);
+      --text: #e8eaf6;
+      --text-muted: #8892a4;
+      --border: rgba(255,255,255,0.07);
+      --card: rgba(255,255,255,0.04);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITY ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: 16px;
+      cursor: pointer; text-decoration: none; border: none; transition: all .2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(79,142,247,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(79,142,247,0.5); }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent-glow); }
+    .tag {
+      display: inline-block; padding: 4px 14px; border-radius: 50px; font-size: 13px;
+      font-weight: 600; background: var(--accent-glow); color: var(--accent);
+      border: 1px solid rgba(79,142,247,0.3);
+    }
+    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.2; }
+    .section-sub { font-size: 18px; color: var(--text-muted); margin-top: 12px; }
+    .text-accent { color: var(--accent); }
+    .text-gradient {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,14,26,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: 14px; padding: 10px 24px; }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 0 80px;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(79,142,247,0.12) 0%, transparent 70%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234f8ef7' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; text-align: center; max-width: 800px; margin: 0 auto; }
+    .hero-eyebrow { margin-bottom: 24px; }
+    .hero-title {
+      font-size: clamp(36px, 6vw, 68px); font-weight: 800; line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--text-muted); max-width: 600px; margin: 0 auto 40px; }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+    .hero-proof {
+      display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+    }
+    .proof-item { text-align: center; }
+    .proof-num { font-size: 32px; font-weight: 800; color: var(--accent); }
+    .proof-label { font-size: 13px; color: var(--text-muted); }
+
+    /* ─── PAIN ─── */
+    .pain { padding: 100px 0; background: var(--bg2); }
+    .pain-header { text-align: center; margin-bottom: 56px; }
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;
+    }
+    .pain-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px 24px; position: relative; overflow: hidden; transition: border-color .2s;
+    }
+    .pain-card:hover { border-color: rgba(79,142,247,0.3); }
+    .pain-icon { font-size: 32px; margin-bottom: 16px; }
+    .pain-title { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .pain-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .pain-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity .2s;
+    }
+    .pain-card:hover::after { opacity: 1; }
+
+    /* ─── WHAT IS ─── */
+    .what-is { padding: 100px 0; }
+    .what-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    @media (max-width: 768px) { .what-inner { grid-template-columns: 1fr; gap: 40px; } }
+    .what-visual {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 32px; display: flex; flex-direction: column; gap: 12px;
+    }
+    .agent-row {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .agent-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; flex-shrink: 0; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+    .agent-name { font-size: 14px; font-weight: 600; }
+    .agent-task { font-size: 12px; color: var(--text-muted); margin-left: auto; }
+    .what-features { display: flex; flex-direction: column; gap: 20px; }
+    .feature-item { display: flex; gap: 16px; }
+    .feature-icon {
+      width: 44px; height: 44px; flex-shrink: 0; border-radius: var(--radius-sm);
+      background: var(--accent-glow); display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .feature-text { font-size: 14px; color: var(--text-muted); }
+
+    /* ─── PACKAGES ─── */
+    .packages { padding: 100px 0; background: var(--bg2); }
+    .packages-header { text-align: center; margin-bottom: 56px; }
+    .packages-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    @media (max-width: 900px) { .packages-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+    .package-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 36px 28px; display: flex; flex-direction: column; position: relative; transition: transform .2s;
+    }
+    .package-card:hover { transform: translateY(-4px); }
+    .package-card.featured {
+      background: linear-gradient(135deg, rgba(79,142,247,0.12), rgba(123,92,247,0.12));
+      border-color: var(--accent);
+    }
+    .package-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; font-size: 12px; font-weight: 700; padding: 4px 16px; border-radius: 50px;
+      white-space: nowrap;
+    }
+    .package-name { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+    .package-price { font-size: 38px; font-weight: 800; color: var(--accent); }
+    .package-price span { font-size: 16px; color: var(--text-muted); font-weight: 400; }
+    .package-desc { font-size: 14px; color: var(--text-muted); margin: 12px 0 20px; }
+    .package-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 28px; }
+    .package-features li { display: flex; gap: 10px; font-size: 14px; align-items: flex-start; }
+    .check { color: var(--accent); flex-shrink: 0; }
+
+    /* ─── HOW ─── */
+    .how { padding: 100px 0; }
+    .how-header { text-align: center; margin-bottom: 64px; }
+    .steps { display: flex; gap: 0; position: relative; }
+    @media (max-width: 768px) { .steps { flex-direction: column; } }
+    .steps::before {
+      content: '';
+      position: absolute; top: 36px; left: calc(16.666% + 24px); right: calc(16.666% + 24px);
+      height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    @media (max-width: 768px) { .steps::before { display: none; } }
+    .step { flex: 1; text-align: center; padding: 0 20px; position: relative; }
+    .step-num {
+      width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; font-weight: 800; position: relative; z-index: 1;
+    }
+    .step-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .step-text { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .step-sub { font-size: 12px; color: var(--accent); font-weight: 600; margin-top: 8px; }
+
+    /* ─── CASES ─── */
+    .cases { padding: 100px 0; background: var(--bg2); }
+    .cases-header { text-align: center; margin-bottom: 56px; }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .case-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;
+    }
+    .case-stars { color: #fbbf24; font-size: 18px; margin-bottom: 12px; }
+    .case-text { font-size: 15px; line-height: 1.7; color: var(--text-muted); margin-bottom: 20px; font-style: italic; }
+    .case-author { display: flex; gap: 12px; align-items: center; }
+    .case-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 16px; flex-shrink: 0;
+    }
+    .case-name { font-size: 14px; font-weight: 700; }
+    .case-company { font-size: 12px; color: var(--text-muted); }
+    .case-result {
+      margin-top: 16px; padding: 12px 16px; background: rgba(79,142,247,0.08);
+      border-radius: var(--radius-sm); border-left: 3px solid var(--accent);
+      font-size: 14px; font-weight: 600; color: var(--accent);
+    }
+
+    /* ─── FAQ ─── */
+    .faq { padding: 100px 0; }
+    .faq-header { text-align: center; margin-bottom: 56px; }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-q {
+      padding: 20px 24px; font-size: 16px; font-weight: 600; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      user-select: none;
+    }
+    .faq-q:hover { color: var(--accent); }
+    .faq-arrow { transition: transform .25s; flex-shrink: 0; color: var(--accent); }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      font-size: 15px; color: var(--text-muted); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 300px; }
+    .faq-a-inner { padding: 0 24px 20px; }
+
+    /* ─── CONTACT FORM ─── */
+    .contact { padding: 100px 0; background: var(--bg2); }
+    .contact-inner {
+      background: linear-gradient(135deg, rgba(79,142,247,0.1), rgba(123,92,247,0.08));
+      border: 1px solid rgba(79,142,247,0.25); border-radius: 24px;
+      padding: 60px 48px; max-width: 600px; margin: 0 auto; text-align: center;
+    }
+    @media (max-width: 600px) { .contact-inner { padding: 40px 24px; } }
+    .contact-title { font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 12px; }
+    .contact-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 36px; }
+    .form-group { margin-bottom: 16px; text-align: left; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--text-muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 14px 16px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--text); font-size: 15px; font-family: inherit;
+      transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none; border-color: var(--accent);
+    }
+    .form-group select { cursor: pointer; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit { width: 100%; font-size: 17px; padding: 16px; margin-top: 8px; }
+    .form-note { font-size: 12px; color: var(--text-muted); margin-top: 12px; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 40px 0; border-top: 1px solid var(--border); background: var(--bg);
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .footer-logo { font-size: 16px; font-weight: 800; }
+    .footer-logo span { color: var(--accent); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+
+    /* ─── STICKY CTA BAR ─── */
+    .sticky-cta {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      z-index: 99; display: none;
+      background: var(--bg2); border: 1px solid rgba(79,142,247,0.35); border-radius: 50px;
+      padding: 12px 24px; gap: 16px; align-items: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      white-space: nowrap;
+    }
+    .sticky-cta.visible { display: flex; }
+    .sticky-cta-text { font-size: 14px; color: var(--text-muted); }
+    .sticky-cta .btn { padding: 10px 24px; font-size: 14px; }
+
+    @media (max-width: 500px) { .sticky-cta-text { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo">LeadUp <span>AI</span></a>
+    <ul class="nav-links">
+      <li><a href="#pain">Проблемы</a></li>
+      <li><a href="#what">Что это</a></li>
+      <li><a href="#packages">Тарифы</a></li>
+      <li><a href="#how">Как работает</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary nav-cta">Бесплатная диагностика</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="tag">✦ AI-Сотрудники by LeadUp AI</span>
+      </div>
+      <h1 class="hero-title">
+        Ваш бизнес на<br/>
+        <span class="text-gradient">автопилоте 24/7</span><br/>
+        с AI-командой
+      </h1>
+      <p class="hero-sub">
+        Внедряем мультиагентную AI-команду под ключ за 2–3 недели.
+        Заменяет целый отдел — работает без выходных, отпусков и больничных.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          📅 Записаться на бесплатную диагностику
+        </a>
+        <a href="#what" class="btn btn-outline">Узнать подробнее</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item">
+          <div class="proof-num">24/7</div>
+          <div class="proof-label">без перерывов и выходных</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">−60%</div>
+          <div class="proof-label">к расходам на персонал</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">2–3 нед</div>
+          <div class="proof-label">до запуска AI-команды</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-num">от 30к</div>
+          <div class="proof-label">₽/мес под ключ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain" id="pain">
+  <div class="container">
+    <div class="pain-header">
+      <span class="tag">Знакомо?</span>
+      <h2 class="section-title" style="margin-top:16px;">Боли, которые мы решаем</h2>
+      <p class="section-sub">Если хоть один пункт звучит как ваша реальность — мы можем помочь</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon">😩</div>
+        <div class="pain-title">Нехватка людей</div>
+        <div class="pain-text">Хорошие сотрудники стоят дорого, долго ищутся и часто уходят. Бизнес тормозит из-за кадрового голода.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">💸</div>
+        <div class="pain-title">Раздутый ФОТ</div>
+        <div class="pain-text">Зарплаты, налоги, обучение, больничные — содержать штат всё дороже, а производительность не растёт пропорционально.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🔄</div>
+        <div class="pain-title">Рутина убивает время</div>
+        <div class="pain-text">80% задач — повторяющиеся. Лиды, ответы, отчёты, контент. Команда тратит время на механическую работу вместо роста.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🐢</div>
+        <div class="pain-title">Бизнес не масштабируется</div>
+        <div class="pain-text">Каждый новый клиент требует нового сотрудника. Рост упирается в операционный потолок и невозможность делегировать.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🌙</div>
+        <div class="pain-title">Нет работы после 18:00</div>
+        <div class="pain-text">Лиды приходят ночью — никто не отвечает. Конкуренты быстрее. Потенциальные клиенты уходят без ответа.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS AI TEAM -->
+<section class="what-is" id="what">
+  <div class="container">
+    <div class="what-inner">
+      <div class="what-visual">
+        <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;font-weight:600;">● AI-команда онлайн</div>
+        <div class="agent-row">
+          <div class="agent-dot"></div>
+          <div class="agent-name">📧 Менеджер лидов</div>
+          <div class="agent-task">Обработка заявок</div>
+        </div>
+        <div class="agent-row">
+          <div class="agent-dot"></div>
+          <div class="agent-name">✍️ Контент-менеджер</div>
+          <div class="agent-task">Пишет посты</div>
+        </div>
+        <div class="agent-row">
+          <div class="agent-dot"></div>
+          <div class="agent-name">📊 Аналитик продаж</div>
+          <div class="agent-task">Готовит отчёт</div>
+        </div>
+        <div class="agent-row">
+          <div class="agent-dot"></div>
+          <div class="agent-name">🎧 Поддержка клиентов</div>
+          <div class="agent-task">Отвечает в TG</div>
+        </div>
+        <div class="agent-row">
+          <div class="agent-dot"></div>
+          <div class="agent-name">📢 Таргетолог</div>
+          <div class="agent-task">Оптимизирует рекламу</div>
+        </div>
+        <div style="margin-top:8px;padding:10px 16px;background:rgba(34,197,94,0.08);border-radius:8px;border:1px solid rgba(34,197,94,0.2);font-size:12px;color:#22c55e;font-weight:600;">
+          ✓ Все агенты работают прямо сейчас — 03:47
+        </div>
+      </div>
+      <div>
+        <span class="tag">Что такое AI-команда</span>
+        <h2 class="section-title" style="margin-top:16px; margin-bottom:20px;">
+          Целый отдел —<br/>без единого найма
+        </h2>
+        <p style="color:var(--text-muted);font-size:16px;margin-bottom:32px;">
+          AI-сотрудник — это умный цифровой специалист, который выполняет конкретные задачи в вашем бизнесе: отвечает на заявки, пишет контент, готовит отчёты, ведёт клиентов.
+        </p>
+        <div class="what-features">
+          <div class="feature-item">
+            <div class="feature-icon">🧠</div>
+            <div>
+              <div class="feature-title">Понимает контекст вашего бизнеса</div>
+              <div class="feature-text">Мы обучаем агентов на вашем продукте, клиентах и процессах — они говорят языком вашей компании</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">⚡</div>
+            <div>
+              <div class="feature-title">Работает автономно</div>
+              <div class="feature-text">Агенты сами берут задачи, выполняют их и отчитываются — без постоянного контроля с вашей стороны</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">🔗</div>
+            <div>
+              <div class="feature-title">Интегрируется с вашими сервисами</div>
+              <div class="feature-text">CRM, Telegram, Google Sheets, Calendly — AI-команда работает там, где уже работает ваш бизнес</div>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-icon">📈</div>
+            <div>
+              <div class="feature-title">Развивается вместе с вами</div>
+              <div class="feature-text">Мы ежемесячно обновляем и расширяем команду агентов под новые задачи и рост бизнеса</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section class="packages" id="packages">
+  <div class="container">
+    <div class="packages-header">
+      <span class="tag">Тарифы</span>
+      <h2 class="section-title" style="margin-top:16px;">Выберите свой масштаб</h2>
+      <p class="section-sub">Старт от 30 000 ₽/мес + разовый онбординг от 50 000 ₽</p>
+    </div>
+    <div class="packages-grid">
+      <!-- Старт -->
+      <div class="package-card">
+        <div class="package-name">Старт</div>
+        <div class="package-price">30 000 <span>₽/мес</span></div>
+        <div class="package-desc">2–3 AI-сотрудника. Базовые роли для первой автоматизации</div>
+        <ul class="package-features">
+          <li><span class="check">✓</span> Менеджер входящих заявок</li>
+          <li><span class="check">✓</span> Контент-менеджер (посты/тексты)</li>
+          <li><span class="check">✓</span> Поддержка клиентов в Telegram</li>
+          <li><span class="check">✓</span> Интеграция с 1 CRM-системой</li>
+          <li><span class="check">✓</span> Ежемесячные обновления агентов</li>
+          <li><span class="check">✓</span> Отчёт по работе команды</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Начать с нуля</a>
+      </div>
+
+      <!-- Команда (featured) -->
+      <div class="package-card featured">
+        <div class="package-badge">🔥 Популярный</div>
+        <div class="package-name">Команда</div>
+        <div class="package-price">70 000 <span>₽/мес</span></div>
+        <div class="package-desc">5–8 AI-сотрудников. Полноценный отдел продаж и маркетинга</div>
+        <ul class="package-features">
+          <li><span class="check">✓</span> Всё из тарифа «Старт»</li>
+          <li><span class="check">✓</span> Менеджер по продажам + скрипты</li>
+          <li><span class="check">✓</span> Таргетолог и аналитик рекламы</li>
+          <li><span class="check">✓</span> SMM + постинг в соцсети</li>
+          <li><span class="check">✓</span> Интеграция с 3 сервисами</li>
+          <li><span class="check">✓</span> Приоритетная поддержка 24/7</li>
+          <li><span class="check">✓</span> Выделенный менеджер проекта</li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Хочу команду</a>
+      </div>
+
+      <!-- AI-компания -->
+      <div class="package-card">
+        <div class="package-name">AI-компания</div>
+        <div class="package-price">150 000 <span>₽/мес</span></div>
+        <div class="package-desc">10+ AI-сотрудников. Полная AI-трансформация бизнеса</div>
+        <ul class="package-features">
+          <li><span class="check">✓</span> Всё из тарифа «Команда»</li>
+          <li><span class="check">✓</span> Кастомные роли под ваш бизнес</li>
+          <li><span class="check">✓</span> AI-директор + стратегический ИИ</li>
+          <li><span class="check">✓</span> Неограниченные интеграции</li>
+          <li><span class="check">✓</span> Доработка под нестандартные задачи</li>
+          <li><span class="check">✓</span> SLA 99.9% + резервирование</li>
+          <li><span class="check">✓</span> Квартальный стратегический аудит</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline" style="width:100%;justify-content:center;">Обсудить масштаб</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;color:var(--text-muted);font-size:14px;">
+      + Разовый онбординг: от <strong style="color:var(--text);">50 000 ₽</strong> (аудит процессов, проектирование, настройка команды агентов)
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="how-header">
+      <span class="tag">Как это работает</span>
+      <h2 class="section-title" style="margin-top:16px;">3 шага до вашей AI-команды</h2>
+      <p class="section-sub">От первого звонка до работающей системы — за 2–3 недели</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Диагностика</div>
+        <div class="step-text">30-минутный звонок. Разбираем ваши процессы, боли и задачи. Показываем, что можно автоматизировать прямо сейчас.</div>
+        <div class="step-sub">Бесплатно · 30 минут</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Запуск</div>
+        <div class="step-text">Проектируем состав AI-команды. Нанимаем и настраиваем агентов. Подключаем ваши сервисы. Тестируем и передаём.</div>
+        <div class="step-sub">2–3 недели · под ключ</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Рост</div>
+        <div class="step-text">AI-команда работает в вашем бизнесе. Мы ежемесячно следим, обновляем и добавляем новых агентов под рост задач.</div>
+        <div class="step-sub">Ежемесячное сопровождение</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="cases-header">
+      <span class="tag">Кейсы</span>
+      <h2 class="section-title" style="margin-top:16px;">Результаты наших клиентов</h2>
+      <p class="section-sub">Реальные бизнесы, которые уже работают с AI-командами</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-stars">★★★★★</div>
+        <div class="case-text">«Запустили AI-менеджера для обработки входящих заявок. Теперь каждый лид получает ответ в течение 2 минут — в любое время суток. Конверсия в сделку выросла вдвое.»</div>
+        <div class="case-author">
+          <div class="case-avatar">А</div>
+          <div>
+            <div class="case-name">Андрей К.</div>
+            <div class="case-company">Директор, строительная компания</div>
+          </div>
+        </div>
+        <div class="case-result">+112% конверсия · −45% время обработки лида</div>
+      </div>
+      <div class="case-card">
+        <div class="case-stars">★★★★★</div>
+        <div class="case-text">«Раньше тратила 3 часа в день на контент и ответы в соцсетях. Теперь AI-команда делает это автономно. Я занимаюсь только стратегией и клиентами.»</div>
+        <div class="case-author">
+          <div class="case-avatar">Е</div>
+          <div>
+            <div class="case-name">Елена М.</div>
+            <div class="case-company">Владелец онлайн-школы, 1200 студентов</div>
+          </div>
+        </div>
+        <div class="case-result">−3 часа/день · +40% вовлечённость подписчиков</div>
+      </div>
+      <div class="case-card">
+        <div class="case-stars">★★★★★</div>
+        <div class="case-text">«Скептически относился к ИИ, но попробовал на небольшом отделе. За первый месяц AI-команда обработала 340 заявок и написала 60 постов. Взял тариф «Команда».»</div>
+        <div class="case-author">
+          <div class="case-avatar">С</div>
+          <div>
+            <div class="case-name">Сергей Д.</div>
+            <div class="case-company">Со-основатель, агентство недвижимости</div>
+          </div>
+        </div>
+        <div class="case-result">340 заявок обработано · 60 постов за месяц</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="tag">FAQ</span>
+      <h2 class="section-title" style="margin-top:16px;">Частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">
+          Чем AI-сотрудник отличается от обычного чат-бота?
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Чат-бот отвечает по скрипту. AI-сотрудник понимает контекст, принимает решения, выполняет цепочки задач и работает в паре с другими агентами. Это полноценный цифровой специалист, а не скрипт ответов.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Нужно ли менять свои текущие инструменты и сервисы?
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Нет. Мы интегрируем AI-команду в то, что у вас уже есть: Bitrix24, AmoCRM, Telegram, Google Sheets, и другие сервисы. Ваши процессы остаются — просто становятся автоматическими.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Как быстро окупаются вложения?
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">В большинстве случаев AI-команда «Старт» окупается за 1–2 месяца за счёт экономии на 1–2 сотрудниках и роста конверсии лидов. На диагностике мы просчитываем ROI конкретно для вашего бизнеса.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Что происходит после запуска? Мне нужно это сопровождать?
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Нет. Мы берём сопровождение на себя: следим за работой агентов, обновляем их под изменения в бизнесе, добавляем новые роли, отправляем ежемесячный отчёт. Вы просто пользуетесь результатом.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Безопасно ли передавать данные клиентов AI-сотрудникам?
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Да. Используем PaperClip — платформу с корпоративными стандартами безопасности. Данные не используются для обучения моделей, обрабатываются только в рамках ваших задач. Заключаем NDA и договор.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Могу ли я начать с одного агента и расширить позже?
+          <svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Конечно. Тариф «Старт» — это 2–3 базовых агента. Когда увидите результат, просто переходите на следующий тариф. Доплата рассчитывается пропорционально. Минимальный срок — 1 месяц.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="tag">Начать бесплатно</span>
+      <h2 class="contact-title" style="margin-top:16px;">
+        Запишитесь на<br/>бесплатную диагностику
+      </h2>
+      <p class="contact-sub">
+        30 минут — и вы получите конкретный план, какие задачи вашего бизнеса<br/>
+        можно автоматизировать прямо сейчас и сколько это сэкономит
+      </p>
+      <form id="leadForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Ваше имя *</label>
+          <input type="text" name="name" placeholder="Иван Иванов" required />
+        </div>
+        <div class="form-group">
+          <label>Телефон или Telegram *</label>
+          <input type="text" name="contact" placeholder="+7 999 000 00 00 или @username" required />
+        </div>
+        <div class="form-group">
+          <label>Сфера бизнеса *</label>
+          <select name="business" required>
+            <option value="" disabled selected>Выберите сферу</option>
+            <option>Розничная торговля / интернет-магазин</option>
+            <option>Услуги для бизнеса (B2B)</option>
+            <option>Образование / онлайн-школа</option>
+            <option>Недвижимость</option>
+            <option>Медицина / красота</option>
+            <option>Строительство / ремонт</option>
+            <option>Маркетинг / реклама</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Главная задача, которую хотите автоматизировать</label>
+          <textarea name="task" placeholder="Например: обработка входящих заявок, создание контента, поддержка клиентов..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">
+          📅 Записаться на диагностику — это бесплатно
+        </button>
+        <div class="form-note">Мы свяжемся с вами в течение 30 минут и согласуем удобное время</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">LeadUp <span>AI</span> — AI-Сотрудники</div>
+    <div class="footer-copy">© 2026 LeadUp AI. Все права защищены.</div>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="sticky-cta-text">Запишитесь на бесплатную диагностику</span>
+  <a href="#contact" class="btn btn-primary">Записаться</a>
+</div>
+
+<script>
+  // =============================================
+  // КОНФИГ — заменить перед запуском кампании
+  // =============================================
+  var METRIKA_ID  = 108458832;   // Яндекс.Метрика счётчик
+  var VK_PIXEL_ID = '3756763';   // VK Pixel ID
+  var CRM_WEBHOOK = 'https://n8n.flowstudio.cloud/webhook/ai-sotrudniki-ads-leads'; // n8n: AI-Сотрудники лиды → HubSpot + Саша
+  // =============================================
+
+  // === Яндекс.Метрика инициализация ===
+  if (METRIKA_ID) {
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+    (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+    ym(METRIKA_ID,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+    // noscript fallback
+    var ns=document.createElement('noscript');
+    ns.innerHTML='<div><img src="https://mc.yandex.ru/watch/'+METRIKA_ID+'" style="position:absolute;left:-9999px;" alt="" /></div>';
+    document.body.appendChild(ns);
+  }
+
+  // === VK Пиксель инициализация ===
+  if (VK_PIXEL_ID) {
+    var vks=document.createElement("script");
+    vks.type="text/javascript";vks.async=true;
+    vks.src="https://vk.com/js/api/openapi.js?169";
+    vks.onload=function(){VK.Retargeting.Init(VK_PIXEL_ID);VK.Retargeting.Hit();};
+    document.head.appendChild(vks);
+  }
+
+  // === UTM CAPTURE — читаем параметры из URL и кладём в sessionStorage ===
+  (function() {
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var p = new URLSearchParams(window.location.search);
+    keys.forEach(function(k){ if (p.get(k)) sessionStorage.setItem(k, p.get(k)); });
+  })();
+
+  function getUtm() {
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var obj = {};
+    keys.forEach(function(k){ var v = sessionStorage.getItem(k); if (v) obj[k] = v; });
+    return obj;
+  }
+
+  // === CTA-клики → Яндекс.Метрика цель "ctaClick" ===
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href="#contact"], .btn-primary').forEach(function(el) {
+      el.addEventListener('click', function() {
+        if (typeof ym === 'function') ym(METRIKA_ID, 'reachGoal', 'ctaClick');
+      });
+    });
+  });
+
+  // Sticky CTA
+  const hero = document.querySelector('.hero');
+  const stickyCta = document.getElementById('stickyCta');
+  const observer = new IntersectionObserver(([e]) => {
+    stickyCta.classList.toggle('visible', !e.isIntersecting);
+  }, { threshold: 0.1 });
+  observer.observe(hero);
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('[type=submit]');
+
+    // Собираем данные формы + UTM
+    var data = {};
+    new FormData(e.target).forEach(function(v,k){ data[k] = v; });
+    Object.assign(data, getUtm());
+
+    // Яндекс.Метрика: цель "formSubmit"
+    if (typeof ym === 'function') ym(METRIKA_ID, 'reachGoal', 'formSubmit');
+
+    // VK Пиксель: событие Lead
+    if (typeof VK !== 'undefined' && VK.Retargeting) VK.Retargeting.Event('lead');
+
+    // Отправка в CRM через вебхук
+    if (CRM_WEBHOOK) {
+      fetch(CRM_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    }
+
+    btn.textContent = '✓ Заявка отправлена! Свяжемся с вами в течение 30 минут';
+    btn.disabled = true;
+    btn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+  }
+</script>
+</body>
+</html>
