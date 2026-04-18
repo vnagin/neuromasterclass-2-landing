@@ -457,18 +457,9 @@
       aspect-ratio: 16 / 9;
       border-radius: var(--radius-md);
       margin-bottom: var(--space-5);
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.08));
-      color: var(--color-primary);
+      background: var(--color-slate-50);
       position: relative;
       overflow: hidden;
-    }
-    .card-illu i { width: 56px; height: 56px; opacity: 0.9; }
-    .card-illu::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.6), transparent 45%);
-      pointer-events: none;
     }
     .card-illu img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -942,21 +933,21 @@
     <div class="cards-grid">
       <div class="card reveal">
         <div class="card-illu" aria-hidden="true">
-          <i data-lucide="brain-circuit"></i>
+          <img src="img/module-1.png" alt="" loading="lazy" decoding="async" width="1280" height="720">
         </div>
         <h3>Модуль 1: AI-фундамент</h3>
         <p>Открываем возможности AI-инструментов: от базовых промптов до продвинутых техник. 4 недели погружения в ChatGPT, Claude, Midjourney и другие.</p>
       </div>
       <div class="card reveal">
         <div class="card-illu" aria-hidden="true">
-          <i data-lucide="workflow"></i>
+          <img src="img/module-2.png" alt="" loading="lazy" decoding="async" width="1280" height="720">
         </div>
         <h3>Модуль 2: Автоматизация</h3>
         <p>Внедряем n8n: от простых цепочек до сложных рабочих процессов. Автоматизируем рутину и экономим 10+ часов в неделю на команду.</p>
       </div>
       <div class="card reveal">
         <div class="card-illu" aria-hidden="true">
-          <i data-lucide="trending-up"></i>
+          <img src="img/module-3.png" alt="" loading="lazy" decoding="async" width="1280" height="720">
         </div>
         <h3>Модуль 3: Масштабирование</h3>
         <p>Измеряем результаты, тиражируем успехи. Создаём систему управления AI-процессами на уровне всей компании.</p>
