@@ -33,7 +33,7 @@
       max-width: 820px;
       margin: 0 auto;
       padding: 64px 20px 96px;
-      color: #1a1a1a;
+      color: var(--color-text);
       line-height: 1.65;
       font-size: 16px;
     }
@@ -42,9 +42,10 @@
       font-weight: 800;
       margin: 0 0 8px;
       letter-spacing: -0.02em;
+      color: var(--color-text);
     }
     .legal-updated {
-      color: #666;
+      color: var(--color-text-muted);
       font-size: 14px;
       margin-bottom: 32px;
     }
@@ -53,6 +54,7 @@
       font-weight: 700;
       margin: 40px 0 12px;
       letter-spacing: -0.01em;
+      color: var(--color-text);
     }
     .legal-wrap p,
     .legal-wrap li {
@@ -62,18 +64,25 @@
       padding-left: 22px;
       margin: 0 0 16px;
     }
+    .legal-wrap strong {
+      color: var(--color-text);
+    }
     .legal-wrap a {
-      color: #2563eb;
+      color: var(--color-primary);
       text-decoration: underline;
     }
     .legal-wrap a:hover {
+      color: var(--color-primary-hover);
       text-decoration: none;
     }
     .legal-back {
       display: inline-block;
       margin-top: 40px;
       font-size: 14px;
-      color: #666;
+      color: var(--color-text-muted);
+    }
+    .legal-back:hover {
+      color: var(--color-primary);
     }
   </style>
 </head>
