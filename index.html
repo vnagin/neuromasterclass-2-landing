@@ -1,101 +1,113 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LeadUp AI — Рекламные материалы</title>
+  <link rel="stylesheet" href="/design-system/colors_and_type.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --primary: #6C3FE8;
-      --primary-dark: #5230C5;
-      --accent: #00D4FF;
-      --dark: #0A0F0D;
-      --dark2: #0F1512;
-      --dark3: #141B18;
-      --text: #E8E8F0;
-      --text-muted: #9898B0;
-      --border: rgba(108, 63, 232, 0.25);
-      --radius: 12px;
-    }
-
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--dark);
-      color: var(--text);
+      font-family: var(--font-sans);
+      background: var(--bg-1);
+      color: var(--fg-1);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 24px;
+      padding: 48px 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line, rgba(255,255,255,0.03)) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line, rgba(255,255,255,0.03)) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+      pointer-events: none;
     }
 
     .logo {
       font-size: 28px;
       font-weight: 800;
-      letter-spacing: -1px;
+      letter-spacing: -0.03em;
       margin-bottom: 8px;
+      position: relative;
     }
-    .logo span { color: var(--accent); }
+    .logo span { color: var(--teal); }
 
     .subtitle {
-      color: var(--text-muted);
+      color: var(--fg-2);
       font-size: 15px;
       margin-bottom: 56px;
+      position: relative;
     }
 
     h1 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--fg-3);
       margin-bottom: 24px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.1em;
+      position: relative;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
+      gap: 16px;
       width: 100%;
       max-width: 860px;
+      position: relative;
     }
 
     .card {
-      background: var(--dark2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--r-xl, 14px);
       padding: 28px 24px;
       text-decoration: none;
-      color: var(--text);
-      transition: border-color 0.2s, transform 0.15s;
+      color: inherit;
+      transition: border-color 200ms var(--ease, ease), transform 160ms var(--ease, ease), background 200ms var(--ease, ease);
     }
     .card:hover {
-      border-color: var(--primary);
+      border-color: var(--border-3);
+      background: var(--bg-3);
       transform: translateY(-2px);
     }
 
     .card-label {
-      font-size: 11px;
+      font-family: var(--font-mono);
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--accent);
-      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      font-weight: 500;
       margin-bottom: 10px;
     }
 
     .card-title {
-      font-size: 18px;
-      font-weight: 700;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
       margin-bottom: 8px;
+      color: var(--fg-1);
     }
 
     .card-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.5;
+      font-size: 13px;
+      color: var(--fg-3);
+      line-height: 1.55;
     }
   </style>
 </head>
@@ -124,14 +136,13 @@
       <div class="card-desc">Экспериментальный лендинг по бренд-гайду LeadUp AI</div>
     </a>
 
-    <!-- Добавьте новый лендинг здесь, скопировав карточку выше -->
-    <!-- Пример:
-    <a href="/название-slug/" class="card">
-      <div class="card-label">Тип</div>
-      <div class="card-title">Название продукта</div>
-      <div class="card-desc">Краткое описание</div>
+    <a href="/intensive/" class="card">
+      <div class="card-label">Интенсив</div>
+      <div class="card-title">AI-Интенсив 28–29 апреля</div>
+      <div class="card-desc">Бесплатный 2-дневный интенсив по многоагентным AI-командам</div>
     </a>
-    -->
+
+    <!-- Добавьте новый лендинг здесь, скопировав карточку выше -->
   </div>
 </body>
 </html>

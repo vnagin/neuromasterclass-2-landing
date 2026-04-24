@@ -1,51 +1,44 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>НАЗВАНИЕ ПРОДУКТА — LeadUp AI</title>
+  <link rel="stylesheet" href="/design-system/colors_and_type.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --primary: #6C3FE8;
-      --primary-dark: #5230C5;
-      --accent: #00D4FF;
-      --dark: #0A0F0D;
-      --dark2: #0F1512;
-      --dark3: #141B18;
-      --text: #E8E8F0;
-      --text-muted: #9898B0;
-      --border: rgba(108, 63, 232, 0.25);
-      --radius: 12px;
-    }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: var(--dark);
-      color: var(--text);
+      font-family: var(--font-sans);
+      background: var(--bg-1);
+      color: var(--fg-1);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     /* NAVBAR */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13,13,26,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(10,15,13,0.72);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--border-1);
       padding: 14px 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-    .nav-logo span { color: var(--accent); }
+    .nav-logo { font-size: 16px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.025em; }
+    .nav-logo span { color: var(--teal); }
     .nav-cta {
-      background: var(--primary); color: #fff; padding: 8px 20px;
-      border-radius: 8px; font-size: 14px; font-weight: 600;
-      text-decoration: none; transition: background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal); color: #061210;
+      font-weight: 600; font-size: 13px;
+      padding: 8px 16px; border-radius: var(--r-lg, 10px);
+      text-decoration: none;
+      transition: background 120ms var(--ease, ease), box-shadow 120ms var(--ease, ease), transform 120ms var(--ease, ease);
     }
-    .nav-cta:hover { background: var(--primary-dark); }
+    .nav-cta:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
 
     /* HERO */
     .hero {
@@ -53,49 +46,72 @@
       display: flex; align-items: center; justify-content: center;
       text-align: center;
       padding: 120px 24px 80px;
-      background: radial-gradient(ellipse 80% 50% at 50% -10%, rgba(108,63,232,0.3), transparent);
+      background: var(--grad-glow);
+      position: relative;
     }
-    .hero-inner { max-width: 720px; }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line, rgba(255,255,255,0.03)) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line, rgba(255,255,255,0.03)) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 720px; position: relative; }
 
     .hero-badge {
-      display: inline-block;
-      background: rgba(108,63,232,0.15);
-      border: 1px solid rgba(108,63,232,0.4);
-      color: var(--accent);
-      font-size: 13px; font-weight: 600;
-      padding: 6px 16px; border-radius: 100px;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-2);
+      padding: 6px 14px;
+      border: 1px solid var(--border-2);
+      border-radius: 100px;
+      background: rgba(20,27,24,0.5);
+      backdrop-filter: blur(8px);
       margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px var(--teal);
     }
 
     h1 {
       font-size: clamp(32px, 6vw, 64px);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1.5px;
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
       margin-bottom: 24px;
+      color: var(--fg-1);
     }
-    h1 em { color: var(--accent); font-style: normal; }
+    h1 em { color: var(--teal); font-style: normal; }
 
     .hero-sub {
       font-size: clamp(16px, 2.5vw, 20px);
-      color: var(--text-muted);
+      color: var(--fg-2);
       margin-bottom: 40px;
       max-width: 520px;
       margin-inline: auto;
     }
 
     .cta-btn {
-      display: inline-block;
-      background: var(--primary);
-      color: #fff;
-      padding: 16px 40px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal);
+      color: #061210;
+      padding: 14px 32px;
+      border-radius: var(--r-lg, 12px);
+      font-size: 15px;
+      font-weight: 600;
       text-decoration: none;
-      transition: background 0.2s, transform 0.15s;
+      transition: background 120ms var(--ease, ease), box-shadow 120ms var(--ease, ease), transform 120ms var(--ease, ease);
     }
-    .cta-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .cta-btn:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
 
     /* SECTION */
     section {
@@ -104,22 +120,25 @@
       padding: 80px 24px;
     }
     section h2 {
+      font-family: var(--font-sans);
       font-size: clamp(24px, 4vw, 40px);
-      font-weight: 800;
-      letter-spacing: -1px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       margin-bottom: 40px;
       text-align: center;
+      color: var(--fg-1);
     }
 
     /* FOOTER */
     footer {
       text-align: center;
       padding: 40px 24px;
-      color: var(--text-muted);
-      font-size: 14px;
-      border-top: 1px solid var(--border);
+      color: var(--fg-3);
+      font-size: 13px;
+      border-top: 1px solid var(--border-1);
     }
-    footer a { color: var(--text-muted); text-decoration: none; }
+    footer a { color: var(--fg-2); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
   </style>
 </head>
 <body>
@@ -140,13 +159,12 @@
 
   <section id="features">
     <h2>Что вы получите</h2>
-    <!-- Добавьте блоки с фичами -->
-    <p style="color: var(--text-muted); text-align:center">TODO: добавить блоки</p>
+    <p style="color: var(--fg-3); text-align:center">TODO: добавить блоки</p>
   </section>
 
   <section id="cta" style="text-align:center">
     <h2>Готовы начать?</h2>
-    <p style="color: var(--text-muted); margin-bottom: 32px">Краткий призыв к действию.</p>
+    <p style="color: var(--fg-2); margin-bottom: 32px">Краткий призыв к действию.</p>
     <a href="#" class="cta-btn">Записаться сейчас</a>
   </section>
 
