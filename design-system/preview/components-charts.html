@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Charts</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .chart-wrap { background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:20px; margin-bottom:14px; }
+  .chart-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+  .chart-head h4 { font-size:14px; font-weight:600; letter-spacing:-0.01em; margin:0; }
+  .chart-head .meta { font-family:var(--font-mono); font-size:10px; color:var(--fg-3); letter-spacing:0.06em; }
+  .chart-legend { display:flex; gap:14px; font-family:var(--font-mono); font-size:10px; color:var(--fg-3); letter-spacing:0.04em; }
+  .chart-legend span { display:flex; align-items:center; gap:5px; }
+  .chart-legend .dot { width:8px; height:8px; border-radius:2px; }
+  .grid3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">20 · Components — charts</div>
+  <h1 class="pv-title">Line, bar, area</h1>
+  <p class="pv-desc">Teal = AI/primary metric. bg-5 = baseline/secondary. Оси — border-1. Labels — Geist Mono 10px fg-4. Glow на teal-линии.</p>
+</div>
+
+<!-- Line chart -->
+<div class="chart-wrap">
+  <div class="chart-head">
+    <h4>Task throughput · 30d</h4>
+    <div class="chart-legend">
+      <span><span class="dot" style="background:var(--bg-5);"></span>manual</span>
+      <span><span class="dot" style="background:var(--teal);"></span>AI-assisted</span>
+    </div>
+  </div>
+  <svg viewBox="0 0 720 160" width="100%" height="160" style="display:block;">
+    <!-- y-axis labels -->
+    <text x="0" y="14" font-family="Geist Mono, monospace" font-size="9" fill="rgba(237,239,238,0.36)">1200</text>
+    <text x="0" y="80" font-family="Geist Mono, monospace" font-size="9" fill="rgba(237,239,238,0.36)">600</text>
+    <text x="0" y="148" font-family="Geist Mono, monospace" font-size="9" fill="rgba(237,239,238,0.36)">0</text>
+    <!-- grid lines -->
+    <line x1="30" y1="10" x2="720" y2="10" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+    <line x1="30" y1="76" x2="720" y2="76" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+    <line x1="30" y1="144" x2="720" y2="144" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    <!-- baseline -->
+    <polyline fill="none" stroke="#253029" stroke-width="1.5" points="30,100 100,98 170,95 240,92 310,94 380,90 450,88 520,86 590,84 660,82 720,80"/>
+    <!-- AI line -->
+    <polyline fill="rgba(0,229,199,0.08)" stroke="none" points="30,110 100,95 170,80 240,65 310,58 380,45 450,38 520,30 590,24 660,18 720,12 720,144 30,144"/>
+    <polyline fill="none" stroke="#00E5C7" stroke-width="2" points="30,110 100,95 170,80 240,65 310,58 380,45 450,38 520,30 590,24 660,18 720,12"/>
+    <defs><filter id="gl"><feGaussianBlur stdDeviation="3"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+  </svg>
+</div>
+
+<!-- Bar + Area -->
+<div class="grid3">
+  <div class="chart-wrap">
+    <div class="chart-head"><h4>ROI by cohort</h4><div class="meta">bar</div></div>
+    <div style="display:flex; gap:8px; align-items:flex-end; height:100px;">
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <div style="width:100%; background:var(--teal); height:45%; border-radius:3px 3px 0 0; box-shadow:0 0 8px rgba(0,229,199,0.2);"></div>
+        <span style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4);">Q1</span>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <div style="width:100%; background:var(--teal); height:62%; border-radius:3px 3px 0 0; box-shadow:0 0 8px rgba(0,229,199,0.2);"></div>
+        <span style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4);">Q2</span>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <div style="width:100%; background:var(--teal); height:78%; border-radius:3px 3px 0 0; box-shadow:0 0 8px rgba(0,229,199,0.2);"></div>
+        <span style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4);">Q3</span>
+      </div>
+      <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;">
+        <div style="width:100%; background:var(--teal); height:92%; border-radius:3px 3px 0 0; box-shadow:0 0 8px rgba(0,229,199,0.2);"></div>
+        <span style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4);">Q4</span>
+      </div>
+    </div>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-head"><h4>Cost / day</h4><div class="meta">area</div></div>
+    <svg viewBox="0 0 200 100" width="100%" height="100" style="display:block;">
+      <polyline fill="rgba(0,229,199,0.12)" stroke="none" points="0,80 30,72 60,68 90,55 120,48 150,42 180,35 200,30 200,100 0,100"/>
+      <polyline fill="none" stroke="#00E5C7" stroke-width="1.5" points="0,80 30,72 60,68 90,55 120,48 150,42 180,35 200,30"/>
+    </svg>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-head"><h4>Sparkline</h4><div class="meta">inline</div></div>
+    <div style="font-size:36px; font-weight:700; letter-spacing:-0.03em; color:var(--teal); line-height:1; font-variant-numeric:tabular-nums;">$4.87</div>
+    <svg viewBox="0 0 200 40" width="100%" height="36" style="margin-top:8px; display:block;">
+      <polyline fill="rgba(0,229,199,0.12)" stroke="none" points="0,32 25,28 50,30 75,22 100,18 125,20 150,14 175,10 200,8 200,40 0,40"/>
+      <polyline fill="none" stroke="#00E5C7" stroke-width="1.5" points="0,32 25,28 50,30 75,22 100,18 125,20 150,14 175,10 200,8"/>
+    </svg>
+    <div style="font-family:var(--font-mono); font-size:10px; color:var(--fg-4); margin-top:4px;">avg cost/task · 7d</div>
+  </div>
+</div>
+</body></html>

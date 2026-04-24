@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Stats & Testimonial</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">16 · Components — proof</div>
+  <h1 class="pv-title">Stats, quotes, logos</h1>
+  <p class="pv-desc">Числа — крупно, Geist tabular, teal-цвет. Цитаты — тихо, типографика несёт весь вес. Лого-полоса — муть + grayscale.</p>
+</div>
+
+<style>
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border-1); border:1px solid var(--border-1); border-radius:var(--r-xl); overflow:hidden; margin-bottom:18px; }
+  .stats .cell { background:var(--bg-2); padding:22px; }
+  .stats .v { font-size:40px; font-weight:700; letter-spacing:-0.035em; line-height:1; color:var(--teal); font-variant-numeric:tabular-nums; }
+  .stats .l { font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3); margin-top:12px; }
+  .stats .d { font-size:12px; color:var(--fg-3); margin-top:4px; }
+
+  .quote { background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-2xl); padding:30px; margin-bottom:14px; position:relative; }
+  .quote .q-mark { position:absolute; top:16px; right:24px; font-family:var(--font-mono); font-size:72px; line-height:1; color:var(--teal-tint-2); user-select:none; font-weight:500; }
+  .quote blockquote { font-family:var(--font-sans); font-size:20px; line-height:1.35; letter-spacing:-0.015em; color:var(--fg-1); margin:0 0 20px; font-weight:500; max-width:640px; }
+  .quote .by { display:flex; align-items:center; gap:12px; }
+  .quote .avatar { width:38px; height:38px; border-radius:var(--r-full); background:linear-gradient(135deg, #00E5C7, #0F2922); color:#061210; font-weight:700; display:grid; place-items:center; font-size:14px; }
+  .quote .meta .n { font-size:13px; font-weight:600; color:var(--fg-1); }
+  .quote .meta .r { font-family:var(--font-mono); font-size:11px; color:var(--fg-3); }
+
+  .logos { display:flex; align-items:center; gap:38px; flex-wrap:wrap; padding:20px 0; border-top:1px solid var(--border-1); border-bottom:1px solid var(--border-1); margin-bottom:14px; }
+  .logos > span { font-family:var(--font-mono); font-size:10px; color:var(--fg-3); letter-spacing:0.08em; text-transform:uppercase; margin-right:10px; }
+  .logos .lg { color:var(--fg-2); font-weight:700; letter-spacing:-0.02em; font-size:18px; opacity:0.55; transition:opacity 120ms; }
+  .logos .lg:hover { opacity:1; color:var(--fg-1); }
+</style>
+
+<div class="stats">
+  <div class="cell">
+    <div class="v">+18<span style="font-size:24px; color:var(--teal);">%</span></div>
+    <div class="l">avg ROI · 30d</div>
+    <div class="d">по 50+ командам</div>
+  </div>
+  <div class="cell">
+    <div class="v">47<span style="font-size:20px; color:var(--fg-3); font-weight:500;"> мин</span></div>
+    <div class="l">времени в день</div>
+    <div class="d">на команду из 8</div>
+  </div>
+  <div class="cell">
+    <div class="v">12</div>
+    <div class="l">n8n workflows</div>
+    <div class="d">готовых шаблонов</div>
+  </div>
+  <div class="cell">
+    <div class="v">99.94<span style="font-size:20px; color:var(--fg-3); font-weight:500;">%</span></div>
+    <div class="l">eval uptime</div>
+    <div class="d">последние 90 дней</div>
+  </div>
+</div>
+
+<div class="quote">
+  <span class="q-mark">“</span>
+  <blockquote>Вместо «общего курса по AI» пришла команда, разобрала наши реальные процессы и за 6 недель встроила три n8n-воркфлоу в продакшн. Eval-панель до сих пор показывает +22% к скорости обработки заявок.</blockquote>
+  <div class="by">
+    <div class="avatar">АВ</div>
+    <div class="meta">
+      <div class="n">Анна Воронина</div>
+      <div class="r">CTO · Flow Retail · 180 человек</div>
+    </div>
+    <div style="margin-left:auto; display:flex; gap:4px;">
+      <span style="color:var(--teal);">★</span><span style="color:var(--teal);">★</span><span style="color:var(--teal);">★</span><span style="color:var(--teal);">★</span><span style="color:var(--teal);">★</span>
+    </div>
+  </div>
+</div>
+
+<div class="logos">
+  <span>trusted by</span>
+  <span class="lg">MTS</span>
+  <span class="lg">Alfa</span>
+  <span class="lg">Ozon</span>
+  <span class="lg">Skyeng</span>
+  <span class="lg">Flocktory</span>
+  <span class="lg">Sdek</span>
+  <span class="lg">Tinkoff</span>
+</div>
+</body></html>

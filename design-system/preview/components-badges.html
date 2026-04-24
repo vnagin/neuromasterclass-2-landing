@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Badges</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">11 · Components — badges & tags</div>
+  <h1 class="pv-title">Badges, chips, status</h1>
+  <p class="pv-desc">Все на mono-шрифте, 11px, tight padding. Статусные точки — 6px с glow для live.</p>
+</div>
+
+<style>
+  .chip { display:inline-flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:0.04em; padding:3px 10px; border-radius:var(--r-full); border:1px solid transparent; }
+  .chip-teal { background:var(--teal-tint); color:var(--teal); border-color:rgba(0,229,199,0.25); }
+  .chip-neutral { background:var(--bg-4); color:var(--fg-2); border-color:var(--border-2); }
+  .chip-success { background:var(--success-tint); color:var(--success); border-color:rgba(62,224,137,0.25); }
+  .chip-warning { background:var(--warning-tint); color:var(--warning); border-color:rgba(245,181,68,0.25); }
+  .chip-danger { background:var(--danger-tint); color:var(--danger); border-color:rgba(255,93,93,0.25); }
+  .chip-info { background:var(--info-tint); color:var(--info); border-color:rgba(110,184,255,0.25); }
+  .dot { width:6px; height:6px; border-radius:50%; }
+  .dot-live { background:var(--teal); box-shadow:0 0 10px var(--teal); animation:pl 2s ease-in-out infinite; }
+  @keyframes pl { 50% { opacity:0.4; } }
+  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .row-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3); min-width:90px; }
+
+  .tag { display:inline-flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:11px; color:var(--fg-2); background:var(--bg-3); border:1px solid var(--border-1); border-radius:var(--r-sm); padding:2px 6px; }
+  .tag .x { opacity:0.5; font-size:12px; line-height:1; }
+
+  .count { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 6px; font-family:var(--font-mono); font-size:10px; font-weight:600; background:var(--teal); color:#061210; border-radius:var(--r-full); }
+</style>
+
+<div class="row"><div class="row-label">Tone</div>
+  <span class="chip chip-teal">◆ New</span>
+  <span class="chip chip-neutral">Default</span>
+  <span class="chip chip-success">+ 18%</span>
+  <span class="chip chip-warning">pending</span>
+  <span class="chip chip-danger">error</span>
+  <span class="chip chip-info">beta</span>
+</div>
+
+<div class="row"><div class="row-label">Status</div>
+  <span class="chip chip-teal"><span class="dot dot-live"></span>LIVE</span>
+  <span class="chip chip-success"><span class="dot" style="background:var(--success);"></span>Shipped</span>
+  <span class="chip chip-warning"><span class="dot" style="background:var(--warning);"></span>In review</span>
+  <span class="chip chip-neutral"><span class="dot" style="background:var(--fg-3);"></span>Draft</span>
+  <span class="chip chip-danger"><span class="dot" style="background:var(--danger);"></span>Blocked</span>
+</div>
+
+<div class="row"><div class="row-label">With kbd</div>
+  <span class="chip chip-neutral">⌘K · palette</span>
+  <span class="chip chip-neutral">⇧S · ship</span>
+  <span class="chip chip-teal">v2 · stable</span>
+</div>
+
+<div class="row"><div class="row-label">Removable</div>
+  <span class="tag">n8n <span class="x">×</span></span>
+  <span class="tag">claude-haiku-4.5 <span class="x">×</span></span>
+  <span class="tag">slack-notify <span class="x">×</span></span>
+  <span class="tag">workflow:prod <span class="x">×</span></span>
+</div>
+
+<div class="row"><div class="row-label">Count / metric</div>
+  <span class="count">12</span>
+  <span class="count">47</span>
+  <span class="count" style="min-width:32px;">+18%</span>
+  <span class="chip chip-neutral" style="padding-left:4px;"><span class="count" style="background:var(--success); color:#061210;">8</span>unread</span>
+</div>
+
+<div class="pv-divider"></div>
+
+<div class="row-label" style="margin-bottom:8px;">Banner · inline status bar</div>
+<div style="background:var(--teal-tint); border:1px solid rgba(0,229,199,0.2); border-radius:var(--r-lg); padding:10px 14px; display:flex; align-items:center; gap:10px; font-size:13px;">
+  <span class="dot dot-live"></span>
+  <strong style="color:var(--teal); font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">нейромастерская 2.0</strong>
+  <span style="color:var(--fg-2);">— старт 28 апреля · 4 места из 12</span>
+  <a style="margin-left:auto; color:var(--teal); font-size:12px;">Забронировать →</a>
+</div>
+</body></html>

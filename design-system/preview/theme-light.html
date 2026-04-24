@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Light Mode</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  body { width: 820px; }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--r-2xl); overflow: hidden; border: 1px solid var(--border-2); margin-bottom: 18px; }
+  .panel { padding: 28px; min-height: 320px; }
+  .panel.dark { background: var(--bg-1); color: var(--fg-1); }
+  .panel.light { background: #FAFBFA; color: #0A0F0D; }
+  .panel h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 6px; }
+  .panel p { font-size: 13px; line-height: 1.55; margin: 0 0 16px; }
+  .panel .eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; margin-bottom: 14px; }
+
+  .card-d { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-xl); padding: 16px; margin-bottom: 10px; }
+  .card-l { background: #E6EAE8; border: 1px solid rgba(10,15,13,0.12); border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+
+  .btn-d { display: inline-flex; align-items: center; gap: 6px; background: #00E5C7; color: #061210; font-weight: 600; font-size: 12px; padding: 7px 14px; border-radius: 8px; border: 0; }
+  .btn-l { display: inline-flex; align-items: center; gap: 6px; background: #009E8A; color: #fff; font-weight: 600; font-size: 12px; padding: 7px 14px; border-radius: 8px; border: 0; }
+  .btn-d2 { display: inline-flex; align-items: center; gap: 6px; background: #1B2420; color: #EDEFEE; border: 1px solid rgba(255,255,255,0.10); font-weight: 600; font-size: 12px; padding: 7px 14px; border-radius: 8px; }
+  .btn-l2 { display: inline-flex; align-items: center; gap: 6px; background: #DCE0DE; color: #0A0F0D; border: 1px solid rgba(10,15,13,0.12); font-weight: 600; font-size: 12px; padding: 7px 14px; border-radius: 8px; }
+
+  .chip-d { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10px; padding: 3px 8px; border-radius: 9999px; background: rgba(0,229,199,0.12); color: #00E5C7; border: 1px solid rgba(0,229,199,0.25); }
+  .chip-l { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 10px; padding: 3px 8px; border-radius: 9999px; background: rgba(0,158,138,0.10); color: #009E8A; border: 1px solid rgba(0,158,138,0.2); }
+
+  .input-d { background: #1B2420; border: 1px solid rgba(255,255,255,0.10); border-radius: 8px; padding: 8px 12px; color: #EDEFEE; font-family: var(--font-sans); font-size: 13px; width: 100%; box-sizing: border-box; }
+  .input-l { background: #DCE0DE; border: 1px solid rgba(10,15,13,0.12); border-radius: 8px; padding: 8px 12px; color: #0A0F0D; font-family: var(--font-sans); font-size: 13px; width: 100%; box-sizing: border-box; }
+
+  .stat { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat-d { color: #00E5C7; }
+  .stat-l { color: #009E8A; }
+  .stat-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 6px; }
+
+  .tok-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 14px; }
+  .tok { border-radius: 8px; padding: 12px; min-height: 60px; display: flex; flex-direction: column; justify-content: space-between; }
+  .tok .n { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tok .v { font-weight: 600; font-size: 12px; margin-top: 4px; }
+
+  .semantic-row { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .sem { font-family: var(--font-mono); font-size: 10px; padding: 3px 8px; border-radius: 9999px; font-weight: 500; }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">17 · Light Mode System</div>
+  <h1 class="pv-title">Dark ↔ Light side-by-side</h1>
+  <p class="pv-desc">Все токены имеют light-пару. Переключение: <code>data-theme="light"</code> на <code>&lt;html&gt;</code>, или автоматически через <code>prefers-color-scheme</code>. Teal на light = <code>#009E8A</code> (darker, AA-compliant).</p>
+</div>
+
+<div class="split">
+  <div class="panel dark">
+    <div class="eyebrow" style="color:rgba(237,239,238,0.52);">Dark mode · default</div>
+    <h3>AI-first за <span style="color:#00E5C7;">90 дней</span></h3>
+    <p style="color:rgba(237,239,238,0.72);">Корпоративная программа. 12 кейсов, eval-панель.</p>
+    <div class="card-d">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="chip-d"><span style="width:5px;height:5px;border-radius:50%;background:#00E5C7;"></span>LIVE</span>
+        <span class="stat stat-d" style="font-size:24px;">+18%</span>
+      </div>
+      <div class="stat-label" style="color:rgba(237,239,238,0.36);">avg roi · 30d</div>
+    </div>
+    <input class="input-d" placeholder="name@company.com"/>
+    <div style="display:flex; gap:6px; margin-top:10px;">
+      <button class="btn-d">Start →</button>
+      <button class="btn-d2">Программа</button>
+    </div>
+    <div class="semantic-row">
+      <span class="sem" style="background:rgba(62,224,137,0.14); color:#3EE089;">success</span>
+      <span class="sem" style="background:rgba(245,181,68,0.14); color:#F5B544;">warning</span>
+      <span class="sem" style="background:rgba(255,93,93,0.14); color:#FF5D5D;">danger</span>
+      <span class="sem" style="background:rgba(110,184,255,0.14); color:#6EB8FF;">info</span>
+    </div>
+  </div>
+  <div class="panel light">
+    <div class="eyebrow" style="color:#6A7570;">Light mode · [data-theme="light"]</div>
+    <h3 style="color:#0A0F0D;">AI-first за <span style="color:#009E8A;">90 дней</span></h3>
+    <p style="color:#3A4440;">Корпоративная программа. 12 кейсов, eval-панель.</p>
+    <div class="card-l">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span class="chip-l"><span style="width:5px;height:5px;border-radius:50%;background:#009E8A;"></span>LIVE</span>
+        <span class="stat stat-l" style="font-size:24px;">+18%</span>
+      </div>
+      <div class="stat-label" style="color:#9BA3A0;">avg roi · 30d</div>
+    </div>
+    <input class="input-l" placeholder="name@company.com"/>
+    <div style="display:flex; gap:6px; margin-top:10px;">
+      <button class="btn-l">Start →</button>
+      <button class="btn-l2">Программа</button>
+    </div>
+    <div class="semantic-row">
+      <span class="sem" style="background:rgba(21,128,61,0.10); color:#15803D;">success</span>
+      <span class="sem" style="background:rgba(161,98,7,0.10); color:#A16207;">warning</span>
+      <span class="sem" style="background:rgba(220,38,38,0.10); color:#DC2626;">danger</span>
+      <span class="sem" style="background:rgba(37,99,235,0.10); color:#2563EB;">info</span>
+    </div>
+  </div>
+</div>
+
+<div class="pv-label" style="margin-bottom:10px;">Token mapping</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:var(--r-xl); overflow:hidden; border:1px solid var(--border-2);">
+  <div style="background:var(--bg-1); padding:18px;">
+    <div class="tok-grid">
+      <div class="tok" style="background:#050807;"><div class="n" style="color:rgba(237,239,238,0.52);">bg-0</div><div class="v" style="color:#EDEFEE;">#050807</div></div>
+      <div class="tok" style="background:#0A0F0D;"><div class="n" style="color:rgba(237,239,238,0.52);">bg-1</div><div class="v" style="color:#EDEFEE;">#0A0F0D</div></div>
+      <div class="tok" style="background:#0F1512;"><div class="n" style="color:rgba(237,239,238,0.52);">bg-2</div><div class="v" style="color:#EDEFEE;">#0F1512</div></div>
+      <div class="tok" style="background:#141B18;"><div class="n" style="color:rgba(237,239,238,0.52);">bg-3</div><div class="v" style="color:#EDEFEE;">#141B18</div></div>
+      <div class="tok" style="background:#1B2420;"><div class="n" style="color:rgba(237,239,238,0.52);">bg-4</div><div class="v" style="color:#EDEFEE;">#1B2420</div></div>
+      <div class="tok" style="background:#253029;"><div class="n" style="color:rgba(237,239,238,0.52);">bg-5</div><div class="v" style="color:#EDEFEE;">#253029</div></div>
+    </div>
+  </div>
+  <div style="background:#FAFBFA; padding:18px;">
+    <div class="tok-grid">
+      <div class="tok" style="background:#F0F2F1;"><div class="n" style="color:#6A7570;">bg-0</div><div class="v" style="color:#0A0F0D;">#F0F2F1</div></div>
+      <div class="tok" style="background:#FAFBFA; border:1px solid rgba(10,15,13,0.06);"><div class="n" style="color:#6A7570;">bg-1</div><div class="v" style="color:#0A0F0D;">#FAFBFA</div></div>
+      <div class="tok" style="background:#F2F4F3;"><div class="n" style="color:#6A7570;">bg-2</div><div class="v" style="color:#0A0F0D;">#F2F4F3</div></div>
+      <div class="tok" style="background:#E6EAE8;"><div class="n" style="color:#6A7570;">bg-3</div><div class="v" style="color:#0A0F0D;">#E6EAE8</div></div>
+      <div class="tok" style="background:#DCE0DE;"><div class="n" style="color:#6A7570;">bg-4</div><div class="v" style="color:#0A0F0D;">#DCE0DE</div></div>
+      <div class="tok" style="background:#CFD4D2;"><div class="n" style="color:#6A7570;">bg-5</div><div class="v" style="color:#0A0F0D;">#CFD4D2</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:8px;">Usage</div>
+<ul style="font-size:13px; color:var(--fg-2); line-height:1.7; padding-left:18px; margin:0;">
+  <li><code>&lt;html data-theme="light"&gt;</code> — force light mode.</li>
+  <li><code>&lt;html data-theme="dark"&gt;</code> — force dark (default).</li>
+  <li>No attribute — follows <code>prefers-color-scheme</code>.</li>
+  <li>Teal on light is <code>#009E8A</code> (4.5:1 on white, AA). On dark is <code>#00E5C7</code> (12.5:1).</li>
+  <li>All semantic colors have light-mode variants with higher contrast.</li>
+</ul>
+</body></html>

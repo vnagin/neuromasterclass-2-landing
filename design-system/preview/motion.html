@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Motion</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">08 · Motion</div>
+  <h1 class="pv-title">Fast, snappy, no overshoot</h1>
+  <p class="pv-desc">Linear-like: 120–200ms для micro, 320 для reveal. Единая кривая <code>cubic-bezier(0.2, 0, 0, 1)</code>. Никаких bounce, elastic, spring.</p>
+</div>
+
+<style>
+  .motion-demo { background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-xl); padding:20px; min-height:130px; cursor:pointer; position:relative; overflow:hidden; }
+  .motion-demo .dot { width:28px; height:28px; border-radius:var(--r-full); background:var(--teal); position:absolute; top:50%; left:20px; transform:translateY(-50%); box-shadow:var(--teal-glow); }
+  .motion-demo:hover .dot { left:calc(100% - 48px); }
+  .d1 .dot { transition: left 120ms cubic-bezier(0.2,0,0,1); }
+  .d2 .dot { transition: left 200ms cubic-bezier(0.2,0,0,1); }
+  .d3 .dot { transition: left 320ms cubic-bezier(0.2,0,0,1); }
+  .d4 .dot { transition: left 500ms cubic-bezier(0.16,1,0.3,1); }
+
+  @keyframes pulse-teal { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,229,199,0.6); } 50% { box-shadow: 0 0 0 14px rgba(0,229,199,0); } }
+  .pulse-dot { width:10px; height:10px; border-radius:50%; background:var(--teal); animation: pulse-teal 2s cubic-bezier(0.2,0,0,1) infinite; }
+
+  @keyframes scan { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+  .scan-box { overflow:hidden; position:relative; }
+  .scan-box::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg, transparent, rgba(0,229,199,0.5), transparent); animation: scan 2s linear infinite; width:40%; }
+</style>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+  <div class="motion-demo d1"><div class="pv-label">--dur-1 · 120ms</div><div class="pv-token" style="margin-top:4px;">hover, micro · hover me</div><div class="dot"></div></div>
+  <div class="motion-demo d2"><div class="pv-label">--dur-2 · 200ms · default</div><div class="pv-token" style="margin-top:4px;">button, tab · hover me</div><div class="dot"></div></div>
+  <div class="motion-demo d3"><div class="pv-label">--dur-3 · 320ms · reveal</div><div class="pv-token" style="margin-top:4px;">scroll-reveal · hover me</div><div class="dot"></div></div>
+  <div class="motion-demo d4"><div class="pv-label">--dur-4 · 500ms · complex</div><div class="pv-token" style="margin-top:4px;">ease-out · hover me</div><div class="dot"></div></div>
+</div>
+
+<div class="pv-divider"></div>
+
+<div class="pv-label" style="margin-bottom:12px;">Signature motion primitives</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-xl); padding:20px; display:flex; align-items:center; gap:14px;">
+    <div class="pulse-dot"></div>
+    <div>
+      <div class="pv-label" style="color:var(--teal);">live indicator</div>
+      <div class="pv-token" style="margin-top:2px;">pulse 2s · sidebar, status</div>
+    </div>
+  </div>
+  <div class="scan-box" style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-xl); padding:20px;">
+    <div class="pv-label" style="color:var(--teal);">scan line</div>
+    <div class="pv-token" style="margin-top:2px;">loading state · 2s linear</div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Rules</div>
+<ul style="font-size:13px; color:var(--fg-2); line-height:1.7; padding-left:18px; margin:0;">
+  <li>Buttons: <code>translateY(0 → -1px)</code> + teal glow on hover, 120ms.</li>
+  <li>Cards: border colour <code>--border-2 → --teal</code>, 200ms. No translate.</li>
+  <li>Reveal on scroll: <code>opacity 0 → 1 + translateY(12px → 0)</code>, 320ms, stagger 40ms.</li>
+  <li>All colour transitions use <code>cubic-bezier(0.2, 0, 0, 1)</code>.</li>
+</ul>
+</body></html>

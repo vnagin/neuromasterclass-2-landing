@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Nav & Tabs</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">13 · Components — nav / tabs</div>
+  <h1 class="pv-title">Navigation</h1>
+  <p class="pv-desc">Sticky-glass header + пример sidebar + tabs + breadcrumbs.</p>
+</div>
+
+<style>
+  .nav-bar { display:flex; align-items:center; justify-content:space-between; padding:12px 20px; background:rgba(10,15,13,0.72); backdrop-filter:blur(18px) saturate(160%); -webkit-backdrop-filter:blur(18px) saturate(160%); border:1px solid var(--border-1); border-radius:var(--r-xl); margin-bottom:18px; }
+  .nav-logo { display:flex; align-items:center; gap:8px; font-weight:700; letter-spacing:-0.02em; color:var(--fg-1); }
+  .nav-mark { width:22px; height:22px; border-radius:6px; background:var(--teal); color:#061210; font-weight:900; font-family:var(--font-mono); font-size:13px; display:grid; place-items:center; }
+  .nav-links { display:flex; gap:2px; font-size:13px; }
+  .nav-links a { color:var(--fg-3); padding:6px 12px; border-radius:var(--r-md); }
+  .nav-links a:hover { color:var(--fg-1); background:var(--bg-4); }
+  .nav-links a.active { color:var(--fg-1); background:var(--bg-4); }
+  .nav-btn { background:var(--teal); color:#061210; font-weight:600; font-size:13px; padding:7px 14px; border-radius:var(--r-md); border:0; cursor:pointer; }
+
+  .tabs { display:flex; gap:4px; border-bottom:1px solid var(--border-2); padding:0 4px; }
+  .tabs a { padding:10px 14px; color:var(--fg-3); font-size:13px; font-weight:500; border-bottom:2px solid transparent; margin-bottom:-1px; }
+  .tabs a:hover { color:var(--fg-1); }
+  .tabs a.on { color:var(--teal); border-color:var(--teal); }
+  .tabs .count { font-family:var(--font-mono); font-size:10px; background:var(--bg-4); padding:1px 6px; border-radius:var(--r-full); margin-left:6px; color:var(--fg-3); }
+  .tabs a.on .count { background:var(--teal-tint); color:var(--teal); }
+
+  .bc { display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:12px; color:var(--fg-3); margin-top:18px; }
+  .bc a { color:var(--fg-3); } .bc a:hover { color:var(--fg-1); }
+  .bc .sep { color:var(--fg-4); }
+  .bc .current { color:var(--fg-1); }
+
+  .side { background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:14px; width:100%; }
+  .side-group { margin-bottom:14px; }
+  .side-h { font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--fg-4); padding:4px 10px; }
+  .side a { display:flex; align-items:center; gap:10px; padding:7px 10px; color:var(--fg-2); font-size:13px; border-radius:var(--r-md); }
+  .side a:hover { background:var(--bg-3); color:var(--fg-1); }
+  .side a.on { background:var(--bg-4); color:var(--fg-1); box-shadow:inset 2px 0 0 var(--teal); }
+  .side .icn { width:14px; color:var(--fg-3); }
+  .side a.on .icn { color:var(--teal); }
+  .side .count { margin-left:auto; font-family:var(--font-mono); font-size:10px; color:var(--fg-4); }
+</style>
+
+<div class="nav-bar">
+  <div style="display:flex; align-items:center; gap:28px;">
+    <div class="nav-logo"><img src="../assets/logo-leadup-raw.png" alt="LeadUp AI" height="24" style="filter:brightness(10);"/></div>
+    <div class="nav-links">
+      <a href="#">Продукты</a>
+      <a href="#" class="active">Нейромастерская</a>
+      <a href="#">Кейсы</a>
+      <a href="#">Pricing</a>
+      <a href="#">Блог</a>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <a href="#" style="color:var(--fg-3); font-size:13px;">Войти</a>
+    <button class="nav-btn">Start free →</button>
+  </div>
+</div>
+
+<div class="pv-label" style="margin-top:8px; margin-bottom:8px;">Tabs</div>
+<div class="tabs">
+  <a class="on">Overview<span class="count">—</span></a>
+  <a>Agents<span class="count">12</span></a>
+  <a>Workflows<span class="count">47</span></a>
+  <a>Evals<span class="count">8</span></a>
+  <a>Team<span class="count">5</span></a>
+</div>
+
+<div class="bc">
+  <a>Dashboard</a><span class="sep">/</span>
+  <a>Workflows</a><span class="sep">/</span>
+  <span class="current">slack-daily-digest</span>
+  <span class="chip" style="font-family:var(--font-mono); font-size:10px; padding:2px 8px; border-radius:var(--r-full); background:var(--success-tint); color:var(--success); margin-left:8px;">● live</span>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Sidebar</div>
+<div style="display:grid; grid-template-columns:240px 1fr; gap:14px;">
+  <div class="side">
+    <div class="side-group">
+      <div class="side-h">workspace</div>
+      <a class="on"><svg class="icn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+      <a><svg class="icn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v8M4.9 4.9l5.7 5.7M2 12h8M4.9 19.1l5.7-5.7M12 22v-8M19.1 19.1l-5.7-5.7M22 12h-8M19.1 4.9l-5.7 5.7"/></svg>Agents<span class="count">12</span></a>
+      <a><svg class="icn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg>Workflows<span class="count">47</span></a>
+      <a><svg class="icn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>Evals<span class="count">8</span></a>
+    </div>
+    <div class="side-group">
+      <div class="side-h">settings</div>
+      <a><svg class="icn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg>Settings</a>
+      <a><svg class="icn" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Team<span class="count">5</span></a>
+    </div>
+  </div>
+  <div style="background:var(--bg-2); border:1px dashed var(--border-2); border-radius:var(--r-xl); display:grid; place-items:center; color:var(--fg-4); font-family:var(--font-mono); font-size:12px;">main content area</div>
+</div>
+</body></html>

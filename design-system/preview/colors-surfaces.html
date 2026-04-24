@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Colors · Surfaces</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">02 · Dark surfaces</div>
+  <h1 class="pv-title">Greens-tinted neutrals</h1>
+  <p class="pv-desc">5 уровней глубины. Каждый следующий — на ~1.5 OKLCH-пункта светлее. Все нейтрали чуть teal-tinted — фирменная подпись, видимая только рядом с чистым чёрным.</p>
+</div>
+
+<div style="display:grid; grid-template-columns:repeat(6,1fr); gap:0; border-radius:var(--r-xl); overflow:hidden; border:1px solid var(--border-2);">
+  <div style="background:#000000; padding:24px 14px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label" style="color:var(--fg-3);">pure</div>
+    <div><div style="font-weight:700; color:#fff;">#000000</div><div class="pv-token" style="font-size:10px;">reference</div></div>
+  </div>
+  <div style="background:var(--bg-0); padding:24px 14px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">bg-0</div>
+    <div><div style="font-weight:700;">#050807</div><div class="pv-token" style="font-size:10px;">deepest</div></div>
+  </div>
+  <div style="background:var(--bg-1); padding:24px 14px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">bg-1</div>
+    <div><div style="font-weight:700;">#0A0F0D</div><div class="pv-token" style="font-size:10px;">page</div></div>
+  </div>
+  <div style="background:var(--bg-2); padding:24px 14px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">bg-2</div>
+    <div><div style="font-weight:700;">#0F1512</div><div class="pv-token" style="font-size:10px;">section</div></div>
+  </div>
+  <div style="background:var(--bg-3); padding:24px 14px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">bg-3</div>
+    <div><div style="font-weight:700;">#141B18</div><div class="pv-token" style="font-size:10px;">card</div></div>
+  </div>
+  <div style="background:var(--bg-4); padding:24px 14px; min-height:130px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">bg-4</div>
+    <div><div style="font-weight:700;">#1B2420</div><div class="pv-token" style="font-size:10px;">input</div></div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:14px;">Foreground · on dark</div>
+<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+  <div style="background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-lg); padding:18px;">
+    <div style="color:var(--fg-1); font-size:18px; font-weight:600;">fg-1</div>
+    <div class="pv-token" style="margin-top:6px;">#EDEFEE · 100%</div>
+    <div class="pv-token" style="color:var(--fg-3);">h1, h2, key data</div>
+  </div>
+  <div style="background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-lg); padding:18px;">
+    <div style="color:var(--fg-2); font-size:18px; font-weight:500;">fg-2</div>
+    <div class="pv-token" style="margin-top:6px;">rgba · 72%</div>
+    <div class="pv-token" style="color:var(--fg-3);">body text</div>
+  </div>
+  <div style="background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-lg); padding:18px;">
+    <div style="color:var(--fg-3); font-size:18px;">fg-3</div>
+    <div class="pv-token" style="margin-top:6px;">rgba · 52%</div>
+    <div class="pv-token" style="color:var(--fg-3);">captions, meta</div>
+  </div>
+  <div style="background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-lg); padding:18px;">
+    <div style="color:var(--fg-4); font-size:18px;">fg-4</div>
+    <div class="pv-token" style="margin-top:6px;">rgba · 36%</div>
+    <div class="pv-token" style="color:var(--fg-3);">disabled</div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:14px;">Light mode · когда нужно</div>
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+  <div style="background:var(--bg-light-1); color:var(--fg-light-1); border:1px solid var(--border-light-1); border-radius:var(--r-lg); padding:18px; min-height:90px;">
+    <div class="pv-label" style="color:var(--fg-light-3);">light-1</div>
+    <div style="font-weight:700; margin-top:4px;">#FAFBFA</div>
+  </div>
+  <div style="background:var(--bg-light-2); color:var(--fg-light-1); border:1px solid var(--border-light-1); border-radius:var(--r-lg); padding:18px; min-height:90px;">
+    <div class="pv-label" style="color:var(--fg-light-3);">light-2</div>
+    <div style="font-weight:700; margin-top:4px;">#F2F4F3</div>
+  </div>
+  <div style="background:var(--bg-light-3); color:var(--fg-light-1); border:1px solid var(--border-light-1); border-radius:var(--r-lg); padding:18px; min-height:90px;">
+    <div class="pv-label" style="color:var(--fg-light-3);">light-3</div>
+    <div style="font-weight:700; margin-top:4px;">#E6EAE8</div>
+  </div>
+</div>
+</body></html>

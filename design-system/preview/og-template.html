@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>OG Template 1200×630</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .og { width: 600px; height: 315px; border-radius: var(--r-xl); overflow: hidden; position: relative; background: var(--bg-1); border: 1px solid var(--border-2); box-shadow: var(--shadow-3); }
+  .og-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 24px 24px; mask-image: radial-gradient(ellipse at 40% 50%, black 20%, transparent 70%); }
+  .og-glow { position: absolute; top: -80px; left: -80px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,199,0.18), transparent 55%); filter: blur(20px); }
+  .og-content { position: relative; padding: 36px 44px 36px; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; justify-content: flex-end; }
+  .og-logo { height: 28px; filter: brightness(10); margin-bottom: 20px; display: block; width: auto; max-width: 160px; object-fit: contain; align-self: flex-start; }
+  .og h2 { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 6px; max-width: 380px; }
+  .og h2 .acc { color: var(--teal); }
+  .og p { font-size: 13px; color: var(--fg-3); margin: 0 0 16px; max-width: 360px; line-height: 1.45; }
+  .og-cta { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--teal); color: #061210; font-weight: 600; font-size: 12px; border-radius: var(--r-lg); box-shadow: 0 4px 16px rgba(0,229,199,0.35); align-self: flex-start; }
+  .og-meta { position: absolute; bottom: 20px; right: 24px; font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.06em; }
+
+  .note { font-size: 12px; color: var(--fg-3); margin-top: 16px; line-height: 1.5; }
+  .note code { font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">28 · OG / Social template</div>
+  <h1 class="pv-title">OG Image 1200×630</h1>
+  <p class="pv-desc">Open Graph preview для мета-тегов, Slack/LinkedIn/Telegram link previews. Показан в масштабе 50%. Grid + glow + CTA pill.</p>
+</div>
+
+<!-- Default: Нейромастерская -->
+<div class="pv-label" style="margin-bottom:10px;">Default · Нейромастерская</div>
+<div class="og">
+  <div class="og-grid"></div>
+  <div class="og-glow"></div>
+  <div class="og-content">
+    <img class="og-logo" src="../assets/logo-leadup-raw.png" alt=""/>
+    <h2>AI-first за <span class="acc">90&nbsp;дней</span>. Без воды.</h2>
+    <p>Корпоративная программа: 12 кейсов, n8n в вашем стеке, eval-панель метрик.</p>
+    <div class="og-cta">Записаться бесплатно →</div>
+    <div class="og-meta">leadup.ai · 50+ teams shipped</div>
+  </div>
+</div>
+
+<div style="height:20px;"></div>
+
+<!-- Variant: Blog post -->
+<div class="pv-label" style="margin-bottom:10px;">Blog post variant</div>
+<div class="og" style="background:var(--bg-2);">
+  <div class="og-grid"></div>
+  <div class="og-content">
+    <img class="og-logo" src="../assets/logo-leadup-raw.png" alt=""/>
+    <div style="font-family:var(--font-mono); font-size:10px; color:var(--teal); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;">◆ Нейросборка · Блог</div>
+    <h2>7 кейсов: где AI дал <span class="acc">+15%</span> к выручке</h2>
+    <p>Разбор реальных внедрений. Метрики, ошибки, неочевидные выводы.</p>
+    <div class="og-meta">leadup.ai/blog · 8 мин чтения</div>
+  </div>
+</div>
+
+<div class="note">
+  <strong>Спецификация:</strong> 1200×630px, export @2x для retina. Здесь показано 600×315 (масштаб 50%). CTA pill: <code>--teal</code> bg, <code>--r-lg</code>, <code>shadow 0 4 16 rgba(0,229,199,0.35)</code>. Лого: top-left, 36px height @2x.
+</div>
+</body></html>

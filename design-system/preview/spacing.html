@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Spacing</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">06 · Spacing</div>
+  <h1 class="pv-title">4px base scale</h1>
+  <p class="pv-desc">Линейные шаги до 16px, потом 8px, потом 16px. Все layout-расстояния — только из этой шкалы. Никаких 22px или 38px.</p>
+</div>
+
+<div style="display:flex; flex-direction:column; gap:10px;">
+  <!-- row template -->
+  <!-- sp-1 -->
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-1</div><div class="pv-hex">4px</div>
+    <div style="background:var(--teal); height:14px; width:4px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-2</div><div class="pv-hex">8px</div>
+    <div style="background:var(--teal); height:14px; width:8px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-3</div><div class="pv-hex">12px</div>
+    <div style="background:var(--teal); height:14px; width:12px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-4</div><div class="pv-hex">16px</div>
+    <div style="background:var(--teal); height:14px; width:16px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-5</div><div class="pv-hex">20px</div>
+    <div style="background:var(--teal); height:14px; width:20px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-6</div><div class="pv-hex">24px</div>
+    <div style="background:var(--teal); height:14px; width:24px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-8</div><div class="pv-hex">32px</div>
+    <div style="background:var(--teal); height:14px; width:32px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-10</div><div class="pv-hex">40px</div>
+    <div style="background:var(--teal); height:14px; width:40px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-12</div><div class="pv-hex">48px</div>
+    <div style="background:var(--teal); height:14px; width:48px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-16</div><div class="pv-hex">64px</div>
+    <div style="background:var(--teal); height:14px; width:64px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-20</div><div class="pv-hex">80px</div>
+    <div style="background:var(--teal); height:14px; width:80px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-24</div><div class="pv-hex">96px</div>
+    <div style="background:var(--teal); height:14px; width:96px; border-radius:2px;"></div>
+  </div>
+  <div style="display:grid; grid-template-columns:80px 90px 1fr; align-items:center; gap:16px; height:30px;">
+    <div class="pv-value">--sp-32</div><div class="pv-hex">128px</div>
+    <div style="background:var(--teal); height:14px; width:128px; border-radius:2px;"></div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Section rhythm</div>
+<div style="font-size:13px; color:var(--fg-2); line-height:1.7;">
+  Desktop section padding · <span class="pv-hex">128px 0</span> (sp-32)<br>
+  Mobile section padding · <span class="pv-hex">64px 0</span> (sp-16)<br>
+  Grid gap · <span class="pv-hex">24px</span> (sp-6)<br>
+  Container · <span class="pv-hex">1240px</span>, padding <span class="pv-hex">24px</span>
+</div>
+</body></html>

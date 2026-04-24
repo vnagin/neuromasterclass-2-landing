@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Illustration Language</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .ill-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .ill { border-radius: var(--r-2xl); overflow: hidden; border: 1px solid var(--border-2); }
+  .ill-body { height: 240px; position: relative; display: flex; align-items: center; justify-content: center; }
+  .ill-bar { padding: 14px 18px; border-top: 1px solid var(--border-1); background: var(--bg-2); }
+  .ill-bar h4 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .ill-bar p { font-size: 12px; color: var(--fg-3); margin: 0; line-height: 1.5; }
+  .ill-bar .use { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
+
+  /* A: Grid + Glow */
+  .ill-a .ill-body {
+    background: var(--bg-1);
+    background-image:
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .ill-a .glow { position: absolute; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,199,0.22), transparent 60%); filter: blur(20px); }
+  .ill-a .crosshair { position: absolute; width: 120px; height: 120px; }
+  .ill-a .crosshair::before, .ill-a .crosshair::after { content: ''; position: absolute; background: rgba(0,229,199,0.3); }
+  .ill-a .crosshair::before { width: 1px; height: 100%; left: 50%; }
+  .ill-a .crosshair::after { height: 1px; width: 100%; top: 50%; }
+  .ill-a .dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 14px var(--teal); }
+
+  /* B: Node Graph */
+  .ill-b .ill-body { background: var(--bg-1); }
+  .ill-b svg { width: 280px; height: 200px; }
+
+  /* C: Data Mesh */
+  .ill-c .ill-body {
+    background: var(--bg-1);
+    overflow: hidden;
+  }
+  .ill-c .bar-group { display: flex; gap: 3px; align-items: flex-end; height: 160px; padding: 0 20px; }
+  .ill-c .bar { width: 8px; border-radius: 3px 3px 0 0; transition: height 0.3s; }
+  .ill-c .bar.t { background: var(--teal); box-shadow: 0 0 8px rgba(0,229,199,0.3); }
+  .ill-c .bar.g { background: var(--bg-5); }
+  .ill-c .axis { position: absolute; bottom: 20px; left: 20px; right: 20px; height: 1px; background: var(--border-2); }
+  .ill-c .axis-y { position: absolute; bottom: 20px; left: 20px; top: 20px; width: 1px; background: var(--border-2); }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">18 · Illustration Language</div>
+  <h1 class="pv-title">3 visual primitives</h1>
+  <p class="pv-desc">Все иллюстрации строятся из трёх примитивов: Grid+Glow, Node Graph, Data Bars. Без стоковых фото, без 3D, без hand-drawn. Геометрично, data-informed, teal-accent.</p>
+</div>
+
+<div class="ill-grid">
+  <!-- A: Grid + Glow -->
+  <div class="ill ill-a">
+    <div class="ill-body">
+      <div class="glow"></div>
+      <div class="crosshair">
+        <div class="dot" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+      </div>
+      <div style="position:absolute; font-family:var(--font-mono); font-size:10px; color:var(--fg-3); bottom:16px; right:16px; letter-spacing:0.06em;">48px grid · teal radial</div>
+    </div>
+    <div class="ill-bar">
+      <h4>Grid + Glow</h4>
+      <p>Фирменный паттерн: 48px grid + radial teal glow. Для hero-секций, фонов landing, OG-изображений.</p>
+      <div class="use">hero · og · section bg</div>
+    </div>
+  </div>
+
+  <!-- B: Node Graph -->
+  <div class="ill ill-b">
+    <div class="ill-body">
+      <svg viewBox="0 0 280 200" fill="none">
+        <!-- edges -->
+        <line x1="60" y1="60" x2="140" y2="100" stroke="rgba(0,229,199,0.25)" stroke-width="1.5"/>
+        <line x1="60" y1="140" x2="140" y2="100" stroke="rgba(0,229,199,0.25)" stroke-width="1.5"/>
+        <line x1="140" y1="100" x2="220" y2="60" stroke="rgba(0,229,199,0.4)" stroke-width="1.5"/>
+        <line x1="140" y1="100" x2="220" y2="140" stroke="rgba(0,229,199,0.4)" stroke-width="1.5"/>
+        <line x1="140" y1="100" x2="220" y2="100" stroke="rgba(0,229,199,0.4)" stroke-width="1.5"/>
+        <!-- nodes -->
+        <circle cx="60" cy="60" r="16" fill="#141B18" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <circle cx="60" cy="140" r="16" fill="#141B18" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <circle cx="140" cy="100" r="20" fill="#141B18" stroke="#00E5C7" stroke-width="1.5"/>
+        <circle cx="220" cy="60" r="14" fill="#141B18" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <circle cx="220" cy="100" r="14" fill="#141B18" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <circle cx="220" cy="140" r="14" fill="#141B18" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+        <!-- icons in nodes -->
+        <text x="56" y="64" font-size="12" fill="#EDEFEE" font-family="Geist, sans-serif" font-weight="600">⚡</text>
+        <text x="56" y="144" font-size="12" fill="#EDEFEE" font-family="Geist, sans-serif" font-weight="600">📥</text>
+        <text x="135" y="104" font-size="14" fill="#00E5C7" font-family="Geist, sans-serif" font-weight="700">AI</text>
+        <text x="216" y="64" font-size="11" fill="#EDEFEE" font-family="Geist, sans-serif" font-weight="600">→</text>
+        <text x="216" y="104" font-size="11" fill="#EDEFEE" font-family="Geist, sans-serif" font-weight="600">→</text>
+        <text x="216" y="144" font-size="11" fill="#EDEFEE" font-family="Geist, sans-serif" font-weight="600">→</text>
+        <!-- glow on center -->
+        <circle cx="140" cy="100" r="40" fill="rgba(0,229,199,0.08)"/>
+      </svg>
+    </div>
+    <div class="ill-bar">
+      <h4>Node Graph</h4>
+      <p>Workflow-визуализация: input → AI → outputs. Для feature-секций, slides, Telegram-карточек.</p>
+      <div class="use">features · slides · social</div>
+    </div>
+  </div>
+
+  <!-- C: Data Bars -->
+  <div class="ill ill-c">
+    <div class="ill-body">
+      <div class="axis"></div>
+      <div class="axis-y"></div>
+      <div class="bar-group">
+        <div class="bar g" style="height:35%;"></div><div class="bar t" style="height:42%;"></div>
+        <div style="width:8px;"></div>
+        <div class="bar g" style="height:45%;"></div><div class="bar t" style="height:55%;"></div>
+        <div style="width:8px;"></div>
+        <div class="bar g" style="height:40%;"></div><div class="bar t" style="height:62%;"></div>
+        <div style="width:8px;"></div>
+        <div class="bar g" style="height:50%;"></div><div class="bar t" style="height:72%;"></div>
+        <div style="width:8px;"></div>
+        <div class="bar g" style="height:48%;"></div><div class="bar t" style="height:80%;"></div>
+        <div style="width:8px;"></div>
+        <div class="bar g" style="height:52%;"></div><div class="bar t" style="height:88%;"></div>
+        <div style="width:8px;"></div>
+        <div class="bar g" style="height:55%;"></div><div class="bar t" style="height:95%;"></div>
+      </div>
+      <div style="position:absolute; top:16px; right:16px; display:flex; gap:10px; font-family:var(--font-mono); font-size:10px;">
+        <span style="color:var(--fg-4);">■ baseline</span>
+        <span style="color:var(--teal);">■ AI-assisted</span>
+      </div>
+    </div>
+    <div class="ill-bar">
+      <h4>Data Bars</h4>
+      <p>Before/after comparison: baseline vs AI-assisted. Для метрик, case studies, eval-отчётов.</p>
+      <div class="use">metrics · case study · eval</div>
+    </div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:8px;">Rules</div>
+<ul style="font-size:13px; color:var(--fg-2); line-height:1.7; padding-left:18px; margin:0;">
+  <li>Все иллюстрации — на <code>--bg-1</code> фоне, teal-accent only.</li>
+  <li>Grid+Glow: max 1 на страницу (hero). Grid size = 48px always.</li>
+  <li>Node Graph: center node = teal border, input/output = neutral.</li>
+  <li>Data Bars: teal = AI-assisted, bg-5 = baseline. Always paired.</li>
+  <li>Никаких стоковых фото, 3D, gradient-mesh, hand-drawn, emoji-как-иллюстрации.</li>
+</ul>
+</body></html>

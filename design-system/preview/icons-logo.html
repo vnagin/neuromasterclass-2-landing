@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Icons & Logo</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">14 · Brand — icons & logo</div>
+  <h1 class="pv-title">Iconography & mark</h1>
+  <p class="pv-desc">Lucide 1.5px outline, 16/20/24/32. Logo — строчная L в квадрате teal, wordmark «LeadUp AI» с negative tracking.</p>
+</div>
+
+<style>
+  .ico-row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:14px; }
+  .ico-box { width:44px; height:44px; background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-md); display:grid; place-items:center; color:var(--fg-1); }
+  .ico-box.accent { color:var(--teal); background:var(--teal-tint); border-color:rgba(0,229,199,0.2); }
+  .ico-box svg { width:18px; height:18px; }
+
+  .sizes { display:flex; gap:16px; align-items:center; margin-bottom:14px; }
+  .sizes > div { display:flex; flex-direction:column; align-items:center; gap:4px; color:var(--fg-3); font-family:var(--font-mono); font-size:10px; }
+
+  .logo-card { background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:28px; display:flex; align-items:center; gap:14px; }
+  .mark { width:36px; height:36px; border-radius:8px; background:var(--teal); color:#061210; font-weight:900; font-family:var(--font-mono); font-size:22px; display:grid; place-items:center; }
+  .wordmark { font-weight:700; font-size:22px; letter-spacing:-0.025em; color:var(--fg-1); }
+  .wordmark b { color:var(--fg-1); } .wordmark span { color:var(--fg-3); font-weight:500; }
+
+  .logo-mono { width:36px; height:36px; border-radius:8px; background:var(--bg-4); color:var(--fg-1); border:1px solid var(--border-2); font-weight:900; font-family:var(--font-mono); font-size:22px; display:grid; place-items:center; }
+</style>
+
+<div class="pv-label" style="margin-bottom:10px;">Stroke widths / sizes</div>
+<div class="sizes">
+  <div>
+    <div style="width:56px; height:56px; background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-lg); display:grid; place-items:center;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#EDEFEE" stroke-width="1.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+    <div>32</div>
+  </div>
+  <div>
+    <div style="width:44px; height:44px; background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-md); display:grid; place-items:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EDEFEE" stroke-width="1.75"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+    <div>24</div>
+  </div>
+  <div>
+    <div style="width:36px; height:36px; background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-md); display:grid; place-items:center;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EDEFEE" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+    <div>20 · default</div>
+  </div>
+  <div>
+    <div style="width:30px; height:30px; background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-sm); display:grid; place-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#EDEFEE" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+    <div>16</div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Action set</div>
+<div class="ico-row">
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M4 18h16M4 6h16"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+  <div class="ico-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg></div>
+  <div class="ico-box accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v8M4.9 4.9l5.7 5.7M2 12h8M4.9 19.1l5.7-5.7M12 22v-8M19.1 19.1l-5.7-5.7M22 12h-8M19.1 4.9l-5.7 5.7"/></svg></div>
+  <div class="ico-box accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+  <div class="ico-box accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 9 22 10 17 15 18 22 12 18 6 22 7 15 2 10 9 9"/></svg></div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Logo variants</div>
+<div style="display:flex; flex-direction:column; gap:10px;">
+  <div class="logo-card"><img src="../assets/logo-leadup-raw.png" alt="LeadUp AI" height="36" style="filter:brightness(10);"/></div>
+  <div class="logo-card" style="background:var(--bg-light-1); border-color:var(--border-light-1);"><img src="../assets/logo-leadup-raw.png" alt="LeadUp AI" height="36" style="filter:brightness(0);"/></div>
+  <div class="logo-card" style="background:var(--teal);"><img src="../assets/logo-leadup-raw.png" alt="LeadUp AI" height="36" style="filter:brightness(0);"/><span style="margin-left:auto; font-family:var(--font-mono); font-size:10px; color:#061210; letter-spacing:0.08em; text-transform:uppercase;">on accent</span></div>
+</div>
+</body></html>

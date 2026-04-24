@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Data Table</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  .tbl { width:100%; border-collapse:collapse; font-size:13px; }
+  .tbl thead { position:sticky; top:0; }
+  .tbl th { font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-4); font-weight:500; text-align:left; padding:10px 14px; border-bottom:1px solid var(--border-2); background:var(--bg-2); }
+  .tbl th.sortable { cursor:pointer; user-select:none; }
+  .tbl th.sortable:hover { color:var(--fg-2); }
+  .tbl th .arrow { font-size:9px; margin-left:4px; }
+  .tbl td { padding:10px 14px; border-bottom:1px solid var(--border-1); color:var(--fg-2); vertical-align:middle; }
+  .tbl tr:hover td { background:var(--bg-3); }
+  .tbl .mono { font-family:var(--font-mono); font-size:12px; color:var(--fg-3); letter-spacing:0.02em; }
+  .tbl .teal { color:var(--teal); font-weight:600; }
+  .tbl .chip { display:inline-flex; align-items:center; gap:4px; font-family:var(--font-mono); font-size:10px; padding:2px 8px; border-radius:9999px; font-weight:500; }
+  .tbl .chip-live { background:rgba(0,229,199,0.12); color:var(--teal); }
+  .tbl .chip-draft { background:var(--bg-4); color:var(--fg-3); }
+  .tbl .chip-err { background:rgba(255,93,93,0.14); color:var(--danger); }
+  .tbl-wrap { background:var(--bg-2); border:1px solid var(--border-1); border-radius:var(--r-xl); overflow:hidden; }
+  .tbl-bar { display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border-bottom:1px solid var(--border-1); }
+  .tbl-bar .title { font-size:14px; font-weight:600; letter-spacing:-0.01em; }
+  .tbl-bar .ct { font-family:var(--font-mono); font-size:11px; color:var(--fg-3); }
+  .tbl-foot { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; border-top:1px solid var(--border-1); font-family:var(--font-mono); font-size:11px; color:var(--fg-4); }
+  .tbl-foot .pages { display:flex; gap:4px; }
+  .tbl-foot .pg { width:24px; height:24px; border-radius:var(--r-md); display:grid; place-items:center; font-size:11px; }
+  .tbl-foot .pg:hover { background:var(--bg-4); color:var(--fg-1); }
+  .tbl-foot .pg.on { background:var(--teal-tint); color:var(--teal); }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">19 · Components — data table</div>
+  <h1 class="pv-title">Data table</h1>
+  <p class="pv-desc">Mono headers, sticky top, hover rows, sort indicators. Pagination с tabular-nums.</p>
+</div>
+
+<div class="tbl-wrap">
+  <div class="tbl-bar">
+    <div class="title">Workflows</div>
+    <div class="ct">47 total · 12 live</div>
+  </div>
+  <table class="tbl">
+    <thead>
+      <tr>
+        <th class="sortable">name <span class="arrow">▼</span></th>
+        <th class="sortable">status</th>
+        <th class="sortable">tasks / 24h <span class="arrow">▼</span></th>
+        <th>retry rate</th>
+        <th>cost</th>
+        <th class="sortable">updated</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="color:var(--fg-1); font-weight:500;">slack-daily-digest</td><td><span class="chip chip-live"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);"></span>live</span></td><td class="teal" style="font-variant-numeric:tabular-nums;">1,247</td><td class="mono">0.3%</td><td class="mono">$2.14</td><td class="mono">2m ago</td></tr>
+      <tr><td style="color:var(--fg-1); font-weight:500;">support-ticket-triage</td><td><span class="chip chip-live"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);"></span>live</span></td><td class="teal" style="font-variant-numeric:tabular-nums;">892</td><td class="mono">1.2%</td><td class="mono">$4.87</td><td class="mono">8m ago</td></tr>
+      <tr><td style="color:var(--fg-1); font-weight:500;">weekly-report-gen</td><td><span class="chip chip-live"><span style="width:5px;height:5px;border-radius:50%;background:var(--teal);"></span>live</span></td><td class="teal" style="font-variant-numeric:tabular-nums;">56</td><td class="mono">0.0%</td><td class="mono">$1.20</td><td class="mono">1h ago</td></tr>
+      <tr><td style="color:var(--fg-1); font-weight:500;">lead-scoring-v2</td><td><span class="chip chip-draft">draft</span></td><td class="mono" style="font-variant-numeric:tabular-nums;">—</td><td class="mono">—</td><td class="mono">—</td><td class="mono">3d ago</td></tr>
+      <tr><td style="color:var(--fg-1); font-weight:500;">crm-sync-hubspot</td><td><span class="chip chip-err"><span style="width:5px;height:5px;border-radius:50%;background:var(--danger);"></span>error</span></td><td class="mono" style="font-variant-numeric:tabular-nums;">0</td><td class="mono" style="color:var(--danger);">42%</td><td class="mono">$0.00</td><td class="mono">12h ago</td></tr>
+    </tbody>
+  </table>
+  <div class="tbl-foot">
+    <div>1–5 of 47</div>
+    <div class="pages">
+      <span class="pg on">1</span><span class="pg">2</span><span class="pg">3</span><span class="pg">…</span><span class="pg">10</span>
+    </div>
+  </div>
+</div>
+</body></html>

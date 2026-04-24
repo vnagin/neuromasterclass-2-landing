@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Inputs</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">10 · Components — inputs</div>
+  <h1 class="pv-title">Form controls</h1>
+  <p class="pv-desc">Поля на bg-4 с 1px border-2. Focus — 2px teal ring. Плотные: 34px height по умолчанию.</p>
+</div>
+
+<style>
+  .field { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+  .label { font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; color:var(--fg-3); font-weight:500; }
+  .input, .select, .textarea { background:var(--bg-4); color:var(--fg-1); border:1px solid var(--border-2); border-radius:var(--r-lg); padding:9px 12px; font-family:var(--font-sans); font-size:14px; transition:all 120ms cubic-bezier(0.2,0,0,1); outline:none; width:100%; box-sizing:border-box; }
+  .input:hover, .select:hover { border-color:var(--border-3); }
+  .input:focus, .select:focus, .textarea:focus { border-color:var(--teal); box-shadow:0 0 0 3px rgba(0,229,199,0.18); }
+  .input::placeholder { color:var(--fg-4); }
+  .input-wrap { position:relative; }
+  .input-wrap .icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--fg-3); }
+  .input-wrap .input { padding-left:36px; }
+  .input-wrap .kbd { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-family:var(--font-mono); font-size:10px; background:var(--bg-2); border:1px solid var(--border-2); padding:2px 6px; border-radius:4px; color:var(--fg-3); }
+  .error .input { border-color:var(--danger); }
+  .error .help { color:var(--danger); }
+  .help { font-size:12px; color:var(--fg-3); }
+  .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .check { display:flex; align-items:center; gap:10px; color:var(--fg-2); font-size:14px; cursor:pointer; }
+  .check .box { width:16px; height:16px; background:var(--bg-4); border:1px solid var(--border-2); border-radius:4px; display:flex; align-items:center; justify-content:center; }
+  .check input { display:none; }
+  .check input:checked + .box { background:var(--teal); border-color:var(--teal); }
+  .check input:checked + .box::after { content:''; width:8px; height:4px; border:2px solid #061210; border-top:0; border-right:0; transform:rotate(-45deg) translate(1px,-1px); }
+  .radio-group { display:flex; gap:0; background:var(--bg-4); border:1px solid var(--border-2); border-radius:var(--r-lg); padding:3px; }
+  .radio-group label { flex:1; text-align:center; padding:7px 10px; font-size:13px; color:var(--fg-2); border-radius:5px; cursor:pointer; font-weight:500; }
+  .radio-group input { display:none; }
+  .radio-group input:checked + label { background:var(--bg-2); color:var(--fg-1); box-shadow: 0 0 0 1px var(--border-2); }
+  .switch { position:relative; width:36px; height:20px; background:var(--bg-5); border-radius:var(--r-full); cursor:pointer; transition:background 120ms; }
+  .switch::after { content:''; position:absolute; top:2px; left:2px; width:16px; height:16px; background:var(--fg-2); border-radius:50%; transition:all 120ms cubic-bezier(0.2,0,0,1); }
+  .switch.on { background:var(--teal); }
+  .switch.on::after { left:18px; background:#061210; }
+</style>
+
+<div class="row">
+  <div class="field">
+    <div class="label">Email</div>
+    <div class="input-wrap">
+      <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+      <input class="input" placeholder="name@company.com"/>
+    </div>
+    <div class="help">Корпоративный домен ускоряет одобрение.</div>
+  </div>
+  <div class="field">
+    <div class="label">Размер команды</div>
+    <select class="select">
+      <option>50–100 человек</option><option>100–250</option><option>250–500</option><option>500+</option>
+    </select>
+    <div class="help">Программа рассчитана на 50–500.</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="field">
+    <div class="label">Search · focused</div>
+    <div class="input-wrap">
+      <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="input" value="n8n webhook retry" style="border-color:var(--teal); box-shadow:0 0 0 3px rgba(0,229,199,0.18);"/>
+      <span class="kbd">⌘K</span>
+    </div>
+  </div>
+  <div class="field error">
+    <div class="label">Slack URL · error</div>
+    <input class="input" value="https://notslack.com/..." />
+    <div class="help">◆ URL должен начинаться с hooks.slack.com</div>
+  </div>
+</div>
+
+<div class="field">
+  <div class="label">Сообщение</div>
+  <textarea class="textarea" rows="3" placeholder="Кратко опишите, какие процессы хотите автоматизировать…"></textarea>
+</div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; align-items:start;">
+  <div>
+    <div class="label" style="margin-bottom:10px;">Checkboxes</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <label class="check"><input type="checkbox" checked/><span class="box"></span>Согласен с обработкой данных</label>
+      <label class="check"><input type="checkbox"/><span class="box"></span>Подписаться на дайджест</label>
+    </div>
+  </div>
+  <div>
+    <div class="label" style="margin-bottom:10px;">Radio group</div>
+    <div class="radio-group">
+      <input type="radio" name="t" id="t1" checked/><label for="t1">Ежемесячно</label>
+      <input type="radio" name="t" id="t2"/><label for="t2">Ежегодно</label>
+      <input type="radio" name="t" id="t3"/><label for="t3">Enterprise</label>
+    </div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="label" style="margin-bottom:12px;">Switch</div>
+<div style="display:flex; gap:24px; align-items:center;">
+  <div style="display:flex; align-items:center; gap:10px; color:var(--fg-2); font-size:14px;"><span class="switch on"></span> Email-дайджест</div>
+  <div style="display:flex; align-items:center; gap:10px; color:var(--fg-2); font-size:14px;"><span class="switch"></span> Slack-уведомления</div>
+</div>
+</body></html>

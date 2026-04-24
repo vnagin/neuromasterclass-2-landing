@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Buttons</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">09 · Components — buttons</div>
+  <h1 class="pv-title">Buttons</h1>
+  <p class="pv-desc">Primary — filled teal (rare, max 1 на экран). Default — bg-4 + border. Ghost — text only. Destructive — danger tint.</p>
+</div>
+
+<style>
+  .btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--font-sans); font-weight:600; font-size:13px; letter-spacing:-0.005em; border-radius:var(--r-lg); padding:0 14px; height:34px; border:1px solid transparent; cursor:pointer; transition: all 120ms cubic-bezier(0.2,0,0,1); white-space:nowrap; }
+  .btn-primary { background:var(--teal); color:#061210; }
+  .btn-primary:hover { background:var(--teal-hover); box-shadow: var(--teal-glow); transform:translateY(-1px); }
+  .btn-primary:active { background:var(--teal-pressed); box-shadow:none; transform:translateY(0); }
+  .btn-default { background:var(--bg-4); color:var(--fg-1); border-color:var(--border-2); }
+  .btn-default:hover { background:var(--bg-5); border-color:var(--border-3); }
+  .btn-default:active { background:var(--bg-4); transform:scale(0.98); }
+  .btn-ghost { background:transparent; color:var(--fg-2); }
+  .btn-ghost:hover { background:var(--bg-4); color:var(--fg-1); }
+  .btn-ghost:active { background:var(--bg-5); }
+  .btn-danger { background:var(--danger-tint); color:var(--danger); border-color:rgba(255,93,93,0.25); }
+  .btn-danger:hover { background:rgba(255,93,93,0.2); }
+  .btn-danger:active { transform:scale(0.98); }
+  .btn-lg { height:44px; font-size:14px; padding:0 20px; border-radius:var(--r-lg); }
+  .btn-sm { height:26px; font-size:12px; padding:0 10px; border-radius:var(--r-md); }
+  .btn .kbd { font-family:var(--font-mono); font-size:10px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.14); padding:1px 5px; border-radius:3px; font-weight:500; }
+  .btn-primary .kbd { background:rgba(6,18,16,0.18); border-color:rgba(6,18,16,0.18); color:#061210; }
+  .btn-icon { width:34px; padding:0; justify-content:center; }
+
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
+  .row-label { font-family:var(--font-mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-3); min-width:90px; }
+</style>
+
+<div style="display:flex; flex-direction:column; gap:6px;">
+  <div class="row"><div class="row-label">primary</div>
+    <button class="btn btn-primary">Записаться бесплатно</button>
+    <button class="btn btn-primary">Start <span class="kbd">↵</span></button>
+    <button class="btn btn-primary btn-lg">Start free trial →</button>
+    <button class="btn btn-primary btn-sm">Ship</button>
+  </div>
+  <div class="row"><div class="row-label">default</div>
+    <button class="btn btn-default">Скачать программу</button>
+    <button class="btn btn-default">Open <span class="kbd">⌘K</span></button>
+    <button class="btn btn-default btn-lg">Book a call</button>
+    <button class="btn btn-default btn-sm">Copy</button>
+  </div>
+  <div class="row"><div class="row-label">ghost</div>
+    <button class="btn btn-ghost">Cancel</button>
+    <button class="btn btn-ghost">Learn more →</button>
+    <button class="btn btn-ghost btn-lg">Skip</button>
+    <button class="btn btn-ghost btn-sm">edit</button>
+  </div>
+  <div class="row"><div class="row-label">danger</div>
+    <button class="btn btn-danger">Delete workflow</button>
+    <button class="btn btn-danger btn-sm">Remove</button>
+  </div>
+  <div class="row"><div class="row-label">icon</div>
+    <button class="btn btn-default btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+    <button class="btn btn-default btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button>
+    <button class="btn btn-ghost btn-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+  </div>
+  <div class="row"><div class="row-label">disabled</div>
+    <button class="btn btn-primary" disabled style="opacity:0.4; cursor:not-allowed;">Disabled</button>
+    <button class="btn btn-default" disabled style="opacity:0.4; cursor:not-allowed;">Disabled</button>
+  </div>
+  <div class="row"><div class="row-label">loading</div>
+    <button class="btn btn-primary" style="padding-right:12px;"><span style="width:10px; height:10px; border:1.5px solid rgba(6,18,16,0.3); border-top-color:#061210; border-radius:50%; animation:spin 0.8s linear infinite;"></span>Shipping…</button>
+  </div>
+</div>
+<style>@keyframes spin { to { transform:rotate(360deg); } }</style>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Button group</div>
+<div style="display:inline-flex; background:var(--bg-4); border:1px solid var(--border-2); border-radius:var(--r-lg); padding:3px;">
+  <button class="btn btn-sm" style="background:var(--bg-5); color:var(--fg-1); border-radius:5px; box-shadow:inset 0 0 0 1px var(--border-2);">Dashboard</button>
+  <button class="btn btn-ghost btn-sm">Agents</button>
+  <button class="btn btn-ghost btn-sm">Metrics</button>
+  <button class="btn btn-ghost btn-sm">Team</button>
+</div>
+</body></html>

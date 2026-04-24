@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Alert, Accordion, Snippet</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  /* ALERTS */
+  .alert { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: var(--r-xl); margin-bottom: 10px; font-size: 13px; line-height: 1.5; }
+  .alert .ico { width: 20px; height: 20px; border-radius: var(--r-md); display: grid; place-items: center; flex-shrink: 0; margin-top: 1px; }
+  .alert .body { flex: 1; }
+  .alert .title { font-weight: 600; margin-bottom: 2px; }
+  .alert .dismiss { color: inherit; opacity: 0.5; cursor: pointer; font-size: 16px; line-height: 1; }
+  .alert .action { font-weight: 600; text-decoration: underline; cursor: pointer; }
+  .alert-teal { background: var(--teal-tint); border: 1px solid rgba(0,229,199,0.2); color: var(--teal); }
+  .alert-teal .ico { background: rgba(0,229,199,0.2); }
+  .alert-success { background: var(--success-tint); border: 1px solid rgba(62,224,137,0.2); color: var(--success); }
+  .alert-success .ico { background: rgba(62,224,137,0.2); }
+  .alert-warning { background: var(--warning-tint); border: 1px solid rgba(245,181,68,0.2); color: var(--warning); }
+  .alert-warning .ico { background: rgba(245,181,68,0.2); }
+  .alert-danger { background: var(--danger-tint); border: 1px solid rgba(255,93,93,0.2); color: var(--danger); }
+  .alert-danger .ico { background: rgba(255,93,93,0.2); }
+
+  /* ACCORDION */
+  .accordion { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); overflow: hidden; margin-bottom: 14px; }
+  .acc-item { border-bottom: 1px solid var(--border-1); }
+  .acc-item:last-child { border-bottom: 0; }
+  .acc-head { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--fg-1); letter-spacing: -0.01em; }
+  .acc-head:hover { background: var(--bg-3); }
+  .acc-head .chevron { color: var(--fg-4); transition: transform 200ms var(--ease); }
+  .acc-head.open .chevron { transform: rotate(180deg); color: var(--teal); }
+  .acc-body { padding: 0 20px 16px; font-size: 13px; color: var(--fg-3); line-height: 1.6; display: none; }
+  .acc-body.show { display: block; }
+
+  /* COPY SNIPPET */
+  .snippet { display: flex; align-items: center; background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-lg); overflow: hidden; margin-bottom: 10px; }
+  .snippet code { flex: 1; padding: 10px 14px; font-family: var(--font-mono); font-size: 13px; color: var(--teal); letter-spacing: 0.02em; white-space: nowrap; overflow-x: auto; }
+  .snippet .label { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); padding: 0 0 0 14px; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
+  .snippet .copy { padding: 10px 14px; color: var(--fg-3); cursor: pointer; border-left: 1px solid var(--border-1); display: grid; place-items: center; transition: all 120ms var(--ease); flex-shrink: 0; }
+  .snippet .copy:hover { background: var(--bg-4); color: var(--fg-1); }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">26 · Components — alert, accordion, snippet</div>
+  <h1 class="pv-title">Alerts, FAQ accordion, copy snippet</h1>
+  <p class="pv-desc">Inline alerts (4 тона + dismiss). Collapsible accordion для FAQ/docs. Mono snippet с copy button.</p>
+</div>
+
+<div class="pv-label" style="margin-bottom:10px;">Inline alerts</div>
+<div class="alert alert-teal">
+  <div class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg></div>
+  <div class="body"><div class="title">Новый поток открыт</div>Нейромастерская 2.0 · старт 28 апреля. <span class="action">Забронировать →</span></div>
+  <span class="dismiss">×</span>
+</div>
+<div class="alert alert-success">
+  <div class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg></div>
+  <div class="body"><div class="title">Deploy successful</div>slack-daily-digest запущен в production. Eval tracking active.</div>
+  <span class="dismiss">×</span>
+</div>
+<div class="alert alert-warning">
+  <div class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01"/></svg></div>
+  <div class="body">API rate limit: 85% daily quota. <span class="action">Upgrade plan</span></div>
+</div>
+<div class="alert alert-danger">
+  <div class="ico"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></div>
+  <div class="body"><div class="title">Workflow failed</div>crm-sync-hubspot: authentication expired. <span class="action">Reconnect</span></div>
+  <span class="dismiss">×</span>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Accordion (FAQ)</div>
+<div class="accordion">
+  <div class="acc-item">
+    <div class="acc-head open">Что входит в 90-дневную программу?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+    <div class="acc-body show">3 аудита процессов, 12 training-сессий, 3–5 n8n-agents в production, eval-панель на 12 месяцев, Slack-куратор с SLA 4 часа. Документация в вашем Notion.</div>
+  </div>
+  <div class="acc-item">
+    <div class="acc-head">Можно начать с пилота на 1 процесс?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+    <div class="acc-body">Да, Pilot — 6 недель, 480 000₽. Один процесс, один agent, eval-панель на 3 месяца.</div>
+  </div>
+  <div class="acc-item">
+    <div class="acc-head">Данные покидают наш контур?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div>
+    <div class="acc-body">По умолчанию используем облако (SOC2-ready). On-premise — доступен по запросу за +20% к стоимости.</div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:10px;">Copy snippet</div>
+<div class="snippet">
+  <span class="label">api key</span>
+  <code>sk-leadup-4f8a2b1c9d3e…7x</code>
+  <div class="copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+</div>
+<div class="snippet">
+  <span class="label">webhook</span>
+  <code>https://n8n.leadup.ai/webhook/slack-digest-prod</code>
+  <div class="copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+</div>
+<div class="snippet">
+  <span class="label">node id</span>
+  <code>node_8f2a1b4c</code>
+  <div class="copy"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></div>
+</div>
+</body></html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Progress & Skeleton</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  /* PROGRESS BAR */
+  .prog { height: 4px; background: var(--bg-4); border-radius: 2px; overflow: hidden; margin-bottom: 6px; }
+  .prog-fill { height: 100%; border-radius: 2px; transition: width 300ms var(--ease); }
+  .prog-teal { background: var(--teal); box-shadow: 0 0 8px rgba(0,229,199,0.3); }
+  .prog-success { background: var(--success); }
+  .prog-warning { background: var(--warning); }
+  .prog-danger { background: var(--danger); }
+
+  .prog-indet { position: relative; overflow: hidden; }
+  .prog-indet::after { content: ''; position: absolute; inset: 0; width: 40%; background: var(--teal); border-radius: 2px; animation: indet 1.4s cubic-bezier(0.2,0,0,1) infinite; }
+  @keyframes indet { 0% { left: -40%; } 100% { left: 100%; } }
+
+  /* SPINNER */
+  .spinner { border: 2px solid var(--bg-5); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* SKELETON */
+  .skel { background: var(--bg-4); border-radius: var(--r-md); position: relative; overflow: hidden; }
+  .skel::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent); animation: shimmer 1.6s ease-in-out infinite; }
+  @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+  .skel-card { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 20px; }
+  .skel-row { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+
+  .row { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+  .row-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); min-width: 100px; }
+  .prog-wrap { flex: 1; }
+  .prog-meta { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">25 · Components — progress & loading</div>
+  <h1 class="pv-title">Progress, spinner, skeleton</h1>
+  <p class="pv-desc">Progress: 4px height, teal glow. Indeterminate: sliding bar. Spinner: 2px border. Skeleton: shimmer на bg-4.</p>
+</div>
+
+<div class="pv-label" style="margin-bottom:12px;">Progress bar</div>
+<div class="row">
+  <div class="row-label">35% teal</div>
+  <div class="prog-wrap"><div class="prog"><div class="prog-fill prog-teal" style="width:35%;"></div></div><div class="prog-meta"><span>Uploading…</span><span>35%</span></div></div>
+</div>
+<div class="row">
+  <div class="row-label">72% success</div>
+  <div class="prog-wrap"><div class="prog"><div class="prog-fill prog-success" style="width:72%;"></div></div><div class="prog-meta"><span>Processing</span><span>72%</span></div></div>
+</div>
+<div class="row">
+  <div class="row-label">88% warning</div>
+  <div class="prog-wrap"><div class="prog"><div class="prog-fill prog-warning" style="width:88%;"></div></div><div class="prog-meta"><span>API quota</span><span>88%</span></div></div>
+</div>
+<div class="row">
+  <div class="row-label">indeterminate</div>
+  <div class="prog-wrap"><div class="prog prog-indet"></div><div class="prog-meta"><span>Deploying…</span><span></span></div></div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:12px;">Spinner</div>
+<div style="display:flex; gap:20px; align-items:center; margin-bottom:14px;">
+  <div><div class="spinner" style="width:16px; height:16px;"></div><div style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4); margin-top:6px; text-align:center;">16</div></div>
+  <div><div class="spinner" style="width:24px; height:24px;"></div><div style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4); margin-top:6px; text-align:center;">24</div></div>
+  <div><div class="spinner" style="width:36px; height:36px; border-width:3px;"></div><div style="font-family:var(--font-mono); font-size:9px; color:var(--fg-4); margin-top:6px; text-align:center;">36</div></div>
+  <div style="display:flex; align-items:center; gap:8px; background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-lg); padding:8px 14px;">
+    <div class="spinner" style="width:14px; height:14px;"></div>
+    <span style="font-size:13px; font-weight:500; color:var(--fg-2);">Shipping…</span>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:12px;">Skeleton loader</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+  <!-- Card skeleton -->
+  <div class="skel-card">
+    <div class="skel-row">
+      <div class="skel" style="width:36px; height:36px; border-radius:var(--r-md);"></div>
+      <div style="flex:1;">
+        <div class="skel" style="height:12px; width:60%; margin-bottom:8px;"></div>
+        <div class="skel" style="height:10px; width:40%;"></div>
+      </div>
+    </div>
+    <div class="skel" style="height:10px; width:100%; margin-bottom:8px;"></div>
+    <div class="skel" style="height:10px; width:85%; margin-bottom:8px;"></div>
+    <div class="skel" style="height:10px; width:70%;"></div>
+    <div style="display:flex; gap:10px; margin-top:18px; padding-top:14px; border-top:1px solid var(--border-1);">
+      <div class="skel" style="height:8px; width:60px;"></div>
+      <div style="flex:1;"></div>
+      <div class="skel" style="height:8px; width:40px;"></div>
+    </div>
+  </div>
+  <!-- Table skeleton -->
+  <div class="skel-card" style="padding:0;">
+    <div style="padding:14px 18px; border-bottom:1px solid var(--border-1); display:flex; gap:10px;">
+      <div class="skel" style="height:10px; width:80px;"></div>
+      <div style="flex:1;"></div>
+      <div class="skel" style="height:10px; width:50px;"></div>
+    </div>
+    <div style="padding:12px 18px; border-bottom:1px solid var(--border-1); display:flex; gap:14px;">
+      <div class="skel" style="height:8px; width:30%;"></div>
+      <div class="skel" style="height:8px; width:15%;"></div>
+      <div class="skel" style="height:8px; width:12%;"></div>
+      <div class="skel" style="height:8px; width:18%;"></div>
+    </div>
+    <div style="padding:12px 18px; border-bottom:1px solid var(--border-1); display:flex; gap:14px;">
+      <div class="skel" style="height:8px; width:25%;"></div>
+      <div class="skel" style="height:8px; width:15%;"></div>
+      <div class="skel" style="height:8px; width:12%;"></div>
+      <div class="skel" style="height:8px; width:18%;"></div>
+    </div>
+    <div style="padding:12px 18px; display:flex; gap:14px;">
+      <div class="skel" style="height:8px; width:35%;"></div>
+      <div class="skel" style="height:8px; width:15%;"></div>
+      <div class="skel" style="height:8px; width:12%;"></div>
+      <div class="skel" style="height:8px; width:18%;"></div>
+    </div>
+  </div>
+</div>
+</body></html>

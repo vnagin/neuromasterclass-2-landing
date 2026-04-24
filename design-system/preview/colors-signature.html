@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Colors · Signature</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">01 · Signature color</div>
+  <h1 class="pv-title">Electric Teal</h1>
+  <p class="pv-desc">Единственный акцент бренда. Используется только для CTA, активных состояний, ссылок и метрических акцентов. Никогда как залитые поверхности — всегда либо текст, либо 1px border, либо glow.</p>
+</div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+  <!-- Primary teal -->
+  <div style="background:var(--teal); border-radius:var(--r-2xl); padding:28px; color:#061210; min-height:180px; position:relative;">
+    <div style="font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:0.08em; text-transform:uppercase; opacity:0.65;">--teal</div>
+    <div style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin-top:8px;">#00E5C7</div>
+    <div style="font-family:var(--font-mono); font-size:11px; opacity:0.6; margin-top:8px;">oklch(85.4% 0.165 184.2)</div>
+    <div style="position:absolute; bottom:24px; left:28px; font-size:12px; opacity:0.7;">CTA · links · accent · metric numbers</div>
+  </div>
+  <!-- Glow tile -->
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:var(--r-2xl); padding:28px; min-height:180px; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:-40%; background:radial-gradient(circle at 50% 50%, rgba(0,229,199,0.35), transparent 55%);"></div>
+    <div style="position:relative;">
+      <div class="pv-label">Teal glow</div>
+      <div style="font-size:24px; font-weight:700; letter-spacing:-0.02em; margin-top:8px;">On dark surfaces</div>
+      <div class="pv-token" style="margin-top:8px;">box-shadow: 0 0 24px rgba(0,229,199,0.45)</div>
+    </div>
+  </div>
+</div>
+
+<div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px;">
+  <div style="background:var(--teal-hover); border-radius:var(--r-xl); padding:18px; color:#061210; min-height:100px;">
+    <div class="pv-label" style="color:rgba(6,18,16,0.6);">--teal-hover</div>
+    <div style="font-weight:700; font-size:18px; margin-top:4px;">#14F5D7</div>
+  </div>
+  <div style="background:var(--teal-pressed); border-radius:var(--r-xl); padding:18px; color:#061210; min-height:100px;">
+    <div class="pv-label" style="color:rgba(6,18,16,0.6);">--teal-pressed</div>
+    <div style="font-weight:700; font-size:18px; margin-top:4px;">#00CBB0</div>
+  </div>
+  <div style="background:var(--teal-tint); border:1px solid rgba(0,229,199,0.25); border-radius:var(--r-xl); padding:18px; min-height:100px;">
+    <div class="pv-label" style="color:var(--teal);">--teal-tint</div>
+    <div style="font-weight:700; font-size:18px; margin-top:4px; color:var(--teal);">rgba 0.12</div>
+    <div class="pv-token" style="margin-top:6px;">badge · hover bg</div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+  <div>
+    <div class="pv-label">usage rules</div>
+    <ul style="margin:10px 0 0; padding-left:18px; font-size:13px; color:var(--fg-2); line-height:1.6;">
+      <li>Max 1 accent area above the fold.</li>
+      <li>Never as large filled surface — text or 1px border only.</li>
+      <li>Always paired with <code>--bg-1</code>..<code>--bg-3</code> surrounding dark.</li>
+    </ul>
+  </div>
+  <div>
+    <div class="pv-label">contrast on surfaces</div>
+    <div style="display:flex; flex-direction:column; gap:6px; margin-top:10px;">
+      <div style="background:var(--bg-1); border:1px solid var(--border-1); padding:8px 12px; border-radius:var(--r-md); display:flex; justify-content:space-between; font-size:13px;"><span style="color:var(--teal);">teal on bg-1</span><span class="pv-token">AAA · 9.4:1</span></div>
+      <div style="background:var(--bg-3); padding:8px 12px; border-radius:var(--r-md); display:flex; justify-content:space-between; font-size:13px;"><span style="color:var(--teal);">teal on bg-3</span><span class="pv-token">AAA · 8.2:1</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

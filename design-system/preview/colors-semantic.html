@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Colors · Semantic</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">03 · Semantic</div>
+  <h1 class="pv-title">Status colors</h1>
+  <p class="pv-desc">Используются только для функциональных состояний (success/warning/danger/info). Никогда как декоративные акценты — для этого есть один teal.</p>
+</div>
+
+<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px;">
+  <div style="background:var(--bg-3); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:20px;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:48px; height:48px; border-radius:var(--r-lg); background:var(--success-tint); display:flex; align-items:center; justify-content:center; color:var(--success); font-size:20px; font-weight:700;">✓</div>
+      <div>
+        <div style="color:var(--success); font-weight:600;">Success</div>
+        <div class="pv-token">#3EE089 · --success</div>
+      </div>
+    </div>
+    <div style="background:var(--success-tint); color:var(--success); border:1px solid rgba(62,224,137,0.3); border-radius:var(--r-full); padding:3px 10px; font-family:var(--font-mono); font-size:11px; display:inline-block; margin-top:12px;">+18% ROI</div>
+  </div>
+
+  <div style="background:var(--bg-3); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:20px;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:48px; height:48px; border-radius:var(--r-lg); background:var(--warning-tint); display:flex; align-items:center; justify-content:center; color:var(--warning); font-size:20px; font-weight:700;">!</div>
+      <div>
+        <div style="color:var(--warning); font-weight:600;">Warning</div>
+        <div class="pv-token">#F5B544 · --warning</div>
+      </div>
+    </div>
+    <div style="background:var(--warning-tint); color:var(--warning); border:1px solid rgba(245,181,68,0.3); border-radius:var(--r-full); padding:3px 10px; font-family:var(--font-mono); font-size:11px; display:inline-block; margin-top:12px;">pending</div>
+  </div>
+
+  <div style="background:var(--bg-3); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:20px;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:48px; height:48px; border-radius:var(--r-lg); background:var(--danger-tint); display:flex; align-items:center; justify-content:center; color:var(--danger); font-size:20px; font-weight:700;">×</div>
+      <div>
+        <div style="color:var(--danger); font-weight:600;">Danger</div>
+        <div class="pv-token">#FF5D5D · --danger</div>
+      </div>
+    </div>
+    <div style="background:var(--danger-tint); color:var(--danger); border:1px solid rgba(255,93,93,0.3); border-radius:var(--r-full); padding:3px 10px; font-family:var(--font-mono); font-size:11px; display:inline-block; margin-top:12px;">error · retry</div>
+  </div>
+
+  <div style="background:var(--bg-3); border:1px solid var(--border-1); border-radius:var(--r-xl); padding:20px;">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <div style="width:48px; height:48px; border-radius:var(--r-lg); background:var(--info-tint); display:flex; align-items:center; justify-content:center; color:var(--info); font-size:20px; font-weight:700;">i</div>
+      <div>
+        <div style="color:var(--info); font-weight:600;">Info</div>
+        <div class="pv-token">#6EB8FF · --info</div>
+      </div>
+    </div>
+    <div style="background:var(--info-tint); color:var(--info); border:1px solid rgba(110,184,255,0.3); border-radius:var(--r-full); padding:3px 10px; font-family:var(--font-mono); font-size:11px; display:inline-block; margin-top:12px;">beta feature</div>
+  </div>
+</div>
+</body></html>

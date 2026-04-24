@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Components · Tooltips + Avatar</title>
+<link rel="stylesheet" href="_preview.css">
+<style>
+  /* TOOLTIPS */
+  .tip-demo { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+  .tip-wrap { position: relative; display: inline-flex; }
+  .tip { position: absolute; z-index: 10; background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-md); padding: 6px 10px; font-size: 12px; color: var(--fg-1); white-space: nowrap; box-shadow: var(--shadow-2); pointer-events: none; }
+  .tip::after { content: ''; position: absolute; width: 8px; height: 8px; background: var(--bg-3); border: 1px solid var(--border-2); transform: rotate(45deg); }
+  .tip.top { bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+  .tip.top::after { bottom: -5px; left: 50%; transform: translateX(-50%) rotate(45deg); border-top: 0; border-left: 0; }
+  .tip.bottom { top: calc(100% + 8px); left: 50%; transform: translateX(-50%); }
+  .tip.bottom::after { top: -5px; left: 50%; transform: translateX(-50%) rotate(45deg); border-bottom: 0; border-right: 0; }
+  .tip .kbd { font-family: var(--font-mono); font-size: 10px; background: var(--bg-4); border: 1px solid var(--border-1); padding: 1px 4px; border-radius: 3px; margin-left: 6px; color: var(--fg-3); }
+
+  .trigger { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; background: var(--bg-4); border: 1px solid var(--border-2); border-radius: var(--r-lg); color: var(--fg-2); cursor: pointer; }
+
+  /* POPOVER */
+  .pop { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-xl); box-shadow: var(--shadow-3); width: 280px; padding: 18px; }
+  .pop h5 { font-size: 14px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .pop p { font-size: 12px; color: var(--fg-3); margin: 0 0 12px; line-height: 1.5; }
+  .pop .meta { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.06em; }
+
+  /* AVATARS */
+  .av { border-radius: 50%; display: inline-grid; place-items: center; font-weight: 700; flex-shrink: 0; }
+  .av-xs { width: 24px; height: 24px; font-size: 10px; }
+  .av-sm { width: 32px; height: 32px; font-size: 12px; }
+  .av-md { width: 40px; height: 40px; font-size: 14px; }
+  .av-lg { width: 48px; height: 48px; font-size: 16px; }
+  .av-teal { background: linear-gradient(135deg, #00E5C7, #0F1512); color: #061210; }
+  .av-neutral { background: var(--bg-5); color: var(--fg-2); border: 1px solid var(--border-2); }
+  .av-online { position: relative; }
+  .av-online::after { content: ''; position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--success); border: 2px solid var(--bg-1); }
+  .av-stack { display: flex; }
+  .av-stack .av { margin-left: -8px; border: 2px solid var(--bg-1); }
+  .av-stack .av:first-child { margin-left: 0; }
+  .av-stack .av-more { background: var(--bg-4); color: var(--fg-3); font-family: var(--font-mono); font-size: 10px; border: 2px solid var(--bg-1); }
+
+  .row { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+  .row-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); min-width: 80px; }
+</style>
+</head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">24 · Components — tooltips, popovers, avatars</div>
+  <h1 class="pv-title">Tooltips, popovers, avatar system</h1>
+  <p class="pv-desc">Tooltip: bg-3 + shadow-2, kbd hint optional. Avatars: 24/32/40/48, gradient or neutral, online dot, stack.</p>
+</div>
+
+<div class="pv-label" style="margin-bottom:12px;">Tooltips</div>
+<div class="tip-demo">
+  <div class="tip-wrap">
+    <div class="trigger"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div>
+    <div class="tip top">New agent<span class="kbd">N</span></div>
+  </div>
+  <div class="tip-wrap">
+    <div class="trigger"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+    <div class="tip top">Search<span class="kbd">⌘K</span></div>
+  </div>
+  <div class="tip-wrap">
+    <div class="trigger"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06"/></svg></div>
+    <div class="tip bottom">Settings</div>
+  </div>
+</div>
+
+<div class="pv-label" style="margin-bottom:12px;">Popover (user card)</div>
+<div style="display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;">
+  <div class="pop">
+    <div style="display:flex; gap:12px; align-items:center; margin-bottom:12px;">
+      <div class="av av-md av-teal av-online">АВ</div>
+      <div>
+        <h5>Анна Воронина</h5>
+        <div class="meta">CTO · Flow Retail · online</div>
+      </div>
+    </div>
+    <p>Подключена 3 мес. назад. 12 agents deployed, +22% avg ROI.</p>
+    <div style="display:flex; gap:6px;">
+      <button style="flex:1; padding:6px; background:var(--bg-4); border:1px solid var(--border-2); border-radius:var(--r-md); color:var(--fg-1); font-size:12px; font-weight:600; cursor:pointer;">Profile</button>
+      <button style="flex:1; padding:6px; background:var(--teal-tint); border:1px solid rgba(0,229,199,0.2); border-radius:var(--r-md); color:var(--teal); font-size:12px; font-weight:600; cursor:pointer;">Message</button>
+    </div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:12px;">Avatar system</div>
+
+<div class="row"><div class="row-label">sizes</div>
+  <div class="av av-xs av-teal">А</div>
+  <div class="av av-sm av-teal">АВ</div>
+  <div class="av av-md av-teal">АВ</div>
+  <div class="av av-lg av-teal">АВ</div>
+  <span style="font-family:var(--font-mono); font-size:10px; color:var(--fg-4);">24 · 32 · 40 · 48</span>
+</div>
+<div class="row"><div class="row-label">variants</div>
+  <div class="av av-md av-teal">АВ</div>
+  <div class="av av-md av-neutral">МК</div>
+  <div class="av av-md av-teal av-online">ИП</div>
+  <span style="font-family:var(--font-mono); font-size:10px; color:var(--fg-4);">gradient · neutral · online</span>
+</div>
+<div class="row"><div class="row-label">stack</div>
+  <div class="av-stack">
+    <div class="av av-sm av-teal">АВ</div>
+    <div class="av av-sm av-neutral">МК</div>
+    <div class="av av-sm av-teal">ИП</div>
+    <div class="av av-sm av-neutral">ДС</div>
+    <div class="av av-sm av-more">+3</div>
+  </div>
+  <span style="font-family:var(--font-mono); font-size:10px; color:var(--fg-4);">overlap -8px · 2px bg-1 border</span>
+</div>
+</body></html>

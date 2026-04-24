@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8"><title>Radii & Shadows</title>
+<link rel="stylesheet" href="_preview.css"></head>
+<body>
+<div class="pv-head">
+  <div class="pv-eyebrow">07 · Radii + shadows</div>
+  <h1 class="pv-title">Tight corners, subtle rings</h1>
+  <p class="pv-desc">Линейровский подход: углы мелкие (4/6/8/10), крупные — 14/20. Тени — через 1px ring + очень мягкий drop. Ничего пухлого.</p>
+</div>
+
+<div class="pv-label" style="margin-bottom:12px;">Radii</div>
+<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:4px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-sm</div><div><div class="pv-hex">4px</div><div class="pv-token">inline, code</div></div>
+  </div>
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:6px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-md</div><div><div class="pv-hex">6px</div><div class="pv-token">badges</div></div>
+  </div>
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:8px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-lg · default</div><div><div class="pv-hex">8px</div><div class="pv-token">buttons, inputs</div></div>
+  </div>
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:10px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-xl</div><div><div class="pv-hex">10px</div><div class="pv-token">cards</div></div>
+  </div>
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:14px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-2xl</div><div><div class="pv-hex">14px</div><div class="pv-token">hero blocks</div></div>
+  </div>
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:20px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-3xl</div><div><div class="pv-hex">20px</div><div class="pv-token">panels</div></div>
+  </div>
+  <div style="background:var(--bg-3); border:1px solid var(--border-2); border-radius:9999px; padding:18px; min-height:86px; display:flex; flex-direction:column; justify-content:space-between;">
+    <div class="pv-label">r-full</div><div><div class="pv-hex">∞</div><div class="pv-token">pills, avatar</div></div>
+  </div>
+</div>
+
+<div class="pv-divider"></div>
+<div class="pv-label" style="margin-bottom:14px;">Shadows</div>
+<div style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px; padding:20px 0;">
+  <div style="background:var(--bg-3); border-radius:var(--r-xl); padding:22px; box-shadow:var(--shadow-1);">
+    <div class="pv-label">shadow-1</div>
+    <div class="pv-hex" style="margin-top:4px;">inline inset</div>
+    <div class="pv-token" style="margin-top:6px;">inputs, kbd</div>
+  </div>
+  <div style="background:var(--bg-3); border-radius:var(--r-xl); padding:22px; box-shadow:var(--shadow-2);">
+    <div class="pv-label">shadow-2</div>
+    <div class="pv-hex" style="margin-top:4px;">card rest</div>
+    <div class="pv-token" style="margin-top:6px;">default cards</div>
+  </div>
+  <div style="background:var(--bg-3); border-radius:var(--r-xl); padding:22px; box-shadow:var(--shadow-3);">
+    <div class="pv-label">shadow-3</div>
+    <div class="pv-hex" style="margin-top:4px;">card hover</div>
+    <div class="pv-token" style="margin-top:6px;">menus, popovers</div>
+  </div>
+  <div style="background:var(--bg-3); border-radius:var(--r-xl); padding:22px; box-shadow:var(--shadow-4);">
+    <div class="pv-label">shadow-4</div>
+    <div class="pv-hex" style="margin-top:4px;">modal</div>
+    <div class="pv-token" style="margin-top:6px;">dialogs, command-k</div>
+  </div>
+  <div style="background:var(--bg-3); border-radius:var(--r-xl); padding:22px; box-shadow:var(--shadow-teal); grid-column:span 2;">
+    <div class="pv-label" style="color:var(--teal);">shadow-teal · CTA hover / selected</div>
+    <div class="pv-hex" style="margin-top:4px;">0 0 0 1px teal, 0 8px 24px rgba(0,229,199,.28)</div>
+  </div>
+</div>
+</body></html>
