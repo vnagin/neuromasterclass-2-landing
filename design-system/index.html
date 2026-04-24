@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>LeadUp AI — Design System Index</title>
+<link rel="stylesheet" href="colors_and_type.css"/>
+<style>
+  body { background: var(--bg-1); padding: 48px 24px 120px; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .head { margin-bottom: 48px; }
+  .head .logo { filter: brightness(10); margin-bottom: 20px; }
+  .head h1 { font-size: 40px; font-weight: 700; letter-spacing: -0.035em; margin: 0 0 10px; line-height: 1.04; }
+  .head p { font-size: 17px; color: var(--fg-2); max-width: 600px; margin: 0; line-height: 1.55; }
+
+  .section { margin-bottom: 48px; }
+  .section-h { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .card { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); overflow: hidden; transition: all 200ms var(--ease); text-decoration: none; color: inherit; display: block; }
+  .card:hover { border-color: var(--border-3); transform: translateY(-2px); box-shadow: var(--shadow-3); }
+  .card-preview { height: 180px; background: var(--bg-3); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .card-preview .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 32px 32px; }
+  .card-preview .glow { position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,199,0.12), transparent 60%); }
+  .card-preview .label { font-family: var(--font-mono); font-size: 24px; font-weight: 700; color: var(--fg-4); letter-spacing: -0.02em; position: relative; }
+  .card-body { padding: 18px 20px; }
+  .card-body h3 { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px; color: var(--fg-1); }
+  .card-body p { font-size: 12px; color: var(--fg-3); margin: 0; line-height: 1.5; }
+  .card-body .meta { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 10px; }
+
+  .card.feat { border-color: rgba(0,229,199,0.3); }
+  .card.feat .card-preview { background: linear-gradient(135deg, var(--bg-2), var(--bg-3)); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <img class="logo" src="assets/logo-leadup-raw.png" alt="LeadUp AI" height="32"/>
+    <h1>Design System v3</h1>
+    <p>D2 Cold Technical · C3 Electric Teal · TS1 Geist. Все экраны, киты и компоненты в одном месте.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-h">◆ UI Kits</div>
+    <div class="grid">
+      <a class="card feat" href="ui_kits/landing/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="top:-40px; left:-20px;"></div>
+          <div class="label">Landing</div>
+        </div>
+        <div class="card-body">
+          <h3>Нейромастерская 2.0 — Landing</h3>
+          <p>Hero, features, program timeline, pricing, testimonial, CTA, footer.</p>
+          <div class="meta">marketing · full page</div>
+        </div>
+      </a>
+      <a class="card" href="ui_kits/b2b-booking/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="bottom:-40px; right:-20px;"></div>
+          <div class="label">B2B</div>
+        </div>
+        <div class="card-body">
+          <h3>B2B Booking & Lead Capture</h3>
+          <p>Program card, calendar, form, sidebar, CTA banner.</p>
+          <div class="meta">conversion · full page</div>
+        </div>
+      </a>
+      <a class="card" href="ui_kits/b2c-courses/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+          <div class="label">B2C</div>
+        </div>
+        <div class="card-body">
+          <h3>Course Platform</h3>
+          <p>Course catalog, lesson player, pricing tiers.</p>
+          <div class="meta">education · full page</div>
+        </div>
+      </a>
+      <a class="card" href="ui_kits/dashboard/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="top:-30px; right:-30px;"></div>
+          <div class="label">Dashboard</div>
+        </div>
+        <div class="card-body">
+          <h3>Agent Ops Dashboard</h3>
+          <p>Sidebar, KPI cards, charts, workflow table, activity feed.</p>
+          <div class="meta">internal · app</div>
+        </div>
+      </a>
+      <a class="card" href="ui_kits/telegram/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="bottom:-30px; left:50%; transform:translateX(-50%);"></div>
+          <div class="label">Telegram</div>
+        </div>
+        <div class="card-body">
+          <h3>Telegram Cards — Нейросборка</h3>
+          <p>3 × 1080 карточки: dark insight, gradient announce, light quote.</p>
+          <div class="meta">social · 1080×1080</div>
+        </div>
+      </a>
+      <a class="card" href="ui_kits/pitch-deck/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="top:-20px; left:50%; transform:translateX(-50%);"></div>
+          <div class="label">Deck</div>
+        </div>
+        <div class="card-body">
+          <h3>Pitch Deck Template</h3>
+          <p>5 slides: title, section, content, data, CTA. 16:9.</p>
+          <div class="meta">presentation · 1920×1080</div>
+        </div>
+      </a>
+      <a class="card" href="ui_kits/email/index.html">
+        <div class="card-preview">
+          <div class="grid-bg"></div>
+          <div class="glow" style="bottom:-20px; right:-20px;"></div>
+          <div class="label">Email</div>
+        </div>
+        <div class="card-body">
+          <h3>Email Templates</h3>
+          <p>Booking confirmation, welcome, weekly digest.</p>
+          <div class="meta">transactional · 600px</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-h">◆ Foundations</div>
+    <div class="grid">
+      <a class="card" href="preview/colors-signature.html"><div class="card-body"><h3>Signature Color</h3><p>Electric Teal #00E5C7 — states, glow, contrast.</p><div class="meta">01 · colors</div></div></a>
+      <a class="card" href="preview/colors-surfaces.html"><div class="card-body"><h3>Dark Surfaces</h3><p>5 levels of green-tinted neutrals.</p><div class="meta">02 · colors</div></div></a>
+      <a class="card" href="preview/colors-semantic.html"><div class="card-body"><h3>Semantic Colors</h3><p>Success, warning, danger, info + tints.</p><div class="meta">03 · colors</div></div></a>
+      <a class="card" href="preview/theme-light.html"><div class="card-body"><h3>Light Mode</h3><p>Full dark↔light token system + preview.</p><div class="meta">17 · colors</div></div></a>
+      <a class="card" href="preview/type-display.html"><div class="card-body"><h3>Type — Display</h3><p>Geist 700, tight tracking, display→H4.</p><div class="meta">04 · type</div></div></a>
+      <a class="card" href="preview/type-body.html"><div class="card-body"><h3>Type — Body + Mono</h3><p>Lead, body, small, mono data, kbd, inline.</p><div class="meta">05 · type</div></div></a>
+      <a class="card" href="preview/spacing.html"><div class="card-body"><h3>Spacing</h3><p>4px base scale, section rhythm.</p><div class="meta">06 · spacing</div></div></a>
+      <a class="card" href="preview/radii-shadows.html"><div class="card-body"><h3>Radii + Shadows</h3><p>Tight corners, ring-based shadows.</p><div class="meta">07 · spacing</div></div></a>
+      <a class="card" href="preview/motion.html"><div class="card-body"><h3>Motion</h3><p>120–500ms, cubic-bezier, no bounce.</p><div class="meta">08 · motion</div></div></a>
+      <a class="card" href="preview/illustrations.html"><div class="card-body"><h3>Illustration Language</h3><p>Grid+Glow, Node Graph, Data Bars.</p><div class="meta">18 · brand</div></div></a>
+      <a class="card" href="preview/icons-brand.html"><div class="card-body"><h3>Brand Icons</h3><p>15 brand-specific Lucide-style icons.</p><div class="meta">27 · brand</div></div></a>
+      <a class="card" href="preview/og-template.html"><div class="card-body"><h3>OG Template</h3><p>1200×630 Open Graph + blog variant.</p><div class="meta">28 · brand</div></div></a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-h">◆ Components</div>
+    <div class="grid">
+      <a class="card" href="preview/components-buttons.html"><div class="card-body"><h3>Buttons</h3><p>Primary, default, ghost, danger, icon, loading, group.</p><div class="meta">09</div></div></a>
+      <a class="card" href="preview/components-inputs.html"><div class="card-body"><h3>Form Controls</h3><p>Input, select, textarea, checkbox, radio, switch.</p><div class="meta">10</div></div></a>
+      <a class="card" href="preview/components-badges.html"><div class="card-body"><h3>Badges & Status</h3><p>Chips, status dots, removable tags, counts.</p><div class="meta">11</div></div></a>
+      <a class="card" href="preview/components-cards.html"><div class="card-body"><h3>Cards</h3><p>Default, selected, featured, metric.</p><div class="meta">12</div></div></a>
+      <a class="card" href="preview/components-nav.html"><div class="card-body"><h3>Navigation</h3><p>Header, tabs, breadcrumbs, sidebar.</p><div class="meta">13</div></div></a>
+      <a class="card" href="preview/icons-logo.html"><div class="card-body"><h3>Icons & Logo</h3><p>Lucide set, sizes, logo variants.</p><div class="meta">14</div></div></a>
+      <a class="card" href="preview/components-overlays.html"><div class="card-body"><h3>Modals & Command-K</h3><p>Dialog, command palette, backdrop.</p><div class="meta">15</div></div></a>
+      <a class="card" href="preview/components-proof.html"><div class="card-body"><h3>Stats & Testimonial</h3><p>Metric row, quote, logo strip.</p><div class="meta">16</div></div></a>
+      <a class="card" href="preview/components-table.html"><div class="card-body"><h3>Data Table</h3><p>Sortable, paginated, status chips.</p><div class="meta">19</div></div></a>
+      <a class="card" href="preview/components-charts.html"><div class="card-body"><h3>Charts</h3><p>Line, bar, area, sparkline.</p><div class="meta">20</div></div></a>
+      <a class="card" href="preview/components-empty-kbd.html"><div class="card-body"><h3>Empty States + KBD</h3><p>Empty states, keyboard shortcuts.</p><div class="meta">21</div></div></a>
+      <a class="card" href="preview/components-toasts.html"><div class="card-body"><h3>Toasts</h3><p>4 semantic + teal, auto-dismiss, action link.</p><div class="meta">22</div></div></a>
+      <a class="card" href="preview/components-dropdown.html"><div class="card-body"><h3>Dropdown Menu</h3><p>Action menu, filter/checkbox, danger zone.</p><div class="meta">23</div></div></a>
+      <a class="card" href="preview/components-tooltips-avatars.html"><div class="card-body"><h3>Tooltips, Popovers, Avatars</h3><p>Tooltip+kbd, user popover, avatar stack.</p><div class="meta">24</div></div></a>
+      <a class="card" href="preview/components-progress.html"><div class="card-body"><h3>Progress & Loading</h3><p>Progress bar, spinner, skeleton loader.</p><div class="meta">25</div></div></a>
+      <a class="card" href="preview/components-alert-accordion-snippet.html"><div class="card-body"><h3>Alert, Accordion, Snippet</h3><p>Inline alerts, FAQ, copy snippet.</p><div class="meta">26</div></div></a>
+    </div>
+  </div>
+
+  <div style="margin-top:64px; padding-top:24px; border-top:1px solid var(--border-1); font-family:var(--font-mono); font-size:11px; color:var(--fg-4); letter-spacing:0.04em; display:flex; justify-content:space-between;">
+    <span>LeadUp AI © 2026 · Design System v3</span>
+    <span>D2 · C3 · TS1</span>
+  </div>
+</div>
+</body>
+</html>

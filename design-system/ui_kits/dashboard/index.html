@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>LeadUp AI — Dashboard</title>
+<link rel="stylesheet" href="../../colors_and_type.css"/>
+<style>
+  body { background: var(--bg-0); display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .side { background: var(--bg-1); border-right: 1px solid var(--border-1); padding: 16px 10px; display: flex; flex-direction: column; }
+  .side-logo { padding: 8px 10px 20px; }
+  .side-group { margin-bottom: 18px; }
+  .side-h { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-4); padding: 4px 10px; margin-bottom: 4px; }
+  .side a { display: flex; align-items: center; gap: 10px; padding: 8px 10px; color: var(--fg-3); font-size: 13px; font-weight: 500; border-radius: var(--r-md); text-decoration: none; transition: all 120ms var(--ease); }
+  .side a:hover { background: var(--bg-3); color: var(--fg-1); }
+  .side a.on { background: var(--bg-3); color: var(--fg-1); box-shadow: inset 2px 0 0 var(--teal); }
+  .side a svg { width: 15px; height: 15px; color: var(--fg-4); }
+  .side a.on svg { color: var(--teal); }
+  .side .count { margin-left: auto; font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); }
+  .side-spacer { flex: 1; }
+  .side-user { padding: 12px 10px; border-top: 1px solid var(--border-1); margin-top: 8px; display: flex; align-items: center; gap: 10px; }
+  .side-avatar { width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #00E5C7, #0F1512); display: grid; place-items: center; color: #061210; font-weight: 700; font-size: 11px; }
+  .side-user .name { font-size: 12px; font-weight: 500; color: var(--fg-2); }
+  .side-user .role { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); }
+
+  /* MAIN */
+  .main { padding: 28px 32px; overflow-y: auto; }
+  .main-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+  .main-head h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.025em; margin: 0; }
+  .main-head .actions { display: flex; gap: 8px; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 13px; padding: 8px 14px; border-radius: var(--r-lg); border: 0; cursor: pointer; transition: all 120ms var(--ease); }
+  .btn-p { background: var(--teal); color: #061210; }
+  .btn-p:hover { background: var(--teal-hover); }
+  .btn-d { background: var(--bg-4); color: var(--fg-1); border: 1px solid var(--border-2); }
+  .btn-d:hover { background: var(--bg-5); }
+  .search { display: flex; align-items: center; gap: 8px; background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-lg); padding: 7px 12px; }
+  .search input { background: transparent; border: 0; outline: 0; color: var(--fg-1); font-size: 13px; width: 180px; }
+  .search input::placeholder { color: var(--fg-4); }
+  .search svg { color: var(--fg-4); width: 14px; height: 14px; }
+  .search kbd { font-family: var(--font-mono); font-size: 10px; background: var(--bg-4); border: 1px solid var(--border-2); padding: 1px 5px; border-radius: 3px; color: var(--fg-4); }
+
+  /* KPI CARDS */
+  .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; }
+  .kpi { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 18px 20px; }
+  .kpi-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .kpi-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-4); }
+  .kpi-delta { font-family: var(--font-mono); font-size: 10px; padding: 2px 6px; border-radius: 9999px; font-weight: 500; }
+  .kpi-up { background: rgba(62,224,137,0.14); color: var(--success); }
+  .kpi-down { background: rgba(255,93,93,0.14); color: var(--danger); }
+  .kpi-val { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .kpi-val.teal { color: var(--teal); }
+  .kpi-spark { margin-top: 10px; }
+
+  /* TABLE */
+  .panel { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); overflow: hidden; margin-bottom: 24px; }
+  .panel-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--border-1); }
+  .panel-head h3 { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+  .panel-head .meta { font-family: var(--font-mono); font-size: 11px; color: var(--fg-4); }
+  .tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .tbl th { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-4); font-weight: 500; text-align: left; padding: 10px 18px; border-bottom: 1px solid var(--border-1); }
+  .tbl td { padding: 10px 18px; border-bottom: 1px solid var(--border-1); color: var(--fg-2); }
+  .tbl tr:hover td { background: var(--bg-3); }
+  .tbl .mono { font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); }
+  .chip { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 10px; padding: 2px 8px; border-radius: 9999px; font-weight: 500; }
+  .chip-live { background: rgba(0,229,199,0.12); color: var(--teal); }
+  .chip-draft { background: var(--bg-4); color: var(--fg-3); }
+  .chip-err { background: rgba(255,93,93,0.14); color: var(--danger); }
+  .dot { width: 5px; height: 5px; border-radius: 50%; }
+
+  /* CHART PANEL */
+  .chart-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .chart-panel { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 20px; }
+  .chart-panel h4 { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 4px; }
+  .chart-panel .sub { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.06em; margin-bottom: 14px; }
+  .legend { display: flex; gap: 12px; font-family: var(--font-mono); font-size: 10px; color: var(--fg-3); margin-bottom: 8px; }
+  .legend span { display: flex; align-items: center; gap: 4px; }
+  .legend .sq { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* Activity feed */
+  .feed { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 0; }
+  .feed-head { padding: 14px 18px; border-bottom: 1px solid var(--border-1); }
+  .feed-head h4 { font-size: 14px; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+  .feed-item { display: flex; gap: 10px; padding: 12px 18px; border-bottom: 1px solid var(--border-1); font-size: 13px; }
+  .feed-item:last-child { border-bottom: 0; }
+  .feed-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .feed-item .time { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); margin-left: auto; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="side">
+  <div class="side-logo">
+    <img src="../../assets/logo-leadup-raw.png" alt="LeadUp AI" height="22" style="filter:brightness(10);"/>
+  </div>
+  <div class="side-group">
+    <div class="side-h">workspace</div>
+    <a class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard</a>
+    <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>Agents<span class="count">12</span></a>
+    <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v6H4zM4 14h16v6H4z"/></svg>Workflows<span class="count">47</span></a>
+    <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>Evals<span class="count">8</span></a>
+    <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>Notifications<span class="count" style="background:var(--teal); color:#061210; padding:1px 6px; border-radius:9999px; font-weight:600;">3</span></a>
+  </div>
+  <div class="side-group">
+    <div class="side-h">settings</div>
+    <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg>Settings</a>
+    <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Team<span class="count">5</span></a>
+  </div>
+  <div class="side-spacer"></div>
+  <div class="side-user">
+    <div class="side-avatar">АВ</div>
+    <div>
+      <div class="name">Анна Воронина</div>
+      <div class="role">CTO · Flow Retail</div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="main-head">
+    <h1>Dashboard</h1>
+    <div class="actions">
+      <div class="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input placeholder="Search workflows…"/>
+        <kbd>⌘K</kbd>
+      </div>
+      <button class="btn btn-d">Export</button>
+      <button class="btn btn-p">+ New agent</button>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-head"><span class="kpi-label">avg roi · 30d</span><span class="kpi-delta kpi-up">▲ 2.4pp</span></div>
+      <div class="kpi-val teal">+18.2%</div>
+      <svg class="kpi-spark" viewBox="0 0 200 32" width="100%" height="28"><polyline fill="rgba(0,229,199,0.12)" stroke="none" points="0,28 25,24 50,26 75,18 100,14 125,16 150,10 175,8 200,4 200,32 0,32"/><polyline fill="none" stroke="#00E5C7" stroke-width="1.5" points="0,28 25,24 50,26 75,18 100,14 125,16 150,10 175,8 200,4"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="kpi-head"><span class="kpi-label">time saved</span><span class="kpi-delta kpi-up">▲ 12m</span></div>
+      <div class="kpi-val">47<span style="font-size:18px; color:var(--fg-3); font-weight:400;"> min</span></div>
+      <svg class="kpi-spark" viewBox="0 0 200 32" width="100%" height="28"><polyline fill="rgba(0,229,199,0.12)" stroke="none" points="0,26 25,22 50,24 75,16 100,18 125,12 150,14 175,6 200,8 200,32 0,32"/><polyline fill="none" stroke="#00E5C7" stroke-width="1.5" points="0,26 25,22 50,24 75,16 100,18 125,12 150,14 175,6 200,8"/></svg>
+    </div>
+    <div class="kpi">
+      <div class="kpi-head"><span class="kpi-label">agents live</span></div>
+      <div class="kpi-val">12</div>
+      <div style="font-family:var(--font-mono); font-size:11px; color:var(--fg-4); margin-top:10px;">of 15 total · 3 draft</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-head"><span class="kpi-label">eval uptime</span></div>
+      <div class="kpi-val" style="color:var(--success);">99.94%</div>
+      <div style="font-family:var(--font-mono); font-size:11px; color:var(--fg-4); margin-top:10px;">last 90 days · SLA met</div>
+    </div>
+  </div>
+
+  <!-- CHART + FEED -->
+  <div class="chart-grid">
+    <div class="chart-panel">
+      <h4>Task throughput</h4>
+      <div class="sub">daily · last 30 days</div>
+      <div class="legend">
+        <span><span class="sq" style="background:var(--bg-5);"></span>manual</span>
+        <span><span class="sq" style="background:var(--teal);"></span>AI-assisted</span>
+      </div>
+      <svg viewBox="0 0 600 120" width="100%" height="120">
+        <line x1="0" y1="116" x2="600" y2="116" stroke="var(--border-1)" stroke-width="1"/>
+        <polyline fill="none" stroke="#253029" stroke-width="1.5" points="0,80 60,78 120,76 180,74 240,75 300,72 360,70 420,68 480,66 540,64 600,62"/>
+        <polyline fill="rgba(0,229,199,0.1)" stroke="none" points="0,90 60,78 120,66 180,52 240,46 300,34 360,28 420,22 480,16 540,12 600,8 600,116 0,116"/>
+        <polyline fill="none" stroke="#00E5C7" stroke-width="2" points="0,90 60,78 120,66 180,52 240,46 300,34 360,28 420,22 480,16 540,12 600,8"/>
+      </svg>
+    </div>
+    <div class="feed">
+      <div class="feed-head"><h4>Activity</h4></div>
+      <div class="feed-item"><span class="feed-dot" style="background:var(--teal);"></span><span style="color:var(--fg-2);"><strong style="color:var(--fg-1);">slack-digest</strong> deployed to prod</span><span class="time">2m</span></div>
+      <div class="feed-item"><span class="feed-dot" style="background:var(--success);"></span><span style="color:var(--fg-2);"><strong style="color:var(--fg-1);">eval-q3</strong> passed — quality 94%</span><span class="time">18m</span></div>
+      <div class="feed-item"><span class="feed-dot" style="background:var(--danger);"></span><span style="color:var(--fg-2);"><strong style="color:var(--fg-1);">crm-sync</strong> retry storm — 42%</span><span class="time">1h</span></div>
+      <div class="feed-item"><span class="feed-dot" style="background:var(--fg-4);"></span><span style="color:var(--fg-2);"><strong style="color:var(--fg-1);">lead-scoring-v2</strong> moved to draft</span><span class="time">3h</span></div>
+      <div class="feed-item"><span class="feed-dot" style="background:var(--teal);"></span><span style="color:var(--fg-2);"><strong style="color:var(--fg-1);">Мария К.</strong> joined team</span><span class="time">1d</span></div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="panel">
+    <div class="panel-head">
+      <h3>Workflows</h3>
+      <div class="meta">47 total · sorted by tasks ▼</div>
+    </div>
+    <table class="tbl">
+      <thead><tr>
+        <th>name</th><th>status</th><th>tasks / 24h</th><th>retry</th><th>cost</th><th>updated</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="color:var(--fg-1); font-weight:500;">slack-daily-digest</td><td><span class="chip chip-live"><span class="dot" style="background:var(--teal);"></span>live</span></td><td style="color:var(--teal); font-weight:600; font-variant-numeric:tabular-nums;">1,247</td><td class="mono">0.3%</td><td class="mono">$2.14</td><td class="mono">2m ago</td></tr>
+        <tr><td style="color:var(--fg-1); font-weight:500;">support-ticket-triage</td><td><span class="chip chip-live"><span class="dot" style="background:var(--teal);"></span>live</span></td><td style="color:var(--teal); font-weight:600; font-variant-numeric:tabular-nums;">892</td><td class="mono">1.2%</td><td class="mono">$4.87</td><td class="mono">8m ago</td></tr>
+        <tr><td style="color:var(--fg-1); font-weight:500;">weekly-report-gen</td><td><span class="chip chip-live"><span class="dot" style="background:var(--teal);"></span>live</span></td><td style="color:var(--teal); font-weight:600; font-variant-numeric:tabular-nums;">56</td><td class="mono">0.0%</td><td class="mono">$1.20</td><td class="mono">1h ago</td></tr>
+        <tr><td style="color:var(--fg-1); font-weight:500;">crm-sync-hubspot</td><td><span class="chip chip-err"><span class="dot" style="background:var(--danger);"></span>error</span></td><td class="mono">0</td><td class="mono" style="color:var(--danger);">42%</td><td class="mono">$0.00</td><td class="mono">12h ago</td></tr>
+        <tr><td style="color:var(--fg-1); font-weight:500;">lead-scoring-v2</td><td><span class="chip chip-draft">draft</span></td><td class="mono">—</td><td class="mono">—</td><td class="mono">—</td><td class="mono">3d ago</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+</body>
+</html>

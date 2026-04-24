@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 96" width="480" height="96" role="img" aria-label="LeadUp AI">
+  <defs>
+    <linearGradient id="leadup-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+    <style>
+      .wordmark { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 800; }
+    </style>
+  </defs>
+
+  <!-- Mark: rising chevron в брендовом градиенте -->
+  <g transform="translate(8 18)">
+    <rect x="0" y="44" width="14" height="16" rx="3" fill="#0F172A"/>
+    <rect x="20" y="32" width="14" height="28" rx="3" fill="#0F172A"/>
+    <rect x="40" y="16" width="14" height="44" rx="3" fill="url(#leadup-grad)"/>
+    <path d="M0 16 L54 0" stroke="url(#leadup-grad)" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9"/>
+  </g>
+
+  <!-- Wordmark: "LeadUp AI" с пробелом по бренд-буку §4.1 -->
+  <text x="84" y="62" class="wordmark" font-size="44" fill="#0F172A" letter-spacing="-1.2">LeadUp</text>
+  <text x="288" y="62" class="wordmark" font-size="44" fill="url(#leadup-grad)" letter-spacing="-1.2">AI</text>
+</svg>

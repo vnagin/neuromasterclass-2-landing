@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Facebook Cards — LeadUp AI</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { background: var(--bg-0); padding: 40px; }
+  .section-h { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin: 48px 0 16px; max-width: 1280px; margin-left: auto; margin-right: auto; }
+  .section-h:first-of-type { margin-top: 0; }
+  .wrap { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(2, 600px); gap: 28px; justify-content: center; }
+  .label { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); text-align: center; margin-top: 10px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* FB Post: 1200×630 → 600×315 */
+  .fb { width: 600px; height: 315px; border-radius: 12px; overflow: hidden; position: relative; box-sizing: border-box; font-family: var(--font-sans); }
+
+  /* FB Story/Reel: 1080×1920 → 216×384 */
+  .wrap-stories { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 216px); gap: 20px; justify-content: center; }
+  .fb-story { width: 216px; height: 384px; border-radius: 14px; overflow: hidden; position: relative; box-sizing: border-box; font-family: var(--font-sans); }
+
+  .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(ellipse at 50% 40%, black 25%, transparent 70%); pointer-events: none; }
+  .glow { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,199,0.18), transparent 55%); filter: blur(20px); pointer-events: none; }
+  .foot { position: absolute; bottom: 14px; left: 20px; right: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .foot .handle { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.04em; }
+  .foot .logo { height: 16px; filter: brightness(10); width: auto; max-width: 90px; object-fit: contain; }
+  .cta-pill { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--teal); color: #061210; font-weight: 700; font-size: 12px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,229,199,0.3); }
+
+  /* Dark */
+  .dark { background: var(--bg-1); border: 1px solid var(--border-2); }
+  .dark .content { position: relative; padding: 24px 24px 56px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
+  .dark .eyebrow { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+  .dark h2 { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 8px; color: var(--fg-1); }
+  .dark h2 .acc { color: var(--teal); }
+  .dark p { font-size: 13px; color: var(--fg-3); margin: 0; line-height: 1.5; }
+  .dark .badge { display: inline-flex; align-self: flex-start; padding: 3px 10px; border-radius: 9999px; font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; background: var(--teal-tint); color: var(--teal); border: 1px solid rgba(0,229,199,0.2); }
+  .dark .meta-row { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.04em; margin-top: 8px; }
+  .dark .meta-row strong { color: var(--fg-1); }
+
+  /* Gradient */
+  .grad { background: linear-gradient(135deg, #00E5C7 0%, #009E8A 100%); }
+  .grad .content { position: relative; padding: 24px 24px 56px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
+  .grad .eyebrow { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(6,18,16,0.6); margin-bottom: 12px; }
+  .grad h2 { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 8px; color: #061210; }
+  .grad p { font-size: 13px; color: rgba(6,18,16,0.7); margin: 0; line-height: 1.5; }
+  .grad .foot .handle { color: rgba(6,18,16,0.4); }
+  .grad .foot .logo { filter: brightness(0); }
+
+  /* Story dark */
+  .story-dark { background: var(--bg-1); border: 1px solid var(--border-2); padding: 24px 18px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .story-dark .grid-bg { background-size: 20px 20px; }
+  .story-dark .eyebrow { font-family: var(--font-mono); font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; position: relative; }
+  .story-dark h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 8px; color: var(--fg-1); position: relative; }
+  .story-dark h3 .acc { color: var(--teal); }
+  .story-dark p { font-size: 11px; color: var(--fg-3); margin: 0 0 14px; line-height: 1.45; position: relative; }
+  .story-dark .cta-pill { font-size: 11px; padding: 7px 14px; position: relative; }
+  .story-dark .foot { bottom: 16px; left: 18px; right: 18px; }
+  .story-dark .foot .logo { height: 14px; }
+
+  /* Story gradient */
+  .story-grad { background: linear-gradient(180deg, #009E8A 0%, #00E5C7 100%); padding: 24px 18px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .story-grad h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 8px; color: #061210; }
+  .story-grad p { font-size: 11px; color: rgba(6,18,16,0.65); margin: 0 0 14px; line-height: 1.45; }
+  .story-grad .cta-pill { background: #061210; color: #00E5C7; font-size: 11px; padding: 7px 14px; box-shadow: none; }
+  .story-grad .foot .handle { color: rgba(6,18,16,0.4); }
+  .story-grad .foot .logo { height: 14px; filter: brightness(0); }
+
+  @keyframes blink { 50% { opacity: 0.3; } }
+</style>
+</head>
+<body>
+
+<!-- POST IMAGES -->
+<div class="section-h">◆ Post images · 1200×630 (50%)</div>
+<div class="wrap">
+  <div>
+    <div class="fb dark">
+      <div class="grid-bg"></div>
+      <div class="glow" style="width:250px; height:250px; top:-60px; right:-60px;"></div>
+      <div class="content">
+        <div class="eyebrow">◆ LeadUp AI</div>
+        <h2>AI-first за <span class="acc">90 дней</span>.<br>Без воды и buzzwords.</h2>
+        <p>12 кейсов, n8n-воркфлоу, eval-панель метрик. Программа для команд 50–500.</p>
+        <div class="cta-pill" style="margin-top:auto;">Узнать подробнее →</div>
+      </div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Dark · promo · 1200×630</div>
+  </div>
+  <div>
+    <div class="fb dark">
+      <div class="grid-bg"></div>
+      <div class="glow" style="width:200px; height:200px; bottom:-40px; left:-40px;"></div>
+      <div class="content">
+        <span class="badge">Вебинар</span>
+        <h2>Как внедрить <span class="acc">RAG</span> в саппорт</h2>
+        <p>n8n + Notion + Claude. Покажем eval-панель и реальные метрики.</p>
+        <div class="meta-row"><strong>25 апр</strong> · 19:00 МСК · 60 мин · Бесплатно</div>
+        <div class="cta-pill" style="margin-top:auto;">Зарегистрироваться →</div>
+      </div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Dark · webinar CTA · 1200×630</div>
+  </div>
+  <div>
+    <div class="fb grad">
+      <div class="content">
+        <div class="eyebrow">◆ Нейромастерская 2.0</div>
+        <h2>3-дневный интенсив:<br>AI-агенты для продаж</h2>
+        <p>1–3 мая · 3 × 2 часа. Lead scoring, персонализация, follow-up.</p>
+        <div class="cta-pill" style="margin-top:auto; background:#061210; color:#00E5C7; box-shadow:none;">Занять место · 2 900₽ →</div>
+      </div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Gradient · intensive · 1200×630</div>
+  </div>
+  <div>
+    <div class="fb dark">
+      <div class="grid-bg"></div>
+      <div class="content">
+        <span class="badge" style="background:rgba(255,93,93,0.14); color:#FF5D5D; border-color:rgba(255,93,93,0.25); display:inline-flex; align-items:center; gap:6px;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5D5D;animation:blink 1.5s ease-in-out infinite;"></span>Прямой эфир</span>
+        <h2>Q&A: автоматизация с <span class="acc">n8n</span></h2>
+        <p>Живой разбор вопросов. 3 воркфлоу, экономия 5+ часов в неделю.</p>
+        <div class="meta-row"><strong>Сегодня</strong> · 20:00 МСК · YouTube</div>
+        <div class="cta-pill" style="margin-top:auto; background:#FF5D5D; box-shadow:0 4px 16px rgba(255,93,93,0.25);">Смотреть →</div>
+      </div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Dark · live · 1200×630</div>
+  </div>
+</div>
+
+<!-- STORIES / REELS -->
+<div class="section-h">◆ Stories / Reels · 1080×1920 (20%)</div>
+<div class="wrap-stories">
+  <div>
+    <div class="fb-story story-dark">
+      <div class="grid-bg"></div>
+      <div class="glow" style="width:160px; height:160px; top:20%; right:-30px;"></div>
+      <div class="eyebrow">◆ Вебинар</div>
+      <h3>RAG в саппорт за <span class="acc">2 недели</span></h3>
+      <p>n8n + Claude. Покажем eval и метрики.</p>
+      <div style="font-family:var(--font-mono); font-size:10px; color:var(--fg-3); margin-bottom:12px; position:relative;">25 апр · 19:00 · 60 мин</div>
+      <div class="cta-pill">Записаться →</div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Story · webinar</div>
+  </div>
+  <div>
+    <div class="fb-story story-grad">
+      <h3 style="margin-top:auto;">Интенсив: AI для <span style="color:#061210;">продаж</span></h3>
+      <p>1–3 мая · 6 часов · 2 900₽</p>
+      <div class="cta-pill">Занять место →</div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Story · gradient</div>
+  </div>
+  <div>
+    <div class="fb-story story-dark">
+      <div class="grid-bg"></div>
+      <div class="glow" style="width:140px; height:140px; top:40%; left:-20px;"></div>
+      <div class="eyebrow" style="display:flex; align-items:center; gap:6px;"><span style="width:5px;height:5px;border-radius:50%;background:#FF5D5D;animation:blink 1.5s ease-in-out infinite;"></span>Live</div>
+      <h3>Q&A: n8n-автоматизация</h3>
+      <p>Живой разбор. 3 воркфлоу.</p>
+      <div class="cta-pill" style="background:#FF5D5D; box-shadow:0 4px 12px rgba(255,93,93,0.25);">Смотреть →</div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Story · live</div>
+  </div>
+  <div>
+    <div class="fb-story story-dark" style="justify-content:center; align-items:center; text-align:center;">
+      <div class="glow" style="width:160px; height:160px; top:50%; left:50%; transform:translate(-50%,-50%);"></div>
+      <div style="position:relative;">
+        <div style="font-size:48px; font-weight:700; letter-spacing:-0.03em; color:var(--teal); line-height:1; margin-bottom:6px;">+18%</div>
+        <div style="font-family:var(--font-mono); font-size:10px; color:var(--fg-3); letter-spacing:0.08em; text-transform:uppercase;">avg ROI · 50+ teams</div>
+      </div>
+      <div class="foot"><span class="handle">leadup.ai</span><img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/></div>
+    </div>
+    <div class="label">Story · stat</div>
+  </div>
+</div>
+
+</body>
+</html>

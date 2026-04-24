@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><title>Telegram Cards — Нейросборка v3</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  body { background: var(--bg-0); padding: 40px; }
+  .section-h { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin: 48px 0 16px; max-width: 1760px; margin-left: auto; margin-right: auto; padding: 0; }
+  .section-h:first-of-type { margin-top: 0; }
+  .wrap { max-width: 1760px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 540px); gap: 32px; justify-content: center; }
+  .label { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); text-align: center; margin-top: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .card { width: 540px; height: 540px; border-radius: 16px; overflow: hidden; box-sizing: border-box; position: relative; font-family: var(--font-sans); }
+
+  /* ============ DARK CARD ============ */
+  .card-dark { background: var(--bg-1); border: 1px solid var(--border-2); padding: 40px; display: flex; flex-direction: column; }
+  .card-dark::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); }
+  .card-dark .badge { display: inline-flex; align-self: flex-start; padding: 4px 12px; border-radius: 9999px; background: var(--teal-tint); color: var(--teal); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 24px; border: 1px solid rgba(0,229,199,0.2); }
+  .card-dark h2 { font-size: 32px; font-weight: 700; line-height: 1.12; letter-spacing: -0.025em; margin: 0 0 20px; color: var(--fg-1); }
+  .card-dark p { font-size: 15px; line-height: 1.55; color: var(--fg-3); margin: 0; flex: 1; }
+  .card-dark .foot { border-top: 1px solid var(--border-1); padding-top: 16px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .card-dark .foot .handle { font-family: var(--font-mono); font-size: 12px; color: var(--fg-4); letter-spacing: 0.04em; }
+  .card-dark .foot .logo { height: 22px; filter: brightness(10); }
+
+  /* ============ GRADIENT CARD ============ */
+  .card-grad { background: linear-gradient(135deg, #00E5C7 0%, #009E8A 100%); color: #061210; padding: 40px; display: flex; flex-direction: column; }
+  .card-grad .badge { display: inline-flex; align-self: flex-start; padding: 4px 12px; border-radius: 9999px; background: rgba(6,18,16,0.15); color: #061210; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 24px; border: 1px solid rgba(6,18,16,0.2); }
+  .card-grad h2 { font-size: 40px; font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 20px; color: #061210; }
+  .card-grad p { font-size: 16px; line-height: 1.55; color: rgba(6,18,16,0.75); margin: 0; flex: 1; }
+  .card-grad .foot { padding-top: 16px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .card-grad .foot .handle { font-family: var(--font-mono); font-size: 12px; color: rgba(6,18,16,0.5); letter-spacing: 0.04em; }
+  .card-grad .foot .link { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: #061210; letter-spacing: 0.04em; }
+  .card-grad .rings { position: absolute; right: -40px; bottom: -40px; opacity: 0.12; }
+
+  /* ============ LIGHT CARD ============ */
+  .card-light { background: #FAFBFA; color: #0A0F0D; padding: 40px; display: flex; flex-direction: column; border: 1px solid rgba(10,15,13,0.08); }
+  .card-light::before { content: ''; position: absolute; left: 0; top: 40px; bottom: 40px; width: 4px; background: var(--teal); border-radius: 0 2px 2px 0; }
+  .card-light .badge { display: inline-flex; align-self: flex-start; padding: 4px 12px; border-radius: 9999px; background: rgba(0,158,138,0.10); color: #009E8A; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 24px; }
+  .card-light blockquote { font-size: 26px; line-height: 1.3; font-weight: 500; color: #0A0F0D; margin: 0 0 28px; flex: 1; letter-spacing: -0.015em; }
+  .card-light .author { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+  .card-light .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #00E5C7, #0F1512); display: flex; align-items: center; justify-content: center; color: #061210; font-weight: 700; font-size: 14px; }
+  .card-light .author .name { font-size: 15px; font-weight: 700; color: #0A0F0D; }
+  .card-light .author .role { font-size: 13px; color: #6A7570; }
+  .card-light .foot { border-top: 1px solid rgba(10,15,13,0.08); padding-top: 14px; display: flex; justify-content: space-between; align-items: center; }
+  .card-light .foot .handle { font-family: var(--font-mono); font-size: 12px; color: #9BA3A0; letter-spacing: 0.04em; }
+  .card-light .foot .logo { height: 22px; filter: brightness(0); }
+
+  /* ============ CTA EVENT CARD (dark) ============ */
+  .card-event { background: var(--bg-1); border: 1px solid var(--border-2); padding: 40px; display: flex; flex-direction: column; }
+  .card-event .grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 36px 36px; mask-image: radial-gradient(ellipse at 70% 30%, black 20%, transparent 65%); pointer-events: none; }
+  .card-event .glow { position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,199,0.2), transparent 55%); filter: blur(20px); pointer-events: none; }
+  .card-event .badge { display: inline-flex; align-self: flex-start; padding: 4px 12px; border-radius: 9999px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; position: relative; }
+  .card-event .badge-live { background: rgba(255,93,93,0.14); color: #FF5D5D; border: 1px solid rgba(255,93,93,0.25); }
+  .card-event .badge-live .dot { width: 6px; height: 6px; border-radius: 50%; background: #FF5D5D; margin-right: 6px; animation: blink 1.5s ease-in-out infinite; }
+  @keyframes blink { 50% { opacity: 0.3; } }
+  .card-event .badge-webinar { background: var(--teal-tint); color: var(--teal); border: 1px solid rgba(0,229,199,0.2); }
+  .card-event .badge-intensive { background: rgba(245,181,68,0.14); color: #F5B544; border: 1px solid rgba(245,181,68,0.25); }
+  .card-event h2 { font-size: 36px; font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 14px; color: var(--fg-1); position: relative; }
+  .card-event h2 .acc { color: var(--teal); }
+  .card-event .desc { font-size: 15px; line-height: 1.55; color: var(--fg-3); margin: 0 0 20px; position: relative; }
+  .card-event .meta-row { display: flex; gap: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); letter-spacing: 0.04em; margin-bottom: 8px; position: relative; }
+  .card-event .meta-row strong { color: var(--fg-1); }
+  .card-event .cta-pill { display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; padding: 12px 22px; background: var(--teal); color: #061210; font-weight: 700; font-size: 15px; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,229,199,0.35); margin-top: auto; position: relative; letter-spacing: -0.01em; }
+  .card-event .foot { border-top: 1px solid var(--border-1); padding-top: 14px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; position: relative; }
+  .card-event .foot .handle { font-family: var(--font-mono); font-size: 12px; color: var(--fg-4); letter-spacing: 0.04em; }
+  .card-event .foot .logo { height: 22px; filter: brightness(10); }
+
+  /* ============ CTA EVENT CARD (gradient) ============ */
+  .card-event-grad { background: linear-gradient(145deg, #0A0F0D 0%, #141B18 50%, #00E5C7 150%); border: 1px solid rgba(0,229,199,0.15); padding: 40px; display: flex; flex-direction: column; color: var(--fg-1); }
+  .card-event-grad .stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--teal), #009E8A); }
+  .card-event-grad .badge { display: inline-flex; align-self: flex-start; padding: 4px 12px; border-radius: 9999px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; background: var(--teal-tint); color: var(--teal); border: 1px solid rgba(0,229,199,0.25); }
+  .card-event-grad h2 { font-size: 36px; font-weight: 700; line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 14px; }
+  .card-event-grad h2 .acc { color: var(--teal); }
+  .card-event-grad .desc { font-size: 15px; line-height: 1.55; color: var(--fg-2); margin: 0 0 20px; }
+  .card-event-grad .meta-row { display: flex; gap: 20px; font-family: var(--font-mono); font-size: 12px; color: var(--fg-3); letter-spacing: 0.04em; margin-bottom: 8px; }
+  .card-event-grad .meta-row strong { color: var(--teal); }
+  .card-event-grad .cta-pill { display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; padding: 12px 22px; background: var(--teal); color: #061210; font-weight: 700; font-size: 15px; border-radius: 10px; box-shadow: 0 6px 24px rgba(0,229,199,0.35); margin-top: auto; letter-spacing: -0.01em; }
+  .card-event-grad .foot { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px; margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .card-event-grad .foot .handle { font-family: var(--font-mono); font-size: 12px; color: var(--fg-4); letter-spacing: 0.04em; }
+  .card-event-grad .foot .logo { height: 22px; filter: brightness(10); }
+</style>
+</head>
+<body>
+
+<!-- ROW 1: ORIGINAL 3 -->
+<div class="section-h">◆ Контентные карточки</div>
+<div class="wrap">
+  <div>
+    <div class="card card-dark">
+      <span class="badge">Insight</span>
+      <h2>В 2026 AI заменяет не людей, а&nbsp;отчёты.</h2>
+      <p>Средняя команда экономит 47 минут в день на автоматизации рутинных сводок. Мы проверили у 12 команд.</p>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Dark · insight</div>
+  </div>
+  <div>
+    <div class="card card-grad">
+      <svg class="rings" width="280" height="280" viewBox="0 0 280 280" aria-hidden><circle cx="140" cy="140" r="135" fill="none" stroke="#061210" stroke-width="2"/><circle cx="140" cy="140" r="95" fill="none" stroke="#061210" stroke-width="2"/><circle cx="140" cy="140" r="55" fill="none" stroke="#061210" stroke-width="2"/></svg>
+      <span class="badge">Анонс</span>
+      <h2>Нейромастерская 2.0</h2>
+      <p>Старт 28 апреля. Программа для команд 50–500 человек. 12 кейсов, n8n, eval-панель.</p>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <span class="link">leadup.ai →</span>
+      </div>
+    </div>
+    <div class="label">Gradient · announce</div>
+  </div>
+  <div>
+    <div class="card card-light">
+      <span class="badge">Отзыв</span>
+      <blockquote>«Самое честное обучение за 5 лет. Говорят, где AI не работает — и это уже ROI.»</blockquote>
+      <div class="author">
+        <div class="avatar">АВ</div>
+        <div>
+          <div class="name">Артём Веденеев</div>
+          <div class="role">CTO · Fintech</div>
+        </div>
+      </div>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Light · quote</div>
+  </div>
+</div>
+
+<!-- ROW 2: CTA EVENT CARDS -->
+<div class="section-h">◆ Мероприятия · CTA</div>
+<div class="wrap">
+  <!-- WEBINAR -->
+  <div>
+    <div class="card card-event">
+      <div class="grid-bg"></div>
+      <div class="glow"></div>
+      <span class="badge badge-webinar">Вебинар</span>
+      <h2>Как внедрить <span class="acc">RAG</span> в саппорт за 2 недели</h2>
+      <div class="desc">Разбираем реальный кейс: n8n + Notion + Claude. Покажем eval-панель, метрики и ошибки.</div>
+      <div class="meta-row">
+        <span><strong>25 апр</strong> · 19:00 МСК</span>
+        <span>60 мин</span>
+        <span>Бесплатно</span>
+      </div>
+      <div class="cta-pill">Зарегистрироваться →</div>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Dark · webinar · CTA</div>
+  </div>
+
+  <!-- LIVE -->
+  <div>
+    <div class="card card-event">
+      <div class="grid-bg"></div>
+      <div class="glow" style="top:50%; left:-60px; right:auto;"></div>
+      <span class="badge badge-live"><span class="dot"></span>Прямой эфир</span>
+      <h2>Q&A: автоматизация отчётности с <span class="acc">n8n</span></h2>
+      <div class="desc">Живой разбор вопросов подписчиков. Покажем 3 воркфлоу, которые экономят 5+ часов в неделю.</div>
+      <div class="meta-row">
+        <span><strong>Сегодня</strong> · 20:00 МСК</span>
+        <span>45 мин</span>
+        <span>YouTube + Telegram</span>
+      </div>
+      <div class="cta-pill" style="background:#FF5D5D; box-shadow:0 6px 24px rgba(255,93,93,0.3);">Смотреть эфир →</div>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Dark · live stream · CTA</div>
+  </div>
+
+  <!-- INTENSIVE -->
+  <div>
+    <div class="card card-event-grad">
+      <div class="stripe"></div>
+      <span class="badge">3-дневный интенсив</span>
+      <h2>AI-агенты для <span class="acc">продаж</span>: от лида до сделки</h2>
+      <div class="desc">3 вечера × 2 часа. Строим pipeline: lead scoring → персонализация → follow-up. С eval-панелью.</div>
+      <div class="meta-row">
+        <span><strong>1–3 мая</strong> · 19:00 МСК</span>
+        <span>6 часов</span>
+        <span><strong>2 900₽</strong></span>
+      </div>
+      <div class="cta-pill">Занять место →</div>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Gradient edge · intensive · CTA</div>
+  </div>
+</div>
+
+<!-- ROW 3: MORE EVENT VARIATIONS -->
+<div class="section-h">◆ Дополнительные варианты</div>
+<div class="wrap">
+  <!-- WEBINAR on gradient -->
+  <div>
+    <div class="card card-grad" style="justify-content:flex-end;">
+      <svg class="rings" width="280" height="280" viewBox="0 0 280 280" aria-hidden><circle cx="140" cy="140" r="135" fill="none" stroke="#061210" stroke-width="2"/><circle cx="140" cy="140" r="95" fill="none" stroke="#061210" stroke-width="2"/></svg>
+      <span class="badge">Мастер-класс</span>
+      <h2 style="font-size:34px;">Промпт-инжиниринг для бизнес-задач</h2>
+      <p style="margin-bottom:16px;">System prompts, chain-of-thought, few-shot. Без «магических формул» — только то, что работает.</p>
+      <div style="font-family:var(--font-mono); font-size:13px; color:rgba(6,18,16,0.65); margin-bottom:14px;">28 апр · 19:00 · 90 мин · Бесплатно</div>
+      <div style="display:inline-flex; align-self:flex-start; padding:10px 20px; background:#061210; color:#00E5C7; font-weight:700; font-size:14px; border-radius:8px;">Записаться →</div>
+      <div class="foot" style="border-top:1px solid rgba(6,18,16,0.12);">
+        <span class="handle">@neurosborka</span>
+        <span class="link">leadup.ai →</span>
+      </div>
+    </div>
+    <div class="label">Gradient · masterclass · CTA</div>
+  </div>
+
+  <!-- Countdown dark -->
+  <div>
+    <div class="card card-event">
+      <div class="grid-bg"></div>
+      <span class="badge badge-intensive" style="background:rgba(245,181,68,0.14); color:#F5B544; border-color:rgba(245,181,68,0.25);">Осталось 12 мест</span>
+      <h2>AI-воркшоп: <span class="acc">eval-панель</span> с нуля</h2>
+      <div class="desc">Hands-on: собираем dashboard для мониторинга агентов. n8n + Grafana + Claude evals.</div>
+      <div class="meta-row">
+        <span><strong>5 мая</strong> · 18:00 МСК</span>
+        <span>3 часа</span>
+        <span><strong>1 900₽</strong></span>
+      </div>
+      <div style="display:flex; gap:10px; margin-top:auto; position:relative;">
+        <div class="cta-pill">Записаться →</div>
+        <div style="display:flex; align-items:center; gap:6px; font-family:var(--font-mono); font-size:12px; color:var(--fg-4);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--fg-4);"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          через 11 дней
+        </div>
+      </div>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Dark · workshop · countdown</div>
+  </div>
+
+  <!-- Series / multi-day -->
+  <div>
+    <div class="card card-event-grad" style="background:linear-gradient(160deg, #0A0F0D 0%, #0F1512 60%, #1B2420 100%); border-color:var(--border-2);">
+      <div class="stripe" style="background:linear-gradient(90deg, #F5B544, var(--teal));"></div>
+      <span class="badge" style="background:rgba(245,181,68,0.14); color:#F5B544; border-color:rgba(245,181,68,0.25);">Серия · 4 эфира</span>
+      <h2>AI для <span class="acc">HR</span>: от рекрутинга до онбординга</h2>
+      <div class="desc">Каждый вторник в мае. Разбираем 4 процесса: скрининг, interview scheduling, onboarding docs, pulse surveys.</div>
+      <div class="meta-row">
+        <span><strong>Каждый вт</strong> · май 2026</span>
+        <span>4 × 60 мин</span>
+        <span>Бесплатно</span>
+      </div>
+      <div class="cta-pill">Подписаться на серию →</div>
+      <div class="foot">
+        <span class="handle">@neurosborka</span>
+        <img class="logo" src="../../assets/logo-leadup-raw.png" alt=""/>
+      </div>
+    </div>
+    <div class="label">Dark · series · multi-event</div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>LeadUp AI — Забронировать консультацию</title>
+<link rel="stylesheet" href="../../colors_and_type.css"/>
+<style>
+  body { background: var(--bg-1); }
+
+  /* NAV */
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(10,15,13,0.72); backdrop-filter: blur(18px) saturate(160%); -webkit-backdrop-filter: blur(18px) saturate(160%); border-bottom: 1px solid var(--border-1); }
+  .nav-inner { max-width: 1240px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-links { display: flex; gap: 2px; font-size: 13px; }
+  .nav-links a { color: var(--fg-3); padding: 7px 14px; border-radius: var(--r-md); font-weight: 500; text-decoration: none; }
+  .nav-links a:hover { color: var(--fg-1); background: var(--bg-4); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 13px; padding: 8px 16px; border-radius: var(--r-lg); border: 0; cursor: pointer; transition: all 120ms var(--ease); text-decoration: none; }
+  .btn-p { background: var(--teal); color: #061210; }
+  .btn-p:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+  .btn-p:active { background: var(--teal-pressed); transform: translateY(0); box-shadow: none; }
+  .btn-d { background: var(--bg-4); color: var(--fg-1); border: 1px solid var(--border-2); }
+  .btn-d:hover { background: var(--bg-5); border-color: var(--border-3); }
+  .btn-d:active { background: var(--bg-4); transform: scale(0.98); }
+  .btn-ghost { background: transparent; color: var(--fg-3); font-size: 13px; text-decoration: none; font-weight: 500; }
+  .btn-lg { height: 48px; font-size: 14px; padding: 0 24px; }
+
+  .container { max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+  /* HERO — compact, CTA-focused */
+  .hero { position: relative; padding: 64px 0 48px; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; top: -180px; left: 50%; transform: translateX(-50%); width: 700px; height: 500px; background: radial-gradient(circle, rgba(0,229,199,0.14), transparent 55%); pointer-events: none; }
+  .hero-inner { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .hero-text h1 { font-size: clamp(36px, 4.5vw, 52px); font-weight: 700; line-height: 1.04; letter-spacing: -0.035em; margin: 0 0 14px; }
+  .hero-text h1 .acc { color: var(--teal); }
+  .hero-text .lead { font-size: 17px; color: var(--fg-2); line-height: 1.55; margin: 0 0 24px; max-width: 480px; }
+  .hero-text .trust { display: flex; gap: 28px; font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.04em; }
+  .hero-text .trust strong { color: var(--teal); }
+
+  /* COMPACT PROGRAM STRIP */
+  .program-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border-1); border: 1px solid var(--border-1); border-radius: var(--r-xl); overflow: hidden; }
+  .ps-cell { background: var(--bg-2); padding: 18px 20px; }
+  .ps-cell .l { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-4); margin-bottom: 6px; }
+  .ps-cell .v { font-size: 22px; font-weight: 700; letter-spacing: -0.025em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .ps-cell .v .acc { color: var(--teal); }
+  .ps-cell .d { font-size: 11px; color: var(--fg-3); margin-top: 4px; }
+
+  /* MAIN BOOKING SECTION */
+  .booking { padding: 48px 0 64px; }
+  .booking-grid { display: grid; grid-template-columns: 1fr 400px; gap: 20px; }
+
+  /* LEFT: STEP FORM */
+  .form-card { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-2xl); overflow: hidden; }
+  .form-steps { display: flex; border-bottom: 1px solid var(--border-1); }
+  .step-tab { flex: 1; padding: 14px 20px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-4); display: flex; align-items: center; gap: 10px; border-right: 1px solid var(--border-1); cursor: pointer; }
+  .step-tab:last-child { border-right: 0; }
+  .step-tab .num { width: 22px; height: 22px; border-radius: 50%; background: var(--bg-4); border: 1px solid var(--border-2); display: grid; place-items: center; font-size: 11px; font-weight: 600; }
+  .step-tab.active { background: var(--bg-3); color: var(--fg-1); }
+  .step-tab.active .num { background: var(--teal); border-color: var(--teal); color: #061210; }
+  .step-tab.done .num { background: var(--teal); border-color: var(--teal); color: #061210; }
+  .step-tab.done .num::after { content: '✓'; }
+  .form-body { padding: 28px 32px; }
+  .form-body h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .form-body .sub { font-size: 13px; color: var(--fg-3); margin-bottom: 24px; }
+
+  /* Calendar */
+  .calendar { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 20px; margin-bottom: 20px; }
+  .cal-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .cal-head .month { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+  .cal-head button { width: 28px; height: 28px; border-radius: 6px; background: var(--bg-4); border: 1px solid var(--border-2); color: var(--fg-2); display: grid; place-items: center; cursor: pointer; }
+  .cal-head button:hover { background: var(--bg-5); color: var(--fg-1); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+  .cal-dh { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); text-align: center; padding: 6px 0; letter-spacing: 0.06em; }
+  .cal-d { aspect-ratio: 1; border-radius: 6px; display: grid; place-items: center; font-size: 13px; color: var(--fg-2); cursor: pointer; transition: all 120ms var(--ease); position: relative; font-variant-numeric: tabular-nums; font-weight: 500; }
+  .cal-d:hover { background: var(--bg-4); }
+  .cal-d.muted { color: var(--fg-4); }
+  .cal-d.dis { color: var(--fg-4); opacity: 0.35; cursor: not-allowed; }
+  .cal-d.dis:hover { background: transparent; }
+  .cal-d.today { box-shadow: inset 0 0 0 1px var(--border-3); }
+  .cal-d.avail::after { content: ''; position: absolute; bottom: 3px; width: 4px; height: 4px; border-radius: 50%; background: var(--teal); }
+  .cal-d.on { background: var(--teal); color: #061210; font-weight: 700; }
+  .cal-d.on::after { display: none; }
+
+  .slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 14px; }
+  .slot { background: var(--bg-4); border: 1px solid var(--border-2); border-radius: var(--r-md); padding: 9px; font-family: var(--font-mono); font-size: 12px; color: var(--fg-2); text-align: center; cursor: pointer; transition: all 120ms var(--ease); font-variant-numeric: tabular-nums; }
+  .slot:hover { border-color: var(--border-3); color: var(--fg-1); }
+  .slot.on { background: var(--teal); color: #061210; border-color: var(--teal); font-weight: 600; }
+  .slot.dis { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+  .slot-confirm { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: var(--teal-tint); border: 1px solid rgba(0,229,199,0.25); border-radius: var(--r-lg); font-size: 13px; color: var(--teal); }
+  .slot-confirm .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); animation: pl 2s ease-in-out infinite; }
+  @keyframes pl { 50% { opacity: 0.4; } }
+
+  /* Form fields */
+  .field { margin-bottom: 14px; }
+  .field-label { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 6px; font-weight: 500; }
+  .field-label .req { color: var(--teal); }
+  .input, .select, .textarea { width: 100%; background: var(--bg-4); border: 1px solid var(--border-2); border-radius: var(--r-lg); padding: 11px 14px; color: var(--fg-1); font-family: var(--font-sans); font-size: 14px; font-weight: 500; transition: all 120ms var(--ease); box-sizing: border-box; }
+  .input:focus, .select:focus, .textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-tint); }
+  .input::placeholder { color: var(--fg-4); }
+  .textarea { resize: vertical; min-height: 90px; font-family: var(--font-sans); }
+  .select { appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236A7570' stroke-width='2'><path d='m6 9 6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 38px; }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { background: var(--bg-4); border: 1px solid var(--border-2); border-radius: var(--r-full); padding: 7px 14px; font-size: 13px; color: var(--fg-2); font-weight: 500; cursor: pointer; transition: all 120ms var(--ease); }
+  .chip:hover { border-color: var(--border-3); color: var(--fg-1); }
+  .chip.on { background: var(--teal-tint); border-color: var(--teal); color: var(--teal); }
+
+  .consent { display: flex; gap: 10px; font-size: 12px; color: var(--fg-3); line-height: 1.5; margin: 18px 0; padding: 14px; background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-lg); }
+  .consent input { accent-color: var(--teal); margin-top: 1px; }
+  .consent label { font-family: var(--font-sans); text-transform: none; letter-spacing: normal; font-size: 12px; color: var(--fg-3); margin: 0; }
+
+  .form-footer { display: flex; gap: 10px; align-items: center; padding-top: 10px; }
+
+  /* RIGHT SIDEBAR */
+  .sidebar { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 80px; height: fit-content; }
+  .sb-card { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 22px; }
+  .sb-card h4 { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-3); margin: 0 0 16px; }
+  .sb-card ul { list-style: none; padding: 0; margin: 0; }
+  .sb-card li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; font-size: 13px; color: var(--fg-2); line-height: 1.5; border-top: 1px solid var(--border-1); }
+  .sb-card li:first-child { border-top: 0; padding-top: 0; }
+  .sb-card li .ic { width: 18px; height: 18px; border-radius: 4px; background: var(--teal-tint); color: var(--teal); display: grid; place-items: center; flex-shrink: 0; margin-top: 2px; }
+  .sb-card li .time { font-family: var(--font-mono); font-size: 11px; color: var(--teal); min-width: 40px; }
+
+  /* Trust card — not warning yellow */
+  .trust-card { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-xl); padding: 18px; }
+  .trust-card .icon { width: 32px; height: 32px; border-radius: var(--r-md); background: var(--teal-tint); border: 1px solid rgba(0,229,199,0.2); display: grid; place-items: center; color: var(--teal); margin-bottom: 10px; }
+  .trust-card h5 { font-size: 14px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .trust-card p { font-size: 12px; color: var(--fg-3); margin: 0; line-height: 1.5; }
+
+  /* Social proof strip */
+  .proof { display: flex; align-items: center; gap: 28px; padding: 24px 0; border-top: 1px solid var(--border-1); margin-top: 8px; flex-wrap: wrap; }
+  .proof .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--fg-4); letter-spacing: 0.08em; text-transform: uppercase; }
+  .proof .lg { font-weight: 700; letter-spacing: -0.02em; font-size: 16px; color: var(--fg-3); opacity: 0.55; }
+
+  /* CTA SECTION */
+  .cta-section { padding: 48px 0 64px; }
+  .cta-card { background: var(--bg-2); border: 1px solid var(--border-1); border-radius: var(--r-2xl); padding: 48px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; position: relative; overflow: hidden; }
+  .cta-card::before { content: ''; position: absolute; top: -120px; right: -120px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,229,199,0.12), transparent 55%); pointer-events: none; }
+  .cta-card h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 8px; line-height: 1.15; position: relative; }
+  .cta-card p { font-size: 14px; color: var(--fg-3); margin: 0; position: relative; max-width: 520px; line-height: 1.55; }
+  .cta-form { display: flex; gap: 8px; position: relative; }
+  .cta-form .input { max-width: 260px; background: var(--bg-4); }
+
+  /* FOOTER */
+  footer { padding: 32px 0; border-top: 1px solid var(--border-1); }
+  .footer-inner { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 11px; color: var(--fg-4); letter-spacing: 0.04em; }
+  .footer-inner a { color: var(--fg-4); text-decoration: none; }
+
+  @media (max-width: 900px) {
+    .hero-inner, .booking-grid { grid-template-columns: 1fr; }
+    .program-strip { grid-template-columns: 1fr 1fr; }
+    .cta-card { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div style="display:flex; align-items:center; gap:28px;">
+      <img src="../../assets/logo-leadup-raw.png" alt="LeadUp AI" height="24" style="filter:brightness(10);"/>
+      <div class="nav-links">
+        <a href="#">Нейромастерская</a>
+        <a href="#">Кейсы</a>
+        <a href="#">Pricing</a>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="#" class="btn-ghost">Войти</a>
+      <button class="btn btn-p">Забронировать →</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>40 минут, которые покажут <span class="acc">реальный ROI</span></h1>
+        <p class="lead">Разбираем ваши процессы вживую, прикидываем пилот и ROI. Без презентаций, без «продающих» скриптов. Бесплатно.</p>
+        <div class="trust">
+          <span><strong>50+</strong> команд прошли</span>
+          <span>·</span>
+          <span><strong>40%</strong> честно говорим «не надо»</span>
+          <span>·</span>
+          <span><strong>2h</strong> avg response</span>
+        </div>
+      </div>
+      <!-- COMPACT PROGRAM -->
+      <div class="program-strip">
+        <div class="ps-cell"><div class="l">Программа</div><div class="v"><span class="acc">90</span> дней</div><div class="d">4 этапа · 12 сессий</div></div>
+        <div class="ps-cell"><div class="l">Стоимость</div><div class="v"><span class="acc">1.24M</span> ₽</div><div class="d">Фикс · 2 транша</div></div>
+        <div class="ps-cell"><div class="l">Команда</div><div class="v">до <span class="acc">5</span> чел.</div><div class="d">Team-lead + спецы</div></div>
+        <div class="ps-cell"><div class="l">Результат</div><div class="v"><span class="acc">3–5</span> prod</div><div class="d">Agents в контуре</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <!-- LEFT: STEPPED FORM -->
+      <div class="form-card">
+        <div class="form-steps">
+          <div class="step-tab done"><span class="num"></span>Дата и время</div>
+          <div class="step-tab active"><span class="num">2</span>О вас</div>
+          <div class="step-tab"><span class="num">3</span>Подтверждение</div>
+        </div>
+        <div class="form-body">
+          <h3>Расскажите о себе</h3>
+          <div class="sub">Шаг 2 из 3 — занимает ~2 минуты. Все данные защищены.</div>
+
+          <!-- Selected slot confirmation -->
+          <div class="slot-confirm" style="margin-bottom:20px;">
+            <span class="dot"></span>
+            <span>22 апр · 14:00 МСК · Google Meet · 40 мин</span>
+          </div>
+
+          <div class="row2">
+            <div class="field">
+              <label class="field-label">Имя<span class="req"> *</span></label>
+              <input class="input" value="Анна Воронина"/>
+            </div>
+            <div class="field">
+              <label class="field-label">Рабочий email<span class="req"> *</span></label>
+              <input class="input" type="email" placeholder="a.voronina@flow-retail.ru"/>
+            </div>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label class="field-label">Компания</label>
+              <input class="input" placeholder="Flow Retail"/>
+            </div>
+            <div class="field">
+              <label class="field-label">Роль</label>
+              <select class="select">
+                <option>CTO / Head of Tech</option>
+                <option>CPO / Head of Product</option>
+                <option>COO / Head of Ops</option>
+                <option>L&D / HR-директор</option>
+                <option>Другое</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Размер команды</label>
+            <div class="chips">
+              <div class="chip">10–49</div>
+              <div class="chip on">50–199</div>
+              <div class="chip">200–499</div>
+              <div class="chip">500+</div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label">Что хотите автоматизировать?<span class="req"> *</span></label>
+            <textarea class="textarea" placeholder="Например: обработка заявок, генерация отчётов, триаж тикетов…">Хотим разгрузить саппорт — 3 FTE закрывают ~200 тикетов/день, половина типовых. Интересует n8n + RAG.</textarea>
+          </div>
+
+          <div class="consent">
+            <input type="checkbox" id="consent" checked/>
+            <label for="consent">Согласен с <a style="text-decoration:underline; color:var(--teal);">политикой обработки данных</a>. LeadUp AI свяжется по email не позднее 24 часов до звонка.</label>
+          </div>
+
+          <div class="form-footer">
+            <button class="btn btn-d">← Назад</button>
+            <button class="btn btn-p btn-lg">Забронировать слот →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <div class="sidebar">
+        <div class="sb-card">
+          <h4>◆ Что в звонке</h4>
+          <ul>
+            <li><span class="time">15m</span>Разбираем 2–3 ваших процесса вживую</li>
+            <li><span class="time">10m</span>Показываем реальные внедрения, не демо</li>
+            <li><span class="time">10m</span>Прикидываем ROI и границы пилота</li>
+            <li><span class="time">5m</span>Q&A — без «продающих» скриптов</li>
+          </ul>
+        </div>
+
+        <div class="trust-card">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div>
+          <h5>Это не продающий звонок</h5>
+          <p>Если не видим смысла в сотрудничестве — прямо скажем. За 3 года ~40% звонков заканчиваются «вам это пока не нужно».</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></div>
+          <h5>Включено в программу</h5>
+          <p>Eval-панель 12 мес. · Slack 4h SLA · SOC2-ready · On-premise option · 12 training-сессий.</p>
+        </div>
+
+        <div class="sb-card" style="padding:16px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg, #00E5C7, #0F1512); display:grid; place-items:center; color:#061210; font-weight:700; font-size:12px;">АВ</div>
+            <div>
+              <div style="font-size:13px; font-weight:600; color:var(--fg-1);">«+22% к скорости обработки»</div>
+              <div style="font-family:var(--font-mono); font-size:10px; color:var(--fg-4);">Анна В. · CTO · Flow Retail</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOCIAL PROOF -->
+    <div class="proof">
+      <span class="lbl">trusted by</span>
+      <span class="lg">MTS</span>
+      <span class="lg">Alfa</span>
+      <span class="lg">Ozon</span>
+      <span class="lg">Skyeng</span>
+      <span class="lg">Sdek</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <div>
+        <h3>Не готовы к звонку?</h3>
+        <p>Пришлём программу и 8 разобранных кейсов на email. 24 страницы, без попыток «дожать».</p>
+      </div>
+      <div class="cta-form">
+        <input class="input" placeholder="email@company.ru"/>
+        <button class="btn btn-p">Получить PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <div style="display:flex; gap:18px;"><a>hello@leadup.ai</a><a>@neurosborka</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

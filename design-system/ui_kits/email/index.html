@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>LeadUp AI — Email Templates</title>
+<link rel="stylesheet" href="../../colors_and_type.css"/>
+<style>
+  body { background: var(--bg-0); padding: 48px 24px; }
+  .page { max-width: 1200px; margin: 0 auto; }
+  .page-h { margin-bottom: 32px; }
+  .page-h .eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+  .page-h h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 8px; }
+  .page-h p { font-size: 15px; color: var(--fg-3); margin: 0; }
+
+  .emails { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .email-wrap { display: flex; flex-direction: column; gap: 8px; }
+  .email-label { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Email container — simulates inbox preview */
+  .email { width: 100%; background: #FAFBFA; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+  /* Shared email styles (inline-style simulation) */
+  .em-header { background: #0A0F0D; padding: 28px 32px; text-align: center; }
+  .em-header img { height: 22px; filter: brightness(10); }
+  .em-body { padding: 32px; color: #0A0F0D; font-family: 'Geist', -apple-system, sans-serif; font-size: 15px; line-height: 1.6; }
+  .em-body h2 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 12px; color: #0A0F0D; line-height: 1.2; }
+  .em-body p { margin: 0 0 16px; color: #3A4440; }
+  .em-body .accent { color: #009E8A; font-weight: 600; }
+  .em-btn { display: inline-block; background: #009E8A; color: #fff; font-weight: 600; font-size: 14px; padding: 12px 24px; border-radius: 8px; text-decoration: none; text-align: center; }
+  .em-divider { height: 1px; background: #E6EAE8; margin: 24px 0; }
+  .em-meta { font-family: 'Geist Mono', monospace; font-size: 11px; color: #9BA3A0; letter-spacing: 0.04em; }
+  .em-footer { background: #F2F4F3; padding: 20px 32px; text-align: center; font-size: 12px; color: #9BA3A0; line-height: 1.6; }
+  .em-footer a { color: #009E8A; text-decoration: none; }
+
+  /* Card inside email */
+  .em-card { background: #F2F4F3; border: 1px solid #E6EAE8; border-radius: 10px; padding: 20px; margin: 16px 0; }
+  .em-card h4 { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: #0A0F0D; letter-spacing: -0.01em; }
+  .em-card .sub { font-size: 13px; color: #6A7570; }
+  .em-stat-row { display: flex; gap: 16px; margin-top: 12px; }
+  .em-stat { text-align: center; flex: 1; }
+  .em-stat .v { font-size: 22px; font-weight: 700; color: #009E8A; letter-spacing: -0.02em; }
+  .em-stat .l { font-size: 10px; color: #9BA3A0; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'Geist Mono', monospace; margin-top: 4px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="page-h">
+    <div class="eyebrow">◆ Email Templates</div>
+    <h1>3 transactional emails</h1>
+    <p>Booking confirmation, welcome, weekly digest. Light-mode, 600px width, table-safe layout.</p>
+  </div>
+
+  <div class="emails">
+    <!-- EMAIL 1: Booking Confirmation -->
+    <div class="email-wrap">
+      <div class="email-label">Booking confirmation</div>
+      <div class="email">
+        <div class="em-header"><img src="../../assets/logo-leadup-raw.png" alt="LeadUp AI"/></div>
+        <div class="em-body">
+          <h2>Встреча подтверждена</h2>
+          <p>Анна, ваш discovery-звонок с командой LeadUp AI забронирован.</p>
+          <div class="em-card">
+            <h4>Discovery call</h4>
+            <div class="sub">22 апреля 2026 · 14:00 МСК · 40 мин</div>
+            <div class="em-divider"></div>
+            <div class="em-meta">Google Meet · ссылка придёт за 30 минут</div>
+          </div>
+          <p>Мы разберём 2–3 ваших процесса и прикинем ROI. Без презентаций.</p>
+          <a href="#" class="em-btn">Добавить в календарь →</a>
+          <div class="em-divider"></div>
+          <p style="font-size:13px; color:#9BA3A0;">Если нужно перенести — ответьте на это письмо или напишите в <span class="accent">@neurosborka</span>.</p>
+        </div>
+        <div class="em-footer">
+          © 2026 LeadUp AI · <a href="#">Отписаться</a> · <a href="#">leadup.ai</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 2: Welcome -->
+    <div class="email-wrap">
+      <div class="email-label">Welcome · onboarding</div>
+      <div class="email">
+        <div class="em-header"><img src="../../assets/logo-leadup-raw.png" alt="LeadUp AI"/></div>
+        <div class="em-body">
+          <h2>Добро пожаловать в LeadUp AI</h2>
+          <p>Анна, рады видеть вас. Вот что стоит сделать в первые 15 минут:</p>
+          <div class="em-card">
+            <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+              <div style="width:24px; height:24px; border-radius:50%; background:#009E8A; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">1</div>
+              <div><strong style="color:#0A0F0D;">Пройдите первый бесплатный курс</strong><br/><span style="font-size:13px; color:#6A7570;">Slack-дайджест за 10 минут · 12 уроков</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:flex-start; margin-bottom:12px;">
+              <div style="width:24px; height:24px; border-radius:50%; background:#E6EAE8; color:#3A4440; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">2</div>
+              <div><strong style="color:#0A0F0D;">Подключите Slack workspace</strong><br/><span style="font-size:13px; color:#6A7570;">Настройка за 2 минуты</span></div>
+            </div>
+            <div style="display:flex; gap:12px; align-items:flex-start;">
+              <div style="width:24px; height:24px; border-radius:50%; background:#E6EAE8; color:#3A4440; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0;">3</div>
+              <div><strong style="color:#0A0F0D;">Присоединитесь к Нейросборке</strong><br/><span style="font-size:13px; color:#6A7570;">Telegram-сообщество 2000+ практиков</span></div>
+            </div>
+          </div>
+          <a href="#" class="em-btn">Открыть dashboard →</a>
+          <div class="em-divider"></div>
+          <p style="font-size:13px; color:#9BA3A0;">Вопросы? Пишите <span class="accent">hello@leadup.ai</span> — ответим за 2 часа.</p>
+        </div>
+        <div class="em-footer">
+          © 2026 LeadUp AI · <a href="#">Отписаться</a> · <a href="#">leadup.ai</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMAIL 3: Weekly Digest -->
+    <div class="email-wrap">
+      <div class="email-label">Weekly digest</div>
+      <div class="email">
+        <div class="em-header"><img src="../../assets/logo-leadup-raw.png" alt="LeadUp AI"/></div>
+        <div class="em-body">
+          <div class="em-meta" style="margin-bottom:12px;">ДАЙДЖЕСТ · НЕДЕЛЯ 14–20 АПР 2026</div>
+          <h2>Ваши агенты за неделю</h2>
+          <div class="em-card">
+            <div class="em-stat-row">
+              <div class="em-stat"><div class="v">+18%</div><div class="l">ROI</div></div>
+              <div class="em-stat"><div class="v">47m</div><div class="l">saved / day</div></div>
+              <div class="em-stat"><div class="v">1,247</div><div class="l">tasks</div></div>
+            </div>
+          </div>
+          <p><span class="accent">slack-daily-digest</span> — 1,247 задач, 0.3% retry, $2.14 cost. Всё в норме.</p>
+          <p><span class="accent">support-triage</span> — 892 задачи. Quality score вырос до <strong>94%</strong>.</p>
+          <p style="color:#DC2626;"><strong>crm-sync</strong> — retry storm, 42%. Требует внимания.</p>
+          <div class="em-divider"></div>
+          <a href="#" class="em-btn">Открыть dashboard →</a>
+          <div class="em-divider"></div>
+          <p style="font-size:13px; color:#9BA3A0;">Этот дайджест приходит по понедельникам. <a href="#" style="color:#009E8A;">Настроить частоту</a></p>
+        </div>
+        <div class="em-footer">
+          © 2026 LeadUp AI · <a href="#">Отписаться</a> · <a href="#">leadup.ai</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
