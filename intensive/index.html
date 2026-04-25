@@ -523,15 +523,9 @@
           <p class="form-subtitle">28–29 апреля · 18:00–20:00 МСК · Zoom</p>
 
           <!--
-            ВАРИАНТ 1 — Встроенная форма HubSpot (подключить когда Дима пришлёт Portal ID + Form GUID)
-            1. Раскомментировать <script> HubSpot SDK в <head>
-            2. Раскомментировать hbspt.forms.create() в <script> внизу страницы
-            3. Закомментировать или удалить <form id="reg-form"> ниже
-          -->
-          <!-- <div id="hubspot-form-container"></div> -->
-
-          <!--
-            ВАРИАНТ 2 — HTML-форма (активна сейчас, отправляет через server-side webhook.php → HubSpot Contacts API)
+            Форма регистрации: POST → n8n webhook (https://n8n.flowstudio.cloud/webhook/intensiv-register).
+            n8n маршрутизирует по `tier` (standard → HubSpot list 4, vip → list 5)
+            и проставляет contact-property `intensive_tier`. См. LEA-501.
           -->
           <form id="reg-form" class="reg-form" novalidate>
             <div class="form-group">
