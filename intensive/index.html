@@ -59,7 +59,7 @@
         <div class="logo-icon">L</div>
         LeadUp AI
       </a>
-      <a href="#registration" class="btn btn-primary header-cta">Зарегистрироваться</a>
+      <a href="#registration" data-tier="standard" class="btn btn-primary header-cta">Зарегистрироваться</a>
     </div>
   </header>
 
@@ -105,7 +105,7 @@
       </div>
 
       <div class="hero-actions">
-        <a href="#registration" class="btn btn-primary btn-lg">
+        <a href="#registration" data-tier="standard" class="btn btn-primary btn-lg">
           Получить бесплатный доступ →
         </a>
         <a href="#program" class="btn btn-outline btn-lg">Программа</a>
@@ -480,7 +480,7 @@
             <li>Материалы к интенсиву</li>
             <li>Домашнее задание + разбор</li>
           </ul>
-          <a href="#registration" class="btn btn-outline btn-full">Зарегистрироваться</a>
+          <a href="#registration" data-tier="standard" class="btn btn-outline btn-full">Зарегистрироваться</a>
         </div>
 
         <!-- VIP -->
@@ -495,8 +495,7 @@
             <li>Чек-лист внедрения AI</li>
             <li>Закрытое сообщество на 1 месяц</li>
           </ul>
-          <!-- PLACEHOLDER: замените ссылку на реальную страницу оплаты -->
-          <a href="#PLACEHOLDER_VIP_PAYMENT_URL" class="btn btn-accent btn-full">
+          <a href="#registration" data-tier="vip" class="btn btn-accent btn-full">
             Получить VIP-доступ
           </a>
         </div>
@@ -535,6 +534,15 @@
             ВАРИАНТ 2 — HTML-форма (активна сейчас, отправляет через server-side webhook.php → HubSpot Contacts API)
           -->
           <form id="reg-form" class="reg-form" novalidate>
+            <div class="form-group">
+              <label for="tier">Тариф *</label>
+              <select id="tier" name="tier" required aria-describedby="tier-hint">
+                <option value="standard">Стандарт — бесплатно (только прямой эфир)</option>
+                <option value="vip">VIP — 5 000 ₽ / 50 EUR (запись + бонусы)</option>
+              </select>
+              <span class="form-hint" id="tier-hint">Можно изменить позже</span>
+            </div>
+
             <div class="form-group">
               <label for="fname">Имя *</label>
               <input
@@ -680,7 +688,7 @@
     <div class="container">
       <h2>Места ограничены.<br>Регистрируйтесь сейчас.</h2>
       <p>Бесплатный интенсив. 2 дня. Практика. 28–29 апреля 2026.</p>
-      <a href="#registration" class="btn btn-primary btn-lg">
+      <a href="#registration" data-tier="standard" class="btn btn-primary btn-lg">
         Зарегистрироваться бесплатно →
       </a>
     </div>
@@ -783,6 +791,40 @@
       var form = document.getElementById('reg-form');
       if (!form) return;
 
+      var tierSelect = document.getElementById('tier');
+      var submitBtn  = document.getElementById('submit-btn');
+      var formTitle  = document.querySelector('.form-title');
+
+      // Текст submit-кнопки и заголовка формы зависит от выбранного тарифа
+      function syncTierUI() {
+        if (tierSelect.value === 'vip') {
+          submitBtn.textContent = 'Получить VIP-доступ →';
+          if (formTitle) formTitle.textContent = 'VIP-регистрация';
+        } else {
+          submitBtn.textContent = 'Зарегистрироваться бесплатно →';
+          if (formTitle) formTitle.textContent = 'Бесплатная регистрация';
+        }
+      }
+      tierSelect.addEventListener('change', syncTierUI);
+
+      // Пре-выбор тарифа по data-tier на CTA-кнопках
+      document.querySelectorAll('[data-tier]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          var t = el.getAttribute('data-tier');
+          if (t === 'standard' || t === 'vip') {
+            tierSelect.value = t;
+            syncTierUI();
+          }
+        });
+      });
+
+      // Также читаем ?tier=vip из URL (для прямых ссылок из соцсетей/email)
+      var initialTier = new URLSearchParams(window.location.search).get('tier');
+      if (initialTier === 'vip' || initialTier === 'standard') {
+        tierSelect.value = initialTier;
+        syncTierUI();
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -818,14 +860,20 @@
         btn.textContent = 'Отправляем...';
 
         var urlParams = new URLSearchParams(window.location.search);
+        var tier = tierSelect.value === 'vip' ? 'vip' : 'standard';
         var payload = {
           firstname:    form.firstname.value.trim(),
           lastname:     '',
           email:        form.email.value.trim(),
           phone:        form.phone.value.trim(),
+          tier:         tier,
           utm_source:   urlParams.get('utm_source') || '',
           utm_campaign: urlParams.get('utm_campaign') || ''
         };
+
+        var fallbackRedirect = tier === 'vip'
+          ? '/intensive/thank-you-vip.html'
+          : '/intensive/thank-you.html';
 
         fetch('https://n8n.flowstudio.cloud/webhook/intensiv-register', {
           method: 'POST',
@@ -837,11 +885,11 @@
         })
         .then(function (data) {
           // Редирект независимо от ответа — не блокировать пользователя
-          window.location.href = (data && data.redirectTo) ? data.redirectTo : '/intensive/thank-you.html';
+          window.location.href = (data && data.redirectTo) ? data.redirectTo : fallbackRedirect;
         })
         .catch(function (err) {
           console.error('Registration webhook error:', err);
-          window.location.href = '/intensive/thank-you.html';
+          window.location.href = fallbackRedirect;
         });
       });
     })();

@@ -900,7 +900,8 @@ a {
   font-size: 13px;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
   width: 100%;
   padding: 14px 18px;
   background: var(--color-bg);
@@ -913,13 +914,32 @@ a {
   outline: none;
 }
 
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' fill='none'><path d='M1 1l4 4 4-4' stroke='%2300E5C7' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+  padding-right: 42px;
+  cursor: pointer;
+}
+
 .form-group input::placeholder {
   color: var(--color-text-faint);
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(0, 229, 199, 0.18);
+}
+
+.form-hint {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-top: 5px;
 }
 
 .form-error {
