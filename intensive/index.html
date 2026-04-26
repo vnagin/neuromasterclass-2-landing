@@ -472,7 +472,7 @@
         <!-- Бесплатный -->
         <div class="pricing-card">
           <div class="plan-name">Стандарт</div>
-          <div class="price">0 ₽</div>
+          <div class="price">Free</div>
           <div class="price-sub">Бесплатно</div>
           <ul>
             <li>Участие в прямом эфире</li>
@@ -486,8 +486,8 @@
         <!-- VIP -->
         <div class="pricing-card featured">
           <div class="plan-name">VIP</div>
-          <div class="price">5 000 ₽</div>
-          <div class="price-sub">или 50 EUR · разовый платёж</div>
+          <div class="price">50 EUR</div>
+          <div class="price-sub">разовый платёж · ≈ 5 000 ₽ для РФ</div>
           <ul>
             <li>Всё из «Стандарт»</li>
             <li><strong>Запись обоих дней</strong> (навсегда)</li>
@@ -532,7 +532,7 @@
               <label for="tier">Тариф *</label>
               <select id="tier" name="tier" required aria-describedby="tier-hint">
                 <option value="standard">Стандарт — бесплатно (только прямой эфир)</option>
-                <option value="vip">VIP — 5 000 ₽ / 50 EUR (запись + бонусы)</option>
+                <option value="vip">VIP — 50 EUR (запись + бонусы)</option>
               </select>
               <span class="form-hint" id="tier-hint">Можно изменить позже</span>
             </div>
@@ -567,13 +567,13 @@
 
             <div class="form-group">
               <label for="phone">
-                Телефон <span class="optional">(необязательно)</span>
+                Телефон с кодом страны <span class="optional">(необязательно)</span>
               </label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="+7 (999) 000-00-00"
+                placeholder="+_____________"
                 autocomplete="tel"
               />
             </div>
@@ -620,7 +620,7 @@
             <span class="arrow">+</span>
           </button>
           <div class="faq-answer">
-            Запись доступна только участникам VIP-тарифа (5 000 ₽ / 50 EUR).
+            Запись доступна только участникам VIP-тарифа (50 EUR).
             Бесплатное участие — только в прямом эфире.
           </div>
         </div>
