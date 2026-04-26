@@ -90,12 +90,31 @@
           <li>Приоритетные ответы на вопросы во время интенсива</li>
         </ul>
 
+        <p class="ty-pay-hint" style="margin: 0 0 12px; font-size: 14px; color: var(--color-text-muted);">
+          Выберите валюту оплаты
+        </p>
+
         <a
-          href="#PLACEHOLDER_VIP_PAYMENT_URL"
+          href="https://web.tribute.tg/s/THN"
+          data-mobile="https://t.me/tribute/app?startapp=sTHN"
           class="btn btn-accent btn-full btn-lg"
-          id="pay-btn"
+          id="pay-eur"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          💳 Оплатить 5 000 ₽ / 50 EUR
+          💳 Оплатить 50 EUR
+        </a>
+
+        <a
+          href="https://web.tribute.tg/s/THM"
+          data-mobile="https://t.me/tribute/app?startapp=sTHM"
+          class="btn btn-outline btn-full btn-lg"
+          id="pay-rub"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="margin-top: 12px;"
+        >
+          💳 Оплатить 5 000 ₽
         </a>
 
         <p class="form-privacy" style="margin-top: 16px;">
@@ -183,13 +202,30 @@
       } catch (e) {}
     })();
 
+    // ─── Desktop ↔ Mobile/Telegram routing ─────────────
+    (function () {
+      var isMobileOrTg =
+        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+        (window.Telegram && window.Telegram.WebApp);
+      if (!isMobileOrTg) return;
+      document.querySelectorAll('a[data-mobile]').forEach(function (el) {
+        var mobileHref = el.getAttribute('data-mobile');
+        if (mobileHref) el.setAttribute('href', mobileHref);
+      });
+    })();
+
     // ─── Отслеживание кликов ────────────────────────────
-    ['pay-btn', 'tg-btn'].forEach(function (id) {
+    var clickEvents = {
+      'pay-eur': 'vip_pay_click_eur',
+      'pay-rub': 'vip_pay_click_rub',
+      'tg-btn': 'telegram_bot_click'
+    };
+    Object.keys(clickEvents).forEach(function (id) {
       var el = document.getElementById(id);
       if (!el) return;
       el.addEventListener('click', function () {
         if (typeof gtag === 'function') {
-          gtag('event', id === 'pay-btn' ? 'vip_pay_click' : 'telegram_bot_click', {
+          gtag('event', clickEvents[id], {
             event_category: 'thank_you_vip',
             event_label: 'intensive_april_2026'
           });
