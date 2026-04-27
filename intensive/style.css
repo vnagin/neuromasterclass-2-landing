@@ -1333,6 +1333,12 @@ a {
     text-align: center;
   }
 
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+  }
+
   .btn-lg {
     padding: 16px 32px;
     font-size: 17px;
@@ -1367,6 +1373,13 @@ a {
     word-break: break-word;
   }
 
+  /* Регистрационная CTA: длинная русская строка не должна обрезаться на 360px */
+  .form-card .btn,
+  .btn-full {
+    white-space: normal;
+    word-break: break-word;
+  }
+
   /* Thank You: h1 слишком крупный на 320px */
   .ty-card h1 {
     font-size: 26px;
@@ -1382,6 +1395,12 @@ a {
   /* stats-bar: числа компактнее */
   .stats-bar .num {
     font-size: 36px;
+  }
+
+  /* Pricing-card: убираем 7px overflow на 360px и старых Android */
+  .pricing-card {
+    padding: 28px 20px;
+    min-width: 0;
   }
 }
 
@@ -1444,6 +1463,7 @@ a {
   padding: 8px 16px 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: 16px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
