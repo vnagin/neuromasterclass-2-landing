@@ -713,7 +713,7 @@
                   decoding="async"
                 />
                 <div class="form-side-rail__text">
-                  <strong>Магнит 1</strong>
+                  <strong>Карта 7 ролей</strong>
                   <span>Сразу после регистрации</span>
                 </div>
               </li>
@@ -727,7 +727,7 @@
                   decoding="async"
                 />
                 <div class="form-side-rail__text">
-                  <strong>Магнит 2</strong>
+                  <strong>Чек-лист готовности</strong>
                   <span>После интенсива</span>
                 </div>
               </li>
@@ -1077,6 +1077,40 @@
           window.location.href = fallbackRedirect;
         });
       });
+    })();
+
+
+    // ─── Bonus-stack carousel: pagination dots reflect visible card (mobile <768px) ───
+    (function () {
+      var grid = document.querySelector('.bonus-stack-grid');
+      var pagination = document.querySelector('.bonus-pagination');
+      if (!grid || !pagination || !('IntersectionObserver' in window)) return;
+
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.bonus-card'));
+      var dots  = Array.prototype.slice.call(pagination.querySelectorAll('.dot'));
+      if (!cards.length || cards.length !== dots.length) return;
+
+      function setActive(idx) {
+        dots.forEach(function (d, i) {
+          d.classList.toggle('is-active', i === idx);
+        });
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        // Pick the entry with the highest intersection ratio above threshold
+        var best = null;
+        entries.forEach(function (e) {
+          if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) {
+            best = e;
+          }
+        });
+        if (best) {
+          var idx = cards.indexOf(best.target);
+          if (idx >= 0) setActive(idx);
+        }
+      }, { root: grid, threshold: [0.55, 0.75, 0.95] });
+
+      cards.forEach(function (card) { observer.observe(card); });
     })();
   </script>
 

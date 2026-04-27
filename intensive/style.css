@@ -1511,10 +1511,14 @@ a {
 
 .bonus-meta li {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-text-muted);
   padding-left: 14px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .bonus-meta li { font-size: 12px; }
 }
 
 .bonus-meta li::before {
