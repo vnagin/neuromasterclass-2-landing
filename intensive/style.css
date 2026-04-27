@@ -39,6 +39,11 @@
   /* VIP differentiator (warning yellow from v3 semantic) */
   --color-gold: #F5B544;
 
+  /* Info blue (bonus-stack tier-after badge, LEA-559) */
+  --color-info: #7BA9F5;
+  --color-info-tint: rgba(59, 130, 246, 0.12);
+  --color-info-border: rgba(59, 130, 246, 0.32);
+
   /* v3 type — Geist + Geist Mono */
   --font-heading: 'Geist', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
   --font-body: 'Geist', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
@@ -1416,4 +1421,276 @@ a {
 .ty-event-detail-item .detail-icon {
   font-size: 20px;
   flex-shrink: 0;
+}
+
+/* ===================================================
+   BONUS-STACK SECTION (LEA-559)
+   Mobile = horizontal snap-scroll carousel
+   Desktop ≥768px = 3-column grid
+   =================================================== */
+
+.bonus-stack-section .section-desc {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* Default = mobile carousel */
+.bonus-stack-grid {
+  display: flex;
+  gap: 16px;
+  margin-top: 48px;
+  padding: 8px 16px 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.bonus-stack-grid::-webkit-scrollbar { display: none; }
+
+.bonus-card {
+  position: relative;
+  flex: 0 0 calc(100vw - 56px);
+  max-width: 360px;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.bonus-card--vip {
+  border-color: var(--color-primary-tint-2);
+  box-shadow: var(--shadow-glow);
+}
+
+.bonus-cover {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+  background: var(--color-surface-2);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.bonus-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.bonus-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  letter-spacing: -0.3px;
+}
+
+.bonus-desc {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-body);
+  margin-bottom: 16px;
+}
+
+.bonus-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bonus-meta li {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  padding-left: 14px;
+  position: relative;
+}
+
+.bonus-meta li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.bonus-tier-badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-strong);
+}
+
+.bonus-tier-badge.tier-all {
+  background: var(--color-surface-3);
+  color: var(--color-text-body);
+}
+
+.bonus-tier-badge.tier-after {
+  background: var(--color-info-tint);
+  color: var(--color-info);
+  border-color: var(--color-info-border);
+}
+
+.bonus-tier-badge.tier-vip {
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  border-color: var(--color-primary-tint-2);
+}
+
+/* Mobile carousel pagination dots */
+.bonus-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.bonus-pagination .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+  transition: background var(--transition), transform var(--transition);
+}
+
+.bonus-pagination .dot.is-active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+/* Desktop ≥768px → 3-col grid */
+@media (min-width: 768px) {
+  .bonus-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    overflow: visible;
+    padding: 8px 0;
+  }
+
+  .bonus-card {
+    flex: initial;
+    max-width: none;
+    scroll-snap-align: none;
+  }
+
+  .bonus-card:hover .bonus-cover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .bonus-pagination {
+    display: none;
+  }
+}
+
+/* ===================================================
+   FORM SECTION SIDE-RAIL (LEA-559, desktop ≥1024px)
+   =================================================== */
+
+/* Default (mobile/tablet): hide rail, keep form centered as before */
+.form-side-rail {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .form-wrapper--with-rail {
+    max-width: 920px;
+    display: grid;
+    grid-template-columns: minmax(0, 560px) minmax(0, 280px);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .form-side-rail {
+    display: block;
+    position: sticky;
+    top: 88px;
+  }
+
+  .form-side-rail__inner {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: 20px;
+  }
+
+  .form-side-rail__title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 16px;
+  }
+
+  .form-side-rail__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-side-rail__item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .form-side-rail__item img {
+    width: 64px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-surface-2);
+  }
+
+  .form-side-rail__item--vip img {
+    border-color: var(--color-primary-tint-2);
+    box-shadow: 0 0 0 1px var(--color-primary-tint-2);
+  }
+
+  .form-side-rail__text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .form-side-rail__text strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .form-side-rail__text span {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
 }
