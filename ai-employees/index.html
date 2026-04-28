@@ -228,6 +228,48 @@
     .feature-title { font-size: var(--text-base); font-weight: var(--fw-semibold); margin-bottom: 4px; color: var(--fg-1); }
     .feature-text { font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-normal); }
 
+    /* ─── DEMO ─── */
+    .demo { padding: 100px 0; }
+    .demo-header { text-align: center; margin-bottom: 48px; }
+    .demo-wrap {
+      display: grid; grid-template-columns: 1.6fr 1fr; gap: 32px; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    @media (max-width: 900px) { .demo-wrap { grid-template-columns: 1fr; } }
+    .demo-player {
+      position: relative; border-radius: var(--r-2xl); overflow: hidden;
+      background: #000;
+      border: 1px solid var(--border-2);
+      aspect-ratio: 16/9;
+      box-shadow: var(--shadow-2), var(--shadow-teal);
+    }
+    .demo-player video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
+    .demo-unmute {
+      position: absolute; top: 14px; right: 14px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(8, 14, 18, 0.7); backdrop-filter: blur(8px);
+      border: 1px solid var(--border-2); color: var(--fg-1);
+      padding: 8px 14px; border-radius: var(--r-full);
+      font-family: var(--font-mono); font-size: var(--text-xs);
+      letter-spacing: var(--tracking-mono);
+      cursor: pointer; transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+    }
+    .demo-unmute:hover { background: var(--teal-tint); border-color: var(--teal); color: var(--teal); }
+    .demo-side { display: flex; flex-direction: column; gap: 16px; }
+    .demo-side-title {
+      font-size: var(--text-xl); font-weight: var(--fw-semibold);
+      line-height: var(--lh-tight); color: var(--fg-1);
+    }
+    .demo-side-text { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
+    .demo-disclaimer {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs); color: var(--fg-3);
+      line-height: var(--lh-normal);
+      padding: 12px 14px;
+      background: var(--bg-2); border-radius: var(--r-md);
+      border-left: 2px solid var(--teal);
+    }
+
     /* ─── PACKAGES ─── */
     .packages { padding: 100px 0; background: var(--bg-2); }
     .packages-header { text-align: center; margin-bottom: 56px; }
@@ -499,6 +541,7 @@
     <ul class="nav-links">
       <li><a href="#pain">Проблемы</a></li>
       <li><a href="#what">Что это</a></li>
+      <li><a href="#demo">Демо</a></li>
       <li><a href="#packages">Тарифы</a></li>
       <li><a href="#how">Как работает</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -662,6 +705,44 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="demo" id="demo">
+  <div class="container">
+    <div class="demo-header">
+      <span class="tag">Демо</span>
+      <h2 class="section-title" style="margin-top:16px;">Так работает AI-команда</h2>
+      <p class="section-sub">Один день из жизни AI-сотрудника — как агенты обрабатывают задачи, пока ваш бизнес отдыхает</p>
+    </div>
+    <div class="demo-wrap">
+      <div class="demo-player">
+        <video
+          id="demoVideo"
+          src="assets/leadup-ai-team-demo-v2.mp4"
+          poster="assets/demo-poster.png"
+          autoplay muted loop playsinline preload="metadata"
+          aria-label="Демо: один день AI-сотрудника"
+        ></video>
+        <button class="demo-unmute" id="demoUnmute" type="button" aria-label="Включить звук">
+          <span id="demoUnmuteIcon">🔇</span>
+          <span id="demoUnmuteLabel">Включить звук</span>
+        </button>
+      </div>
+      <div class="demo-side">
+        <div class="demo-side-title">Демо: один день AI-сотрудника</div>
+        <p class="demo-side-text">
+          В видео показан сценарий работы AI-команды: как агенты принимают заявки, отвечают клиентам и готовят отчёты — параллельно, без перерывов.
+        </p>
+        <div class="demo-disclaimer">
+          Это иллюстрация продукта, не текущая статистика клиента. Конкретные результаты обсуждаем на диагностике.
+        </div>
+        <a href="#contact" class="btn btn-primary" style="align-self:flex-start;">
+          Записаться на диагностику
+        </a>
       </div>
     </div>
   </div>
@@ -991,6 +1072,34 @@
     stickyCta.classList.toggle('visible', !e.isIntersecting);
   }, { threshold: 0.1 });
   observer.observe(hero);
+
+  // Demo video — click/tap toggles sound; tracks Metrika goal once
+  (function() {
+    var video = document.getElementById('demoVideo');
+    var btn = document.getElementById('demoUnmute');
+    var icon = document.getElementById('demoUnmuteIcon');
+    var label = document.getElementById('demoUnmuteLabel');
+    if (!video || !btn) return;
+    var unmuteSent = false;
+    function toggleSound() {
+      if (video.muted) {
+        video.muted = false;
+        if (video.paused) video.play().catch(function(){});
+        icon.textContent = '🔊';
+        label.textContent = 'Выключить звук';
+        if (!unmuteSent && typeof ym === 'function' && typeof METRIKA_ID !== 'undefined' && METRIKA_ID) {
+          ym(METRIKA_ID, 'reachGoal', 'demoUnmute');
+          unmuteSent = true;
+        }
+      } else {
+        video.muted = true;
+        icon.textContent = '🔇';
+        label.textContent = 'Включить звук';
+      }
+    }
+    btn.addEventListener('click', function(e) { e.stopPropagation(); toggleSound(); });
+    video.addEventListener('click', toggleSound);
+  })();
 
   // FAQ accordion
   document.querySelectorAll('.faq-q').forEach(q => {
