@@ -686,6 +686,22 @@
               />
             </div>
 
+            <div class="form-group form-group--tg" id="tg-username-group" hidden>
+              <label for="tg_username">Telegram username *</label>
+              <input
+                type="text"
+                id="tg_username"
+                name="tg_username"
+                placeholder="@username"
+                autocomplete="off"
+                autocapitalize="none"
+                spellcheck="false"
+                aria-describedby="tg-hint tg-error"
+              />
+              <span class="form-hint" id="tg-hint">Нужно для зачисления в VIP-канал и привязки оплаты</span>
+              <span class="form-error" id="tg-error" role="alert" aria-live="polite"></span>
+            </div>
+
             <button type="submit" class="btn btn-primary btn-full btn-lg" id="submit-btn">
               Зарегистрироваться бесплатно →
             </button>
@@ -979,15 +995,26 @@
       var tierSelect = document.getElementById('tier');
       var submitBtn  = document.getElementById('submit-btn');
       var formTitle  = document.querySelector('.form-title');
+      var tgGroup    = document.getElementById('tg-username-group');
+      var tgInput    = document.getElementById('tg_username');
 
-      // Текст submit-кнопки и заголовка формы зависит от выбранного тарифа
+      // Текст submit-кнопки, заголовка формы и видимость TG-поля зависят от тарифа.
+      // tg_username собирается только на VIP — n8n bridge для Tribute webhook (LEA-737).
       function syncTierUI() {
         if (tierSelect.value === 'vip') {
           submitBtn.textContent = 'Получить VIP-доступ →';
           if (formTitle) formTitle.textContent = 'VIP-регистрация';
+          if (tgGroup) tgGroup.hidden = false;
+          if (tgInput) tgInput.required = true;
         } else {
           submitBtn.textContent = 'Зарегистрироваться бесплатно →';
           if (formTitle) formTitle.textContent = 'Бесплатная регистрация';
+          if (tgGroup) tgGroup.hidden = true;
+          if (tgInput) {
+            tgInput.required = false;
+            document.getElementById('tg-error').textContent = '';
+            tgInput.classList.remove('input-error');
+          }
         }
       }
       tierSelect.addEventListener('change', syncTierUI);
@@ -1038,6 +1065,23 @@
           document.getElementById('email').classList.add('input-error');
           valid = false;
         }
+
+        var tgUsernameNorm = '';
+        if (tierSelect.value === 'vip') {
+          var tgRaw = (form.tg_username.value || '').trim();
+          tgUsernameNorm = tgRaw.replace(/^@/, '').toLowerCase();
+          var tgError = document.getElementById('tg-error');
+          if (!tgUsernameNorm) {
+            tgError.textContent = 'Пожалуйста, введите Telegram username';
+            tgInput.classList.add('input-error');
+            valid = false;
+          } else if (!/^[a-z0-9_]{5,32}$/.test(tgUsernameNorm)) {
+            tgError.textContent = 'Только латиница, цифры и подчёркивание, от 5 до 32 символов';
+            tgInput.classList.add('input-error');
+            valid = false;
+          }
+        }
+
         if (!valid) return;
 
         var btn = document.getElementById('submit-btn');
@@ -1052,6 +1096,7 @@
           email:        form.email.value.trim(),
           phone:        form.phone.value.trim(),
           tier:         tier,
+          tg_username:  tgUsernameNorm,
           utm_source:   urlParams.get('utm_source') || '',
           utm_campaign: urlParams.get('utm_campaign') || ''
         };
