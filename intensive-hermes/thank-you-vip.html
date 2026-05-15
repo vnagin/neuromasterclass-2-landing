@@ -60,32 +60,70 @@
           <li>Приоритетные ответы на вопросы во время интенсива</li>
         </ul>
 
-        <p class="ty-pay-hint" style="margin: 0 0 12px; font-size: 14px; color: var(--color-text-muted);">
-          Выберите валюту оплаты
+        <p class="ty-pay-hint">
+          Выберите валюту и способ оплаты
         </p>
 
-        <a
-          href="https://web.tribute.tg/s/THN"
-          data-mobile="https://t.me/tribute/app?startapp=sTHN"
-          class="btn btn-accent btn-full btn-lg"
-          id="pay-eur"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          💳 Оплатить 50 EUR
-        </a>
+        <div class="ty-pay-grid">
+          <div class="ty-pay-card">
+            <div class="ty-pay-price">
+              <span class="ty-pay-amount">5 000 ₽</span>
+              <span class="ty-pay-meta">для российских карт</span>
+            </div>
+            <a
+              href="https://t.me/tribute/app?startapp=sVdt"
+              class="btn btn-accent btn-full ty-pay-btn"
+              id="pay-rub-tg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="ty-pay-btn-icon" aria-hidden="true">✈</span>
+              Оплатить в Telegram
+            </a>
+            <a
+              href="https://web.tribute.tg/s/Vdt"
+              class="btn btn-outline btn-full ty-pay-btn"
+              id="pay-rub-web"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="ty-pay-btn-icon" aria-hidden="true">💳</span>
+              Оплатить картой
+            </a>
+          </div>
 
-        <a
-          href="https://web.tribute.tg/s/THM"
-          data-mobile="https://t.me/tribute/app?startapp=sTHM"
-          class="btn btn-outline btn-full btn-lg"
-          id="pay-rub"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="margin-top: 12px;"
-        >
-          💳 Оплатить 5 000 ₽
-        </a>
+          <div class="ty-pay-card">
+            <div class="ty-pay-price">
+              <span class="ty-pay-amount">50 EUR</span>
+              <span class="ty-pay-meta">международные карты</span>
+            </div>
+            <a
+              href="https://t.me/tribute/app?startapp=sVdu"
+              class="btn btn-accent btn-full ty-pay-btn"
+              id="pay-eur-tg"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="ty-pay-btn-icon" aria-hidden="true">✈</span>
+              Оплатить в Telegram
+            </a>
+            <a
+              href="https://web.tribute.tg/s/Vdu"
+              class="btn btn-outline btn-full ty-pay-btn"
+              id="pay-eur-web"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="ty-pay-btn-icon" aria-hidden="true">💳</span>
+              Оплатить картой
+            </a>
+          </div>
+        </div>
+
+        <p class="ty-pay-foot">
+          Платежи обрабатываются через <a href="https://tribute.tg" target="_blank" rel="noopener noreferrer">Tribute</a> —
+          поддерживает РФ-карты, международные карты и оплату через Telegram-кошелёк.
+        </p>
       </div>
 
       <div class="ty-tg-block" style="margin-top: 24px;">
@@ -154,20 +192,11 @@
       } catch (e) {}
     })();
 
-    (function () {
-      var isMobileOrTg =
-        /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-        (window.Telegram && window.Telegram.WebApp);
-      if (!isMobileOrTg) return;
-      document.querySelectorAll('a[data-mobile]').forEach(function (el) {
-        var mobileHref = el.getAttribute('data-mobile');
-        if (mobileHref) el.setAttribute('href', mobileHref);
-      });
-    })();
-
     var clickEvents = {
-      'pay-eur': 'vip_pay_click_eur',
-      'pay-rub': 'vip_pay_click_rub',
+      'pay-rub-tg': 'vip_pay_click_rub_tg',
+      'pay-rub-web': 'vip_pay_click_rub_web',
+      'pay-eur-tg': 'vip_pay_click_eur_tg',
+      'pay-eur-web': 'vip_pay_click_eur_web',
       'tg-btn': 'telegram_bot_click'
     };
     Object.keys(clickEvents).forEach(function (id) {

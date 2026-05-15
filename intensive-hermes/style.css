@@ -1291,6 +1291,97 @@ a {
   color: var(--color-primary);
 }
 
+/* ─── VIP pay-grid (RUB + EUR, Telegram + Web) ─── */
+.ty-pay-hint {
+  margin: 0 0 16px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+}
+
+.ty-pay-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  text-align: left;
+}
+
+.ty-pay-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ty-pay-price {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.ty-pay-amount {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+}
+
+.ty-pay-meta {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+.ty-pay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: normal;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.ty-pay-btn-icon {
+  display: inline-flex;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.ty-pay-foot {
+  margin: 16px 0 0;
+  font-size: 13px;
+  color: var(--color-text-faint);
+  line-height: 1.55;
+}
+
+.ty-pay-foot a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary-tint-2);
+  text-underline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+  .ty-pay-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .ty-pay-card { padding: 18px; }
+  .ty-pay-amount { font-size: 26px; }
+  .ty-pay-btn { padding: 12px 14px; font-size: 14px; }
+}
+
 /* ─── Утилиты ─── */
 .text-center { text-align: center; }
 .mt-4 { margin-top: 16px; }
