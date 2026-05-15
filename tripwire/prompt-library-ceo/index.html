@@ -806,6 +806,17 @@ footer .legal { font-family: var(--font-mono); font-size: 11px; letter-spacing: 
   var form = document.getElementById('checkout-form');
   var submit = document.getElementById('checkout-submit');
 
+  // UTM/referral пробрасываем в webhook → HubSpot upsert (utm_source/medium/campaign/term/content + ref)
+  function parseUtm() {
+    var p = new URLSearchParams(window.location.search || '');
+    var out = {};
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','ref','gclid','fbclid'].forEach(function (k) {
+      var v = p.get(k);
+      if (v) out[k] = v;
+    });
+    return out;
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = {
@@ -815,6 +826,8 @@ footer .legal { font-family: var(--font-mono); font-size: 11px; letter-spacing: 
       amount: form.elements['currency'].value === 'EUR' ? 29 : 2600,
       product: 'prompt-library-ceo',
       source: 'ads.leadup.guru/tripwire/prompt-library-ceo',
+      utm: parseUtm(),
+      referrer: document.referrer || '',
       ts: new Date().toISOString()
     };
 
