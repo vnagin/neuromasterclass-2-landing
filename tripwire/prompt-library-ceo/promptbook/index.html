@@ -1,0 +1,1221 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Промпт-библиотека CEO — 50 промптов · LeadUp AI</title>
+<meta name="description" content="50 промптов для не-IT собственника в 5 категориях: стратегия, продажи, маркетинг, операции, HR. Поиск, копирование, шпаргалка."/>
+<meta name="robots" content="noindex,nofollow"/>
+<link rel="canonical" href="https://ads.leadup.guru/tripwire/prompt-library-ceo/promptbook/"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Промпт-библиотека CEO — 50 промптов"/>
+<meta property="og:description" content="50 промптов в 5 категориях · поиск · копирование · шпаргалка"/>
+<meta property="og:url" content="https://ads.leadup.guru/tripwire/prompt-library-ceo/promptbook/"/>
+<meta property="og:image" content="https://ads.leadup.guru/tripwire/prompt-library-ceo/og-v1.jpg"/>
+<meta property="og:locale" content="ru_RU"/>
+<meta property="og:site_name" content="LeadUp AI"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap"/>
+
+<style>
+:root {
+  color-scheme: dark;
+  --teal:            #00E5C7;
+  --teal-hover:      #14F5D7;
+  --teal-pressed:    #00CBB0;
+  --teal-tint:       rgba(0, 229, 199, 0.12);
+  --teal-tint-2:     rgba(0, 229, 199, 0.20);
+  --teal-glow:       0 0 24px rgba(0, 229, 199, 0.45);
+
+  --bg-0:            #050807;
+  --bg-1:            #0A0F0D;
+  --bg-2:            #0F1512;
+  --bg-3:            #141B18;
+  --bg-4:            #1B2420;
+  --bg-5:            #253029;
+
+  --fg-1:            #EDEFEE;
+  --fg-2:            rgba(237, 239, 238, 0.72);
+  --fg-3:            rgba(237, 239, 238, 0.52);
+  --fg-4:            rgba(237, 239, 238, 0.36);
+
+  --border-1:        rgba(255, 255, 255, 0.06);
+  --border-2:        rgba(255, 255, 255, 0.10);
+  --border-3:        rgba(255, 255, 255, 0.18);
+
+  --success:         #3EE089;
+  --warning:         #F5B544;
+  --danger:          #FF5D5D;
+
+  --font-sans:       'Geist', -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  --font-mono:       'Geist Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+  --r-sm: 4px;  --r-md: 6px;  --r-lg: 8px;  --r-xl: 10px;
+  --r-2xl: 14px; --r-3xl: 20px; --r-full: 9999px;
+
+  --ease:            cubic-bezier(0.2, 0, 0, 1);
+  --grad-glow:       radial-gradient(60% 80% at 50% 0%, rgba(0,229,199,0.18) 0%, transparent 60%);
+  --grid-line:       rgba(255, 255, 255, 0.035);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body {
+  background: var(--bg-1);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--fg-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+a { color: var(--teal); text-decoration: none; transition: color 120ms var(--ease); }
+a:hover { color: var(--teal-hover); }
+::selection { background: var(--teal-tint-2); color: var(--fg-1); }
+:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: var(--r-md); }
+
+h1, h2, h3, h4 { color: var(--fg-1); margin: 0; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+h1 { font-size: clamp(32px, 5vw, 48px); }
+h2 { font-size: clamp(22px, 3vw, 30px); }
+h3 { font-size: clamp(18px, 2.2vw, 22px); font-weight: 600; }
+h4 { font-size: 16px; font-weight: 600; }
+p  { margin: 0; color: var(--fg-2); }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,15,13,0.85);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid var(--border-1);
+}
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; padding: 12px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  color: var(--fg-1); font-weight: 600; font-size: 14px;
+  text-decoration: none; letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+.nav-logo .nav-icon { font-size: 18px; }
+.nav-search {
+  position: relative; max-width: 520px; width: 100%; justify-self: center;
+}
+.nav-search input {
+  width: 100%;
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  padding: 9px 12px 9px 34px;
+  border-radius: var(--r-lg);
+  transition: border-color 160ms var(--ease), background 160ms var(--ease);
+}
+.nav-search input::placeholder { color: var(--fg-4); }
+.nav-search input:focus { border-color: var(--teal); background: var(--bg-3); outline: none; }
+.nav-search .icon { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--fg-3); font-size: 14px; line-height: 1; pointer-events: none; }
+.nav-search .clear {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  background: transparent; border: 0; color: var(--fg-3); cursor: pointer;
+  padding: 4px 8px; font-size: 12px; border-radius: var(--r-sm);
+}
+.nav-search .clear:hover { color: var(--fg-1); background: var(--bg-3); }
+
+.nav-links { display: flex; gap: 18px; align-items: center; white-space: nowrap; }
+.nav-link {
+  color: var(--fg-2);
+  font-size: 13px; font-weight: 500;
+  text-decoration: none;
+  transition: color 120ms var(--ease);
+}
+.nav-link:hover { color: var(--fg-1); }
+.nav-link.accent { color: var(--teal); }
+.nav-link.accent:hover { color: var(--teal-hover); }
+
+@media (max-width: 880px) {
+  .nav-inner { grid-template-columns: 1fr; gap: 10px; }
+  .nav-search { max-width: 100%; }
+  .nav-links { justify-content: space-between; }
+  .nav-logo { font-size: 13px; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  padding: 56px 0 32px;
+  background:
+    var(--grad-glow),
+    linear-gradient(transparent 0%, rgba(0,229,199,0.02) 100%),
+    var(--bg-1);
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; }
+.hero h1 { margin-bottom: 12px; }
+.hero .lede {
+  color: var(--fg-2);
+  font-size: 17px;
+  max-width: 620px;
+}
+.hero .meta {
+  margin-top: 18px;
+  display: flex; flex-wrap: wrap; gap: 12px 24px;
+  color: var(--fg-3);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hero .meta .dot { color: var(--teal); }
+.hero .badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--teal-tint);
+  border: 1px solid var(--teal-tint-2);
+  color: var(--teal);
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* ===== CATEGORY JUMP-NAV ===== */
+.cat-nav {
+  margin: 24px 0 32px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.chip {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  color: var(--fg-2);
+  padding: 8px 14px;
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 160ms var(--ease), color 160ms var(--ease), background 160ms var(--ease);
+  user-select: none;
+}
+.chip:hover { color: var(--fg-1); border-color: var(--border-3); }
+.chip.active { background: var(--teal-tint); border-color: var(--teal-tint-2); color: var(--teal); }
+.chip .count { color: var(--fg-4); margin-left: 4px; font-family: var(--font-mono); font-size: 11px; }
+.chip.active .count { color: var(--teal); opacity: 0.7; }
+
+/* ===== GALLERY ===== */
+.cat-section { padding: 24px 0 8px; }
+.cat-title {
+  display: flex; align-items: baseline; gap: 12px;
+  margin: 24px 0 18px;
+}
+.cat-title .icon { font-size: 22px; }
+.cat-title .num { color: var(--fg-4); font-family: var(--font-mono); font-size: 14px; font-weight: 400; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-2xl);
+  padding: 18px;
+  cursor: pointer;
+  display: flex; flex-direction: column;
+  gap: 10px;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  transition: border-color 160ms var(--ease), background 160ms var(--ease), transform 160ms var(--ease);
+  position: relative;
+  min-height: 180px;
+}
+.card:hover {
+  border-color: var(--teal-tint-2);
+  background: var(--bg-3);
+  transform: translateY(-1px);
+}
+.card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px;
+}
+.card-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+}
+.card-video {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--teal-tint);
+  border: 1px solid var(--teal-tint-2);
+  color: var(--teal);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--fg-1);
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+.card-use {
+  font-size: 13px;
+  color: var(--fg-3);
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-open {
+  margin-top: auto;
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--teal);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--fg-3);
+  border: 1px dashed var(--border-2);
+  border-radius: var(--r-2xl);
+  margin: 24px 0;
+}
+.empty .big { font-size: 18px; color: var(--fg-2); margin-bottom: 8px; }
+
+/* ===== MODAL ===== */
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(5, 8, 7, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 16px;
+  overflow-y: auto;
+}
+.modal-backdrop.open { display: flex; }
+.modal {
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-2xl);
+  max-width: 820px;
+  width: 100%;
+  margin: 24px auto;
+  position: relative;
+}
+.modal-head {
+  position: sticky; top: 0;
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border-1);
+  padding: 20px 24px 16px;
+  border-radius: var(--r-2xl) var(--r-2xl) 0 0;
+  display: flex; align-items: flex-start; gap: 16px;
+  z-index: 1;
+}
+.modal-head .meta {
+  flex: 1;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.modal-head .top-row {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--fg-3);
+  text-transform: uppercase;
+}
+.modal-head h2 {
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+.modal-close {
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  color: var(--fg-2);
+  width: 36px; height: 36px;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: color 120ms var(--ease), border-color 120ms var(--ease);
+}
+.modal-close:hover { color: var(--fg-1); border-color: var(--border-3); }
+.modal-body { padding: 8px 24px 28px; }
+
+.section { margin-top: 22px; }
+.section .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section .label .accent { color: var(--teal); }
+.section .text { color: var(--fg-2); font-size: 15px; line-height: 1.55; }
+.section .example-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  margin-left: 6px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+.code-wrap { position: relative; margin-top: 4px; }
+pre.code {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  padding: 14px 16px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg-1);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+}
+.copy-btn {
+  position: absolute; top: 10px; right: 10px;
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  color: var(--fg-2);
+  padding: 6px 12px;
+  border-radius: var(--r-md);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 120ms var(--ease);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.copy-btn:hover { color: var(--teal); border-color: var(--teal-tint-2); background: var(--bg-4); }
+.copy-btn.copied { color: var(--teal); border-color: var(--teal); background: var(--teal-tint); }
+
+@media (max-width: 640px) {
+  .modal-body { padding: 8px 16px 20px; }
+  .modal-head { padding: 16px 16px 12px; }
+  .modal-head h2 { font-size: 19px; }
+  pre.code { font-size: 12.5px; padding: 12px 14px; padding-top: 38px; }
+  .copy-btn { top: 6px; right: 6px; padding: 4px 9px; }
+}
+
+/* ===== CHEATSHEET ===== */
+.cheat {
+  background: var(--bg-2);
+  border-top: 1px solid var(--border-1);
+  border-bottom: 1px solid var(--border-1);
+  padding: 64px 0;
+  margin-top: 64px;
+}
+.cheat h2 { margin-bottom: 14px; }
+.cheat .lede { color: var(--fg-2); margin-bottom: 32px; max-width: 620px; }
+.cheat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.cheat-card {
+  background: var(--bg-3);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  padding: 18px 20px;
+}
+.cheat-card .num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--teal);
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.cheat-card h3 { font-size: 17px; margin-bottom: 10px; }
+.cheat-card p { color: var(--fg-2); font-size: 14px; line-height: 1.5; margin-bottom: 8px; }
+.cheat-card .weak, .cheat-card .strong {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: var(--r-md);
+  background: var(--bg-1);
+  border-left: 2px solid var(--border-3);
+  color: var(--fg-3);
+}
+.cheat-card .strong { border-left-color: var(--teal); color: var(--fg-2); }
+.cheat-card .label-inline {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+  margin-bottom: 4px;
+}
+.cheat-formula {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--bg-3);
+  border: 1px solid var(--teal-tint-2);
+  border-radius: var(--r-lg);
+}
+.cheat-formula .label {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 10px;
+}
+.cheat-formula code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--fg-1);
+  padding: 12px 0;
+  white-space: pre-wrap;
+}
+.cheat-formula .ex {
+  margin-top: 14px;
+  background: var(--bg-1);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--fg-2);
+  white-space: pre-wrap;
+}
+.cheat-table {
+  margin-top: 32px;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.cheat-table th, .cheat-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border-1);
+  vertical-align: top;
+  text-align: left;
+}
+.cheat-table th {
+  color: var(--fg-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom-color: var(--border-2);
+}
+.cheat-table td { color: var(--fg-2); }
+.cheat-table tr:last-child td { border-bottom: 0; }
+
+/* ===== HOW-TO + NEXT ===== */
+.how, .next {
+  padding: 56px 0;
+  border-top: 1px solid var(--border-1);
+}
+.how h2, .next h2 { margin-bottom: 18px; }
+.how-steps { counter-reset: step; display: grid; gap: 12px; margin-top: 24px; }
+.how-step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  align-items: start;
+  padding: 16px 18px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+}
+.how-step .n {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--teal);
+  letter-spacing: -0.02em;
+}
+.how-step h4 { margin-bottom: 4px; }
+.how-step p { font-size: 14px; }
+.how-fix {
+  margin-top: 28px;
+  padding: 18px 20px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+}
+.how-fix h4 { margin-bottom: 12px; }
+.how-fix-list { display: grid; gap: 10px; }
+.how-fix-list .row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-top: 1px solid var(--border-1);
+}
+.how-fix-list .row:first-child { border-top: 0; padding-top: 0; }
+.how-fix-list .q { color: var(--fg-2); font-size: 14px; }
+.how-fix-list .a { color: var(--fg-3); font-size: 13px; font-family: var(--font-mono); line-height: 1.5; }
+@media (max-width: 640px) {
+  .how-fix-list .row { grid-template-columns: 1fr; gap: 4px; }
+}
+
+.next-card {
+  margin-top: 24px;
+  padding: 28px;
+  background: var(--bg-2);
+  border: 1px solid var(--teal-tint-2);
+  border-radius: var(--r-2xl);
+  position: relative;
+  overflow: hidden;
+}
+.next-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(60% 100% at 30% 50%, rgba(0,229,199,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.next-card > * { position: relative; }
+.next-card h3 { margin-bottom: 10px; }
+.next-card p { margin-bottom: 18px; font-size: 15px; }
+.next-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--teal);
+  color: #061210;
+  padding: 12px 22px;
+  border-radius: var(--r-lg);
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 160ms var(--ease);
+}
+.next-btn:hover {
+  background: var(--teal-hover);
+  color: #061210;
+  box-shadow: var(--teal-glow);
+  transform: translateY(-1px);
+}
+.next-card .small {
+  margin-top: 14px;
+  color: var(--fg-3);
+  font-size: 13px;
+}
+
+/* ===== FOOTER ===== */
+.foot {
+  padding: 32px 0 56px;
+  color: var(--fg-3);
+  font-size: 13px;
+  border-top: 1px solid var(--border-1);
+  margin-top: 48px;
+}
+.foot-inner {
+  display: flex; flex-wrap: wrap; gap: 16px 32px;
+  align-items: center; justify-content: space-between;
+}
+.foot a { color: var(--fg-2); }
+.foot a:hover { color: var(--teal); }
+
+/* ===== TOAST ===== */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--bg-3);
+  border: 1px solid var(--teal-tint-2);
+  color: var(--teal);
+  padding: 10px 18px;
+  border-radius: var(--r-lg);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  z-index: 300;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms var(--ease), transform 160ms var(--ease);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 640px) {
+  .hero { padding: 40px 0 20px; }
+  .cat-section { padding: 16px 0 8px; }
+  .card { min-height: 0; padding: 16px; }
+  .cat-nav { margin: 16px 0 24px; }
+  .chip { font-size: 12.5px; padding: 7px 12px; }
+  .grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="topnav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" data-action="scroll-top">
+      <span class="nav-icon">🧭</span>
+      <span>Промпт-библиотека CEO</span>
+    </a>
+    <div class="nav-search">
+      <span class="icon">🔍</span>
+      <input id="q" type="search" placeholder="Поиск по 50 промптам — название, ситуация, ошибка…" autocomplete="off" />
+      <button class="clear" id="q-clear" type="button" aria-label="Очистить поиск" hidden>✕</button>
+    </div>
+    <div class="nav-links">
+      <a class="nav-link" href="#cheatsheet">Шпаргалка</a>
+      <a class="nav-link accent" href="#next">Что дальше</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="badge">Tripwire · LeadUp AI</div>
+    <h1>Промпт-библиотека CEO — 50 промптов</h1>
+    <p class="lede">Откройте категорию, найдите ситуацию, скопируйте промпт. 50 рабочих шаблонов в 5 категориях для не-IT собственника.</p>
+    <div class="meta">
+      <span><span class="dot">●</span> 50 промптов</span>
+      <span><span class="dot">●</span> 5 категорий</span>
+      <span><span class="dot">●</span> 10 с видео-разбором</span>
+      <span><span class="dot">●</span> Поиск + копирование</span>
+    </div>
+
+    <div class="cat-nav" id="catnav">
+      <button class="chip active" data-cat="all" type="button">Все<span class="count">50</span></button>
+      <button class="chip" data-cat="strategy"   type="button">🎯 Стратегия<span class="count">10</span></button>
+      <button class="chip" data-cat="sales"      type="button">💼 Продажи<span class="count">10</span></button>
+      <button class="chip" data-cat="marketing"  type="button">📣 Маркетинг<span class="count">10</span></button>
+      <button class="chip" data-cat="operations" type="button">⚙️ Операции<span class="count">10</span></button>
+      <button class="chip" data-cat="hr"         type="button">👥 HR / Команда<span class="count">10</span></button>
+      <button class="chip" data-cat="video"      type="button">🎥 С видео<span class="count">10</span></button>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="content">
+  <div id="empty" class="empty" hidden>
+    <div class="big">Ничего не нашлось</div>
+    <div>Попробуйте другую формулировку или сбросьте фильтр.</div>
+  </div>
+  <div id="sections"></div>
+</main>
+
+<section id="cheatsheet" class="cheat">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom: 10px;">Бонус — шпаргалка</div>
+    <h2>Как получать сильные ответы от AI</h2>
+    <p class="lede">AI отвечает на то, что написано, — не на то, что вы имели в виду. Три минуты на промпт экономят тридцать на переформулирование.</p>
+
+    <div class="cheat-grid">
+      <div class="cheat-card">
+        <div class="num">01</div><h3>Дай роль</h3>
+        <p>Перед вопросом напишите: «Ты — [роль] с [опытом].»</p>
+        <div class="label-inline">Слабо</div>
+        <div class="weak">Придумай позиционирование для нашей компании.</div>
+        <div class="label-inline">Сильно</div>
+        <div class="strong">Ты — бренд-стратег, который 12 лет работал с B2B-компаниями в РФ. Придумай позиционирование…</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">02</div><h3>Дай контекст — фактами, не оценками</h3>
+        <p>Цифры и факты &gt; прилагательные.</p>
+        <div class="label-inline">Слабо</div>
+        <div class="weak">Мы хорошая компания с отличной командой.</div>
+        <div class="label-inline">Сильно</div>
+        <div class="strong">Компания 8 лет, выручка 110 млн ₽, 18 человек, клиенты — мебельные заводы от 50 до 500 млн ₽.</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">03</div><h3>Скажи, что хочешь на выходе</h3>
+        <p>AI не читает мысли. Назовите формат явно.</p>
+        <div class="label-inline">Слабо</div>
+        <div class="weak">Помоги с анализом.</div>
+        <div class="label-inline">Сильно</div>
+        <div class="strong">Сделай таблицу из 5 строк: конкурент × цена × сильная сторона × слабая сторона.</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">04</div><h3>Назови запреты</h3>
+        <p>Что НЕ должно быть в ответе — работает так же сильно, как «что должно».</p>
+        <div class="strong">«Без слова "инновационный"», «без советов "нанять больше людей"», «без ссылок на зарубежные кейсы».</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">05</div><h3>Задай тон одним словом</h3>
+        <p>Вместо «напиши хорошо» — скажите конкретно.</p>
+        <div class="strong">«Тон: жёсткий аналитик, без дипломатии», «коллега за кофе, не HR-специалист», «коротко и без вводных».</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">06</div><h3>Проси итерацию, а не один ответ</h3>
+        <p>Один вопрос = один ответ = риск, что не то. Три варианта = выбор + диапазон.</p>
+        <div class="label-inline">Слабо</div>
+        <div class="weak">Придумай заголовок для лендинга.</div>
+        <div class="label-inline">Сильно</div>
+        <div class="strong">Дай 3 варианта заголовка в трёх фреймах: «результат / механика / контраст». Скажи, какой сильнее и почему.</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">07</div><h3>Уточняй, а не начинай заново</h3>
+        <p>Если ответ «почти» — уточните в следующем сообщении.</p>
+        <div class="strong">«Сократи до 80 слов», «убери всё, что я и так сказал на встрече — только новое», «каждый пункт начинается с глагола».</div>
+      </div>
+
+      <div class="cheat-card">
+        <div class="num">08</div><h3>Проси проверку самого промпта</h3>
+        <p>Если не знаете, как сформулировать задачу — спросите AI.</p>
+        <div class="strong">«Я хочу получить [X]. Как сформулировать промпт, чтобы получить хороший результат? Дай 3 варианта промпта.»</div>
+      </div>
+    </div>
+
+    <div class="cheat-formula">
+      <div class="label">Быстрая формула промпта</div>
+      <code>[РОЛЬ] + [КОНТЕКСТ: 3-5 фактов] + [ЧТО ХОЧУ: формат + объём] + [ЗАПРЕТЫ] + [ТОН]</code>
+      <div class="ex">Ты — стратегический консультант для B2B-компаний.
+Компания: digital-агентство, 18 человек, мебельная ниша, 110 млн ₽ выручки.
+Сделай 3 варианта OKR на квартал: 1 Objective × 3 Key Results каждый.
+Без общих слов типа «улучшить». Тон: директивный, с метриками.</div>
+    </div>
+
+    <table class="cheat-table">
+      <thead>
+        <tr><th>Симптом</th><th>Причина</th><th>Что сделать</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Ответ общий, без конкретики</td><td>Не дали факты</td><td>Добавьте 3-5 цифр</td></tr>
+        <tr><td>Ответ слишком длинный</td><td>Не назвали объём</td><td>Скажите «≤ 150 слов»</td></tr>
+        <tr><td>Ответ «правильный», но не ваш тон</td><td>Не назвали тон</td><td>Добавьте 1 пример голоса</td></tr>
+        <tr><td>Ответ не там</td><td>Не назвали формат</td><td>Скажите «таблица / список / абзац»</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="how">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom: 10px;">Как пользоваться</div>
+    <h2>За 5 минут до первого промпта</h2>
+
+    <div class="how-steps">
+      <div class="how-step"><div class="n">1</div><div><h4>Выберите категорию, где болит прямо сейчас</h4><p>Не нужно читать всё. Откройте раздел, найдите ситуацию, начните с неё.</p></div></div>
+      <div class="how-step"><div class="n">2</div><div><h4>Прочитайте «Когда применять»</h4><p>Если ситуация совпадает — это ваш промпт. Если нет — пролистайте дальше.</p></div></div>
+      <div class="how-step"><div class="n">3</div><div><h4>Скопируйте промпт-шаблон</h4><p>Откройте ChatGPT, Claude или любой LLM. Вставьте.</p></div></div>
+      <div class="how-step"><div class="n">4</div><div><h4>Замените всё, что в [КВАДРАТНЫХ СКОБКАХ]</h4><p>Подставьте свои данные — цифры, названия, контекст.</p></div></div>
+      <div class="how-step"><div class="n">5</div><div><h4>Отправьте и прочитайте ответ</h4><p>Первый ответ — черновик. Хороший черновик стоит 30 секунд правок.</p></div></div>
+    </div>
+
+    <div class="how-fix">
+      <h4>Если ответ не тот — не начинайте заново, уточните в том же диалоге</h4>
+      <div class="how-fix-list">
+        <div class="row"><div class="q">Ответ слишком общий?</div><div class="a">«Конкретизируй, используй только данные, которые я дал. Если не хватает — задай 2 уточняющих вопроса.»</div></div>
+        <div class="row"><div class="q">Ответ слишком длинный?</div><div class="a">«Сократи до [N] слов. Убери всё, что не влияет на решение.»</div></div>
+        <div class="row"><div class="q">Ответ не в том тоне?</div><div class="a">«Перепиши в тоне [коллеги за кофе / жёсткого аналитика / устной речи].»</div></div>
+        <div class="row"><div class="q">AI «фантазирует» и выдаёт данные?</div><div class="a">«Не придумывай данных. Если не хватает — напиши "нет данных" или задай вопрос.»</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="next" class="next">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom: 10px;">Если нужна система, а не промпты</div>
+    <h2>Что дальше</h2>
+    <div class="next-card">
+      <h3>15-минутная диагностика Нейромастерской 2.0</h3>
+      <p>Когда захотите разобрать свой кейс под живую команду и процессы — есть 15-минутный разговор о том, где у вас сейчас «дыра» в готовности к AI. Без автоматических продаж и давления.</p>
+      <a class="next-btn" href="https://meet.leadup.guru/diagnostics/" rel="noopener" target="_blank">
+        Записаться на диагностику →
+      </a>
+      <div class="small">meet.leadup.guru/diagnostics/</div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="container foot-inner">
+    <div>© LeadUp AI · вопросы и обратная связь — <a href="mailto:support@leadup.ai">support@leadup.ai</a></div>
+    <div><a href="/tripwire/prompt-library-ceo/">← Вернуться на страницу продукта</a></div>
+  </div>
+</footer>
+
+<!-- Modal -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <article class="modal" id="modal-card">
+    <header class="modal-head">
+      <div class="meta">
+        <div class="top-row">
+          <span id="m-id"></span>
+          <span id="m-cat"></span>
+          <span id="m-video" hidden>🎥 Видео-разбор</span>
+        </div>
+        <h2 id="modal-title"></h2>
+      </div>
+      <button class="modal-close" id="m-close" type="button" aria-label="Закрыть">✕</button>
+    </header>
+    <div class="modal-body">
+      <div class="section">
+        <div class="label">Когда применять</div>
+        <p class="text" id="m-usecase"></p>
+      </div>
+
+      <div class="section">
+        <div class="label">
+          <span>Промпт-шаблон</span>
+          <span class="accent">copy &amp; paste в ChatGPT / Claude</span>
+        </div>
+        <div class="code-wrap">
+          <button class="copy-btn" id="copy-template" type="button" data-target="template">
+            <span class="copy-icon">📋</span><span class="copy-label">Скопировать шаблон</span>
+          </button>
+          <pre class="code" id="m-template"></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">
+          <span>Пример заполнения</span>
+          <span class="example-label" id="m-example-label"></span>
+        </div>
+        <div class="code-wrap">
+          <button class="copy-btn" id="copy-example" type="button" data-target="example">
+            <span class="copy-icon">📋</span><span class="copy-label">Скопировать пример</span>
+          </button>
+          <pre class="code" id="m-example"></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="label">Типичная ошибка</div>
+        <p class="text" id="m-mistake"></p>
+      </div>
+
+      <div class="section">
+        <div class="label">Совет по итерации</div>
+        <p class="text" id="m-tip"></p>
+      </div>
+    </div>
+  </article>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Скопировано</div>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+<script>
+"use strict";
+
+const PROMPTS = [{"id":"S1","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Видение компании на 3 года","video":false,"useCase":"команда тонет в операционке и говорит «не понимаем, куда идём»; перед годовым планированием; смена ключевой роли (приходит новый COO/CFO/CMO); инвестор просит «куда вы идёте за 3 года».","template":"Ты — стратегический партнёр собственника. Помоги сформулировать видение\nкомпании на 3 года в формате, который понятен сотруднику в первый день работы\nи инвестору на встрече.\n\nКонтекст:\n- Компания и индустрия: [НАЗВАНИЕ, ЧТО ДЕЛАЕТЕ]\n- Сейчас: выручка [N млн ₽] / [N сотрудников] / [N лет]\n- Что хорошо получается лучше других: [1-2 ПУНКТА]\n- Где «болевая граница» — где мы перестаём расти: [1 ПУНКТ]\n- Что меняется в индустрии за 3 года (тренды, регуляторика, технологии): [2-3 ПУНКТА]\n- Что я лично НЕ готов делать (территории, продукты, клиенты): [2-3 ПУНКТА]\n\nЧто от тебя:\n1. Видение на 3 года в одном абзаце (5-7 предложений) — конкретно: что мы за компания,\n   на ком зарабатываем, чем отличаемся, какие масштабы\n2. Три ключевых сдвига между «мы сейчас» и «мы через 3 года» (формат: было → стало)\n3. Один маркер, по которому через 12 месяцев пойму, что иду в эту сторону\n4. Одна провокация: то, от чего нужно ОТКАЗАТЬСЯ, чтобы это видение реализовалось\n\nФормат: чистый текст без буллетов в разделе 1. Без лозунгов и «лидер рынка».\nБез обещаний цифр, в которые я сам не верю.","example":"Компания: «Меридиан» (Москва), digital-агентство.\nСейчас: 110 млн ₽ / 18 сотрудников / 6 лет.\nЛучше других: 8 лет работаем именно с мебельными заводами, понимаем сезонность.\nБолевая граница: чек 180-250 тыс ₽/мес не растёт, потолок выручки агентства full-service ~150 млн ₽.\nТренды: маркетплейсы съели часть розницы; Яндекс убрал часть мебели из Директа;\n       заводы режут маркетинг до 1,5% от выручки.\nНЕ готов: открывать офис в Москве для не-мебельной ниши; делать SMM-мусор;\n         работать с серым e-com.","mistake":"просить «сформулируй видение». LLM зеркалит вашу же лексику в более красивой обёртке: «лидер рынка мебельного маркетинга». Без болевой границы и того, от чего вы НЕ готовы отказаться, видение остаётся декоративным.","tip":"если получили абстракцию — добавьте «Замени все прилагательные превосходной степени на конкретные единицы измерения. \"Лидер\" → \"топ-3 по нише мебели X\". \"Качество\" → метрика NPS/retention».","exampleLabel":"агентство интернет-маркетинга для производителей мебели"},{"id":"S2","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Конкурентный анализ: карта 5 игроков","video":false,"useCase":"запуск нового продукта или сегмента; падение конверсии — подозрение на новых конкурентов; переговоры с инвестором/банком (нужна карта рынка); ребрендинг.","template":"Ты — отраслевой аналитик. Сделай конкурентную карту 5 игроков.\n\nКонтекст:\n- Мы: [НАЗВАНИЕ, ОПИСАНИЕ ПРОДУКТА В 1 ПРЕДЛОЖЕНИИ]\n- ICP: [КТО НАШ КЛИЕНТ]\n- Где сравниваем (география / сегмент): [...]\n- Конкуренты для анализа (5 шт): [...]\n\nЧто нужно:\n1. Таблица 5×6: конкурент × (продукт / цена / каналы привлечения / UVP /\n   видимая слабость / косвенный сигнал силы). Без рекламных формулировок —\n   сухой факт + источник в один клик (название страницы / поста / отзыва)\n2. Карта позиционирования в 2 осях. Оси выбираешь ты сам по тому, что\n   реально разделяет игроков (не «цена-качество», а конкретно)\n3. Топ-3 «слепых пятна» рынка — где никто из 5 не работает; для каждого —\n   почему пятно остаётся и при каких условиях оно стоит того\n4. Один враг, которого надо начать измерять еженедельно (упоминания /\n   их активности по нашим клиентам), и метрика этого мониторинга","example":"Мы: TMS (Transport Management System) для перевозчиков 5-30 машин.\nICP: владельцы автопарков 5-30 машин в РФ, средний пробег 400-600 тыс км/мес.\nГеография: вся РФ, основная масса — Москва, Краснодар, Екатеринбург, Новосибирск.\nКонкуренты: 1С:Транспорт, Логмастер, Wialon (Гурт), CitySoft, ATI.SU (для маркетплейса).","mistake":"запросить «сравни нас с 5 конкурентами». Получите рекламную таблицу, где у всех «отличный продукт». Без явного «UVP / видимая слабость» в формате таблицы модель не разделяет.","tip":"если все 5 выглядят похожими — добавьте «Найди в публичных отзывах (отзывы клиентов, обсуждения, посты в TG/VC.ru) одну конкретную жалобу на каждого из 5. Дай цитату».","exampleLabel":"SaaS для логистики"},{"id":"S3","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"SWOT-анализ за 30 минут","video":true,"useCase":"годовая стратсессия, проверка стратегии в середине года, питч инвестору, обоснование крупной ставки.","template":"Ты — стратегический консультант, который 10 лет работал с СМБ в [ИНДУСТРИЯ] в России.\nСделай SWOT-анализ моей компании на основе данных ниже. Каждый блок — 4-5 пунктов, каждый\nпункт начинается с факта, а не с оценки. В конце — 3 вывода: какую возможность взять\nпервой, какую угрозу закрывать срочно, какую слабость лечить за полгода.\n\nКомпания: [НАЗВАНИЕ, ИНДУСТРИЯ]\nЧто мы делаем: [ОПИСАНИЕ ПРОДУКТА В ОДНОМ АБЗАЦЕ]\nВыручка / команда / возраст: [ЦИФРЫ]\nКлючевые клиенты: [3-5 ИМЁН]\nГлавные конкуренты: [3-5 ИМЁН]\nЧто хорошо получается (вижу я): [2-3 ПУНКТА]\nЧто болит сильнее всего (вижу я): [2-3 ПУНКТА]\nЧто меняется на рынке за 12 мес.: [2-3 ТРЕНДА]\n\nФормат ответа: 4 таблицы (S/W/O/T) + блок выводов.\nТон: прямой, без воды, без советов типа «инвестируйте в маркетинг».","example":"Компания: «Поток» (Москва), digital-агентство для производителей мебели\nЧто мы делаем: контекст+SEO+контент для 40 заводов мебели в РФ под ключ\nВыручка / команда / возраст: 110 млн ₽ / 18 чел. / 6 лет\nКлючевые клиенты: «МебельСтиль», «АскоНа-Дилер-Юг», «Дятьковский Стандарт», «Орматек.Регион»\nГлавные конкуренты: SF.RU, Ingate, Kokoc, Adventum, локальные мебельные агентства\nЧто хорошо получается: глубокая экспертиза в нише мебели; команда 8 лет в проде\nЧто болит: чек 180-250 тыс ₽/мес не растёт 3 года; ушло 2 крупных клиента за квартал\nЧто меняется: Яндекс убрал часть Директа из ниши; мебельные заводы режут маркетинг","mistake":"заполнить блок «Сильные стороны» эпитетами — «надёжная команда», «качественный сервис». LLM зеркалит и выдаёт пустой SWOT. Пишите факты: «6 лет на рынке», «retention 78% за 2025 год», «20% клиентов работают с нами больше 3 лет».","tip":"если выводы общие — добавьте в промпт строку «Используй только данные, которые я дал. Если данных не хватает — задай 3 уточняющих вопроса до анализа».","exampleLabel":"B2B-агентство интернет-маркетинга"},{"id":"S4","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"OKR на квартал: 3 цели × 3 KR","video":false,"useCase":"конец квартала, нужна следующая итерация целей; команда «гребёт во все стороны»; новый CEO/директор по производству просит «давай зафиксируем»; стратегическая сессия раз в квартал.","template":"Помоги собрать OKR на следующий квартал по нашей компании.\n\nКонтекст:\n- Что было в предыдущем квартале (3-5 главных фактов): [...]\n- Что не сделали и почему: [1-2 пункта]\n- Главная гипотеза квартала вперёд (один тезис): [...]\n- Ограничения: [бюджет / люди / время]\n- Я НЕ хочу OKR про: [темы, по которым команда устала или они не приоритетные]\n\nФормат ответа:\n- 3 Objective (амбициозные, но достижимые) — каждый в 1 предложении, формат\n  «К [дата] мы [глагол + результат]». Без «улучшить», «повысить» без цифры\n- Для каждого Objective — 3 Key Result, каждый с (а) метрикой (б) текущим\n  значением (в) целевым (г) частотой замера. Если данных нет — KR с\n  префиксом «BASELINE:» (сначала измеряем)\n- 1 «toxic OKR» — пример красивой цели, которая ничего не меняет в работе,\n  чтобы я мог сравнить и проверить, не сваливаются ли мои настоящие OKR в неё\n- Главный конфликт между OKR (где они тянут команду в разные стороны) и\n  как его разрулить","example":"Прошлый квартал: ARR +18% но churn вырос до 11%; запустили self-service\nтариф, дал 14% MRR; провалили интеграцию с 1С (release уехал на 6 нед).\nНе сделали 1С: разработчик сменил место работы посреди спринта.\nГлавная гипотеза: проблема не в привлечении (LTV/CAC=4), а в удержании\nпосле первых 60 дней.\nОграничения: бюджет на найм заморожен до сентября.\nНЕ хочу: бренд-метрики (NPS, awareness — измеряли, не двигают MRR).","mistake":"просить OKR без описания прошлого квартала и текущей гипотезы. Получите шаблонные «увеличить выручку на 25%». OKR без текущей гипотезы — это план без аргумента, команда не верит.","tip":"если KR абстрактные («улучшить retention»), попросите «Каждый KR должен быть проверяем на конец недели 1 квартала — будь беспощаден к KR, которые проверяются только в конце квартала».","exampleLabel":"SaaS"},{"id":"S5","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Позиционирование «one-liner»","video":false,"useCase":"заказали лендинг и не можете дать «одну фразу про продукт»; питч инвестору; представление на встрече первым клиентом сегмента; LinkedIn-bio собственника.","template":"Помоги собрать one-liner позиционирования. Это одно предложение (≤ 18 слов),\nкоторое отвечает на вопрос «А чем вы вообще занимаетесь?» так, чтобы\nчеловек не из вашей индустрии понял за 8 секунд.\n\nКонтекст:\n- Что мы делаем (буквально, без маркетинга): [1 АБЗАЦ]\n- Для кого (ICP в 1 предложении): [...]\n- Какую проблему решаем (как клиент сформулировал бы её сам): [...]\n- Чем мы отличаемся от 3 альтернатив (мы — единственные, кто...): [...]\n- Что НЕ нужно упоминать (наш стек, технологии, годы на рынке): [...]\n\nФормат:\n1. 5 вариантов one-liner. Каждый в одном из фреймов:\n   А — «Что» (название категории + для кого): «Мы делаем X для Y»\n   Б — «Зачем» (Job-to-be-done): «Помогаем Y делать X»\n   В — «Контраст»: «Не Z, а вот так»\n   Г — «Цифра» (если есть достоверная): «Сокращаем X с N до M»\n   Д — «Бывало vs стало» (краткий нарратив)\n2. Топ-1 рекомендация и почему (1 абзац)\n3. 3 НЕ-варианта: что я мог бы написать, но это слишком общё; коротко почему\n\nЗапрет: «ведущий», «лидирующий», «инновационный», «#1», «решения». Если без\nэтих слов фраза не складывается — она не складывается, ищем дальше.","example":"Что делаем: вычитываем рекламу клиента в Яндекс.Директ + контекст,\nделаем еженедельные правки кампаний, отчёт раз в неделю на 1 страницу.\nICP: владельцы мебельных производств 50-500 млн ₽ в РФ, без своего маркетолога.\nПроблема: «Деньги на рекламу уходят, я не вижу, куда».\nОтличие: 8 лет только мебель → знаем сезонность и регионы.\nНе упоминать: «agile», «data-driven», цифровизация.","mistake":"запросить «придумай слоган». Получите «Маркетинг будущего для мебели». Без ICP, jobs-to-be-done и явного запрета на штампы — модель попадёт в среднее.","tip":"если все 5 звучат как маркетинг — попросите «Прочитай каждый вариант голосом моей мамы (не из индустрии) и скажи, какие 2 слова в каждом она НЕ поймёт. Перепиши без них».","exampleLabel":"B2B-агентство"},{"id":"S6","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"3 сценария роста выручки на год","video":false,"useCase":"годовое планирование; переговоры с банком/инвестором; обсуждение с партнёром distribution рисков; бюджетная сессия.","template":"Сделай 3 сценария выручки на следующие 12 месяцев: оптимистичный, реалистичный,\nпессимистичный.\n\nКонтекст:\n- Текущая выручка: [N млн ₽] за прошлые 12 мес.; LTM ARR: [N млн ₽]\n- Структура выручки: [N%] подписка, [N%] разовые проекты, [N%] часы\n- Конверсия воронки сейчас: [N%] visit→demo, [N%] demo→deal, средний чек [N], цикл [N мес]\n- Что меняется СЕЙЧАС: [1-2 факта — например, ушли 2 крупных клиента, или подняли цену на 15%]\n- Что зависит от внешних факторов: [регуляторика, курс, тренды]\n\nФормат:\n1. Таблица: сценарий × драйвер × предположение × сумма годовой выручки × ключевая\n   метрика недели 1-4, по которой пойму, в какой сценарий идём\n2. Для каждого сценария — топ-1 рычаг, который я как CEO могу дёрнуть в любой\n   момент, чтобы сместиться в более удачный сценарий (а не «больше продаж»)\n3. Один скрытый риск: что-то, что я НЕ упомянул, но что сильно меняет картину\n   в худшую сторону. Покажи, почему он скрытый\n4. План замеров: какие 5 чисел я проверяю ежемесячно, чтобы знать, по\n   какому сценарию идём","example":"ARR LTM: 22 млн ₽. Подписка 78%, проекты внедрения 16%, доплаты 6%.\nВоронка: 9% visit→demo, 22% demo→deal. Чек 240 тыс ₽ / мес. Цикл 45 дней.\nСейчас: ушёл клиент-якорь (5% ARR) из-за ребрендинга; подняли цену +12%\nдля новых; нанимаем 2 SDR в июне.\nВнешнее: повышение страховых для B2B SaaS обсуждают в Минцифры (вступит — съест\n2-3 п.п. маржи).","mistake":"запросить «сделай прогноз выручки». Без воронки и структуры выручки модель даст вам тренд-линию вверх. Сценарии нужны для того, чтобы увидеть драйверы и рычаги, а не точку.","tip":"если все 3 сценария «приблизительно одинаковые» (расхождение ±15%) — добавьте в промпт «Сделай разброс агрессивнее: пессимистичный = что произойдёт, если 2 из 5 ключевых клиентов уйдут одновременно».","exampleLabel":"SaaS"},{"id":"S7","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Pre-mortem решения","video":true,"useCase":"перед крупным наймом, инвестицией, запуском нового продукта, сменой ниши, переездом офиса.","template":"Я готовлюсь принять решение: [РЕШЕНИЕ В 1 ПРЕДЛОЖЕНИИ].\nКонтекст: [3-5 ПРЕДЛОЖЕНИЙ О СИТУАЦИИ]\nЧто я ожидаю от решения: [ЦЕЛЬ, СРОК, КРИТЕРИЙ УСПЕХА]\n\nСделай pre-mortem: представь, что через 12 месяцев это решение оказалось плохим.\nОпиши 5 правдоподобных сценариев, как именно оно провалилось. Для каждого:\n1. Что конкретно произошло (1 абзац фактов)\n2. Какой сигнал я мог заметить за 1-3 месяца до краха\n3. Что нужно сделать СЕЙЧАС, чтобы этого сценария избежать\n\nВ конце — 3 «красные кнопки»: события, при которых решение нужно откатить, не дожидаясь\n12 месяцев.\n\nТон: жёсткий, как у партнёра, который не боится испортить мне настроение.","example":"Решение: открыть филиал агентства в Краснодаре в сентябре 2026.\nКонтекст: 28% клиентов сейчас из Юга, в Москве дефицит junior-специалистов,\nу нас есть HR-кандидат на роль директора филиала (бывший сотрудник конкурента).\nБюджет на открытие — 3,5 млн ₽, окупаемость заложена 14 мес.\n\nЦель: 4 новых клиента из Юга за 12 мес.\nСрок: открытие 01.09.2026, плановая точка безубыточности — 30.06.2027.\nКритерий успеха: выручка филиала ≥ 1,8 млн ₽/мес к месяцу 12.","mistake":"запросить «риски» — получите общий список «потеря денег, конкуренция, кадры». Pre-mortem работает только в формате «представь, что уже провалилось»: модель идёт от обратного и находит то, что в обычном risk-листе не всплывает.","tip":"если сценарии звучат «по учебнику», добавьте в промпт строку «Опиши провал глазами одного человека из команды — кого именно, что он видит, что говорит на встрече по итогам». Конкретные сцены полезнее, чем общие риски.","exampleLabel":"открытие филиала"},{"id":"S8","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Карта рисков на 6 месяцев","video":false,"useCase":"квартальный совет директоров; переговоры с банком (продление кредита, факторинг); внутренний risk review раз в полугодие; запуск большого проекта.","template":"Помоги собрать карту рисков на 6 месяцев.\n\nКонтекст:\n- Чем занимаемся: [...]\n- Главные ставки квартала (что делаем большого): [3 ШТ]\n- Из чего складывается выручка (% от каналов / клиентов / продуктов): [...]\n- Что у меня уже болит чуть-чуть, но я не лечу: [2-3 пункта]\n- Изменения во внешней среде: [2-3 факта]\n\nФормат:\n1. Таблица: риск × вероятность (1-5) × ущерб ₽ за 6 мес. (диапазон) ×\n   сигнал-индикатор (что я увижу за 1 мес. до материализации) × ответственный\n   (роль, не имя) × лечение (1 предложение, что мы делаем сейчас)\n2. Топ-5 рисков по произведению «вероятность × ущерб», подсветить отдельно\n3. Один «чёрный лебедь» — низкая вероятность, катастрофический ущерб; что\n   я готов делать сейчас, чтобы устойчивее к нему быть\n4. Список рисков, которые ВЫРОСЛИ за последние 3 мес. (и какое было событие-триггер)\n5. Что мне НЕ говорить совету директоров и почему (то, что выглядит как риск,\n   но на самом деле — обычная флуктуация бизнеса)","example":"Делаем: digital для мебельщиков. Выручка 110 млн ₽.\nГлавные ставки квартала: открытие Краснодара, новая услуга «product photo»,\nпереезд CRM с Битрикс24 на собственный сервис.\nСтруктура: топ-3 клиента дают 38% выручки; средний срок договора 11 мес.\nУже болит: текучесть junior спецов; зависимость от 2 PM-ов; нет регулярных QBR.\nВнешнее: Яндекс убрал часть Директа в мебели; маркетплейсы выросли на 38% г/г.","mistake":"просить «сделай список рисков». Получите общий перечень «человеческий фактор / экономика / конкуренция». Без сигнала-индикатора и ответственной роли карта рисков превращается в украшение совета директоров.","tip":"если все риски звучат «общими» — добавьте «Перепиши каждый риск в формате конкретного происшествия с датой. Не \"уход ключевого клиента\", а \"Иванов из Стандарт-Мебели заявляет о расторжении до 30 июня\"».","exampleLabel":"агентство"},{"id":"S9","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Тест pivot-гипотезы","video":false,"useCase":"падает выручка квартал к кварталу; ICP «уходит» (постоянно теряете сделки на финале); ваше предложение «не покупают как раньше»; партнёр предлагает «давай переключимся на сегмент X».","template":"Помоги стресс-тестировать гипотезу pivot'а.\n\nКонтекст:\n- Гипотеза pivot'а в одном предложении: [например, «переключиться с SMB на enterprise»]\n- Что плохо в текущем positioning'е (3 факта, а не ощущения): [...]\n- Что я знаю про новый сегмент, на который хочу перейти (не «слышал», а\n  что точно проверил/говорил с человеком): [...]\n- Что НЕ хочу терять при переходе: [команда, контракты, узнаваемость в нише]\n- Кто внутри команды против pivot'а и почему: [...]\n\nФормат:\n1. 5 признаков, что pivot нужен (с критериями: какой именно сигнал, не «ощущение»)\n2. 5 признаков, что pivot НЕ нужен — что я могу сейчас исправить и без pivot'а\n   решит ту же боль\n3. Минимальный тест pivot-гипотезы за 4 недели: что я делаю в неделю 1 / 2 / 3 / 4,\n   какой исход = «гипотеза подтвердилась»\n4. 3 невозвратимых решения, которые надо отложить до конца теста (увольнения,\n   ребрендинг, отказ от текущих контрактов)\n5. Худший сценарий: что я разрушу, если pivot не сработает, а я уже стартовал\n   действия из п.4\n\nТон: партнёр, который не боится сказать «не делай», но даёт критерий — на чём решит.","example":"Гипотеза: переключиться с B2C-курсов «английский для взрослых» на B2B —\nкорпоративные тренинги английского для команд 20-100 чел.\nПлохо в B2C: CPL 1 800 ₽ при чеке 28 000 ₽, окупаемость 5 мес., MMR-2 56%,\nрост ниже инфляции.\nНовый сегмент: говорил с 4 HR-директорами; средний договор 800 тыс ₽/год;\nзакрытие сделки 3-5 мес; конкуренты Skyeng B2B и Englex.\nНЕ хочу терять: 6 преподавателей с 6+ лет стажа.\nКто против: коммерческий директор (всю карьеру в B2C).","mistake":"запросить «нужен ли мне pivot». LLM не может «нужен или нет» — это решение CEO. Но без 5 признаков pivot vs 5 признаков «не pivot» и теста за 4 недели — вы будете принимать решение по настроению.","tip":"если пункт «минимальный тест за 4 недели» получился академическим — попросите «Опиши неделю 1 как конкретный список из 7 действий по дням. Если в день нечем заняться — pivot тестируется иначе, переформулируй».","exampleLabel":"B2C → B2B"},{"id":"S10","category":"strategy","categoryTitle":"Стратегия","categoryIcon":"🎯","title":"Дайджест для совета директоров","video":false,"useCase":"ежемесячный отчёт акционерам/совету; готовите отчёт инвестору; собрание партнёров; нужен формат, который не перерастает в 3-часовой разбор.","template":"Помоги собрать дайджест для совета директоров. Объём: 1 страница, 8 минут чтения.\n\nКонтекст за период [МЕСЯЦ ГОД]:\n- Главные числа: выручка / new MRR / cash / runway / штат — фактическое значение\n  и (план или прошлый период)\n- 3 главных результата месяца: [...]\n- 3 главные проблемы месяца: [...]\n- 1 решение, которое я принял в одиночку и хочу зафиксировать на совете: [...]\n- 2 вопроса, по которым прошу мнение совета: [...]\n\nФормат дайджеста:\n1. Sub-header: «Месяц в 3 предложениях» — суммарный взгляд (без воды)\n2. Таблица ключевых чисел: метрика × факт × план × отклонение % × комментарий\n   в 1 строку\n3. Раздел «Что хорошо» — 3 пункта с конкретикой (не «продажи выросли», а «закрыли X»)\n4. Раздел «Что плохо» — 3 пункта с тем, какое решение я принимаю (не «надо разбираться»)\n5. Раздел «Решения и вопросы к совету» — что я сам решил, что нужно от совета\n6. Раздел «Что я делаю в следующем месяце» — 3 главных проекта с DDL\n\nТон: без оправданий и без победных реляций. Если плохо — пишу «плохо», и что делаю.\nЕсли хорошо — пишу как факт, без украшений. Никаких «несмотря на сложные условия».","example":"Период: апрель 2026.\nЧисла: выручка 2,4 млн ₽ (план 2,6), new MRR 280 тыс ₽ (план 300), cash 8 млн ₽,\nrunway 14 мес., штат 17 (+1 в апреле).\nРезультаты: закрыли «Юг-Мебель-Дилер» на 800 тыс ₽/год; запустили self-service тариф —\n14 продаж за апрель; провели аудит инфраструктуры (нашли overpay на 240 тыс ₽/мес).\nПроблемы: 2 клиента-якоря (40% ARR) намекают на пересмотр; ушёл senior разработчик;\nmaintainable code в payment-module просел.\nРешение в одиночку: остановил планируемый рекламный буст в TG Ads на май (нечем кормить).\nВопросы совету: одобрить ли подъем цены на 15% для существующих к 01.07?\n                одобрить ли найм Head of Customer Success (300 тыс ₽/мес)?","mistake":"просить «сделай отчёт для совета». Получите 3 страницы текста с «увеличили показатели». Совет не читает 3 страницы. Без явного «1 страница» и формата «решения и вопросы» дайджест превращается в графоманию.","tip":"если получили слишком сухо — попросите «Перепиши раздел \"Что плохо\" так, как если бы я разговаривал с партнёром, которому я лично доверяю. Без формализма и юриспруденции».","exampleLabel":"SaaS"},{"id":"P1","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Скрипт холодного звонка B2B","video":false,"useCase":"SDR ещё нет, делает РОП или сам собственник; тестируете новый канал; новый продукт и нет наработанного скрипта; менеджер «уходит в монолог».","template":"Помоги собрать скрипт холодного B2B-звонка длительностью 4-5 минут.\n\nКонтекст:\n- Я звоню: [роль — например, «руководитель отдела закупок производственной\n  компании 100-500 чел.»]\n- От кого: [я — РОП / менеджер; компания]\n- Что предлагаю в 1 предложении: [...]\n- Главная боль, которую закрываю: [...]\n- Чего НЕ обещаю на этом звонке: [демо/скидку — что-то одно]\n- Цель звонка: [демо на N мин / встреча / отправка КП по итогу разговора]\n\nФормат скрипта:\n1. Открытие (≤ 12 слов) — кто я + зачем + просьба разрешения говорить\n2. Pivot-вопрос — что я спрашиваю, чтобы понять, есть ли смысл продолжать\n3. Если человек НЕ закрыт — что я делаю в ближайшие 60 секунд (3 фразы)\n4. Если я слышу боль — как формулирую следующий шаг (1-2 предложения)\n5. 3 типичных возражения с короткими ответами (каждый ≤ 25 слов)\n6. Закрытие: либо договорённость о следующем шаге, либо чистый exit\n   («не сейчас → когда вернуться»)\n\nЗапрет: «уважаемый Иван Иванович», «найти 2-3 минуты», «беспокоит Х из Y».\nТон: коллега, который случайно нашёл общее дело.","example":"Кому: владелец автопарка 8-25 машин (директор или собственник).\nОт кого: руководитель отдела продаж SaaS-компании.\nЧто предлагаю: TMS-сервис для управления рейсами и водителями без 1С.\nБоль: автопарк управляется в Excel и WhatsApp, владелец не знает, где сейчас машина.\nНЕ обещаю на звонке: скидку и интеграцию с 1С (это потом, если будет демо).\nЦель звонка: 25-мин демо на ближайшие 5 рабочих дней.","mistake":"просить «сделай скрипт холодного звонка». Получите трёхстраничный текст для зачитывания. На холодном звонке человек НЕ читает — он отвечает. Скрипт без pivot-вопроса и трёх возражений превращается в монолог.","tip":"если ответы на возражения звучат «по учебнику» («Понимаю вашу позицию, давайте посмотрим...») — попросите «Каждый ответ начинай с того, что ты услышал, а не \"понимаю\". Например: \"Окей, у вас Excel работает. А когда последний раз водитель сам не отчитался — что делали?\"».","exampleLabel":"TMS для перевозчиков"},{"id":"P2","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Follow-up письмо после демо","video":false,"useCase":"клиент сказал «спасибо, подумаю»; демо прошло хорошо, но КП не запросил; нужно «не дать остыть» в течение 24 часов; B2B-цикл с несколькими DM'ами.","template":"Помоги написать follow-up письмо после демо. Цель: получить от клиента\nконкретный следующий шаг (а не «подумаю»), не повторять презентацию.\n\nКонтекст:\n- Что было на демо (3-5 фактов): кто, сколько людей, как реагировали, что обсудили\n- Что человек сказал в конце (точные фразы, если помню): [...]\n- Невыясненные вопросы: [...]\n- Что я знаю про их процесс согласования (длительность, кто решает): [...]\n\nФормат:\n1. Тема письма (≤ 7 слов, без «follow-up», без «спасибо за встречу»)\n2. Тело письма (≤ 120 слов, 3 коротких абзаца):\n   - Абзац 1: одно конкретное наблюдение со встречи (показать, что слушал)\n   - Абзац 2: что я обещал прислать (с приложением), или что мне нужно\n     от него для следующего шага (одна просьба, не три)\n   - Абзац 3: предложение конкретного следующего шага (с тремя слотами времени\n     ИЛИ с вопросом, который должен закрыть «думаю»)\n3. P.S. — что-то полезное, не связанное с продажей (статья, чек-лист,\n   ссылка на похожий кейс — ОПЦИОНАЛЬНО, если есть)\n\nЗапрет: «Если возникнут вопросы…», «Жду обратной связи…», «Готов ответить\nна любые вопросы». Они работают как сигнал «у меня нет следующего шага».","example":"Демо: 28-мин Zoom, 4 человека (директор, фин, IT, ops). Реагировали активно,\nособенно директор — спросил про SLA и расчёт водителей. В конце директор\nсказал: «Понятно, дайте КП и пару отзывов клиентов вашего размера, нам нужно\nдо конца квартала».\nНевыясненные: используют ли 1С Бухгалтерию (для будущей интеграции).\nСогласование: директор решает сам, но обычно консультируется с фин-директором.\nДо конца квартала = 18 дней.","mistake":"прислать письмо «Спасибо за встречу, прикладываем КП. Готовы ответить на любые вопросы». Это сигнал «больше я не двинусь, ход за вами». Клиент это видит и забывает.","tip":"если follow-up получился слишком длинным — добавьте «Сократи до 90 слов жёстко, выбрось всё, что я и так сказал на встрече».","exampleLabel":""},{"id":"P3","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Обработка возражения «дорого»","video":true,"useCase":"менеджер сообщает, что клиент «думает» или «дорого»; готовите скрипт для нового продавца; разбор зависшей сделки.","template":"Я продаю [ПРОДУКТ] компаниям [ICP, ОПИСАНИЕ В 1 ПРЕДЛОЖЕНИИ]. Цена: [ЦЕНА],\nсредний цикл сделки [N] недель. Клиент сказал: «[ТОЧНАЯ ФРАЗА ВОЗРАЖЕНИЯ]».\n\nДай 3 варианта ответа в трёх разных фреймах:\n1. Фрейм «ценность» — переформулировать через ROI/риск/упущенную выгоду\n2. Фрейм «сравнение» — сместить точку сравнения (не с конкурентом, а с другим решением проблемы)\n3. Фрейм «частичная сделка» — предложить меньший шаг, чтобы клиент не уходил совсем\n\nДля каждого варианта: текст ответа (2-4 предложения, разговорный язык, без «уважаемый\nИван Иванович»), и 1 уточняющий вопрос, который менеджер задаёт ПОСЛЕ ответа,\nчтобы вернуть инициативу.\n\nЗапрещено: «у нас лучше», «инвестиция в будущее», скидка без обмена.","example":"Продукт: TMS для перевозчиков 5-30 машин (управление рейсами + документы + расчёты с водителями).\nЦена: 18 000 ₽/мес за компанию + 600 ₽ за машину. Цикл 4-6 недель.\nКлиент сказал: «Дорого, у нас Excel справляется».","mistake":"запросить «как ответить на “дорого”» одним вопросом. Получите три абзаца про ценность. CEO потом полчаса вычленяет смысл. Лучше — сразу три фрейма с разными механиками.","tip":"добавьте в промпт «Менеджер — junior, говорит сухо, читает с экрана. Перепиши все три варианта в максимально простой устной речи». Контекст уровня менеджера меняет тон сильнее, чем любые инструкции о «доброжелательности».","exampleLabel":"SaaS для логистики"},{"id":"P4","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Cross-sell действующему клиенту","video":false,"useCase":"customer success видит сигналы готовности к расширению; quarterly review показывает «недо-использование» базового продукта; запустили новый модуль и нужно «проверить» на существующих.","template":"Помоги собрать сообщение для cross-sell действующему клиенту. Это НЕ продажа\n«в холодную» — у нас уже есть отношения и история. Тон должен быть как у\nколлеги, который заметил что-то полезное.\n\nКонтекст:\n- Клиент: [роль и компания, основной продукт у нас]\n- Как давно работают с нами: [N мес]\n- Что хорошо в текущей работе (3 факта): [...]\n- Какой апсейл/cross-sell хочу предложить: [продукт/модуль и цена]\n- Какой сигнал/наблюдение даёт мне основание думать, что это им зайдёт:\n  [конкретное событие — «закрыли 30% нового рынка», «выросли на N человек»]\n- Чего НЕ хочу: давить, играть в «срочно купите»\n\nФормат:\n1. 3 варианта сообщения (email / TG / WhatsApp): каждый ≤ 120 слов, разные открытия:\n   А — наблюдение из их работы + предложение\n   Б — польза от другого клиента такого же размера + предложение\n   В — конкретный риск, который снимает новый модуль\n2. К каждому варианту — 1 вопрос на конце (не «что думаете», а конкретный)\n3. Что я НЕ упоминаю: цену (если оптимально — выкладываем на встрече); сравнение\n   с конкурентом (мы у них уже)","example":"Клиент: «Лидер-Транс», 15 машин, директор Алексей Г. Используют TMS базовый.\nС нами: 8 мес. Хорошо: 100% машин завели в систему; зарплаты водителям\nавтоматизированы; CSAT 9/10 в последнем NPS.\nCross-sell: модуль «Топливный мониторинг» (датчики уровня + интеграция Wialon),\n+8 тыс ₽/мес.\nСигнал: в last QBR сказали «непонятно, где сливают топливо, экономия 5-7% возможна».","mistake":"прислать «Привет, у нас новый модуль X, хотим предложить...» — это холодная продажа. Cross-sell начинается с того, что вы заметили в работе клиента и связываете с пользой, а не «вышел новый функционал».","tip":"если все 3 варианта звучат «как маркетинг» — добавьте «Перепиши варианты так, как если бы я лично разговаривал с Алексеем в баре после конференции. Без email-тона».","exampleLabel":"SaaS для логистики"},{"id":"P5","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Реактивация уснувшего лида","video":false,"useCase":"в базе 6+ мес. без касаний; падает sales-pipeline, нужно «оживить» уснувших; запустили новый сегмент продукта, релевантный их прошлой боли; у вас есть «causa» для повторного касания.","template":"Помоги собрать письмо/сообщение для реактивации лида, который уснул 6+ месяцев назад.\n\nКонтекст:\n- Кто это был: [роль + компания + продукт]\n- Что было в последний раз: [статус сделки на момент засыпания: «думают», «выбрали\n  другого», «ушёл в декрет», «не отвечает 4 пинга»]\n- Что изменилось за это время — на нашей стороне: [новый функционал, кейс,\n  цена]\n- Что изменилось на их стороне (если знаю — LinkedIn, новости): [...]\n- Цель касания: НЕ продажа, а возобновление разговора. Что я хочу — встречу\n  на 15 мин или ответ «релевантно/нет».\n\nФормат:\n1. Заголовок / тема (≤ 7 слов, не «Возвращаемся к разговору», не «Давно не\n   общались»)\n2. Тело: 80-110 слов в 3 коротких абзаца:\n   - Признать, что прошло время (1 строка, без извинений)\n   - Что изменилось у нас или у них с тех пор + почему это релевантно\n   - Один конкретный вопрос или предложение «15 минут на ZOOM/созвон»\n3. Альтернативный вариант — для случая, если контакт сменил роль (LinkedIn\n   показал) — что я пишу его сменщику + один знак уважения к старому контакту\n\nЗапрет: «надеюсь, у вас всё хорошо», «не уверен, помните ли меня», «вы тогда\nушли в раздумье».","example":"Контакт: Анна Светлова, CMO «Стандарт-Мебель» (мебель).\nПоследний раз: октябрь 2025, отправили КП на digital-маркетинг, сказала\n«внутренний пересмотр стратегии, вернёмся в Q1 2026». Не вернулась.\nИзменилось у нас: запустили услугу «product photo + ad creative» (полезна\nименно мебельщикам); сделали кейс с конкурентом «Юг-Мебель-Дилер» (+34% leads).\nИзменилось у неё: LinkedIn показал, что назначили нового CEO 3 мес. назад.\nЦель: 15-мин звонок, узнать, актуальна ли тема рекламы при новом CEO.","mistake":"написать «Здравствуйте! Помните, мы обсуждали с вами в октябре? Хотим напомнить о нашем предложении». Это «слишком вежливо и пусто». Реактивация работает только когда у вас есть НОВАЯ причина писать (а не «давно не общались»).","tip":"если письмо звучит «формально» — попросите «Удали все формальные обороты. Если контакт открыл письмо в течение 24 часов и не ответил — значит, причина \"почему сейчас\" не сработала. Перепиши, сделай её ярче».","exampleLabel":""},{"id":"P6","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Подготовка к QBR (Quarterly Business Review) с клиентом","video":false,"useCase":"ежеквартальная встреча с клиентом B2B; защита договора (год подходит к концу); расширение скоупа; клиент готов к churn — нужно «спасти».","template":"Помоги подготовить QBR с клиентом. Цель встречи: показать ценность, услышать\nпроблемы, договориться о расширении (или об удержании).\n\nКонтекст:\n- Клиент: [роль и компания]\n- Какой продукт/услугу у нас, сколько стоит, как давно работаем\n- Главные результаты за квартал (3 факта с цифрами): [...]\n- Главные проблемы за квартал (что не работало или раздражало): [...]\n- Что я знаю про их планы на следующий квартал: [...]\n- Кто будет на встрече с их стороны: [роли, отношение к нам]\n\nФормат подготовки:\n1. Повестка встречи (45 мин) в 5 блоков с таймингом\n2. Топ-3 «больших цифры», которые я показываю первыми (с краткой формулировкой,\n   что они значат для клиента, а не для нас)\n3. 3 проблемы за квартал, которые я САМ поднимаю первым (если не подниму я —\n   поднимут они, и это будет не QBR, а допрос)\n4. Один разговор, который надо вытащить (наш upsell / удержание / расширение\n   на новую площадку клиента) — как я к нему подвожу за 5 мин в конце\n5. 3 вопроса, на которые я готовлюсь ответить (хотя они могут не задать —\n   но я должен знать сразу)\n6. Что я НЕ обещаю на этой встрече (даже если будут просить)","example":"Клиент: «Юг-Мебель-Дилер» (мебель, 8 магазинов). Контакт — Светлана К., CMO.\nПродукт: SaaS-маркетплейс для синхронизации остатков, 65 тыс ₽/мес.\n9 мес. вместе.\nРезультаты Q1: синхронизация ускорилась с 4 ч до 12 мин; вернули 380 SKU в\nвыдачу; ROI оценили в +1.2 млн ₽.\nПроблемы: 2 раза падал API в марте на 6 ч; чат поддержки отвечает с\nзадержкой 4-6 ч (обещали 2).\nПланы клиента: открывают 2 новых магазина в Воронеже к августу.\nБудут: CMO (наш чемпион), CFO (скептик), IT-директор (нейтральный).","mistake":"идти на QBR с презентацией про «как у нас всё хорошо». Клиент в этот момент думает про свои проблемы, не ваши успехи. QBR должен начинаться с признания проблем, иначе они станут разговором «о расторжении».","tip":"если повестка получилась «победной» — попросите «Перенеси раздел \"проблемы за квартал\" в первый блок повестки. Если клиент чувствует, что я их слышу, остальные 40 минут идут легко».","exampleLabel":""},{"id":"P7","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Разбор потерянной сделки (lost-deal)","video":true,"useCase":"ежемесячный win/loss обзор, после крупной потерянной сделки, при подозрении на системную проблему.","template":"Помоги мне разобрать потерянную сделку. Дам факты — сделай анализ из 4 частей:\n\nФАКТЫ\nКлиент: [ОТРАСЛЬ, РАЗМЕР]\nПродукт, цена, цикл: [...]\nЧто произошло на каждом шаге: [ХРОНОЛОГИЯ В 5-10 ПУНКТАХ С ДАТАМИ]\nФинальная причина (по словам клиента): [ЧТО СКАЗАЛИ]\nФинальная причина (по моей версии): [ЧТО ДУМАЮ НА САМОМ ДЕЛЕ]\n\nЧТО НУЖНО ОТ ТЕБЯ\n1. Где конкретно сделку потеряли (не общее «не доработали с ЛПР», а шаг и действие)\n2. 3 гипотезы причин, ранжированы по вероятности, для каждой — какие данные подтвердили бы её\n3. Что должно появиться в нашем процессе, чтобы такой же сценарий не повторился (1-2 правила)\n4. Что я могу написать клиенту через 30 дней, чтобы вернуть переговоры — короткое сообщение\n\nТон: разбор без вины. Я не ищу, кого уволить — я ищу систему.","example":"Клиент: «АскоНа-Дилер-Юг», мебельная розница, 8 магазинов, ~50 сотрудников.\nПродукт: облачная CRM, 65 000 ₽/мес, цикл 3 месяца.\nХронология:\n- 12.02 — первый созвон, понравилось, договорились на демо\n- 28.02 — демо для 4 человек, владелец задавал вопросы, ушли «думать»\n- 14.03 — отправили КП, тишина\n- 28.03 — пинг менеджера, ответ «вернёмся в апреле»\n- 18.04 — узнали через знакомых, что взяли «Битрикс»\nФинальная причина (клиент): «Дешевле, и у них всё уже есть».\nМоя версия: уехал на демо не лучший наш специалист, дал слабые ответы по интеграции с 1С.","mistake":"просить «сделай анализ сделки» без хронологии. LLM напишет «вероятно, не была закрыта боль клиента» — общие слова. Нужна хронология с датами: модель тогда показывает, в какой именно точке сделка стала ускользать.","tip":"если гипотезы поверхностные — добавьте строку «Прочитай хронологию ещё раз и найди 2 момента, где мы потеряли инициативу (между нашим действием и следующим действием клиента прошло больше 7 дней)».","exampleLabel":"B2B SaaS"},{"id":"P8","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"Финальная цена в переговорах","video":false,"useCase":"договорились по продукту, клиент торгует скидку; конец квартала, нужно подписаться, но не любой ценой; крупная сделка, требуется одобрение собственника.","template":"Помоги пройти финальные переговоры по цене. Цель: подписаться на максимально\nблизкой к нашему листинг-прайсу цене, но не сорвать сделку из-за принципа.\n\nКонтекст:\n- Сделка: [продукт, объём, срок]\n- Листинговая цена: [X]\n- Что клиент просит: [Y — скидка, рассрочка, гарантия]\n- Что мы готовы максимум сделать (внутренний потолок, не озвучен): [Z]\n- Где клиент уже шёл навстречу нам в переговорах (это аргумент): [...]\n- Какие альтернативы у клиента (другие подрядчики, in-house): [...]\n- Кто реальный ЛПР с их стороны (тот, с кем я говорю, или его руководитель)\n\nФормат:\n1. Лестница уступок: 3-4 шага от текущей позиции до внутреннего потолка.\n   Каждый шаг: что я даю, что прошу взамен (никаких уступок без обмена).\n   Темп: какой шаг на какой встрече/звонке\n2. Топ-3 «не финансовых» уступок, которые я могу предложить без удара по\n   марже (срок оплаты / kick-off дата / pilot / расширенный SLA)\n3. Сигналы, что клиент блефует (не уйдёт, даже если мы откажемся), и\n   сигналы, что клиент уйдёт (готов выбрать другого)\n4. Walk-away точка: ниже какой цены я не подписываюсь и почему. Что я говорю\n   клиенту, если он уходит ниже этой точки\n5. Тактика «третьего варианта»: если клиент уперся в скидку — какой\n   третий вариант я могу предложить (другой пакет / другой scope)\n\nТон: уважительный, но без заискивания. Я не «выпрашиваю», я «договариваюсь».","example":"Сделка: 12 мес. SaaS-подписка, 65 тыс ₽/мес, итого 780 тыс ₽.\nКлиент просит: скидку 20% (то есть 520 тыс ₽ за год).\nВнутренний потолок: -12% при предоплате за полгода или -8% постоплата помесячно.\nУступал ранее: согласился на сокращение пилота с 60 до 30 дней; принял мою\nSLA редакцию.\nАльтернативы клиента: конкурент Y на 10% дешевле, но без интеграции, которую\nему важно иметь; in-house никогда не делали.\nЛПР: фин-директор. С ним и говорю.","mistake":"сразу дать максимальную скидку («20% — это наш потолок, договорились»). Клиент тогда уверен, что и это можно было выторговать дешевле, и теряет уважение к процессу. Уступки без обмена приучают клиента торговаться на каждом этапе.","tip":"если «лестница уступок» получилась слишком формальной — попросите «Перепиши шаги в живом языке, как я скажу это на zoom. Каждый шаг — фраза, которую я могу произнести с паузой».","exampleLabel":""},{"id":"P9","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"DM первого касания в LinkedIn / Telegram","video":false,"useCase":"outbound по списку компаний; вы нашли релевантного человека в LinkedIn; новый сегмент, тестируете канал; хотите получить мнение / экспертный комментарий, а потом продать.","template":"Помоги собрать DM первого касания в [LinkedIn / Telegram] от руководителя\nкомпании к руководителю компании. Это не «холодные продажи», а попытка\nначать разговор.\n\nКонтекст:\n- Кому пишу: [роль, компания, что я о них знаю — 2-3 факта из публичных источников]\n- От кого: [я + компания + что мы делаем в 1 предложении]\n- Что общего между нами (точка пересечения — общий знакомый, мероприятие,\n  тема, ниша): [...]\n- Цель сообщения: 15-мин zoom / экспертный комментарий по теме / приглашение\n  на конкретное мероприятие\n- НЕ цель: продать с первого сообщения\n\nФормат:\n1. 3 варианта DM, каждый ≤ 70 слов:\n   А — через общую тему / контент (увидел ваш пост / выступление, отреагировал)\n   Б — через общего знакомого (упоминание реальное, не выдуманное)\n   В — через конкретный наблюдаемый факт о их бизнесе (запустили продукт,\n       вышли в новый сегмент)\n2. К каждому варианту — что я НЕ пишу (типичная ошибка, которая снижает\n   ответ): 1 короткая мысль\n3. Если человек ответит «Что хотели?» — мой следующий ход в 1 сообщении\n   (≤ 50 слов)\n4. Если не ответил за 7 дней — мой второй пинг (≤ 40 слов, новый угол,\n   не «напоминаю о себе»)\n\nЗапрет: «здравствуйте», «уважаемый», «надеемся на сотрудничество», «инсайты»,\n«синергия», «партнёрство», «коллаборация», capslock'и, эмодзи кроме одной.","example":"Кому: Михаил К., COO мебельной фабрики «Стиль-Юг» (Краснодар), 220 чел.\nЗнаю: запустили линейку матрасов в апреле; их CMO выступал на «Mebel\nRussia 2026» с докладом про юнит-экономику бренда.\nОт кого: я, CEO digital-агентства, специализируемся на маркетинге мебельных\nпроизводств.\nОбщее: я был на их выступлении на конференции; работаем с их прямым\nконкурентом «Юг-Мебель-Дилер».\nЦель: 20-мин zoom — спросить про их опыт запуска матрасов через performance-каналы.","mistake":"написать «Здравствуйте! Меня зовут Х, мы digital-агентство, помогаем мебельным компаниям с маркетингом. Можем ли обсудить сотрудничество?». Это сигнал «у меня нет ничего общего с тобой, я просто рассылаю шаблон».","tip":"если варианты звучат «как продажа» — попросите «Перепиши все 3 варианта так, чтобы в первой строке не было ничего про мой бизнес, только про их. Если читая первую строку, он не понимает, что я хочу что-то продать — мы на верном пути».","exampleLabel":""},{"id":"P10","category":"sales","categoryTitle":"Продажи","categoryIcon":"💼","title":"One-pager под продукт (sales collateral)","video":false,"useCase":"менеджер просит «дайте что-то, что я могу прислать клиенту»; новый продукт без материалов; запускаем партнёрский канал; B2B-цикл, где КП — это «потом», а сначала нужна предварительная info.","template":"Помоги собрать one-pager под продукт. Это PDF/DOC на 1 страницу A4, который\nменеджер пересылает клиенту после первого касания. Цель: клиент сам должен\nпонять, надо ему продолжить разговор или нет.\n\nКонтекст:\n- Продукт: [НАЗВАНИЕ, что делает в 1 предложении]\n- Для кого (ICP): [...]\n- Какая боль закрывается: [1 предложение, голосом клиента]\n- Чем отличаемся от 3 альтернатив: [...]\n- Что НЕ хочу включать в one-pager: цены (зависят от scope) / список «100\n  возможностей» / биографию компании\n- Кто отправляет (менеджер / партнёр / сам собственник): [...]\n- Кто получает (роль + ICP): [...]\n\nФормат one-pager:\n1. Hero (≤ 15 слов): что это, для кого\n2. Боль (≤ 30 слов): голос клиента, не наш маркетинг\n3. Что внутри (3 пункта по 1 строке): не «возможности», а «что клиент получает»\n4. Один кейс (≤ 50 слов): клиент, проблема, решение, результат в цифрах\n5. «Как стартуем» (3 шага по 1 строке): что происходит после первого касания\n6. CTA + контакт (1 строка)\n\nТон: говорим как с занятым человеком — лаконично, без эмодзи, без больших шрифтов.","example":"Продукт: «Тут.Маркетинг» — digital-маркетинг под ключ для мебельных производств.\nICP: владельцы фабрик и брендов мебели, выручка 50-500 млн ₽/год, без своего\nмаркетолога.\nБоль: «Деньги на рекламу уходят, я не вижу, куда. Подрядчики делают много,\nтолку мало».\nОтличие: 8 лет только мебель; знаем сезонность по регионам РФ; еженедельные\nправки кампаний (не «1 раз в месяц отчёт»).\nНе включать: цены; список «50 услуг»; биографию компании.\nОтправляет: РОП после первого знакомства на конференции.\nПолучает: собственник / коммерческий директор.","mistake":"собрать one-pager как «брошюру»: 5 абзацев про себя, фото офиса, логотипы клиентов. Это не продаёт, это «успокаивает себя». One-pager должен открываться болью клиента и заканчиваться конкретным следующим шагом.","tip":"если pdf получился «как у всех» — попросите «Замени все наши маркетинговые формулировки на 4-5 точных цитат из реального разговора с клиентом. Если у меня нет цитат — иди в реальные отзывы / интервью / call recordings и выдерни».","exampleLabel":""},{"id":"M1","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Хук для лендинга (3 варианта)","video":true,"useCase":"запуск нового продукта, A/B-тест главной, переписывание hero под новый сегмент.","template":"Я делаю лендинг для [ПРОДУКТ] для [ICP, КОНКРЕТНО]. Главная боль клиента:\n[1 ПРЕДЛОЖЕНИЕ]. Главный страх не покупать: [1 ПРЕДЛОЖЕНИЕ].\nУникальность продукта (мы — единственные, кто...): [1 ПРЕДЛОЖЕНИЕ].\n\nСделай 3 варианта hero-блока на лендинг. Каждый вариант:\n1. Заголовок (≤ 9 слов, без «революция/прорыв/уникально»)\n2. Подзаголовок (≤ 20 слов, разворачивает обещание заголовка)\n3. CTA-кнопка (3 слова, глагол + объект)\n4. Микропруф под кнопкой (1 предложение факта, не цитата клиента)\n\nКаждый вариант — в разном фрейме:\n- Вариант А: фрейм «результат» (что клиент получает)\n- Вариант Б: фрейм «механика» (как продукт работает в 1 шаг)\n- Вариант В: фрейм «контраст» (с чем клиент сравнивает и почему мы выигрываем)\n\nВ конце — какой вариант возьмёшь сам и почему (1 абзац).","example":"Продукт: облачная MES-система для производств 50-200 сотрудников.\nICP: директор по производству на заводе металлоконструкций или мебели в РФ, выручка 200-500 млн ₽.\nБоль: не понимает, где сейчас застрял заказ, и узнаёт о просрочке от клиента.\nСтрах: внедрение на полгода и команда саботирует.\nУникальность: запуск за 4 недели без интеграции с 1С (живёт отдельно, синхронизация раз в день).","mistake":"просить «сделай заголовок для лендинга». Получите 10 одинаковых вариантов с «революционная платформа». Без фрейма (результат / механика / контраст) LLM сваливается в дженерик.","tip":"если все 3 варианта звучат похоже — переформулируйте боль клиента в конкретный момент дня. Не «не видит, где застрял заказ», а «во вторник в 17:42 директор узнаёт по звонку клиента, что отгрузка съехала на 5 дней».","exampleLabel":"SaaS для производителей"},{"id":"M2","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Серия постов в Telegram под запуск","video":false,"useCase":"запускаете новый продукт через 2-4 недели; прогрев перед мастер-классом / интенсивом; новый сегмент или новая категория для канала; нужен «прогрев», который не выглядит как лента анонсов.","template":"Собери серию из 10-12 постов в Telegram под запуск [продукт/событие]\nза период [2 недели / 4 недели].\n\nКонтекст:\n- Канал про что: [...]\n- Подписчики (ICP): [...]\n- Что запускаем + дата старта продажи: [...]\n- Цена и формат продукта: [...]\n- Что аудитория УЖЕ знает про нас и тему: [...]\n- Запрещённые темы (не наша экспертиза, не наш тон, не наша ниша): [...]\n- Сколько постов в неделю канал держит обычно: [...]\n\nФормат серии:\n1. Постов всего: [N], распределить по дням\n2. Каждый пост: дата × тема × формат (история / разбор / чек-лист / мнение\n   / вопрос / соцпруф) × CTA (или «нет CTA — прогрев»)\n3. Распределение энергии:\n   - 50% «польза без продажи» (разборы, кейсы, мнения)\n   - 30% «точка зрения» (спорные тезисы, отстраивание от штампов)\n   - 20% «продукт» — но не «купите», а «вот зачем мы это сделали»\n4. Один пост-крючок за 5-7 дней до старта (готовлю аудиторию к тому, что\n   будет открытие): что в нём\n5. Один пост в день старта (форма и тон): не «купить!», а «открылось»\n6. Что НЕ публикуем (3 типичных «ошибки запуска»)\n\nТон: tone-of-voice (если есть) или «коллега, который знает тему».\nЗапрет: «революционный», «прорыв», «не пропустите!».","example":"Канал: «Нейросборка», 192 подписчика, non-IT собственники РФ-СМБ.\nICP: собственник производства / агентства / магазина, 50-200 млн ₽ выручки.\nЗапускаем: трипваер «Промпт-библиотека CEO» (50 промптов + Notion + видео-разбор)\nпо EUR 29 / 2 600 ₽, старт 22.05.2026.\nАудитория знает: про AI как тренд; про наши лидмагниты по AI-readiness;\nпро интенсивы 28-29.04.\nЗапрещено: разборы НМ 2.0 как «купите курс», политика, негатив на конкурентов.\nКанал постит: 3-4 поста в неделю.","mistake":"запустить серию «10 постов про продукт» подряд. Аудитория видит «реклама — реклама — реклама» и отписывается. Серия запуска работает, когда 70%+ постов вообще не про продукт.","tip":"если все темы звучат «правильно» — добавьте «Сделай 1 пост, в котором я открыто спорю с типичной фразой моей индустрии. Тема должна быть из тех, на которые подписчики реагируют комментариями».","exampleLabel":"трипваер «Промпт-библиотека CEO»"},{"id":"M3","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Описание ICP (портрет клиента)","video":false,"useCase":"новый продукт без чёткой ЦА; бриф подрядчику на креативы; переналадка таргета в performance-каналах; команда «работает на всех» и теряет фокус.","template":"Помоги собрать структурированный ICP (Ideal Customer Profile) для нашего\nпродукта. Цель: получить документ, который понятен агентству креатива\nбез дополнительных объяснений.\n\nКонтекст:\n- Продукт: [что делаем]\n- Где сейчас ICP лучше всего работает (3 примера ваших лучших клиентов):\n  [компании / роли]\n- Что объединяет этих 3 клиентов: [качественные признаки]\n- Кому продукт НЕ продаём (даже если они хотят): [явные red flags]\n\nФормат ICP:\n1. Демография: индустрия / размер / география / возраст компании / стадия\n   (с источниками: где это видно публично)\n2. Психография: ценности / страхи / убеждения / о чём думает в понедельник утром\n3. Текущая ситуация: какие 3-5 систем/процессов уже есть; что недавно поменялось;\n   с кем сейчас работают (наши конкуренты или альтернативы)\n4. Триггеры покупки: 3 события, после которых ICP начинает искать решение\n5. Где он сейчас живёт онлайн: каналы / эксперты / комьюнити (без выдуманных)\n6. Anti-ICP: 3 признака, по которым отсеиваем «похожих, но нет»\n7. Job-to-be-done в формулировке самого клиента (3 варианта, разные роли)","example":"Продукт: digital-маркетинг под ключ для мебельных производств.\n3 лучших клиента: «Юг-Мебель-Дилер» (Краснодар, 8 магазинов розницы),\n«Стандарт-Мебель» (Брянская обл., завод-производитель), «МебельСтиль»\n(Москва, B2B-канал для дистрибуторов).\nОбъединяет: выручка 80-300 млн ₽; собственник принимает решения по\nмаркетингу; нет своего маркетолога full-time; работают 10+ лет.\nНЕ продаём: dropshipping; chinese-import без бренда; маркетплейсам.","mistake":"написать ICP как «компания 50-500 человек, B2B-сегмент». Это не ICP, это сегмент рынка. ICP — это понимание, ЧТО ИМЕННО клиент делает за неделю до того, как нашёл нас.","tip":"если ICP получился «общим» — попросите «Каждый пункт перепиши так, чтобы я мог его проверить за 60 секунд по сайту/LinkedIn/выручке клиента. Если не могу проверить — это не ICP, это надежда».","exampleLabel":"агентство"},{"id":"M4","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Контент-план на месяц","video":true,"useCase":"маркетолог в отпуске/ушёл, новый продукт, выход в новый канал, прогрев под запуск.","template":"Сделай контент-план на 4 недели для нашего Telegram-канала.\nКанал про: [О ЧЁМ КАНАЛ, ICP ПОДПИСЧИКА]\nЦель месяца: [1 ЦЕЛЬ — подписки / прогрев под продукт / конверсия в заявку]\nЧто мы продаём (или будем продавать): [ПРОДУКТ, ЦЕНА]\nЗапрещённые темы (не наша экспертиза или конкуренты): [СПИСОК]\nРитм: [N] постов в неделю.\n\nФормат плана:\n- Неделя × день × тема × формат (история / разбор / чек-лист / мнение / вопрос) × CTA\n- Темы должны идти волной: 60% польза, 30% точка зрения, 10% продукт\n- Не повторять формат 2 раза подряд\n- Один пост в неделю — с открытым вопросом аудитории\n- Последняя неделя плана подводит к [КОНКРЕТНОЕ ДЕЙСТВИЕ]\n\nВ конце:\n1. Список 5 тем, которые специально НЕ взял (и почему)\n2. Что нужно от меня лично (квоты на видео, цитаты, кейсы)","example":"Канал: про автоматизацию маркетинга для производителей мебели. 1 200 подписчиков, рост 8% в мес.\nICP: маркетолог/собственник мебельного бренда, 50-500 млн ₽ выручки.\nЦель июня: 15 заявок на аудит (форма на сайте).\nПродаём: аудит маркетинга, 80 000 ₽, 2 недели, как вход в работу.\nЗапрещено: разбор конкурентов поимённо, политика, кейсы по застройщикам.\nРитм: 3 поста в неделю.","mistake":"просить «сделай контент-план» без цели и продукта. Получите 12 постов «полезного контента», которые ни во что не складываются. План без цели — это график.","tip":"если посты звучат «правильно» и не цепляют — попросите «Перепиши план так, чтобы 2 поста были спорными — против общепринятого мнения в индустрии. Указывай тему и контр-тезис».","exampleLabel":"агентство B2B"},{"id":"M5","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"A/B вариант сабжей email-рассылки","video":false,"useCase":"упал open rate; запуск новой кампании, нужно протестировать; smart-segment, требуется адаптация под подсегмент; ребрендинг.","template":"Сделай 5 вариантов сабжа (subject line) для email-рассылки. Это не «придумай\nвариантов» — это структурированный A/B-список с разными механиками, чтобы\nя мог тестировать.\n\nКонтекст:\n- Тема письма / суть: [...]\n- Аудитория (роль + контекст подписки на нашу базу): [...]\n- Главное обещание письма в 1 предложении: [...]\n- Текущая средняя open rate в этой базе: [N%]\n- Сабж предыдущего успешного письма (для сравнения): [...]\n\nФормат:\n1. 5 вариантов сабжа, каждый в своём механике:\n   А — вопрос (открытый, не «как улучшить X»)\n   Б — список / число (если уместно)\n   В — провокация / контр-тезис («все думают X, но...»)\n   Г — личная история / «я» («Я ошибся X, и вот что узнал»)\n   Д — конкретная цифра / факт («92% наших клиентов делают X»)\n2. Длина каждого: ≤ 50 символов (мобильный crop)\n3. Прехедер для каждого варианта (≤ 90 символов) — дополняет сабж, не повторяет\n4. Прогноз: какой вариант я тестирую как контрольный, а какие — как челленджеры,\n   и почему\n\nЗапрет: эмодзи (если не корпоративный стиль), CAPSLOCK, точки в конце, восклицательные.","example":"Тема: первое касание базы после интенсива 28-29.04 — приглашение на 15-мин\nдиагностику.\nАудитория: 67 человек, attended интенсив, non-IT собственники РФ-СМБ.\nГлавное обещание: персональная 15-мин диагностика — где у вас сейчас «дыра»\nв готовности к AI.\nТекущая open rate этой базы: 38% (после интенсива высокая).\nПредыдущий успешный сабж: «День 2 → 27 человек, 13 моментов на разбор».","mistake":"написать сабж «Не пропустите!» или «Срочно!». Эти слова — спам-сигнал для почтовиков и психологический сигнал «продажа» для читателя. Падает и доставляемость, и доверие.","tip":"если все 5 вариантов «звучат хорошо» — попросите «Прочитай каждый в порядке: первый увидит человек, открывший inbox с 200 непрочитанными. Какой из 5 он откроет первым и почему? Если ответ \"ни один\" — переделай».","exampleLabel":""},{"id":"M6","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Анонс новости / продукта (press-release)","video":false,"useCase":"запуск нового продукта/сервиса; раунд инвестиций; партнёрство; награда; смена ключевого человека (CEO, инвестор); открытие новой географии.","template":"Помоги написать пресс-релиз / новостной анонс для отправки в B2B-СМИ\nиндустрии и публикации на нашем сайте + LinkedIn.\n\nКонтекст:\n- Что произошло (факт): [...]\n- Когда произошло (дата): [...]\n- Кто из нас (роль + имя) комментирует: [...]\n- Какое контекстное значение это имеет для индустрии (не для нас): [...]\n- 3 ключевые цифры (если есть): [...]\n- Что мы НЕ говорим (внутренние причины, цифры под NDA, имена частных партнёров): [...]\n\nФормат:\n1. Заголовок (≤ 12 слов): что произошло, факт. Не «революционный X»\n2. Лид-абзац (40-60 слов): что, когда, кто, зачем — answers Inverted Pyramid\n3. Тело (2-3 абзаца, каждый ≤ 80 слов):\n   - Контекст и почему это важно для индустрии\n   - Что меняется для клиентов / партнёров / рынка\n   - Цитата CEO (живая, не «мы рады объявить») — 1-2 предложения\n4. Boilerplate про компанию (3 предложения, без эпитетов)\n5. Контакт для прессы (имя, email, телефон)\n6. Заметка для редакции: что я НЕ комментирую (cписок тем, на которые\n   отвечу «нет комментариев»)\n\nТон: новостной, без маркетингового перегиба. Если новость не «звучит»\nбез эпитетов — она, скорее всего, не новость.","example":"Факт: digital-агентство «Меридиан» открыло филиал в Краснодаре.\nДата: 01.09.2026.\nКомментирует: Иван П., основатель и CEO «Меридиан».\nЗначение для индустрии: первое специализированное мебельное digital-агентство\nс локальным офисом на Юге РФ; обслуживает 14 заводов и брендов региона.\nЦифры: 32 клиента сейчас, 18 из которых — Юг РФ; запланировано 4 новых клиента\nк 30.06.2027; средний рост клиентов агентства за 2025 — 38% по выручке.\nНЕ говорим: бюджет открытия, имя инвестора, точные имена клиентов с Юга.","mistake":"написать пресс-релиз «Компания X с гордостью объявляет о революционном открытии». Это сигнал «нет новости, есть желание попиариться». СМИ это видит и не публикует.","tip":"если получился «парадный» — попросите «Прочитай вслух заголовок и первый абзац. Если они звучат как реклама — это не пресс-релиз. Перепиши так, как написал бы редактор индустриального издания: новость, не реклама».","exampleLabel":"открытие филиала"},{"id":"M7","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Анализ сообщений 3 конкурентов","video":false,"useCase":"перед ребрендингом; решаете, какое позиционирование занять; падает конверсия лендинга и подозрение, что конкуренты делают понятнее; новый канал, нужно понять «как там пишут».","template":"Помоги проанализировать маркетинговые сообщения 3 конкурентов и сделать\nвывод, как нам отстроиться.\n\nКонтекст:\n- Кто мы (1 предложение): [...]\n- Кто 3 конкурента, которых анализируем (с URL основных лендингов): [...]\n- Какой канал смотрим: лендинг / Telegram / LinkedIn / реклама в Я.Директ\n- Какой сегмент аудитории смотрим: [...]\n- Что я УЖЕ заметил у них (одна-две вещи): [...]\n\nЧто нужно:\n1. Таблица 3×6: конкурент × (hero-обещание / proof / для кого / CTA / цена / тон)\n   — короткие выдержки, не пересказ\n2. Где они все 3 идентичны (стадная зона): где аудитория уже не различает,\n   потому что слышит одно и то же\n3. Где они различаются — 3 «оси» позиционирования (по чему конкурируют между собой)\n4. 3 пустые ниши — позиционирование, которое никто из 3 не занял; для каждого:\n   почему оно пустое, и подходит ли нам\n5. Конкретное предложение «как я могу отстроиться»: 1 точное позиционирование +\n   фраза для hero лендинга\n\nЗапрет: «улучшить», «инновационно», «провести углубленное исследование».\nТон: жёсткий аналитик, не пиарщик.","example":"Мы: TMS для перевозчиков 5-30 машин в РФ.\nКонкуренты: 1С:Транспорт (sites/1c-trans.ru), Логмастер (logmaster.ru),\nWialon Гурт (wialon.ru).\nКанал: лендинги.\nСегмент: владельцы малых автопарков 5-30 машин, без IT-отдела.\nЯ заметил: 1С:Транспорт всё про интеграцию с 1С, Wialon — про мониторинг\nс датчиков; никто не про юнит-экономику рейса.","mistake":"просить «сравни нас с конкурентами». Получите рекламную таблицу. Анализ работает, когда вы попросили выделить «стадную зону» — где конкуренты ничем не различаются.","tip":"если «пустые ниши» звучат как «нужно делать сервис лучше» — попросите «Конкретизируй каждую нишу до фразы для hero. Если ниша не помещается в 12 слов hero-обещания — это не ниша, это категория».","exampleLabel":"SaaS для логистики"},{"id":"M8","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Запрос отзыва у клиента (UGC)","video":false,"useCase":"клиент только что получил результат; готовите кейс на сайт; собираете отзывы для соцпроофа лендинга; делаете LinkedIn-кампанию; конкурс «истории успеха».","template":"Помоги собрать письмо-запрос отзыва у клиента. Цель: получить конкретный\nотзыв, который можно использовать на сайте / в продаже / в соцсетях.\n\nКонтекст:\n- Клиент: [роль, компания, как давно с нами, что у нас]\n- Какой именно результат у него за период с нами (3 факта с цифрами): [...]\n- Какое касание было последним (когда я с ним последний раз говорил\n  и о чём): [...]\n- Как мы хотим использовать отзыв: сайт / соцсети / кейс / LinkedIn / видео\n- Что НЕ хотим: 5-страничный текст; общие фразы «они супер»; долгий обмен правками\n\nФормат письма:\n1. Тема (≤ 7 слов)\n2. Тело (≤ 150 слов в 3 абзаца):\n   - Признание конкретного результата клиента (показать, что я слежу)\n   - Просьба об отзыве + ОБЪЯСНЕНИЕ, почему именно его (контекст,\n     не «нужен отзыв»)\n   - Что я даю взамен (минимум: упоминание в продаваемом материале;\n     максимум: бонус, доступ к чему-то нашему, бесплатный месяц)\n3. Опциональный «формат отзыва» с 3-4 вопросами, на которые легко ответить\n   за 5 мин (не «расскажите своё впечатление», а «какая была главная проблема\n   до нас» / «что изменилось в цифрах» / «что вы посоветовали бы похожей\n   компании»)\n4. Дедлайн и формат ответа (короткий текст в Telegram / Loom-видео 2 мин /\n   ответы письмом)\n\nЗапрет: «уделить нам внимание», «отзыв о нашей работе».","example":"Клиент: Алексей Г., владелец «Лидер-Транс» (15 машин), 9 мес. с нами.\nРезультат за период: автоматизировали 100% машин и расчёты водителей;\nсократили срок отчётности с 4 дней до 2 ч; нашли overpay 12% на топливе.\nПоследнее касание: QBR 2 нед. назад, дал NPS 9/10.\nХотим использовать: блок отзывов на главной + 1 кейс-пост в Telegram.","mistake":"прислать «Здравствуйте, не могли бы вы оставить отзыв о нашей работе? Это поможет нам в маркетинге». Клиент закатывает глаза. UGC получают, когда чётко объясняют ПОЧЕМУ ИМЕННО он, что хотят получить и как используют.","tip":"если письмо вышло «формальным» — попросите «Перепиши вторую часть так, как если бы я лично писал Алексею в Telegram. Спрашиваю помощь у коллеги, не запрашиваю PR-материал».","exampleLabel":""},{"id":"M9","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Бриф подрядчику на дизайн / копи","video":false,"useCase":"заказ у фрилансера/агентства; смена подрядчика и нужно «не перезапускать» с нуля; внутренний дизайнер просит «дайте контекст»; новый канал / новый формат.","template":"Помоги собрать бриф подрядчику на [дизайн / копи / видео / другое].\nЦель: получить продукт без 3 раундов «переделок», потому что мы не объяснили.\n\nКонтекст:\n- Что заказываем (один артефакт): [...]\n- Где будет использоваться: [...]\n- Аудитория: кто смотрит / читает / открывает\n- Цель артефакта (одно действие): [...]\n- Дата дедлайна: [...]\n- Бюджет: [...]\n- Что в брифе должно быть ПРЯМО (а не «исполнитель сам разберётся»): [...]\n- Что я уже знаю про похожие удачные / неудачные примеры: [...]\n\nФормат брифа (1-2 страницы):\n1. Артефакт и контекст: что, где, когда, для кого\n2. Метрика успеха: по чему пойму, что артефакт работает (не «нравится»)\n3. Tone-of-voice: 3 примера «как НАШ голос», 3 примера «как НЕ наш»\n4. Обязательные элементы: что должно быть точно (логотип, текст, размер, ссылки)\n5. Запрещённые элементы: что нельзя (запреты, бренд-guards, юр.ограничения)\n6. Референсы: 3-5 примеров «вот так нам нравится» (с пояснением что именно нравится)\n   и 2 примера «вот так НЕ нравится» (с пояснением что именно не нравится)\n7. Структура работы: этапы / дедлайны / число итераций (не больше N) / формат сдачи\n8. Кто согласует и кто НЕ согласует (важно: не дать подрядчику обратной связи от всех)\n9. Что я делаю на 1 итерации (мои замечания только по структуре, не по слоям)\n10. Контакт для вопросов: один человек, через какой канал\n\nЗапрет: «сделайте красиво», «современно», «продающе» без определения.","example":"Артефакт: лендинг трипваера «Промпт-библиотека CEO».\nГде: ads.leadup.guru/tripwire/prompt-library-ceo/.\nАудитория: non-IT собственник РФ-СМБ (50-200 млн ₽), пришёл с email-рассылки\nпосле интенсива.\nЦель: покупка трипваера за EUR 29 / 2 600 ₽.\nDDL: 20.05.2026 EOD.\nБюджет: 0 (внутренний дизайнер Миша на LEA-1916).\nПрямо: tone-of-voice не «AI заменит», апсейл на диагностику без скидок/таймеров.\nУдачные референсы: лендинг диагностики meet.leadup.guru/diagnostics/ (наш),\nлендинг ConvertKit Free, лендинг Notion templates.","mistake":"написать бриф «Сделайте лендинг продающим и современным». Это сигнал «я не знаю, чего хочу, переделывайте сами». Подрядчик потеряет неделю, потом ещё неделю на правки, и итог будет посредственным.","tip":"если бриф получился «общим» — попросите «Перепиши пункт 4 (обязательные элементы) и 5 (запрещённые) в формате чек-листа, который подрядчик может пройти за 60 секунд перед сдачей».","exampleLabel":""},{"id":"M10","category":"marketing","categoryTitle":"Маркетинг","categoryIcon":"📣","title":"Гипотеза performance-канала","video":false,"useCase":"запускаете новый канал (Telegram Ads, Яндекс Промо, VK, Авито Реклама, контекст в новом сегменте); тестируете, стоит ли вообще; бюджет на эксперименты ограничен.","template":"Помоги собрать гипотезу performance-канала перед запуском.\n\nКонтекст:\n- Канал, который тестируем: [Telegram Ads / VK / Яндекс / Авито / другое]\n- Что мы продаём через канал: [продукт + цена + LTV]\n- Текущая воронка в основных каналах (для сравнения): visit→lead, lead→deal,\n  средний чек, цикл\n- Бюджет на тест: [X ₽] на [Y недель]\n- Что я знаю про канал из публичных кейсов в нашей индустрии: [...]\n\nФормат гипотезы:\n1. Гипотеза «зачем» (≤ 30 слов): что я предполагаю про этот канал относительно\n   моей ICP — не «нам нужны лиды дешевле», а «канал = бывшая 1С-сеть в FB, наша\n   ICP туда мигрировала из FB после блокировки»\n2. Прогнозируемая метрика канала на старте: CPM / CPC / CTR / CR в lead\n   (диапазон с обоснованием — на чём ты основываешь)\n3. Какое будет «провал» теста (3 цифры, при которых я закрываю канал): CPL >\n   X / CR < Y / cycle > Z\n4. Какое будет «победа» теста: 3 цифры, при которых я масштабирую\n5. План недель: что я делаю в неделю 1 / 2 / 3 / 4 — гипотезы и измерения\n6. Что я НЕ делаю до окончания теста (не меняю продукт, не меняю креативы\n   каждый день, не сравниваю с другими каналами раньше времени)\n7. 3 риска самого теста (не канала): что может сорвать чистоту теста с\n   моей стороны","example":"Канал: Telegram Ads (запуск с локального TG-кабинета).\nПродаём: трипваер «Промпт-библиотека CEO» EUR 29 / 2 600 ₽, LTV в нашей\nсистеме 32 000 ₽ (через апсейл на НМ 2.0).\nВоронка: visit→lead 8%, lead→deal 24%, чек 28 тыс ₽, цикл 14 дней.\nБюджет: 30 000 ₽ на 4 недели.\nЗнаю: коллеги-консультанты получают CPM 280-450 ₽ в B2B-сегменте РФ.","mistake":"запустить тест с гипотезой «попробуем — посмотрим». Это сжигает бюджет без обучения. Гипотеза performance-канала — это конкретное «при таких-то параметрах канал = победа / провал», заранее.","tip":"если прогноз получился «надёжный» (все метрики «средние») — попросите «Сделай прогноз агрессивнее. Назови худший разумный сценарий: «ниже среднего по 1 ступени», не \"ниже среднего\". Если я к нему не готов — я к каналу не готов».","exampleLabel":""},{"id":"O1","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"Процесс «как есть» (AS-IS) текстом","video":false,"useCase":"новый сотрудник «не понимает кто за что отвечает»; что-то сорвалось, и не ясно где; перед автоматизацией / внедрением CRM / TMS; передаёте процесс новому руководителю.","template":"Помоги задокументировать процесс «как есть» (AS-IS) — без розовых очков,\nровно как работает сейчас.\n\nКонтекст:\n- Процесс: [НАЗВАНИЕ — например, «от заявки до подписанного договора»]\n- Кто инициирует: [роль]\n- Кто закрывает: [роль]\n- Кто участвует (роли + сколько людей): [...]\n- Сколько таких процессов в неделю / месяц: [...]\n- Где он живёт (CRM / Excel / Telegram / голова): [...]\n\nФормат документа AS-IS:\n1. Карта шагов: 8-15 шагов, каждый —\n   N. Действие × кто (роль) × где (система) × среднее время × как передаётся следующему\n2. Точки передачи (handoffs): где процесс «прыгает» между ролями / системами,\n   и какой формат передачи (документ / устно / в чате)\n3. Известные сбои (3-5 шт): что чаще всего «спотыкается» — какой шаг,\n   какой симптом, как обходим сейчас\n4. Скрытые правила: то, что НЕ задокументировано, но команда знает —\n   «если клиент из ВИП-списка, прыгаем через шаг 4», «если P&L под ноль —\n   запрашиваем у CEO», и т.п.\n5. Дублирование: где разные люди делают одно и то же; где одно и то же\n   делается в двух местах\n6. Что я хочу скрыть / приукрасить в этом документе (это сигнал, где\n   процесс особенно болит) — внутренний пункт, не в самой документации","example":"Процесс: «от заявки клиента до отгрузки» (производство мебели, цех 18 чел.).\nИнициирует: менеджер по продажам после подписания договора.\nЗакрывает: водитель-экспедитор после сдачи клиенту.\nУчаствуют: менеджер ОП, технолог, мастер участка, упаковщики, экспедитор.\nОбъём: 22 заказа в неделю.\nГде живёт: 1С:Производство, WhatsApp-чат «отгрузки», Excel мастера участка.","mistake":"написать AS-IS как «должно быть» — это пересказ TO-BE. Команда читает и не узнаёт свою работу. Документ становится бесполезным. AS-IS работает только тогда, когда вы описываете, ровно как сейчас, с косяками.","tip":"если документ звучит «правильно» (все шаги логичны) — попросите «Покажи мне 3 места, где люди обходят процесс. Если их нет — значит, AS-IS написан с розовыми очками».","exampleLabel":""},{"id":"O2","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"Узкое место в процессе","video":true,"useCase":"упала скорость, выручка стабильна но не растёт, команда жалуется на «мы все в задницах», новый сотрудник «не понимает, кто за что отвечает».","template":"Помоги найти узкое место в процессе.\nПроцесс: [НАЗВАНИЕ, например «от заявки до подписанного договора»]\nДлительность сейчас: [СРЕДНЕЕ + МАКС]\nЦелевая длительность: [СКОЛЬКО ХОЧУ]\n\nШаги процесса:\n1. [ШАГ] — [исполнитель] — [среднее время] — [как передаётся следующему]\n2. ...\n(7-12 шагов)\n\nЧто я ожидаю:\n1. Топ-3 узких места, ранжированы по влиянию на общую длительность. Для каждого — почему именно это узкое, какие данные подтверждают\n2. Для каждого узкого места — 2 варианта расшивки: (а) дешёвый, можно сделать на этой неделе (б) дорогой, требует ресурсов / найма / системы\n3. Один шаг, который нужно вообще убрать (если есть кандидат)\n4. Что я измерю через 30 дней, чтобы понять, расшилось ли\n\nТон: как будто разбираешь со мной за чашкой кофе. Никакой теории Голдратта в ответе.","example":"Процесс: от первой заявки до подписанного договора.\nСейчас: в среднем 18 дней, макс. 47.\nЦель: 10 дней.\n\nШаги:\n1. Заявка с сайта → менеджер за 2 ч → созвон по WhatsApp\n2. Брифинг (60 мин) — менеджер — 1 рабочий день\n3. Внутренняя оценка — РОП + проджект — 3-5 дней\n4. КП в Google Docs — менеджер — 1 день\n5. Согласование цены с владельцем — РОП и я — 2-7 дней (вот тут плохо)\n6. Отправка КП и созвон с клиентом — менеджер — 1-3 дня\n7. Доработка КП — менеджер — 1-5 дней\n8. Договор шаблонный — юрист — 2-3 дня\n9. Подписание ЭДО — клиент — 1-7 дней","mistake":"написать «у нас процесс продаж медленный, помоги». Без шагов и времён LLM выдаст лекцию про «5 узких мест в B2B-продажах». С шагами и временами — показывает, какие именно у вас 2-3 точки рулят 80% задержки.","tip":"если ответ всё ещё общий — добавьте «На основе данных я подозреваю, что шаг [N] — главное. Опровергни или подтверди эту гипотезу, не повторяя её».","exampleLabel":"агентство"},{"id":"O3","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"Шаблон еженедельного дашборда","video":false,"useCase":"команда тонет в данных и не считает метрик; запускаете новый продукт, не понятно, какие 5 чисел смотреть; новый руководитель / совет директоров просит «давайте видеть, как идёт».","template":"Собери шаблон еженедельного дашборда. Цель: 5-7 цифр на одном экране,\nкоторые я смотрю каждый понедельник за 5 минут и принимаю решение\nо пересборке недели.\n\nКонтекст:\n- Бизнес: [индустрия + размер]\n- Главная цель квартала (одна): [...]\n- Текущие 3-5 KPI, которые мы уже считаем: [...]\n- Что НЕ хочу считать: [метрики, которые отнимают время и ничего не меняют]\n- Кто будет смотреть: я только / я + ключевые роли / совет\n- Где будет жить (Notion / Google Sheets / собранный визуально): [...]\n\nФормат дашборда:\n1. Блок «Здоровье» (3 цифры): главные показатели, без которых компания\n   не существует — выручка / cash / runway\n2. Блок «Лидинг» (3-4 цифры): метрики, которые предсказывают «здоровье» через\n   2-4 недели — pipeline / conversion / NPS / время цикла\n3. Для каждой цифры:\n   - Метрика (название и единица)\n   - Целевое значение на квартал (план или порог)\n   - Что я делаю, если значение «красное» (1 предложение)\n   - Источник данных и кто его обновляет (роль, не имя)\n4. Блок «Что НЕ нужно смотреть еженедельно» — 3-5 метрик, которые соблазнят\n   попасть в дашборд, но они шумные / редко меняются / не двигают решения\n5. Один индикатор «здорового» собрания: на встрече в понедельник у нас\n   уходит ≤ N минут на обсуждение дашборда, если больше — что-то не так","example":"Индустрия: digital-маркетинг (агентство 18 чел.).\nЦель квартала: вывести выручку с 110 → 130 млн ₽ LTM.\nТекущие KPI: выручка, маржинальность по клиентам, retention.\nНЕ хочу: SLA по тикетам поддержки (не наша операционка); SMM-метрики\nпо клиенту (это их дело).\nСмотрит: я + 3 руководителя направлений.\nЖивёт: Google Sheets + ссылка в Notion.","mistake":"собрать дашборд из 15+ цифр. На 15 цифр у вас уходит 45 минут, и вы перестаёте смотреть еженедельно. 5-7 цифр — это норма для еженедельного ритма; 15+ — это для месячного.","tip":"если каждой метрике дашборда вы можете сразу сказать, что бы вы сделали при «красном» значении — дашборд правильный. Если нет — попросите «Замени метрики, на которые я не знаю, как реагировать в неделю, на те, на которые знаю».","exampleLabel":"digital-агентство"},{"id":"O4","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"Регламент делегирования задачи","video":false,"useCase":"сами делаете то, что давно должны делать другие; новый сотрудник готов брать ответственность, но не понимает «как мы тут принимаем решения»; передаёте крупное направление; готовите шаблон для будущих делегирований.","template":"Помоги собрать регламент делегирования конкретной задачи / направления.\n\nКонтекст:\n- Что делегирую: [конкретная задача или направление]\n- Кому: [роль + сколько опыта в нашей компании]\n- Почему именно ему / ей: [компетенции + сигналы готовности]\n- Чего боюсь: [3 страха собственника при делегировании этой задачи]\n- На каком уровне свободы готов отдать (по Tannenbaum):\n  Уровень 1 = «сделай, как я скажу»\n  Уровень 2 = «предложи варианты, я выберу»\n  Уровень 3 = «реши, согласуй со мной перед действием»\n  Уровень 4 = «решай сам, отчитайся после»\n  Уровень 5 = «полная автономия»\n\nФормат регламента (1-1,5 страницы):\n1. Что делегируется (конкретно, не «маркетинг», а «закрытие месячного\n   отчёта по performance-каналам»)\n2. Чего НЕ делегируется (важно: где сохраняю своё участие)\n3. Решения, которые принимает делегат сам (с примерами)\n4. Решения, которые согласуются со мной (с порогом — «бюджет > 200 тыс ₽» / \n   «решения с риском более N»)\n5. Решения, которые принимаю только я (короткий явный список)\n6. Темп: как часто синхронизируемся, какой формат (1:1 / письмо / без)\n7. Метрики, по которым меряю «работает делегация»: что должно измениться\n   через 30 / 60 / 90 дней\n8. Если не работает — что я делаю (откат, корректировка, выход из задачи)\n9. Что обязательно говорю делегату при передаче (3-4 ключевые мысли)","example":"Делегирую: закрытие месячного отчёта по performance-каналам digital-агентства\n(Я.Директ + контекст + контент по 32 клиентам).\nКому: Светлана, РОП, 2 года в компании, экс-аналитик в маркетинге.\nПочему: уже месяца 4 фактически собирает отчёт сама, я просто проверяю.\nБоюсь: пропустит критический клиентский показатель; перетянет на себя\nкоммуникацию с клиентом; не справится со 32-страничным сводным.\nУровень свободы: 3 (предлагает варианты выводов, я согласую перед отправкой\nклиенту первый месяц, затем уровень 4).","mistake":"делегировать словами «делай как считаешь нужным» без определения границ. Делегат боится принимать решения, согласовывает каждый шаг, вы фрустрируетесь. Делегирование без границ работает хуже, чем микроменеджмент.","tip":"если регламент получился слишком формальным — добавьте «Перепиши раздел 8 (если не работает) в формате реального разговора, не служебной записки. Если откат — это конкретные слова, которые я скажу делегату».","exampleLabel":""},{"id":"O5","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"Чек-лист онбординга нового сотрудника","video":false,"useCase":"выходит новый человек, нет шаблонной процедуры; «вкатывается» по 1-2 месяца; ваш юрист каждый раз заново объясняет одни и те же вещи; делаете повторный найм на роль.","template":"Помоги собрать чек-лист онбординга для роли [НАЗВАНИЕ].\n\nКонтекст:\n- Роль и зона ответственности: [...]\n- Уровень: junior / middle / senior\n- Под кого (прямой руководитель): [...]\n- Размер команды, в которую попадает: [...]\n- Текущие пробелы: где предыдущие новички теряли время / вкатывались дольше\n- Что я НЕ хочу в чек-листе: «отдыхай первую неделю», «изучи нашу культуру»\n\nФормат чек-листа (3 страницы максимум):\n1. Day 1 (1 день): что человек обязан сделать сам в первые 8 часов\n2. Week 1 (5 дней): целевой результат недели + 5-7 встреч с конкретными ролями\n3. Week 2-4: 3 проектные задачи возрастающей сложности\n4. Day 30: что человек ДОЛЖЕН уметь делать без напоминания\n5. Day 60: что человек ДОЛЖЕН закрыть как первый результат\n6. Day 90: что человек ДОЛЖЕН поднять / предложить (его первая инициатива)\n7. Ритм синхронизаций: 1:1 с руководителем (частота недель 1-12)\n8. «Маркеры тревоги» — поведенческие сигналы, что онбординг не идёт\n9. «Аварийный выход» — что делаем, если не получится: red flag list \n   до конца 90 дней, после которых разговор о расставании\n10. Что обязательно передать на 1:1 при найме (3-4 ключевые мысли)","example":"Роль: Head of Sales (SaaS-стартап, 2 млн USD ARR).\nУровень: senior.\nПрямой: CEO (я).\nКоманда: 4 менеджера (1 senior + 3 middle).\nПробелы: предыдущий HoS вкатывался 4 мес. из-за непонимания нашего цикла\n(45 дней) и спецификики продукта.\nНЕ хочу: «общая корпоративная культура» в чек-листе. Это нужно знать, но\nне входит в onboarding.","mistake":"написать чек-лист «прочитать материалы / пройти курс / встретиться с командой» без конкретного результата к каждой неделе. Человек «вкатывается» полгода, не понимая, что от него ждут на 60 / 90 день.","tip":"если на день 60-90 нет «обязан закрыть конкретный результат» — попросите «Каждому дедлайну (30/60/90) поставь 1-2 конкретных deliverable. Не \"уметь делать\", а \"сделал N. Если не сделал — мы расходимся\"».","exampleLabel":"Head of Sales в SaaS"},{"id":"O6","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"Постмортем инцидента","video":true,"useCase":"сорвали клиента, упал сервис, штраф, серьёзная жалоба, увольнение по конфликту.","template":"Помоги провести постмортем инцидента. Никакого поиска виноватого — ищем систему.\n\nХРОНОЛОГИЯ\nДата/время: [...]\nЧто произошло (факт): [3-5 ПРЕДЛОЖЕНИЙ]\nКогда заметили (внутри / снаружи): [...]\nКто действовал и что делал: [пошагово, с временем]\nКогда восстановили / закрыли: [...]\nПрямой ущерб (деньги / клиент / репутация): [ОЦЕНКА]\n\nЧТО ОТ ТЕБЯ\n1. Timeline в одной таблице: время × действие × кто × что увидел\n2. Root cause analysis по схеме «5 Whys» — пройди до 5 уровня, не останавливайся на «человек ошибся»\n3. Что ДОЛЖНО было сработать в процессе и не сработало (барьеры/проверки/мониторинг)\n4. 3 правила в наш playbook, чтобы инцидент такого класса не повторился. Каждое — формулировка для регламента, не лозунг\n5. Что я говорю команде в Slack (5-7 предложений, без «давайте сделаем выводы»)\n\nСтоп-слова в ответе: «человеческий фактор», «нужно быть внимательнее».","example":"Дата: 03.05.2026, 17:30 МСК.\nЧто произошло: запустили рекламу клиента «Дятьковский Стандарт» на устаревший лендинг\nпосле релиза нового сайта, утром клиент позвонил с криком, потратили 84 000 ₽ за ночь\nна трафик в 404.\nКогда заметили: клиент — в 08:40 по аналитике.\nКто действовал: менеджер X, проджект Y, спец Z, ночью никто.\nКогда закрыли: 09:15 (остановили кампании), 11:30 (вернули старый лендинг).\nУщерб: 84 000 ₽ списано клиенту в трафик, моральная — серьёзная, клиент задумался об уходе.","mistake":"написать «у нас произошёл инцидент, помоги разобрать» одним абзацем. Постмортем без хронологии — это извинение. Хронология с временами заставляет модель находить барьер, который не сработал.","tip":"если 5 Whys выдают «нужно быть внимательнее» — это сигнал, что вы остановились на 2-м «почему». Попросите «Продолжи цепочку дальше — что в нашем процессе позволило этой невнимательности случиться».","exampleLabel":"агентство"},{"id":"O7","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"План встречи (1:1 / weekly / стратегическая)","video":false,"useCase":"встречи буксуют, без повестки; новый формат, нужна структура; вы заходите на регулярные 1:1 первый раз с человеком; стратегическая сессия раз в полугодие.","template":"Помоги собрать план встречи. Цель: встреча должна закрыться за заявленное\nвремя с конкретными решениями, а не «обсудим в следующий раз».\n\nКонтекст:\n- Тип встречи: 1:1 / weekly с командой N человек / стратегическая\n- Длительность: [мин]\n- Кто участвует: [роли]\n- Что произошло с прошлой встречи (для weekly / 1:1): [...]\n- Что я хочу на выходе: [конкретные решения / план / просто услышать]\n- Что обычно «съедает» время на таких встречах (типичный провал): [...]\n\nФормат плана:\n1. Цель встречи в 1 предложении (если не помещается — встречу надо разбить)\n2. Повестка с таймингом: 3-5 блоков, на каждый минуты × вопрос-формат\n   («что обсуждаем», не «что делаем»)\n3. Pre-read: что участники читают / готовят ДО встречи (не больше 1 страницы)\n4. Правила встречи: 3 правила, которые я как ведущий объявляю\n   (например: «решение принимаем сегодня», «гипотезы без данных — не аргумент»)\n5. Запрещённые темы: что вне рамок (для weekly — оперативка одного человека,\n   для 1:1 — оценки других людей)\n6. Закрытие: за 5 мин до конца — что договорились + кто что делает (один\n   человек на одно действие, без «всей команды»)\n7. Follow-up: что я делаю после встречи (письмо / запись в CRM / задача\n   в трекере) — без этого встреча не существует\n8. Если время кончилось — что переносим, что закрываем «как есть»","example":"Тип: 1:1, еженедельное.\nДлительность: 30 мин.\nСо мной: РОП Светлана (2 года в компании).\nС прошлой встречи: договорились внедрить QBR-формат с 3 клиентами Q2;\nпока сделали один из 3.\nХочу: услышать риски Q2; решить про найм 2 SDR в июне; обсудить кейс\nлост-сделки «Юг-Мебель-Дилер».\nСъедает: уходим в оперативку «что было на этой неделе» вместо проблемы.","mistake":"встреча без явной цели и без правила «решение сегодня». Встреча превращается в обсуждение, никто ничего не решает, в следующий раз начинаете «с того места, где остановились».","tip":"если по итогу плана 1:1 получились 5+ блоков повестки — встреча на 30 мин не выживет. Попросите «Сократи до 3 главных блоков; то, что не помещается — отдельно письменно».","exampleLabel":"еженедельное 1:1 с РОП"},{"id":"O8","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"SOP на повторяющуюся задачу","video":false,"useCase":"«каждый делает по-своему», нет стандарта; ошибки повторяются на одном и том же шаге; делегируете задачу регулярно новым людям; готовите «передачу дел» при увольнении.","template":"Помоги собрать SOP (Standard Operating Procedure) — пошаговую инструкцию\nдля повторяющейся задачи. Цель: новый человек сделает по этому SOP\nв одиночку и получит результат не хуже, чем у опытного.\n\nКонтекст:\n- Задача: [конкретно — например, «закрытие месячного отчёта по performance-кампаниям»]\n- Кто делает обычно: [роль]\n- Частота: [как часто повторяется]\n- Сколько занимает у опытного: [время]\n- Где обычно «ломается» при делегировании новичку: [конкретные ошибки]\n- Какие инструменты используются: [...]\n\nФормат SOP (1 страница A4):\n1. Цель задачи в 1 предложении (что должно быть на выходе)\n2. Когда задача начинается (триггер) и когда заканчивается (deliverable)\n3. Подготовка (≤ 5 шагов): что должно быть готово, прежде чем приступить\n4. Основные шаги (≤ 10): каждый шаг —\n   N. Действие × где (система) × что вижу × что делаю если не вижу\n5. Контроль качества: 3 вопроса самопроверки перед сдачей\n6. Что делаем, если что-то пошло не так (3 типичные ошибки + решение)\n7. Кому передаём результат (роль + формат)\n8. Версия SOP (число + дата), кто менял последним\n9. Что НЕ входит в эту SOP (граница — где начинается работа другой роли)\n10. Один совет от того, кто делает это уже долго (1 предложение — то, что\n    не очевидно из шагов)\n\nТон: инструкция для человека на день 7 работы. Не книга, не лекция.","example":"Задача: закрытие месячного отчёта по Я.Директ + контекст по 32 клиентам\nагентства.\nДелает: senior спец по performance.\nЧастота: ежемесячно, к 5-му числу.\nОпытный: 4 часа.\nЛомается у новичка: пропускают «правило 7%» (если клиент даёт менее 7%\nот нашего CPC-плана — не включаем в отчёт без согласования); смешивают\nданные FB-эквивалентов и таргетированной рекламы РФ.\nИнструменты: Яндекс.Метрика, Я.Директ API, Google Sheets шаблон, Looker Studio.","mistake":"написать SOP как «как надо делать», без раздела «что делаем если не работает». Новичок попадает в ситуацию «инструмент не отвечает» и встаёт. SOP без troubleshooting — это документ для уверенных, а не для новых.","tip":"если SOP получился больше 1 страницы — попросите «Найди 3 шага, которые я могу убрать через автоматизацию или передать другой роли. SOP длиной 2+ страницы не читают перед задачей».","exampleLabel":""},{"id":"O9","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"5 Whys для проблемы","video":false,"useCase":"есть симптом, но не ясна корневая причина; команда «лечит симптом» уже 2-3 цикла; нужно прийти на разбор с конкретным root cause; готовите изменение процесса.","template":"Помоги пройти технику «5 Whys» — дойти до корня проблемы за 5 уровней.\n\nКонтекст:\n- Симптом / факт проблемы (без интерпретаций): [конкретно — что произошло]\n- Когда заметили: [дата / период]\n- Какой ущерб: [деньги / клиент / время / репутация]\n- Что я сам думаю про причину: [гипотеза, которая может быть ошибочной]\n- Что мы уже пробовали лечить, и не сработало: [...]\n\nФормат:\n1. Запиши симптом в 1 предложении (как факт, не как обвинение)\n2. Уровень 1 — «Почему это произошло?» Ответ — факт, не оценка\n3. Уровень 2 — «Почему стало возможно [ответ 1]?» Ответ — факт\n4. Уровень 3 — «Почему [ответ 2]?» И так далее до уровня 5\n5. На уровне 5 — корневая причина. Это должно быть либо (а) дыра в процессе,\n   (б) дыра в системе, (в) дыра в найме / роли, либо (г) экономическая\n   реальность, которую мы не учли\n6. Что меняем на каждом уровне (по одному изменению на 5 уровней):\n   - На уровне 1-2: tactical fix (что делаем сейчас, чтобы остановить ущерб)\n   - На уровне 3-4: process change (что меняем в работе на неделю-месяц)\n   - На уровне 5: системное изменение (что меняем в архитектуре — иногда\n     полгода и больше)\n7. Стоп-сигналы в 5 Whys (когда нельзя останавливаться):\n   - Если ответ «человек не доглядел / был невнимателен» — копать дальше\n   - Если ответ «нужно лучше контролировать» — копать дальше\n   - Если ответ «человеческий фактор» — копать дальше\n8. Что я НЕ делаю с этим разбором: ищу виноватого / меняю человека\n   до системного fix'а","example":"Симптом: 03.05.2026 запустили рекламу клиента на устаревший лендинг после\nрелиза нового сайта, потратили 84 000 ₽ за ночь в трафик в 404.\nКогда: 17:30 МСК, заметили 08:40 следующего утра.\nУщерб: 84 тыс ₽ списано клиенту; моральный — серьёзный; клиент задумался об уходе.\nЧто думаю: менеджер не проверил, не сработал релиз-чек-лист.\nУже пробовали: ввели чек-лист «проверки лендинга перед запуском кампании»,\nон у трёх менеджеров в Notion, но никто не пользуется.","mistake":"остановиться на уровне 1 или 2: «менеджер не доглядел». Это не корневая причина, это симптом организационной дыры. Если уволить менеджера и не починить систему — следующий новый менеджер пропустит то же самое.","tip":"если на уровне 4-5 пришли в «человек ленится / не мотивирован» — попросите «Это уровень 1, переформулируй. Что в нашей системе делает лень / отсутствие мотивации возможным сценарием на этом шаге?».","exampleLabel":""},{"id":"O10","category":"operations","categoryTitle":"Операции","categoryIcon":"⚙️","title":"RACI-матрица проекта","video":false,"useCase":"стартует проект на 3+ участника; не понятно «кто за что отвечает»; конфликты «я думал, это делаешь ты»; ищете причину буксующего проекта; готовите проект к передаче новому PM.","template":"Помоги собрать RACI-матрицу для проекта. Цель: на каждый ключевой шаг\nпроекта явно фиксируется, кто Responsible (делает), Accountable (отвечает\nза результат), Consulted (с кем советуются), Informed (кому сообщают).\n\nКонтекст:\n- Проект: [НАЗВАНИЕ + цель]\n- Длительность: [N недель]\n- Участники по ролям: [имена + роли в проекте + основная роль в компании]\n- Главные этапы (3-7): [...]\n- Что меня уже беспокоит про распределение: [страх собственника]\n\nФормат RACI-матрицы:\n1. Таблица: этап / задача × участники в столбцах × ячейка содержит R/A/C/I\n2. Правила:\n   - На каждом этапе только ОДИН A (Accountable) — он отвечает за результат,\n     даже если делает не он\n   - R может быть несколько (несколько человек делают), A — всегда один\n   - C — те, с кем R/A советуются перед решением (но не голосуют)\n   - I — те, кого ставим в копию по факту\n3. После матрицы — топ-3 риска распределения (где у одного человека\n   слишком много A, или где A не совпадает с тем, кто Responsible)\n4. Альтернативная гипотеза: если бы я делал матрицу заново, на каких 2-3\n   этапах поменял бы A — и почему\n5. Один разговор, который нужно провести до старта (с кем именно и о чём),\n   чтобы матрица «прижилась», а не оставалась в Notion\n\nТон: ясно и без обтекаемости. RACI работает только при честных границах.","example":"Проект: запуск трипваера «Промпт-библиотека CEO» (LEA-422 пилот EUR 100).\nДлительность: 6 недель (15.05 → 25.06).\nУчастники: я (CEO Алекс), Марина (Content), Дима (Tech/Email), Артём (Video),\nМиша (Web/Landing), Саша (Sales-handoff).\nЭтапы: подбор 50 промптов / Notion-template / PDF / видео-разбор / landing /\npayment + delivery / post-purchase nurture.\nБеспокоит: похоже, что Дима и Артём не знают, что должны выполнить раньше\nдруг друга; landing зависит от видео-обложки, но Миша не подключён к\nвидео-таймингу.","mistake":"написать RACI без явного A или с двумя A на одном этапе. Это сигнал «никто не отвечает» или «двое будут спорить». В обоих случаях этап буксует.","tip":"если получилось, что у одного человека больше 30% всех A — попросите «Перераспредели A. Это либо признак, что человек перегружен, либо что мы прячемся за ним. И то и другое — риск».","exampleLabel":""},{"id":"H1","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Текст вакансии","video":false,"useCase":"закрываете роль; решили нанимать впервые в этой роли (нет шаблона); меняете уровень вакансии (с middle на senior); сменился стек / контекст компании, старый текст уже не работает.","template":"Помоги собрать текст вакансии. Цель: текст отсеивает шум (массовых соискателей)\nи притягивает релевантных кандидатов с релевантным опытом.\n\nКонтекст:\n- Роль и уровень: [...]\n- Главные задачи (3-5 пунктов, что человек делает на 80% времени): [...]\n- Главные результаты (что должно измениться через 6 / 12 мес.): [...]\n- Жёсткие требования (без чего не стоит даже отвечать): [3-5 пунктов]\n- Желательные (плюсами): [3-5 пунктов]\n- Зарплатная вилка: [...]\n- Формат: офис / гибрид / удалёнка\n- Кто подчиняется этому человеку и кому он\n- Что НЕ ждём от этой роли (важно — что НЕ зона ответственности)\n- Tone-of-voice компании (если есть): [...]\n\nФормат вакансии:\n1. Заголовок (≤ 8 слов): роль + ключевой контекст (не «ищем талантливого менеджера»)\n2. О компании (≤ 50 слов): что делаем, для кого, размер\n3. О роли (1 абзац): что человек делает, какой результат ждём\n4. Чем будете заниматься (5-7 пунктов конкретных задач, не «работать с\n   командой» — а «вести 1:1 с 4 менеджерами раз в неделю»)\n5. Что нужно (4-6 жёстких требований)\n6. Что будет плюсом (3-4 пункта)\n7. Что предлагаем (вилка + формат + 3 «настоящих» бонуса — не «фрукты по\n   пятницам», а конкретно)\n8. Как откликнуться (1 шаг)\n9. Что НЕ нужно делать (не присылать резюме без cover-note / не звонить /\n   и т.п. — короткий пункт)\n\nЗапрет: «креативный лидер», «работа в дружном коллективе», «развитие в\nдинамично растущей компании», «нужно гореть».","example":"Роль: Head of Sales в SaaS-стартапе 2 млн USD ARR.\n80% времени: управление 4 менеджерами, ревью пайплайна, разбор сделок,\nпереговоры по топ-3 сделкам.\nРезультаты (6 мес.): MRR new business +60%, churn ≤ 8% годовой, win rate ≥ 25%.\nЖёсткие: 3+ года в B2B SaaS как HoS или senior IC с управлением; продавал в РФ;\nработал с циклом ≥ 30 дней.\nПлюсы: знание TMS / логистики; опыт RevOps / CRM-настройки.\nВилка: 350-500 тыс ₽ net + бонус 12-20% от plan attainment.\nФормат: гибрид Москва (2 дня офис, 3 удалёнки).\nПодчиняется: CEO. В подчинении: 4 менеджера.\nНЕ ждём: личные продажи на 80% (это coach, не player); маркетинг.","mistake":"написать вакансию «Ищем талантливого Head of Sales в дружный коллектив». Это сигнал «у нас нет специфики, мы готовы взять любого, главное — присылайте резюме». Релевантные senior кандидаты такие не открывают.","tip":"если вакансия получилась общая — попросите «Перепиши раздел \"чем будете заниматься\" так, чтобы senior с 8-летним опытом сразу понял, отличаемся мы от его текущего работодателя в лучшую или в худшую сторону по конкретике задач».","exampleLabel":""},{"id":"H2","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Структура интервью под роль","video":true,"useCase":"готовите финальное собеседование, нанимаете в роли «второй раз за год», нужна структура для нескольких интервьюеров.","template":"Помоги собрать структуру интервью для роли [НАЗВАНИЕ РОЛИ].\n\nROLE-PROFILE\nЧто человек делает на 80% времени: [...]\nГлавные результаты, по которым меряем на 6 мес.: [2-3 METRIC]\nС кем работает: [команды, сколько людей в подчинении, кому отчитывается]\nЧто мы НЕ ждём от роли: [важно — что НЕ его задача]\nБюджет вилки / уровень: [junior/middle/senior, диапазон зарплаты]\n\nЧТО МНЕ НУЖНО\n1. План интервью на 60 минут: 6 блоков × 8-10 минут. Для каждого блока — цель блока, 3 поведенческих вопроса (про прошлый опыт, не про гипотетику), 1 follow-up\n2. Один кейс на 10 минут: задача из реальной работы. Описание + что я слушаю в ответе (3 сигнала)\n3. Топ-3 red flags в ответах — конкретные формулировки, на которые я должен среагировать\n4. Топ-3 «зелёные» сигнала, после которых я могу решать в плюс\n5. Что я НЕ должен спрашивать (юридические/токсичные/устаревшие практики)\n\nТон: я провожу интервью сам, как СЕО, не делегирую HR.","example":"Роль: Head of Sales в SaaS-стартапе, ARR ~2 млн USD.\n80% времени: управление 4 менеджерами, ревью пайплайна, разбор сделок, переговоры по top-3.\nМетрики (6 мес.): MRR new business +60%, churn ≤ 8% в год, win rate ≥ 25%.\nС кем: команда 4 менеджеров, отчётность CEO, тесная работа с маркетингом (2 чел.) и саппортом.\nНЕ его задача: личные продажи на 80% времени (это не player, это coach), маркетинг.\nУровень: senior, вилка 350-500 тыс ₽ net + бонус.","mistake":"просить «вопросы для интервью на менеджера продаж». Получите 15 вопросов «опишите свой опыт». Поведенческие вопросы из них — 2-3, остальное — сочинение. Описание роли через 80%-времени и метрики даёт интервью, где видно, был ли человек на этой роли реально.","tip":"если кейс получился синтетический («у вас компания X, придумайте стратегию») — попросите «Замени кейс на реальную задачу из недели менеджера: 4 сделки на разных стадиях, 1 уходит, что делаешь сегодня и в чьём порядке».","exampleLabel":"Head of Sales в SaaS"},{"id":"H3","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"План 1:1 на месяц с сотрудником","video":false,"useCase":"только запустили регулярные 1:1; новый сотрудник в команде; сменился руководитель; команда выросла, нет шаблона для 1:1; «1:1 буксуют — каждый раз обсуждаем оперативку».","template":"Помоги собрать структуру 1:1 на ближайший месяц (4 встречи) с конкретным\nсотрудником. Цель: каждая встреча с явной фокусной темой, а не «как дела».\n\nКонтекст:\n- Сотрудник: [роль, сколько в команде, контекст последних 3 мес]\n- Где я как руководитель чувствую риск / напряжение: [...]\n- Где сотрудник, по моим наблюдениям, недополучает / недосчитывает: [...]\n- Что предстоит большое за месяц (для него или для команды): [...]\n- Что я НЕ хочу обсуждать на 1:1 (оперативка / KPI-цифры / зарплатные торги): [...]\n\nФормат:\n1. 4 встречи × 30-45 мин × формат блоков:\n   Встреча 1 — Стартовая (актуальное состояние, фокус месяца)\n   Встреча 2 — Развитие (один скилл / навык, который растим)\n   Встреча 3 — Обратная связь (двусторонняя — я даю, я слушаю)\n   Встреча 4 — Итог + следующий месяц\n2. Для каждой встречи:\n   - 3 главных вопроса, которые я задам (не «как настроение», а конкретно)\n   - 1 «открытый вопрос», на который не знаю ответа (для honest dialogue)\n   - 1 наблюдение, которым делюсь\n   - Что я НЕ буду обсуждать на этой встрече, если попадёт в разговор\n3. Темы, которые я держу «в запасе» — на случай, если 1:1 закончится раньше\n4. Что я делаю после каждой 1:1 (короткая заметка / задача / молчание — что\n   именно и где фиксирую)\n5. 3 поведенческих сигнала, что 1:1 «работает», и 3, что «не работает»","example":"Сотрудник: Анна Светлова, маркетолог-аналитик, 8 мес. в команде, выходит из\nadaptation-периода, переходит в самостоятельную работу.\nРиск: пока всё ещё ждёт «разрешения» на инициативу; сильно завязана на\nтехэксперта Кирилла, который скоро в отпуске.\nНедополучает: feedback на текстовые материалы (пишет тексты, никто их\nсистемно не комментирует).\nПредстоит: запуск трипваера, ей предстоит часть аналитики post-purchase.\nНЕ хочу: KPI-цифры (она их и так знает); раз в месяц — нормально.","mistake":"проводить 1:1 как «оперативку с одним человеком». Это не 1:1, это статус-митинг. На 1:1 у сотрудника должен быть голос; в 50%+ времени говорит он, а не вы.","tip":"если все 4 встречи получились в одном тоне — попросите «Перенеси встречу 3 (Обратная связь) на встречу 2, а встречу 2 — на 3. Если у меня нет от сотрудника обратной связи в первую половину месяца, я не получу её совсем».","exampleLabel":""},{"id":"H4","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Performance review (квартальный)","video":false,"useCase":"конец квартала; принимаете решение о бонусе / повышении; готовите развитие сотрудника; новая роль через полгода-год.","template":"Помоги подготовить квартальный performance review для сотрудника. Цель:\nreview даёт сотруднику понятную картину, помогает планировать следующий\nквартал, и подготавливает решения по бонусу / повышению.\n\nКонтекст:\n- Сотрудник: [роль + сколько в компании]\n- Что было приоритетно для роли в этом квартале (3-5 целей):\n- Факт за квартал по каждой цели (с цифрами): [...]\n- 3 рабочих ситуации, где сотрудник проявил себя хорошо: [...]\n- 2-3 ситуации, где не дотянул / была проблема: [...]\n- Что я как руководитель сделал хорошо в работе с этим сотрудником, что\n  плохо: [...]\n- Бонус / повышение зависит от этого review: [да / нет]\n\nФормат review (документ + встреча):\n1. Раздел «Контекст квартала»: что планировали, что произошло\n2. Раздел «Результаты по целям»: цель × план × факт × оценка (низкая /\n   среднее / выше плана) × краткий комментарий\n3. Раздел «Сильные стороны»: 2-3 факта, не оценки. Не «отличный лидер», а\n   «провёл 6 успешных QBR с клиентами категории \"затухающие\"»\n4. Раздел «Зоны роста»: 2-3 факта, не оценки. Не «нужно больше\n   проактивности», а «не предложил инициатив по работе с лост-сделками,\n   хотя в роли это входит»\n5. Раздел «Что я как руководитель меняю в нашей работе»: 1-2 пункта\n   (взаимные обязательства)\n6. Раздел «Следующий квартал»: 3 цели на следующий квартал (с метрикой)\n7. Решение по бонусу / повышению (если применимо): да / нет / отложено\n8. Структура встречи (45 мин): открытие 5 / результаты 10 / разбор 15 /\n   следующий квартал 10 / закрытие 5\n9. Главное, что я хочу, чтобы сотрудник унёс из встречи (1 предложение)\n10. Что я НЕ говорю на этой встрече (вещи, которые лучше через 1:1)","example":"Сотрудник: Анна, маркетолог-аналитик, 8 мес. в компании.\nQ1-цели: организовать ежемесячный performance-отчёт по 32 клиентам;\nзапустить аналитику post-purchase для трипваера; провести 4 1:1 с\nменеджерами по их клиентским метрикам.\nФакт: организовала отчёт (60% автоматизирован); пост-purchase отложен из-за\nблока на LEA-422 решений CEO; провела 3 из 4 1:1.\nХорошо: вытянула 2 сложных клиентских разбора (Юг-Мебель-Дилер, Лидер-Транс),\nсама нашла gap в воронке lost-сделок.\nНе дотянула: молчит на стратегических разговорах; не предлагала инициативы.\nЯ: задерживал ответы на её вопросы по приоритетам в среднем 36 часов.\nБонус: переменная часть зарплаты зависит — да.","mistake":"провести review как «вот твои оценки 1-5 по 10 пунктам». Сотрудник уходит без понимания, что конкретно делать иначе. Review без 2-3 фактов и без 2-3 зон роста = не review, а формальность для HR.","tip":"если в зонах роста все формулировки «нужно больше...» — попросите «Каждую зону роста переформулируй: вместо \"нужно больше проактивности\" → \"не сделал X. В следующий квартал жду Y по тому же типу задач\". Конкретное действие, а не качество».","exampleLabel":""},{"id":"H5","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"План развития сотрудника (PDP)","video":false,"useCase":"сильный сотрудник «упёрся», нужен рост; обсуждаете повышение через 6 мес.; готовите backup для критической роли; сотрудник сам пришёл с запросом «куда мне развиваться».","template":"Помоги собрать персональный план развития (PDP) сотрудника на 6-12 мес.\n\nКонтекст:\n- Сотрудник: [роль + сколько в компании + текущий уровень]\n- Куда хочет развиваться (в его словах, если знаю): [...]\n- Куда я как руководитель хочу его развивать (если совпадает / нет — отметь):\n- 3 сильные стороны: [...]\n- 2-3 зоны роста (gap, который мешает следующему уровню): [...]\n- Какой следующий уровень / роль реалистичен через 6-12 мес.: [...]\n- Что я готов вложить в его развитие (бюджет / время / mentor / ротация):\n- Что я НЕ готов: [...]\n\nФормат PDP (на 1 страницу):\n1. Раздел «Куда» — следующий уровень / роль в 1 предложении (что это значит:\n   ответственность / результаты / решения)\n2. Раздел «Зачем» — что меняется в его работе и в зарплате / статусе\n3. Раздел «Текущий gap» — 3 конкретных навыка / опыта / результата, которых\n   не хватает сейчас. Для каждого:\n   - Почему этот gap критичен для следующего уровня\n   - Как мы его закрываем (опыт / обучение / mentor / проект)\n   - Метрика, по которой пойму, что закрыли\n4. Раздел «Roadmap по месяцам» — что в M1 / M3 / M6 / M12, конкретные\n   проекты или достижения\n5. Раздел «Что от меня» — 2-3 вещи, которые я как руководитель делаю\n   (выделяю проект / помогаю с networking / предоставляю обучение)\n6. Раздел «Что от сотрудника» — 2-3 вещи, которых я жду без напоминания\n7. Раздел «Триггеры пересмотра» — когда меняем план: успешно прошёл этап /\n   провалил этап / изменились приоритеты компании\n8. Раздел «Что НЕ план» — чтобы избежать недопонимания: «PDP не гарантирует\n   повышение», «PDP не заменяет performance review», «PDP — это roadmap, не контракт»","example":"Сотрудник: Кирилл, performance-спец, 2 года в команде, middle.\nХочет: расти в senior / лид-роль через 12 мес.\nЯ тоже считаю это нужным (closer to lead).\nСильные: технический performance; разборы лост-сделок; pattern-recognition\nв данных.\nGap: коммуникация с клиентом (избегает встреч); leadership (никогда не вёл\njunior-ов); presentation skill (отчёты пишет — рассказывать боится).\nУровень через 12 мес: senior performance / team lead 2-3 junior'ов.\nГотов вложить: бюджет на курс по сложным разговорам с клиентом 80 тыс ₽;\nвыделить ему проект «менторство junior» через 4 мес.\nНЕ готов: оплачивать MBA; делать его CEO небольшого направления (пока).","mistake":"написать PDP как «общие пожелания и тренинги». Сотрудник не понимает, что конкретно делать, и плана нет. Хороший PDP — это roadmap с метриками на каждом этапе.","tip":"если PDP получился как «10 курсов и 5 книг» — попросите «Сократи обучающие активности до 2. Каждая зона роста закрывается через ОПЫТ (проект / роль), не через курс. Курс — это поддержка опыта, не замена».","exampleLabel":""},{"id":"H6","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Подготовка к трудному разговору","video":true,"useCase":"снижение зарплаты, отказ кандидату/сотруднику в повышении, увольнение, разговор с партнёром о выходе из бизнеса, разговор с инвестором о пропусках плана.","template":"Мне предстоит трудный разговор. Помоги подготовиться.\n\nСИТУАЦИЯ\nС кем: [роль и сколько лет в компании / отношения]\nО чём (1 предложение): [...]\nПочему именно сейчас (триггер): [...]\nЧто я хочу на выходе из разговора: [3 вещи в порядке приоритета]\nЧто я боюсь, что произойдёт: [конкретный сценарий]\n\nЧТО ОТ ТЕБЯ\n1. Сценарий разговора в 7 шагах. Для каждого шага — что я говорю (формулировка близкая к устной речи, без HR-эвфемизмов), цель шага, какой сигнал собеседника = идти дальше / задержаться\n2. 5 фраз собеседника, которые меня могут «выбить», и как на них отвечать так, чтобы вернуть структуру (не аргументы — структуру)\n3. То, что НЕЛЬЗЯ говорить: 3 формулировки и почему именно они ломают разговор\n4. Что я делаю ПОСЛЕ разговора в течение 24 часов (что фиксирую, кому сообщаю, какой следующий шаг)\n\nТон: не «эмоциональный интеллект». Я уважаю человека и хочу разговор, в котором мы оба видим друг друга, а не играем в роли.","example":"С кем: Сергей, директор по продажам, 3 года в компании, последние 6 мес. результат падает.\nО чём: переход с роли «директор по продажам» на «senior sales» с понижением фикса на 30%\nи потерей подчинённых, но с сохранением в компании.\nТриггер: 2 квартала подряд план -25%, два менеджера уволились с жалобой на стиль управления.\nЧто я хочу на выходе:\n1. Сергей понимает, что это не наказание, а возврат к роли, в которой он силён\n2. Сергей соглашается остаться (не уйти в течение недели)\n3. Договариваемся, как сообщаем команде\nБоюсь: уйдёт в течение дня, заберёт двух сильных менеджеров.","mistake":"просить «как сказать сотруднику о понижении». Получите рамочный совет «будьте честны и эмпатичны». Без конкретики — где работаете, как давно, что меняется и почему сейчас — модель не может дать формулировку, которую вы реально скажете.","tip":"если предлагаемые формулировки звучат как из учебника HR — попросите «Перепиши шаг 3 так, как сказал бы старший партнёр на 20 лет в бизнесе, у которого этот разговор был 30 раз. Без книжных оборотов».","exampleLabel":"понижение в роли"},{"id":"H7","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Job offer письмо","video":false,"useCase":"прошли финальное собеседование, готовы делать предложение; кандидат финалист на рынке (получает несколько офферов); сложный кейс с торгом по зарплате; письменный оффер после устного.","template":"Помоги написать job offer письмо. Цель: кандидат должен прочитать письмо\nи захотеть согласиться (или прийти на финальный разговор о деталях), а\nне пугаться формальностей.\n\nКонтекст:\n- Кандидат: [имя, роль, где сейчас работает]\n- Что мы предлагаем: [роль + дата выхода + офис/удалёнка]\n- Зарплата: [фикс + переменная + опционы / бонусы]\n- Что обсуждали на финальном (что важно для кандидата — кроме денег): [...]\n- Кто будет руководителем: [имя + 1-2 строки контекста]\n- Какие у него были опасения / красные флаги: [...]\n- Какие у нас опасения за него: [...]\n- Сроки ответа: [...]\n\nФормат письма:\n1. Тема: личная, не «Job offer от X» — например, «[Имя], предложение от X»\n2. Открытие (≤ 30 слов): благодарность за разговор + что мы решили + дата\n3. Раздел «О роли» (≤ 50 слов): что человек делает в первые 3 мес.,\n   главный результат через 6 мес. (без HR-формализмов, конкретно)\n4. Раздел «Условия» — таблица: фикс / переменная / бонусы / отпуск / формат\n   работы / даты выхода / испытательный срок\n5. Раздел «Что для меня (как руководителя) важно»: 2-3 личные мысли\n   (не текст HR-а)\n6. Раздел «Что от вас нужно» — конкретный следующий шаг (созвон 15 мин\n   на завтра в 14:00 / письменный ответ до X)\n7. Закрытие — личное, без «с уважением, имя».\n8. Прикреплённые файлы: формальный оффер (PDF) / описание роли / NDA\n   если применимо\n\nЗапрет: «уважаемый», «настоящим письмом», «обращаемся к вам с\nпредложением». Это сигнал «у нас вы — № 4 из 7».","example":"Кандидат: Сергей Калинин, Head of Sales в КонтентАгро (SaaS для аграриев).\nПредлагаем: Head of Sales в нашем TMS-стартапе, выход 16.06.2026, гибрид\nМосква.\nЗарплата: 450 тыс ₽ фикс + 18% от plan attainment, бонус 200 тыс ₽ за прохождение\nпервого квартала по плану.\nОпасения его: цикл сделки у нас короче (45 дн vs 90 дн), не хочет «потерять\nсебя в кросс-функциональности».\nОпасения наши: его бывший работодатель был корпоративным, может не зайти\nв стартап-темп.\nСроки ответа: 5 рабочих дней (до 22.05).","mistake":"прислать формальный PDF-оффер без личного письма. Кандидат финального уровня получает 5-7 офферов в месяц, и формальный документ — это сигнал «вы — один из многих». Личное письмо с обоснованием выбора создает разницу.","tip":"если письмо получилось «корпоративным» — попросите «Перепиши раздел \"Что для меня важно\" так, как будто я лично рассказываю Сергею за кофе, почему я хочу именно его. 2-3 предложения, не более».","exampleLabel":""},{"id":"H8","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Exit-interview / увольнение","video":false,"useCase":"уходит сотрудник (по своей инициативе / по инициативе компании); нужно собрать выводы для команды; готовите изменения в процессах после ухода; коллеги задают «а почему он ушёл».","template":"Помоги собрать exit-interview и план «как мы расстаёмся».\n\nКонтекст:\n- Сотрудник: [роль + сколько в компании]\n- Кто инициатор расставания: [он / мы / обоюдно]\n- Причина (как мы её понимаем): [...]\n- Что хорошо успел сделать: [...]\n- Что осталось «висеть» / не передано: [...]\n- Что я хочу узнать от него на exit-interview (3 вопроса максимум): [...]\n- Что я НЕ хочу обсуждать с ним: [...]\n- Что я скажу команде об уходе: [контекст]\n\nФормат:\n1. Exit-interview (30 мин):\n   - Открытие (5 мин): подтверждаем уважение + цель встречи\n   - 3 главных вопроса, на которые ждём ответ (с подсказкой, как форму-\n     лировать, чтобы получить честный ответ)\n   - Закрытие (5 мин): «что я как руководитель мог сделать иначе»;\n     благодарность; договорённость про recommendation\n2. План передачи дел (1-2 недели):\n   - Что передаётся (списком, с принимающим)\n   - Что обнуляется (доступы / NDA / договоры)\n   - Что мы НЕ передаём, потому что переделаем сами (если есть)\n3. Объявление команде:\n   - Где (Slack / 1:1 с каждым / общий митинг)\n   - Как (формат сообщения — 50-80 слов)\n   - Что говорим / что НЕ говорим\n   - Кто отвечает на вопросы «а почему» (один человек, не разные версии)\n4. Внутренние выводы для меня:\n   - Что я как руководитель пропустил / должен был увидеть раньше\n   - Что меняю в найме / онбординге / 1:1 / тогда, чтобы похожий уход\n     не повторился\n5. План на роль после ухода:\n   - Срочные дыры (что закрывается на текущей команде)\n   - Найм (когда открываем / какой профиль)\n   - Структурное решение (нужна ли вообще роль)\n6. Recommendation letter / LinkedIn-рекомендация — что готов написать","example":"Сотрудник: Олег, senior performance-спец, 3 года в компании.\nИнициатор: он (нашёл место с +40% к зарплате в другом SaaS).\nПричина: рост в зарплате; у нас upside зажат пока мы не выйдем на новый\nраунд; усталость от 32 клиентов агентского формата.\nХорошее: вывел performance-кампании 18 клиентов в зелёную зону; написал\nSOP под отчётность.\nВисит: 2 крупных клиентских проекта (Юг РФ); ментор для middle-команды\nне назначен; не передан стек кампаний в Я.Директ.\nХочу узнать: что критично для роста в нашей команде; кто из конкурентов\nзвал; чего ему не хватало в работе со мной.\nНЕ хочу обсуждать: зарплаты других команд; внутренние конфликты, которые\nуже разрешены.","mistake":"провести exit-interview как «галочку» — формальные 3 вопроса, нет глубины. Это упущенная возможность увидеть систему изнутри. Сотрудник, который уходит, говорит честнее, чем тот, кто остаётся.","tip":"если ответы получаются «вежливыми» — попросите «На третьем вопросе предложи: \"Я понимаю, что ты не хочешь сжигать мосты — но если бы тебе было всё равно, что бы ты сказал?\". И продолжай слушать».","exampleLabel":""},{"id":"H9","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"Опрос пульса команды (eNPS)","video":false,"useCase":"подозреваете выгорание, но не знаете, где именно; команда выросла, не понятно, как все себя чувствуют; нужно регулярное измерение каждый квартал; готовите следующий квартал, хотите учесть пульс команды в приоритетах.","template":"Помоги собрать quick-survey пульса команды (eNPS-style + 3-4 контекстных вопроса).\nЦель: за 5 минут ответа собрать честные данные о состоянии команды.\n\nКонтекст:\n- Размер команды: [N человек]\n- Что произошло за квартал важного: [...]\n- Текущая температура (что я как руководитель чувствую): [...]\n- Что я хочу измерить (1-2 главные темы): [...]\n- Каналы доставки опроса: [Notion / Google Forms / Anonymous link]\n- Готов ли я к негативной обратной связи: [да / \"только если мягко\"]\n\nФормат опроса:\n1. Базовый eNPS-вопрос: «Насколько вероятно (от 0 до 10), что вы порекомендуете\n   наше место работы другу с похожим опытом?» + один follow-up «Что важное\n   в одном предложении: что бы вы изменили в первую очередь?»\n2. 3-4 дополнительных вопроса по шкале 1-5 (с подписями вместо абстрактных\n   баллов): доверие к руководству / понимание целей / достаточность ресурсов /\n   баланс работа-личная жизнь\n3. 1 открытый вопрос: «Что я как руководитель должен начать / прекратить /\n   продолжить делать?»\n4. Анонимность: гарантирована / нет, явное объяснение в шапке опроса\n5. Распределение: дата старта / дедлайн ответа / напоминания / нет\n6. План обработки:\n   - Кто видит ответы (только я / я + HR / агрегаты для всей команды)\n   - Когда расскажу команде результаты (≤ 2 недели после опроса)\n   - Что я обещаю сделать с результатами (минимум: рассказать что услышал;\n     максимум: 2-3 конкретные изменения)\n7. Что я НЕ обещаю: «решим все проблемы»; «уберём то, что напрягает».\n   Если что-то не могу — говорю «вижу, не могу изменить сейчас, вот почему»\n8. План follow-up: что делаем с теми, кто поставил 0-3 (anonymous → не могу\n   личный разговор → как реагирую на сигнал)","example":"Команда: 18 человек (агентство digital-маркетинга).\nКвартал: 2 проекта запущены успешно; ушёл senior; цены на ПО выросли на 30%;\nоткрываем филиал в Краснодаре.\nТемпература: «всё ОК, но всё медленнее».\nХочу измерить: насколько команда чувствует, что мы движемся к цели;\nне выгорают ли middle-ы.\nКаналы: Google Forms (анонимно) + ссылка в Slack.\nГотов ли к негативу: да.","mistake":"запустить опрос «как у вас дела по 5 шкалам», не сказав, что будете делать с результатами. Команда не верит, что их ответы повлияют, отвечает формально. eNPS работает только при цикле «спросил → услышал → сделал → рассказал».","tip":"если опрос получился слишком длинным (10+ вопросов) — попросите «Сократи до 5 вопросов жёстко. Если я отвечу на эти 5 — я отвечу честно. Если на 10 — я устану и поставлю средние ответы».","exampleLabel":""},{"id":"H10","category":"hr","categoryTitle":"HR / Команда","categoryIcon":"👥","title":"План адаптации 30 / 60 / 90 дней","video":false,"useCase":"выходит новый человек на роль; нужна структура «вкатывания» для всей будущей команды (не разовая); делегируете адаптацию руководителю отдела; нанимаете сразу 2-3 человек на похожие роли.","template":"Помоги собрать план адаптации 30/60/90 дней для конкретного человека на\nконкретной роли. Цель: на 90 день у нас есть факт, что человек либо подошёл,\nлибо мы расстаёмся — без долгого ожидания.\n\nКонтекст:\n- Роль и уровень: [...]\n- Чем будет заниматься (5 главных задач): [...]\n- В какую команду попадает: [...]\n- Кто руководитель и кто mentor (если разные): [...]\n- Что должно «случиться» к концу 90 дней с точки зрения бизнеса: [...]\n- Чего я как руководитель боюсь по конкретно этому человеку (что-то на\n  собеседовании беспокоило): [...]\n- Какие обычно ошибки совершают новички в этой роли (наши):\n\nФормат плана:\n1. День 0 (выход):\n   - Что готово к 9:00 (доступы / рабочее место / онбординг-пакет)\n   - Кого встречает в первый час, до обеда, до конца дня\n2. Дни 1-7 (Week 1):\n   - 5-7 встреч с конкретными людьми (роль + цель встречи)\n   - 1 deliverable на конец недели (даже маленький — «сделать карту\n     процесса как видит сейчас»)\n   - Один моментальный «низкий барьер вход» (где он сам сделает первый\n     результат за неделю)\n3. Дни 8-30 (Month 1):\n   - 3 проекта возрастающей сложности\n   - Главный deliverable месяца (с метрикой)\n   - 1:1 ритм: еженедельно, по 45 мин\n   - Что я как руководитель проверяю в день 30 (без напоминания человеку)\n4. Дни 31-60 (Month 2):\n   - Один большой проект, которым он владеет А (Accountable), не R (Responsible)\n   - Основные стейкхолдеры, с кем налажен контакт\n   - 1:1 ритм: раз в 2 недели, 30 мин\n   - Что я проверяю в день 60: точно ли понимает свою роль, делает ли\n     самостоятельные суждения\n5. Дни 61-90 (Month 3):\n   - Самостоятельное планирование своих KPI на Q1 (он приносит мне план,\n     я ставлю или правлю)\n   - Один «спорный момент» — провокация: разрешаю спорить с моим решением\n   - Решение по испытательному сроку: PASS / FAIL / EXTENDED (с критериями)\n6. План выхода (если FAIL):\n   - На 75 день — официальное предупреждение с конкретным «что должно\n     поменяться за 15 дней»\n   - На 90 день — расставание без удивления для человека (важно: к 90 дню\n     человек ОБЯЗАН знать, что мы расстаёмся, если идём в этот сценарий)","example":"Роль: Head of Sales (SaaS, 2 млн USD ARR).\n5 главных задач: управление 4 менеджерами / pipeline review / ревью топ-сделок /\nнайм 2 SDR в июне / сборка квартального плана продаж.\nКоманда: 4 менеджера, CRM Pipedrive, цикл 45 дней.\nРуководитель: я (CEO). Mentor: нет (роль высокая).\nК 90 дню: понимает пайплайн на 100%; провёл pipeline review с командой 8+ раз;\nзакрыл собственно 2 сделки; нанял 1 SDR; собрал план Q3.\nБоюсь: пришёл из корпорации, может не зайти в стартап-темп.\nТипичные ошибки новых HoS у нас: пытаются «сделать всё с нуля» вместо\nулучшения текущей системы; не доверяют существующим менеджерам.","mistake":"дать новому senior'у «free hand» без 30/60/90 структуры. Через 60 дней приходит на 1:1 и не понимает, что от него ждут. К 90 дню — расставание без предупреждения, что для обеих сторон плохо.","tip":"если план получился «общим» (можно подставить любую роль) — попросите «Перепиши пункт 4 (Month 2) с конкретными решениями, которые человек на этой роли должен принимать сам, без меня. Если их нет — роль не делегирована».","exampleLabel":""}];
+
+const CATS = [
+  { slug: "strategy",   title: "Стратегия",     icon: "🎯" },
+  { slug: "sales",      title: "Продажи",       icon: "💼" },
+  { slug: "marketing",  title: "Маркетинг",     icon: "📣" },
+  { slug: "operations", title: "Операции",      icon: "⚙️" },
+  { slug: "hr",         title: "HR / Команда",  icon: "👥" },
+];
+
+const sectionsEl = document.getElementById("sections");
+const emptyEl    = document.getElementById("empty");
+const searchEl   = document.getElementById("q");
+const clearEl    = document.getElementById("q-clear");
+const catnavEl   = document.getElementById("catnav");
+const modalEl    = document.getElementById("modal");
+const toastEl    = document.getElementById("toast");
+
+let currentCat   = "all";
+let currentQuery = "";
+let activePrompt = null;
+let toastTimer   = null;
+
+const fuse = new Fuse(PROMPTS, {
+  keys: [
+    { name: "title",     weight: 0.45 },
+    { name: "useCase",   weight: 0.35 },
+    { name: "mistake",   weight: 0.15 },
+    { name: "id",        weight: 0.05 },
+  ],
+  threshold: 0.34,
+  ignoreLocation: true,
+  minMatchCharLength: 2,
+});
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function categoryOf(slug) {
+  return CATS.find((c) => c.slug === slug);
+}
+
+function filterPrompts() {
+  let pool = PROMPTS;
+  if (currentCat === "video") {
+    pool = pool.filter((p) => p.video);
+  } else if (currentCat !== "all") {
+    pool = pool.filter((p) => p.category === currentCat);
+  }
+  if (!currentQuery) return pool;
+  const ids = new Set(fuse.search(currentQuery).map((r) => r.item.id));
+  return pool.filter((p) => ids.has(p.id));
+}
+
+function renderCards() {
+  const filtered = filterPrompts();
+  sectionsEl.innerHTML = "";
+
+  if (filtered.length === 0) {
+    emptyEl.hidden = false;
+    return;
+  }
+  emptyEl.hidden = true;
+
+  // Группируем по категории (стратегия → ... → HR)
+  const groups = new Map();
+  for (const cat of CATS) groups.set(cat.slug, []);
+  for (const p of filtered) groups.get(p.category).push(p);
+
+  for (const cat of CATS) {
+    const items = groups.get(cat.slug);
+    if (items.length === 0) continue;
+    const sec = document.createElement("section");
+    sec.className = "cat-section";
+    sec.id = `cat-${cat.slug}`;
+
+    const head = document.createElement("div");
+    head.className = "cat-title";
+    head.innerHTML = `<span class="icon">${cat.icon}</span><h2>${escapeHtml(cat.title)}</h2><span class="num">${items.length}</span>`;
+    sec.appendChild(head);
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    for (const p of items) {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "card";
+      card.setAttribute("data-id", p.id);
+      card.setAttribute("aria-label", `Открыть промпт ${p.id} — ${p.title}`);
+      card.innerHTML = `
+        <div class="card-head">
+          <span class="card-id">${escapeHtml(p.id)}</span>
+          ${p.video ? '<span class="card-video">🎥 Видео</span>' : ""}
+        </div>
+        <div class="card-title">${escapeHtml(p.title)}</div>
+        <div class="card-use">${escapeHtml(p.useCase)}</div>
+        <div class="card-open">Открыть →</div>
+      `;
+      card.addEventListener("click", () => openModal(p.id));
+      grid.appendChild(card);
+    }
+    sec.appendChild(grid);
+    sectionsEl.appendChild(sec);
+  }
+}
+
+function openModal(id) {
+  const p = PROMPTS.find((x) => x.id === id);
+  if (!p) return;
+  activePrompt = p;
+
+  const cat = categoryOf(p.category);
+  document.getElementById("m-id").textContent  = p.id;
+  document.getElementById("m-cat").textContent = cat ? `· ${cat.icon} ${cat.title}` : "";
+  const videoEl = document.getElementById("m-video");
+  videoEl.hidden = !p.video;
+
+  document.getElementById("modal-title").textContent = p.title;
+  document.getElementById("m-usecase").textContent  = p.useCase;
+  document.getElementById("m-template").textContent = p.template;
+  document.getElementById("m-example").textContent  = p.example;
+  document.getElementById("m-example-label").textContent = p.exampleLabel ? `· ${p.exampleLabel}` : "";
+  document.getElementById("m-mistake").textContent  = p.mistake;
+  document.getElementById("m-tip").textContent      = p.tip;
+
+  resetCopyButton("copy-template");
+  resetCopyButton("copy-example");
+
+  modalEl.classList.add("open");
+  modalEl.hidden = false;
+  document.body.style.overflow = "hidden";
+
+  // Anchor in URL для шарения
+  if (history.replaceState) history.replaceState(null, "", `#${p.id}`);
+}
+
+function closeModal() {
+  modalEl.classList.remove("open");
+  modalEl.hidden = true;
+  document.body.style.overflow = "";
+  activePrompt = null;
+  if (history.replaceState && location.hash.match(/^#[SPMOH]\d+$/)) {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+}
+
+function resetCopyButton(id) {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  btn.classList.remove("copied");
+  btn.querySelector(".copy-label").textContent =
+    btn.dataset.target === "template" ? "Скопировать шаблон" : "Скопировать пример";
+}
+
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (err) {
+    // Fallback: textarea + execCommand
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch (_) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+}
+
+function showToast(text) {
+  toastEl.textContent = text;
+  toastEl.classList.add("show");
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove("show"), 1600);
+}
+
+document.querySelectorAll(".copy-btn").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    if (!activePrompt) return;
+    const target = btn.dataset.target;
+    const text = target === "template" ? activePrompt.template : activePrompt.example;
+    const ok = await copyToClipboard(text);
+    if (ok) {
+      btn.classList.add("copied");
+      btn.querySelector(".copy-label").textContent = "Скопировано ✓";
+      showToast(target === "template" ? "Шаблон скопирован" : "Пример скопирован");
+      setTimeout(() => resetCopyButton(btn.id), 1800);
+    } else {
+      showToast("Не получилось — скопируйте вручную");
+    }
+  });
+});
+
+document.getElementById("m-close").addEventListener("click", closeModal);
+modalEl.addEventListener("click", (e) => { if (e.target === modalEl) closeModal(); });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && modalEl.classList.contains("open")) closeModal();
+  if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); searchEl.focus(); }
+});
+
+searchEl.addEventListener("input", (e) => {
+  currentQuery = e.target.value.trim();
+  clearEl.hidden = currentQuery.length === 0;
+  renderCards();
+});
+clearEl.addEventListener("click", () => {
+  searchEl.value = "";
+  currentQuery = "";
+  clearEl.hidden = true;
+  renderCards();
+  searchEl.focus();
+});
+
+catnavEl.addEventListener("click", (e) => {
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  document.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
+  chip.classList.add("active");
+  currentCat = chip.dataset.cat;
+  renderCards();
+  // Scroll к секции если выбрали одну категорию
+  const main = document.getElementById("content");
+  if (main && currentCat !== "all" && currentCat !== "video") {
+    setTimeout(() => {
+      const target = document.getElementById(`cat-${currentCat}`);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+  }
+});
+
+document.querySelector('[data-action="scroll-top"]').addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Открыть по хешу (например promptbook/#S3)
+function openFromHash() {
+  const m = location.hash.match(/^#([SPMOH]\d+)$/);
+  if (m) {
+    const id = m[1];
+    if (PROMPTS.some((p) => p.id === id)) openModal(id);
+  }
+}
+
+renderCards();
+openFromHash();
+window.addEventListener("hashchange", openFromHash);
+</script>
+
+</body>
+</html>
