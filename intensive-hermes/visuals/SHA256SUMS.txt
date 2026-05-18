@@ -1,0 +1,25 @@
+# Hermes Agent banner pack — SHA256 manifest (LEA-1867)
+# Rendered 2026-05-14 by Артём (VideoProducer)
+# Updated 2026-05-14 21:00 МСК — Marina pass v1 applied (C10/C11/C13/C25 re-rendered)
+# Render: puppeteer @2x deviceScaleFactor, sRGB, network-idle font-ready
+# Logo source: vault/company/brand/uploads/noroot.png (md5 73b8d41396faedeace3dd3279ec9bb5e)
+
+899e34a3ca3d6057a5d74ed25f2d3ff8821834613ee292d3ef308226920f54af  c2-fb-1200x630.png
+fe5105714cce94d8d1c9ce14fbe2bcb38872d3e6ef8f1ee130b62e1f9a41a56b  c2-ig-1080x1080.png
+fe5105714cce94d8d1c9ce14fbe2bcb38872d3e6ef8f1ee130b62e1f9a41a56b  c2-tg-1080x1080.png
+f3c89f7afb5bc9f9c4d51a502cc78ef53f9f48e7d33cc484ca938e6405089c8b  c3-tg-thumb-1280x720.png
+3f7441edf9a71d2a1161520cbc3b692d1c9954865112fb684c02c845280f0d52  c10-fb-1200x630.png
+181d3a5964db72e6b02152eaacac045c4e3f7e68854d1264dd2d07c3ecfcdd41  c10-ig-1080x1080.png
+181d3a5964db72e6b02152eaacac045c4e3f7e68854d1264dd2d07c3ecfcdd41  c10-tg-1080x1080.png
+aa0058a0d5f2b4fe3f437b5b5da211b90ee70059b2441cdc0ae48c43bad898d7  c11-tg-1080x1080.png
+7c2a5258f27952b18d623c9516de2d2976318ee182ad7a91019ecc7d4b96dbcb  c13-fb-1200x630.png
+80ca3e8bdd7916e4c3955c70a38c15b6bdcc4e2651d0dad36383a3a7fb793e96  c13-ig-1080x1080.png
+80ca3e8bdd7916e4c3955c70a38c15b6bdcc4e2651d0dad36383a3a7fb793e96  c13-tg-1080x1080.png
+cd7d259a0c6439aba62998ecdb236663af444ed378d14ce5842fd646a8962bc6  c19-tg-1080x1080.png
+9814f98117bb215cdff0e1e42ea643ffacd31ed03ac1acb00d54c7b70c6cf877  c25-fb-1200x630.png
+c519d9638d83dca9c59a6e2d66c9bc463c062e6b2bebdd31c57065c548efc58e  c25-ig-1080x1080.png
+c519d9638d83dca9c59a6e2d66c9bc463c062e6b2bebdd31c57065c548efc58e  c25-tg-1080x1080.png
+
+# Note: C2/C3/C19 hashes unchanged from initial render (Marina pass didn't touch those).
+# IG and TG hashes identical for C2/C10/C13/C25 because both targets render at 1080×1080
+# with the same body class output. TG default square per memory feedback_telegram_image_size_default.
