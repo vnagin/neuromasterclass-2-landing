@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /_template/
+Disallow: /design-system/
+Disallow: /design-v3-preview/
+
+Sitemap: https://ads.leadup.guru/sitemap.xml
