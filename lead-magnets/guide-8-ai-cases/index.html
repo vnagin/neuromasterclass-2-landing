@@ -241,7 +241,7 @@
 
   <nav>
     <span class="nav-logo">LeadUp <span>AI</span></span>
-    <a href="#cta" class="nav-cta">Скачать PDF</a>
+    <a href="guide-8-ai-cases.pdf" download class="nav-cta">Скачать PDF</a>
   </nav>
 
   <div class="hero">
@@ -339,6 +339,28 @@
 
   <script>
     var WEBHOOK = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+    var PDF_URL = 'guide-8-ai-cases.pdf';
+
+    function deliverPdf(formEl) {
+      // мгновенная доставка: same-origin → атрибут download форсирует скачивание
+      var dl = document.createElement('a');
+      dl.href = PDF_URL;
+      dl.setAttribute('download', '');
+      document.body.appendChild(dl);
+      dl.click();
+      dl.remove();
+      // ручной fallback, если браузер заблокировал авто-скачивание после fetch
+      if (!formEl.querySelector('.pdf-fallback')) {
+        var link = document.createElement('a');
+        link.className = 'pdf-fallback';
+        link.href = PDF_URL;
+        link.setAttribute('download', '');
+        link.textContent = 'Скачивание не началось? Нажмите здесь →';
+        link.style.cssText = 'display:block;margin-top:12px;color:var(--teal);font-size:13px;text-decoration:none;';
+        formEl.appendChild(link);
+      }
+    }
+
     ['lead-form', 'lead-form-bottom'].forEach(function(id) {
       var el = document.getElementById(id);
       if (!el) return;
@@ -352,8 +374,9 @@
           var payload = { name: fd.get('name') || '', email: fd.get('email'), source: 'guide-8-cases' };
           var res = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           if (res.ok) {
-            btn.textContent = 'Готово! Проверьте почту';
+            btn.textContent = 'Готово! Скачивание началось ↓';
             btn.style.background = 'var(--success)';
+            deliverPdf(el);
           } else throw new Error();
         } catch(err) {
           btn.textContent = 'Ошибка. Попробуйте ещё раз';
