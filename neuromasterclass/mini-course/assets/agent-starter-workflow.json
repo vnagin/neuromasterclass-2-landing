@@ -1,0 +1,423 @@
+{
+  "name": "AI-агент: обработка входящих заявок (стартовый шаблон)",
+  "nodes": [
+    {
+      "id": "53578044-82b8-4d06-8fd2-20b6cdfda4a5",
+      "name": "Webhook — входящая заявка",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        320
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "agent-inbox",
+        "responseMode": "onReceived"
+      }
+    },
+    {
+      "id": "1c6a4cfa-5da4-4cd2-b544-bd7c980d604c",
+      "name": "Нормализация входа",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        320
+      ],
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "msg",
+              "name": "message_text",
+              "value": "={{ $json.body?.message ?? $json.message ?? $json.body?.text ?? $json.text ?? \"\" }}",
+              "type": "string"
+            },
+            {
+              "id": "eml",
+              "name": "client_email",
+              "value": "={{ $json.body?.email ?? $json.email ?? \"\" }}",
+              "type": "string"
+            },
+            {
+              "id": "src",
+              "name": "source",
+              "value": "={{ $json.body?.source ?? $json.source ?? \"webhook\" }}",
+              "type": "string"
+            },
+            {
+              "id": "ts",
+              "name": "received_at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "f3b926ad-afdc-4592-8717-84130cdb4f56",
+      "name": "LLM — классификация (Message a model)",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        680,
+        320
+      ],
+      "parameters": {
+        "resource": "text",
+        "operation": "response",
+        "modelId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini",
+          "cachedResultName": "gpt-4o-mini"
+        },
+        "responses": {
+          "values": [
+            {
+              "type": "text",
+              "role": "user",
+              "content": "=Роль: ты — ассистент отдела обработки входящих обращений.\nЗадача: проанализируй текст обращения и верни структурированный результат.\nПравила:\n- Если данных нет — ставь null, не выдумывай.\n- priority: one of [\"high\",\"medium\",\"low\"].\n- category: one of [\"горячий\",\"тёплый\",\"спам\",\"другое\"].\nФормат: верни ТОЛЬКО валидный JSON, без пояснений и без markdown:\n{\"category\": \"...\", \"priority\": \"...\", \"client_name\": \"...|null\", \"summary\": \"...\", \"draft_reply\": \"...\"}\n\nТекст обращения: {{ $json.message_text }}"
+            }
+          ]
+        },
+        "simplify": true,
+        "options": {
+          "temperature": 0.2,
+          "maxTokens": 1024
+        }
+      }
+    },
+    {
+      "id": "2ad9b791-0218-4ae7-b0a1-986950e62fc2",
+      "name": "Парс JSON-ответа",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        900,
+        320
+      ],
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "language": "javaScript",
+        "jsCode": "const raw = $json.content ?? $json.output_text ?? $json.text ?? $json.message ?? '';\nlet txt = typeof raw === 'string' ? raw : JSON.stringify(raw);\ntxt = txt.trim().replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();\nlet p;\ntry { p = JSON.parse(txt); }\ncatch (e) { p = { category: 'другое', priority: 'low', client_name: null, summary: txt.slice(0, 500), draft_reply: '', parse_error: true }; }\nconst src = $('Нормализация входа').item.json;\nreturn {\n  category: p.category ?? null,\n  priority: p.priority ?? null,\n  client_name: p.client_name ?? null,\n  summary: p.summary ?? null,\n  draft_reply: p.draft_reply ?? null,\n  client_email: src.client_email ?? '',\n  source: src.source ?? 'webhook',\n  received_at: src.received_at ?? '',\n  raw_message: src.message_text ?? ''\n};"
+      }
+    },
+    {
+      "id": "8c188e44-53cf-41b8-a7f8-b25d7639f897",
+      "name": "Запись в таблицу (Append row)",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1120,
+        320
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "leads",
+          "cachedResultName": "leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "received_at": "={{ $json.received_at }}",
+            "source": "={{ $json.source }}",
+            "category": "={{ $json.category }}",
+            "priority": "={{ $json.priority }}",
+            "client_name": "={{ $json.client_name }}",
+            "client_email": "={{ $json.client_email }}",
+            "summary": "={{ $json.summary }}",
+            "draft_reply": "={{ $json.draft_reply }}",
+            "raw_message": "={{ $json.raw_message }}"
+          },
+          "schema": [
+            {
+              "id": "received_at",
+              "displayName": "received_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "source",
+              "displayName": "source",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category",
+              "displayName": "category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "priority",
+              "displayName": "priority",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "client_name",
+              "displayName": "client_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "client_email",
+              "displayName": "client_email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "summary",
+              "displayName": "summary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "draft_reply",
+              "displayName": "draft_reply",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "raw_message",
+              "displayName": "raw_message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "3a77d087-7362-41f2-b986-7b70db9f262c",
+      "name": "Уведомление владельцу (черновик ответа)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        1340,
+        320
+      ],
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "sendTo": "owner@example.com",
+        "subject": "=Новая заявка: {{ $(\"Парс JSON-ответа\").item.json.category }} · приоритет {{ $(\"Парс JSON-ответа\").item.json.priority }}",
+        "emailType": "text",
+        "message": "=Источник: {{ $(\"Парс JSON-ответа\").item.json.source }}\nКатегория: {{ $(\"Парс JSON-ответа\").item.json.category }} · Приоритет: {{ $(\"Парс JSON-ответа\").item.json.priority }}\nКлиент: {{ $(\"Парс JSON-ответа\").item.json.client_name }}\nEmail клиента: {{ $(\"Парс JSON-ответа\").item.json.client_email }}\n\nСуть запроса:\n{{ $(\"Парс JSON-ответа\").item.json.summary }}\n\n— — — Черновик ответа (проверьте перед отправкой) — — —\n{{ $(\"Парс JSON-ответа\").item.json.draft_reply }}",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    },
+    {
+      "id": "9876b587-054f-4188-8b82-1d92452aac51",
+      "name": "Sticky Note 6c9de823",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        100,
+        300
+      ],
+      "parameters": {
+        "content": "## AI-агент: обработка входящих заявок — СТАРТОВЫЙ ШАБЛОН\n\nИмпортируйте этот workflow и заполните ДВЕ вещи:\n1. **Ключ LLM** — в ноде «LLM — классификация» (Credentials → OpenAI).\n2. **Промпт** — там же, поле Content (под свою задачу).\n\nОстальное (таблица, email-получатель) — поправьте плейсхолдеры по подсказкам ниже.\n\nПоток: Webhook → нормализация → LLM (JSON) → парс → запись в таблицу → уведомление с черновиком ответа.",
+        "color": 4
+      }
+    },
+    {
+      "id": "fc0de5b1-e375-44ae-a9c6-ccb00eb69431",
+      "name": "Sticky Note fc31cbb0",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        190,
+        270
+      ],
+      "parameters": {
+        "content": "### 1. Триггер (заглушка)\nЧто делает: принимает POST-заявку (message, email, source).\nЧто заменить: ничего обязательного. Позже подключите сюда форму/CRM. Для теста жмите «Listen» и шлите тестовый JSON.",
+        "color": 7,
+        "width": 300,
+        "height": 200
+      }
+    },
+    {
+      "id": "31a47799-101d-4a41-884c-b50b25b78f8d",
+      "name": "Sticky Note 6f0f5a6e",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        410,
+        270
+      ],
+      "parameters": {
+        "content": "### 2. Нормализация входа\nЧто делает: приводит входные поля к единым именам (message_text, client_email, source) — работает и с body.*, и с плоским JSON.\nЧто заменить: ничего, если поля те же. Иначе поправьте имена полей.",
+        "color": 7,
+        "width": 300,
+        "height": 200
+      }
+    },
+    {
+      "id": "2d44bf8b-5a4f-414b-be8a-a28db723c43c",
+      "name": "Sticky Note 12e6e8bf",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        630,
+        270
+      ],
+      "parameters": {
+        "content": "### 3. LLM — Message a model ⬅️ ГЛАВНОЕ\nЧто делает: классифицирует заявку и возвращает JSON (category, priority, client_name, summary, draft_reply).\nЧто заменить:\n• Credentials → выберите свой ключ OpenAI.\n• Content → ваш промпт (шаблон уже вставлен).\nМодель по умолчанию: gpt-4o-mini. temperature=0.2 для стабильного JSON.",
+        "color": 3,
+        "width": 300,
+        "height": 200
+      }
+    },
+    {
+      "id": "0e0b6f9e-f591-4d4a-83a3-8849a3b02a12",
+      "name": "Sticky Note 82e46019",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        850,
+        270
+      ],
+      "parameters": {
+        "content": "### 4. Парс JSON\nЧто делает: превращает текст-ответ LLM в отдельные поля. Срезает ```-обёртку, при сбое парсинга кладёт parse_error=true (не роняет поток).\nЧто заменить: ничего.",
+        "color": 7,
+        "width": 300,
+        "height": 200
+      }
+    },
+    {
+      "id": "c73f9b61-79ec-4c1f-8c8c-c00ac98706d2",
+      "name": "Sticky Note 2a51ba60",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1070,
+        270
+      ],
+      "parameters": {
+        "content": "### 5. Запись в таблицу (Append row)\nЧто делает: добавляет строку в Data Table «leads».\nЧто заменить: создайте Data Table с колонками (received_at, source, category, priority, client_name, client_email, summary, draft_reply, raw_message) и выберите её. Либо замените ноду на Google Sheets «Append row».",
+        "color": 7,
+        "width": 300,
+        "height": 200
+      }
+    },
+    {
+      "id": "13b20205-982b-4a97-a07b-588b3295869d",
+      "name": "Sticky Note 234d20e6",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1290,
+        270
+      ],
+      "parameters": {
+        "content": "### 6. Уведомление (черновик ответа)\nЧто делает: шлёт владельцу письмо с сутью заявки и ЧЕРНОВИКОМ ответа.\nЧто заменить:\n• Credentials → ваш Gmail (или замените ноду на Telegram/Slack).\n• sendTo → ваш email вместо owner@example.com.",
+        "color": 7,
+        "width": 300,
+        "height": 200
+      }
+    }
+  ],
+  "connections": {
+    "Webhook — входящая заявка": {
+      "main": [
+        [
+          {
+            "node": "Нормализация входа",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Нормализация входа": {
+      "main": [
+        [
+          {
+            "node": "LLM — классификация (Message a model)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM — классификация (Message a model)": {
+      "main": [
+        [
+          {
+            "node": "Парс JSON-ответа",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Парс JSON-ответа": {
+      "main": [
+        [
+          {
+            "node": "Запись в таблицу (Append row)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Запись в таблицу (Append row)": {
+      "main": [
+        [
+          {
+            "node": "Уведомление владельцу (черновик ответа)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": true
+  },
+  "pinData": {},
+  "meta": {}
+}
