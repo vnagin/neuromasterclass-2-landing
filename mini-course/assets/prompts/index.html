@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаблоны промптов для AI-агента | Мини-курс LeadUp AI</title>
+  <meta name="description" content="Готовые шаблоны промптов для мини-курса «AI-агент за 5 дней». Классификация + извлечение полей (JSON) и адаптируемый шаблон под свою задачу.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/assets/prompts/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Шаблоны промптов для AI-агента | LeadUp AI">
+  <meta property="og:description" content="Готовые промпты: JSON-классификация заявок и адаптируемый шаблон под свою задачу.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/assets/prompts/">
+  <meta property="og:site_name" content="LeadUp AI">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">Ассет мини-курса</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      К курсу
+    </a>
+  </div>
+</nav>
+
+<section class="asset-hero">
+  <div class="container">
+    <span class="badge">Ассет к Дню 3</span>
+    <h1>📝 Шаблоны промптов</h1>
+    <p class="sub">Готовые системные промпты с анатомией: роль → задача → правила → формат → пример. Копируйте и подставляйте в ноду LLM.</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">📌 Памятка: анатомия рабочего промпта</div>
+    <p>Каждый промпт состоит из 5 частей. Не пропускайте ни одной:</p>
+    <ol>
+      <li><strong>Роль</strong> — кто вы для модели (ассистент, эксперт, система)</li>
+      <li><strong>Задача</strong> — что нужно сделать, одним предложением</li>
+      <li><strong>Правила</strong> — enum-значения, запрет на выдумывание, temperature</li>
+      <li><strong>Формат</strong> — жёсткий шаблон JSON с именами полей</li>
+      <li><strong>Пример</strong> — образец входа и правильный выход</li>
+    </ol>
+
+    <details class="collapse">
+      <summary>📖 Памятка по снижению галлюцинаций</summary>
+      <div class="content">
+        <ul>
+          <li><strong>Чёткие рамки значений:</strong> enum для категорий, приоритетов («one of [\"high\",\"medium\",\"low\"]»).</li>
+          <li><strong>Пример в промпте:</strong> один хороший пример снижает ошибки в разы.</li>
+          <li><strong>Temperature ≈ 0–0.3:</strong> в параметрах LLM-ноды. Меньше «творчества», больше стабильности.</li>
+          <li><strong>Явное правило:</strong> «Если данных нет — ставь null, не выдумывай.»</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="section" style="margin-top:24px;">
+    <div class="section-label">Шаблон 1 — классификация + извлечение полей (JSON)</div>
+    <p style="font-size:13px;color:var(--fg-3)">Для анкерного кейса «обработка входящих заявок». Скопируйте и вставьте в System Message ноды LLM.</p>
+    <div class="code-block" id="template1">
+<button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('template1').querySelector('span').textContent);this.textContent='Скопировано!';setTimeout(()=>this.textContent='Скопировать',1500)">Скопировать</button>
+<span>Роль: ты — ассистент отдела обработки входящих обращений.
+Задача: проанализируй текст обращения и верни структурированный результат.
+Правила:
+- Если данных нет — ставь null, не выдумывай.
+- priority: one of ["high","medium","low"].
+- category: one of ["горячий","тёплый","спам","другое"].
+Формат: верни ТОЛЬКО валидный JSON, без пояснений:
+{"category": "...", "priority": "...", "client_name": "...|null", "summary": "...", "draft_reply": "..."}
+Пример входа: "Здравствуйте, хочу внедрить ИИ в продажи, бюджет есть, звоните 555-12-34, Иван"
+Пример вывода: {"category":"горячий","priority":"high","client_name":"Иван","summary":"Запрос на внедрение ИИ в продажи, бюджет подтверждён","draft_reply":"Иван, здравствуйте! Спасибо за интерес к внедрению ИИ. Ваш запрос передан менеджеру — он свяжется сегодня. Для ускорения: какие процессы вы хотите автоматизировать в первую очередь?"}
+
+Текст обращения: {{ваш_вход}}</span>
+    </div>
+
+    <h2>Как использовать</h2>
+    <ol>
+      <li>Скопируйте текст выше в System Message ноды OpenAI / Anthropic LLM.</li>
+      <li>В User Message подставьте <code>{{ $json.text }}</code> — это переменная из предыдущей ноды (Set / Webhook).</li>
+      <li>В настройках LLM: выберите модель (GPT-4o-mini / Claude 3 Haiku), temperature = 0.2, Max Tokens = 500.</li>
+      <li>Запустите тест и проверьте JSON-вывод.</li>
+    </ol>
+  </div>
+
+  <div class="section" style="margin-top:32px;">
+    <div class="section-label">Шаблон 2 — адаптируй под свою задачу</div>
+    <p style="font-size:13px;color:var(--fg-3)">Тот же каркас (5 частей), поля замените под свою задачу. Например, для анализа отзывов: sentiment, theme, needs_reply.</p>
+    <div class="code-block" id="template2">
+<button class="copy-btn" onclick="navigator.clipboard.writeText(document.getElementById('template2').querySelector('span').textContent);this.textContent='Скопировано!';setTimeout(()=>this.textContent='Скопировать',1500)">Скопировать</button>
+<span>Роль: ты — [кто ты для модели].
+Задача: [что нужно сделать с текстом].
+Правила:
+- Если данных нет — ставь null, не выдумывай.
+- [поле_1]: one of ["значение_1","значение_2","значение_3"].
+Формат: верни ТОЛЬКО валидный JSON, без пояснений:
+{"поле_1": "...", "поле_2": "...", "поле_3": "..."}
+Пример входа: "[реалистичный пример входа]"
+Пример вывода: {"поле_1":"...","поле_2":"...","поле_3":"..."}
+
+Текст обращения: {{ваш_вход}}</span>
+    </div>
+
+    <details class="collapse" style="margin-top:12px;">
+      <summary>💡 Пример адаптации: анализ отзывов</summary>
+      <div class="content">
+        <p><strong>Роль:</strong> ты — ассистент отдела контроля качества.<br>
+        <strong>Поля:</strong> sentiment (one of ["positive","neutral","negative","mixed"]), theme (основная тема), needs_reply (true/false), urgency (one of ["critical","normal","low"]), summary (краткое резюме).</p>
+      </div>
+    </details>
+  </div>
+
+  <p style="text-align:center; padding:32px 0">
+    <a href="/mini-course/day-3/" class="btn-next" style="display:inline-flex;font-size:14px;">← К уроку Дня 3</a>
+  </p>
+
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>

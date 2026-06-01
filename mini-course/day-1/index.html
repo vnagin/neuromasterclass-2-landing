@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День 1 — Что такое AI-агент и зачем он вам | Мини-курс LeadUp AI</title>
+  <meta name="description" content="День 1 мини-курса «AI-агент за 5 дней». Поймите, что такое агент, выберите задачу и подготовьте рабочее окружение.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/day-1/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="День 1 — Что такое AI-агент и зачем он вам | LeadUp AI">
+  <meta property="og:description" content="К концу дня вы выберете свою задачу под агента и подготовите рабочее окружение.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/day-1/">
+  <meta property="og:site_name" content="LeadUp AI">
+
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">День 1 из 5</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Все уроки
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">День 1</span>
+    <h1>Что такое AI-агент и зачем он вам</h1>
+    <p class="outcome">К концу дня вы выберете свою задачу под агента и подготовите рабочее окружение.</p>
+    <div class="meta">
+      <span><strong>⏱</strong> 30–45 мин</span>
+      <span class="dot">·</span>
+      <span>Уровень: начинающий</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">🎯 Цель дня</div>
+    <p>Понять, что такое AI-агент, выбрать одну задачу для автоматизации и подготовить окружение: n8n + ключ LLM.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📺 Видео</div>
+    <div class="video-placeholder">
+      <div class="icon">▶</div>
+      <div class="title">Владимир Нагин — введение в мини-курс</div>
+      <div class="sub">Видео появится здесь после готовности. Ожидайте в цепочке писем.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📖 Теория</div>
+
+    <h2>Агент — это триггер + «мозг» (LLM) + действия</h2>
+    <p>В отличие от чат-бота, который ждёт вопрос — агент <strong>действует сам</strong>. Он реагирует на событие (триггер), «понимает» неструктурированный текст с помощью LLM и выполняет конкретное действие.</p>
+    <p>Агент — не скрипт. Скрипт работает по жёстким правилам: «если в письме слово X → сделай Y». Агент способен <strong>осмысливать</strong> текст: понять, о чём клиент написал, даже если он сформулировал это нестандартно.</p>
+
+    <h2>Примеры агентов в бизнесе</h2>
+    <ul>
+      <li><strong>Обработка входящих заявок:</strong> заявка с сайта → классификация (горячий/тёплый/спам) → запись в CRM → черновик ответа менеджеру.</li>
+      <li><strong>Сортировка почты:</strong> входящие на info@ → автоматическая маршрутизация: счёт → в бухгалтерию, жалоба → в поддержку, партнёрство → руководителю.</li>
+      <li><strong>Классификация отзывов:</strong> новые отзывы на маркетплейсе → определение тональности → запись в таблицу + уведомление при негативе.</li>
+      <li><strong>Автоответы на типовые вопросы:</strong> «как оформить возврат?» → агент сам находит информацию в базе знаний и отвечает.</li>
+      <li><strong>Сбор коммерческих предложений:</strong> входящее КП → извлечение цены, сроков, условий → сравнение в таблице.</li>
+    </ul>
+
+    <h2>Из чего собираем</h2>
+    <p><strong>n8n</strong> — low-code оркестратор. Вы собираете workflow из готовых «нод» (блоков): триггер, LLM-модель, действие. Без кода, всё в облаке.</p>
+    <p><strong>LLM API</strong> — «мозг» агента (OpenAI / Anthropic). Вы даёте модели промпт, она возвращает осмысленный результат.</p>
+
+    <h2>Анкерный кейс курса</h2>
+    <p>В течение этих 5 дней мы соберём агента обработки входящих заявок:</p>
+    <div class="ss-placeholder">Агент ловит заявку → классифицирует → извлекает поля → черновик ответа → запись + уведомление</div>
+    <p>Этот же шаблон вы адаптируете под свою задачу.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🛠 Практическое задание</div>
+
+    <ol class="step-list">
+      <li>
+        <p><strong>Выпишите 3 рутинные задачи</strong> — что повторяется каждый день и отнимает время? (Обработка заявок, сортировка писем, ответы на повторяющиеся вопросы, проверка документов, сбор данных.)</p>
+      </li>
+      <li>
+        <p><strong>Выберите одну</strong> — проверьте её по чек-листу пригодности в «Карте агента» (ниже). Выберите задачу, которая проходит по всем трём критериям.</p>
+        <div class="agent-table">
+          <table>
+            <tr><th>Чек-лист пригодности</th></tr>
+            <tr><td>Задача <strong>повторяется</strong> регулярно (каждый день / неделю).</td></tr>
+            <tr><td>На входе есть <strong>текст</strong> (письмо / заявка / сообщение / комментарий).</td></tr>
+            <tr><td>Есть <strong>понятный желаемый результат</strong> (что должно произойти в конце).</td></tr>
+          </table>
+        </div>
+      </li>
+      <li>
+        <p><strong>Зарегистрируйте аккаунт n8n</strong> — <a href="https://n8n.io" target="_blank" rel="noopener" style="color:var(--teal)">n8n.io</a> → «Start free» (cloud, free trial).</p>
+        <div class="ss-placeholder">[СКРИНШОТ: регистрация n8n — страница signup с кнопкой «Start free»]</div>
+        <p><strong>Получите API-ключ LLM</strong> — OpenAI (<a href="https://platform.openai.com/api-keys" target="_blank" rel="noopener" style="color:var(--teal)">platform.openai.com/api-keys</a>) или Anthropic Console. Ключ нужен будет завтра.</p>
+        <div class="ss-placeholder">[СКРИНШОТ: где взять API-ключ — страница API Keys в личном кабинете]</div>
+      </li>
+      <li>
+        <p><strong>Заполните «Карту агента»</strong> — три блока ниже. Продумайте для своей задачи: что будет триггером, что агент должен понять из текста, какое действие выполнит.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗺 Карта агента</div>
+    <p>Заполните таблицу для выбранной задачи. Копия для печати — на отдельной странице: <a href="/mini-course/assets/agent-map/" style="color:var(--teal)">/mini-course/assets/agent-map/</a></p>
+
+    <table class="agent-table">
+      <tr>
+        <th>Блок</th><th>Вопрос</th><th>Ваш ответ (заполните)</th>
+      </tr>
+      <tr>
+        <td>1. Триггер</td>
+        <td>Что запускает агента?</td>
+        <td>Новое письмо / заявка с сайта / сообщение в TG / строка в таблице</td>
+      </tr>
+      <tr>
+        <td>2. Что понимает</td>
+        <td>Что агент должен извлечь/решить из входа?</td>
+        <td>Категория, приоритет, имя клиента, суть запроса</td>
+      </tr>
+      <tr>
+        <td>3. Что делает</td>
+        <td>Какое действие на выходе?</td>
+        <td>Записать в таблицу, уведомить менеджера, прислать черновик ответа</td>
+      </tr>
+    </table>
+
+    <details class="collapse">
+      <summary>📋 Пример заполнения (анкерный кейс)</summary>
+      <div class="content">
+        <p><strong>Триггер:</strong> новая заявка с сайта (вебхук).<br>
+        <strong>Что понимает:</strong> категория (горячий/тёплый/спам), имя клиента, контакт, суть запроса.<br>
+        <strong>Что делает:</strong> записать все поля в Google-таблицу + прислать владельцу черновик ответа в Telegram.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="section">
+    <div class="section-label">✅ Чек-поинт</div>
+    <div class="checkpoint">
+      <h4>Само-проверка Дня 1</h4>
+      <ul>
+        <li>✅ Есть доступ к n8n (зарегистрирован аккаунт)</li>
+        <li>✅ API-ключ LLM получен</li>
+        <li>✅ Заполнена «Карта агента» для выбранной задачи (все 3 блока)</li>
+      </ul>
+      <div class="rubric">
+        <strong>Рубрика «выполнено хорошо»:</strong> карта заполнена по всем трём блокам, задача проходит чек-лист пригодности (повторяемость · входящий текст · понятный результат). Если какой-то критерий не подходит — вернитесь к выбору задачи.
+      </div>
+    </div>
+  </div>
+
+  <details class="collapse">
+    <summary>🔀 Адаптировать под себя</summary>
+    <div class="content">
+      <p><strong>Новичок:</strong> берите анкерный кейс как есть — обработка входящих заявок. Все инструкции заточены под него.</p>
+      <p><strong>Своя задача:</strong> уже знаете, что хотите автоматизировать? Выбирайте её, но убедитесь, что она проходит чек-лист пригодности.</p>
+      <p><strong>Express:</strong> хотите сразу готовый шаблон без долгой настройки? Импортируйте workflow из <a href="/mini-course/assets/agent-starter-workflow.json" style="color:var(--teal)">/mini-course/assets/agent-starter-workflow.json</a> на Дне 4.</p>
+    </div>
+  </details>
+
+</div>
+
+<section class="next-lesson">
+  <div class="container">
+    <div class="hint">Завтра откроется новый урок</div>
+    <a href="/mini-course/day-2/" class="btn-next">День 2: Первый разговор с моделью внутри workflow →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>

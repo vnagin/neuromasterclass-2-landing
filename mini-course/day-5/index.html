@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День 5 — Запуск, надёжность и что дальше | Мини-курс LeadUp AI</title>
+  <meta name="description" content="День 5 мини-курса «AI-агент за 5 дней». Протестируете, добавите обработку ошибок, запустите агента (Active) и оцените результат.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/day-5/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="День 5 — Запуск, надёжность и что дальше | LeadUp AI">
+  <meta property="og:description" content="Протестируете, добавите обработку ошибок, запустите агента (Active) и оцените результат.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/day-5/">
+  <meta property="og:site_name" content="LeadUp AI">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">День 5 из 5</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Все уроки
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">День 5</span>
+    <h1>Запуск, надёжность и что дальше</h1>
+    <p class="outcome">Протестируете, добавите обработку ошибок, запустите агента (Active) и оцените результат.</p>
+    <div class="meta">
+      <span><strong>⏱</strong> 40–55 мин</span>
+      <span class="dot">·</span>
+      <span>Уровень: начинающий</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">🎯 Цель дня</div>
+    <p>Довести агента до боевого состояния, добавить защиту от ошибок, включить в продакшен (Active) и оценить результат.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📺 Видео</div>
+    <div class="video-placeholder">
+      <div class="icon">▶</div>
+      <div class="title">Владимир Нагин — от одного агента к команде агентов</div>
+      <div class="sub">Видео появится здесь после готовности. Ожидайте в цепочке писем.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📖 Теория</div>
+
+    <h2>Что ломается в проде и как защититься</h2>
+    <p>Когда агент запущен и работает сам, проблемы неизбежны. Вот что идёт не так и как это чинить:</p>
+
+    <table class="agent-table">
+      <tr>
+        <th>Проблема</th><th>Защита</th>
+      </tr>
+      <tr>
+        <td>Пустой / странный вход (спам, битая форма)</td>
+        <td>Нода <strong>IF</strong> перед LLM: проверка, что текст не пустой и не короче N символов. Если вход невалидный — идём по ветке «ошибка».</td>
+      </tr>
+      <tr>
+        <td>Сбой API LLM (timeout, квота)</td>
+        <td>Ветка ошибки после LLM-ноды: если упал — отправляем уведомление админу, а не тихо «роняем» весь workflow.</td>
+      </tr>
+      <tr>
+        <td>Некорректный JSON на выходе</td>
+        <td>try/catch в ноде Code: если JSON.parse() упал — фоллбэк: «ответ не парсится, нужна ручная проверка».</td>
+      </tr>
+      <tr>
+        <td>«Тихий» сбой (агент просто не запускается)</td>
+        <td>Раздел <strong>Executions</strong> в n8n — смотрите историю запусков: что отработало, что упало, почему.</td>
+      </tr>
+    </table>
+
+    <h2>Чек-лист «Готов к запуску»</h2>
+    <ul>
+      <li>✅ Webhook URL рабочий и доступен снаружи</li>
+      <li>✅ На 5–10 тестовых примерах все ответы корректны</li>
+      <li>✅ Добавлена ветка обработки ошибок (проверка входа / catch)</li>
+      <li>✅ Таблица для записи создана, поля соответствуют JSON-выводу</li>
+      <li>✅ Уведомления приходят тому, кому нужно</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🛠 Практическое задание</div>
+
+    <ol class="step-list">
+      <li>
+        <p><strong>Добавьте ветку обработки ошибок.</strong> Перед LLM-нодой — нода «IF»: проверка, что текст НЕ пустой. После LLM-ноды — «Error Trigger» с уведомлением админу. В ноде «Code» — try/catch для JSON.parse().</p>
+      </li>
+      <li>
+        <p><strong>Прогоните на 5–10 реальных примерах.</strong> Разные входы: нормальная заявка, спам, пустой запрос, длинный текст. Убедитесь, что ошибки не «роняют» workflow.</p>
+      </li>
+      <li>
+        <p><strong>Включите workflow (Active).</strong> Переключатель в правом верхнем углу редактора n8n: «Inactive» → «Active». Теперь агент слушает Webhook и обрабатывает события автоматически.</p>
+        <div class="ss-placeholder">[СКРИНШОТ: переключатель Active/Inactive в n8n]</div>
+      </li>
+      <li>
+        <p><strong>Зафиксируйте результат.</strong> Запишите для себя: сколько задач обработал, сколько времени экономит (можно прикинуть: раньше на 1 заявку уходило X минут, теперь — 0).</p>
+      </li>
+      <li>
+        <p><strong>Заполните мини-рефлексию.</strong> Ответьте (для себя):</p>
+        <ul class="check-list">
+          <li>Агент включён (Active) и обработал ≥1 реальную задачу?</li>
+          <li>Сколько времени экономит агент в день / неделю?</li>
+          <li>Применю ли я этот навык на практике в ближайшие 2 недели?</li>
+          <li>Оценка курса: 0–10 (NPS)</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-label">✅ Чек-поинт</div>
+    <div class="checkpoint">
+      <h4>Само-проверка Дня 5</h4>
+      <ul>
+        <li>✅ Добавлена ветка обработки ошибок / невалидного входа</li>
+        <li>✅ Workflow прогнан на 5–10 реальных примерах, ошибки не «роняют» агента</li>
+        <li>✅ Workflow включён (Active)</li>
+        <li>✅ Агент обработал ≥1 реальную задачу автоматически</li>
+        <li>✅ Зафиксирована экономия времени (X часов / неделю)</li>
+      </ul>
+      <div class="rubric">
+        <strong>Рубрика «выполнено хорошо»:</strong> Active + обработано 5+ задач, измерена экономия. Агент стабильно работает без сбоев минимум сутки. 🎉 Цель курса достигнута!
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-bridge">
+    <h3>Вы собрали одного агента — представьте команду агентов</h3>
+    <p>5 агентов закрывают всю рутину: продажи, поддержка, документы, найм, аналитика. Нейромастерская 2.0 — 3-месячная программа корпоративной AI-трансформации.</p>
+    <a href="https://ads.leadup.guru/consultation/" class="btn-cta">Записаться на диагностику →</a>
+  </div>
+
+</div>
+
+<section class="next-lesson">
+  <div class="container">
+    <div class="hint">🎉 Вы прошли мини-курс!</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>

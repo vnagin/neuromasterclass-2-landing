@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День 3 — Промпт, который работает: классификация и структурированный вывод | Мини-курс LeadUp AI</title>
+  <meta name="description" content="День 3 мини-курса «AI-агент за 5 дней». Спроектируете промпт и настроите JSON-вывод, чтобы агент стабильно классифицировал и извлекал поля.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/day-3/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="День 3 — Промпт, который работает | LeadUp AI">
+  <meta property="og:description" content="Спроектируете промпт и настроите JSON-вывод, чтобы агент стабильно классифицировал и извлекал поля.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/day-3/">
+  <meta property="og:site_name" content="LeadUp AI">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">День 3 из 5</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Все уроки
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">День 3</span>
+    <h1>Промпт, который работает</h1>
+    <p class="outcome">Спроектируете промпт и настроите JSON-вывод, чтобы агент стабильно классифицировал и извлекал поля.</p>
+    <div class="meta">
+      <span><strong>⏱</strong> 35–50 мин</span>
+      <span class="dot">·</span>
+      <span>Уровень: начинающий</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">🎯 Цель дня</div>
+    <p>Научить агента стабильно возвращать машинно-читаемый результат (JSON) — чтобы он не «придумывал» и не ошибался в формате.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📖 Теория</div>
+
+    <h2>Анатомия рабочего промпта: 5 частей</h2>
+    <p>Хороший промпт — это не «пожалуйста, обработай заявку». Это чёткая инструкция из пяти частей:</p>
+    <ol>
+      <li><strong>Роль</strong> — кто ты для модели. «Ты — ассистент отдела продаж.»</li>
+      <li><strong>Задача</strong> — что нужно сделать. «Проанализируй текст обращения и верни структурированный результат.»</li>
+      <li><strong>Правила</strong> — ограничения. «Если данных нет — ставь null, не выдумывай. priority: one of ["high","medium","low"].»</li>
+      <li><strong>Формат</strong> — в каком виде вернуть. Жёсткий шаблон JSON.</li>
+      <li><strong>Пример</strong> — образец входа и правильного выхода. Модель «видит» паттерн и копирует его.</li>
+    </ol>
+
+    <h2>Зачем нужен структурированный вывод (JSON)</h2>
+    <p>Если модель возвращает свободный текст («Заявка горячая, клиент Иван, хочет внедрить ИИ…») — вы не сможете автоматически разложить это по полям таблицы. JSON даёт <strong>гарантированную структуру</strong>: каждое поле в своём ключе.</p>
+
+    <h2>Галлюцинации и как их снижать</h2>
+    <p>«Галлюцинация» — когда модель выдумывает данные, которых нет во входящем тексте. Четыре способа защититься:</p>
+    <ul>
+      <li><strong>Рамки значений</strong> — enum для полей. «category: one of ["горячий","тёплый","спам","другое"]».</li>
+      <li><strong>Пример в промпте</strong> — один хорошо подобранный пример снижает ошибки в разы.</li>
+      <li><strong>Temperature ≈ 0–0.3</strong> — параметр в настройках LLM-ноды. Делает ответы стабильнее, менее «творческими».</li>
+      <li><strong>Явный запрет на выдумывание</strong> — «ставь null, если данных нет».</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🛠 Практическое задание</div>
+
+    <ol class="step-list">
+      <li>
+        <p><strong>Перепишите промпт под JSON-вывод.</strong> Используйте шаблоны со страницы <a href="/mini-course/assets/prompts/" style="color:var(--teal)">/mini-course/assets/prompts/</a>. Скопируйте Шаблон 1 и подставьте в ноду LLM.</p>
+      </li>
+      <li>
+        <p><strong>Настройте поля:</strong> category («горячий»/«тёплый»/«спам»/«другое»), priority («high»/«medium»/«low»), client_name, summary, draft_reply.</p>
+      </li>
+      <li>
+        <p><strong>Прогоните на 3–5 разных входах.</strong> Придумайте примеры: горячая заявка, спам, неполное обращение. Проверьте, что на каждом JSON стабилен — все поля на месте, enum не «плывёт».</p>
+      </li>
+      <li>
+        <p><strong>Понизьте temperature до 0.2</strong> в настройках LLM-ноды. Прогоните ещё раз. Убедитесь, что ответы стали стабильнее.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-label">✅ Чек-поинт</div>
+    <div class="checkpoint">
+      <h4>Само-проверка Дня 3</h4>
+      <ul>
+        <li>✅ Промпт переписан под JSON (5 частей: роль, задача, правила, формат, пример)</li>
+        <li>✅ На 3+ разных входах модель стабильно возвращает корректный JSON</li>
+        <li>✅ Все поля (category, priority, client_name, summary, draft_reply) заполняются без «плывущего» формата</li>
+      </ul>
+      <div class="rubric">
+        <strong>Рубрика «выполнено хорошо»:</strong> стабильный JSON на 3+ разных входах, включая «сложные» (спам, неполное обращение). Ни одно поле не теряется, формат не ломается.
+      </div>
+    </div>
+  </div>
+
+  <details class="collapse">
+    <summary>🔀 Адаптировать под себя</summary>
+    <div class="content">
+      <p><strong>Новичок:</strong> скопируйте Шаблон 1 как есть — он заточен под анкерный кейс обработки заявок.</p>
+      <p><strong>Своя задача:</strong> используйте Шаблон 2 со страницы <a href="/mini-course/assets/prompts/" style="color:var(--teal)">/mini-course/assets/prompts/</a> — замените поля под свою задачу (например, для отзывов: sentiment, theme, needs_reply).</p>
+    </div>
+  </details>
+
+</div>
+
+<section class="next-lesson">
+  <div class="container">
+    <div class="hint">Завтра откроется новый урок</div>
+    <a href="/mini-course/day-4/" class="btn-next">День 4: Агент оживает →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>

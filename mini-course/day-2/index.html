@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День 2 — Первый разговор с моделью внутри workflow | Мини-курс LeadUp AI</title>
+  <meta name="description" content="День 2 мини-курса «AI-агент за 5 дней». Соберёте workflow из 3 нод и получите осмысленный ответ модели на своих данных.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/day-2/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="День 2 — Первый разговор с моделью внутри workflow | LeadUp AI">
+  <meta property="og:description" content="Соберёте workflow из 3 нод и получите осмысленный ответ модели на своих данных.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/day-2/">
+  <meta property="og:site_name" content="LeadUp AI">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">День 2 из 5</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Все уроки
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">День 2</span>
+    <h1>Первый разговор с моделью внутри workflow</h1>
+    <p class="outcome">Соберёте workflow из 3 нод и получите осмысленный ответ модели на своих данных.</p>
+    <div class="meta">
+      <span><strong>⏱</strong> 30–45 мин</span>
+      <span class="dot">·</span>
+      <span>Уровень: начинающий</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">🎯 Цель дня</div>
+    <p>Собрать минимальный workflow из трёх нод и получить первый ответ LLM на вашем реальном примере.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📖 Теория</div>
+
+    <h2>Интерфейс n8n: нода, соединение, запуск</h2>
+    <p>n8n-редактор состоит из «нод» (блоков). Каждая нода — это одно действие: триггер, операция с данными, вызов LLM, отправка уведомления. Вы соединяете ноды линиями — данные текут слева направо.</p>
+    <div class="ss-placeholder">[СКРИНШОТ/SCREENCAST: интерфейс n8n — панель нод слева, пустой холст, кнопка «Test workflow»]</div>
+
+    <h2>System prompt vs User prompt</h2>
+    <p>Когда вы вызываете LLM-модель, вы отправляете ей <strong>промпт</strong> — текст инструкции. Есть два типа:</p>
+    <ul>
+      <li><strong>System prompt</strong> — роль и правила. «Ты — ассистент отдела продаж. Всегда отвечай вежливо и по делу.» Задаётся один раз в настройках ноды LLM.</li>
+      <li><strong>User prompt</strong> — конкретное сообщение. Текст заявки, который пришёл от клиента. Приходит динамически из предыдущей ноды.</li>
+    </ul>
+
+    <h2>Как подключить LLM-ноду</h2>
+    <p>В ноде «OpenAI» / «Anthropic» вы создаёте <strong>Credentials</strong> — вставляете API-ключ один раз, и он сохраняется. Затем пишете System prompt в поле «System Message», а в User Message вставляете переменную из предыдущей ноды (например, <code>{{ $json.text }}</code>).</p>
+    <div class="ss-placeholder">[СКРИНШОТ/SCREENCAST D2 из LEA-2448: подключение LLM-ноды, создание credentials, вставка промпта]</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🛠 Практическое задание</div>
+
+    <ol class="step-list">
+      <li>
+        <p><strong>Создайте новый workflow</strong> в n8n: кнопка «+» → «Workflow». Откроется чистый холст с одной нодой «When triggered by…».</p>
+      </li>
+      <li>
+        <p><strong>Добавьте ноду «Set»</strong> — она задаст входной текст. В поле «Values» → Name: <code>text</code>, Value: текст реальной заявки / письма для теста.</p>
+        <div class="ss-placeholder">[СКРИНШОТ: нода Set с заполненными полями]</div>
+      </li>
+      <li>
+        <p><strong>Добавьте ноду LLM</strong> (OpenAI «Message a Model» или Anthropic «Message a Model»). Создайте Credentials (API-ключ). В System Message напишите: <code>Ты — ассистент отдела продаж. Проанализируй обращение клиента.</code> В User Message подставьте <code>{{ $json.text }}</code>.</p>
+        <div class="ss-placeholder">[СКРИНШОТ: нода LLM с заполненным System/User Message]</div>
+      </li>
+      <li>
+        <p><strong>Запустите workflow</strong> — кнопка «Test workflow». Убедитесь, что модель вернула осмысленный ответ на ваш текст.</p>
+      </li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <div class="section-label">✅ Чек-поинт</div>
+    <div class="checkpoint">
+      <h4>Само-проверка Дня 2</h4>
+      <ul>
+        <li>✅ Workflow из трёх нод собран (Manual Trigger → Set → LLM)</li>
+        <li>✅ Workflow запускается без ошибок</li>
+        <li>✅ Модель возвращает осмысленный ответ на ваш реальный пример</li>
+      </ul>
+      <div class="rubric">
+        <strong>Рубрика «выполнено хорошо»:</strong> ответ осмыслен и релевантен именно вашей задаче, а не просто пересказывает входящий текст. Если модель ушла не туда — попробуйте уточнить System Message.
+      </div>
+    </div>
+  </div>
+
+  <details class="collapse">
+    <summary>🔀 Адаптировать под себя</summary>
+    <div class="content">
+      <p><strong>Новичок:</strong> используйте анкерный кейс — текст заявки с сайта (например, «Здравствуйте, интересует внедрение ИИ в поддержку, перезвоните на 8-999-...»).</p>
+      <p><strong>Своя задача:</strong> подставьте реальный текст из вашей задачи: письмо клиента, отзыв, сообщение из чата.</p>
+    </div>
+  </details>
+
+</div>
+
+<section class="next-lesson">
+  <div class="container">
+    <div class="hint">Завтра откроется новый урок</div>
+    <a href="/mini-course/day-3/" class="btn-next">День 3: Промпт, который работает →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>

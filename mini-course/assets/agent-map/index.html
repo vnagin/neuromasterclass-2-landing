@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карта агента — шаблон | Мини-курс LeadUp AI</title>
+  <meta name="description" content="Шаблон «Карта агента» для мини-курса «AI-агент за 5 дней». Спланируйте триггер, логику и действие вашего агента.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/assets/agent-map/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Карта агента — шаблон для мини-курса | LeadUp AI">
+  <meta property="og:description" content="Шаблон для планирования AI-агента: триггер → что понимает → что делает.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/assets/agent-map/">
+  <meta property="og:site_name" content="LeadUp AI">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">Ассет мини-курса</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      К курсу
+    </a>
+  </div>
+</nav>
+
+<section class="asset-hero">
+  <div class="container">
+    <span class="badge">Ассет к Дню 1</span>
+    <h1>🗺 Карта агента</h1>
+    <p class="sub">Одностраничный шаблон: спланируйте триггер, логику и действие вашего AI-агента</p>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">📋 Чек-лист пригодности задачи</div>
+    <p>До заполнения карты проверьте задачу по трём критериям:</p>
+    <ul class="check-list">
+      <li>Задача <strong>повторяется</strong> регулярно (каждый день / каждую неделю)</li>
+      <li>На входе есть <strong>текст</strong> (письмо / заявка / сообщение / комментарий)</li>
+      <li>Есть <strong>понятный желаемый результат</strong> (что должно произойти в конце)</li>
+    </ul>
+    <p style="font-size:12px; color:var(--fg-3)">Если хотя бы на один вопрос ответ «нет» — выберите другую задачу или подумайте, можно ли её докрутить.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🗺 Три блока карты — заполните</div>
+    <table class="agent-table">
+      <tr>
+        <th>Блок</th><th>Вопрос</th><th>Ваш ответ</th>
+      </tr>
+      <tr>
+        <td><strong>1. Триггер</strong></td>
+        <td>Что запускает агента?<br><span style="font-size:11px;color:var(--fg-4)">(новое письмо / заявка с сайта / сообщение в TG / строка в таблице)</span></td>
+        <td>________</td>
+      </tr>
+      <tr>
+        <td><strong>2. Что понимает</strong></td>
+        <td>Что агент должен извлечь/решить из входа?<br><span style="font-size:11px;color:var(--fg-4)">(категория, приоритет, имя, суть запроса)</span></td>
+        <td>________</td>
+      </tr>
+      <tr>
+        <td><strong>3. Что делает</strong></td>
+        <td>Какое действие на выходе?<br><span style="font-size:11px;color:var(--fg-4)">(записать в таблицу, уведомить, прислать черновик ответа)</span></td>
+        <td>________</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📌 Пример заполнения (анкерный кейс)</div>
+    <table class="agent-table">
+      <tr>
+        <th>Блок</th><th>Ответ</th>
+      </tr>
+      <tr>
+        <td><strong>1. Триггер</strong></td>
+        <td>Новая заявка с сайта (Webhook)</td>
+      </tr>
+      <tr>
+        <td><strong>2. Что понимает</strong></td>
+        <td>Категория (горячий/тёплый/спам), приоритет, имя клиента, контакт, суть запроса</td>
+      </tr>
+      <tr>
+        <td><strong>3. Что делает</strong></td>
+        <td>Записать все поля в Google-таблицу + прислать владельцу черновик ответа в Telegram</td>
+      </tr>
+    </table>
+  </div>
+
+  <p style="text-align:center; padding:24px 0">
+    <button class="copy-btn" onclick="window.print()" style="position:static;font-size:13px;padding:10px 20px;">Распечатать / Сохранить как PDF →</button>
+    &nbsp;
+    <a href="/mini-course/day-1/" class="btn-next" style="display:inline-flex;font-size:14px;">← К уроку Дня 1</a>
+  </p>
+
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>

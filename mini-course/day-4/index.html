@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День 4 — Агент оживает: реальный триггер и реальное действие | Мини-курс LeadUp AI</title>
+  <meta name="description" content="День 4 мини-курса «AI-агент за 5 дней». Подключите реальный триггер и действие и соберёте сквозной авто-прогон end-to-end.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ads.leadup.guru/mini-course/day-4/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="День 4 — Агент оживает: реальный триггер и реальное действие | LeadUp AI">
+  <meta property="og:description" content="Подключите реальный триггер и действие и соберёте сквозной авто-прогон end-to-end.">
+  <meta property="og:url" content="https://ads.leadup.guru/mini-course/day-4/">
+  <meta property="og:site_name" content="LeadUp AI">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png">
+  <link rel="stylesheet" href="/mini-course/style.css?v=1">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <div class="nav-left">
+      <div class="nav-logo">LeadUp <span class="acc">AI</span></div>
+      <div class="nav-page-label">День 4 из 5</div>
+    </div>
+    <a href="/mini-course/" class="nav-cta">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L5 8l5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Все уроки
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge">День 4</span>
+    <h1>Агент оживает</h1>
+    <p class="outcome">Подключите реальный триггер и действие и соберёте сквозной авто-прогон end-to-end.</p>
+    <div class="meta">
+      <span><strong>⏱</strong> 40–60 мин</span>
+      <span class="dot">·</span>
+      <span>Уровень: начинающий</span>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-label">🎯 Цель дня</div>
+    <p>Убрать ручной запуск — агент должен сам реагировать на событие и сам выполнять действие. Полный авто-прогон от триггера до уведомления.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">📖 Теория</div>
+
+    <h2>Триггеры: на что агент реагирует</h2>
+    <p>До сих пор мы запускали агента вручную (Manual Trigger). Теперь подключаем реальный источник событий. На выбор в n8n:</p>
+    <ul>
+      <li><strong>Webhook</strong> — универсальный приёмник. Любая система (сайт, CRM, форма) отправляет POST-запрос на URL агента — и он срабатывает.</li>
+      <li><strong>Gmail Trigger</strong> — новое письмо в ящике. Агент читает тему, тело, отправителя.</li>
+      <li><strong>Telegram Trigger</strong> — новое сообщение в боте/канале.</li>
+      <li><strong>Google Sheets Trigger</strong> — новая строка в таблице.</li>
+    </ul>
+    <p>Для анкерного кейса используем <strong>Webhook</strong> — как будто заявка прилетает с сайта.</p>
+
+    <h2>Действия: что агент делает на выходе</h2>
+    <p>После того как LLM вернул JSON, нужно с ним что-то сделать:</p>
+    <ol>
+      <li><strong>Запись результата</strong> — сохранить поля в таблицу (Google Sheets / n8n Data Table). Чтобы потом анализировать все заявки.</li>
+      <li><strong>Уведомление владельцу</strong> — отправить черновик ответа менеджеру (email / Telegram).</li>
+    </ol>
+
+    <h2>Как связать выход LLM (JSON) с полями действия</h2>
+    <p>После LLM-ноды добавьте ноду «Code» / «Set» для парсинга JSON. В n8n данные из LLM приходят в поле <code>{{ $json.message.content }}</code> — это текст JSON. Код на JavaScript парсит его, и поля становятся доступны как <code>{{ $json.category }}</code>, <code>{{ $json.draft_reply }}</code> и т.д.</p>
+    <div class="ss-placeholder">[SCREENCAST D4 из LEA-2448: подключение Webhook-триггера, нода Code для парсинга JSON, Append Row в Google Sheets, уведомление в Telegram]</div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">🛠 Практическое задание</div>
+
+    <ol class="step-list">
+      <li>
+        <p><strong>Замените Manual Trigger на Webhook.</strong> Удалите старый триггер, добавьте «Webhook» → «Test URL» → скопируйте Production URL.</p>
+      </li>
+      <li>
+        <p><strong>Добавьте ноду «Code» после LLM</strong> для парсинга JSON-ответа. Код:</p>
+        <div class="code-block">
+const llmOutput = $input.first().json.message.content;
+const parsed = typeof llmOutput === 'string' ? JSON.parse(llmOutput) : llmOutput;
+return {
+  category: parsed.category,
+  priority: parsed.priority,
+  client_name: parsed.client_name,
+  summary: parsed.summary,
+  draft_reply: parsed.draft_reply
+};
+        </div>
+      </li>
+      <li>
+        <p><strong>Добавьте действие 1 — запись в таблицу.</strong> Нода «Google Sheets» → «Append Row» (или «n8n Data Table»). Подставьте поля из JSON: <code>{{ $json.category }}</code>, <code>{{ $json.client_name }}</code> и т.д.</p>
+      </li>
+      <li>
+        <p><strong>Добавьте действие 2 — уведомление.</strong> Нода «Telegram» / «Email». Отправьте себе сообщение с полями заявки и черновиком ответа.</p>
+      </li>
+      <li>
+        <p><strong>Прогоните end-to-end.</strong> Отправьте тестовый POST-запрос на Webhook URL (через Postman / curl) и проверьте, что данные записались в таблицу и уведомление пришло.</p>
+      </li>
+    </ol>
+  </div>
+
+  <details class="collapse">
+    <summary>⚡ Express-дорожка: импорт готового шаблона</summary>
+    <div class="content">
+      <p>Нет времени собирать с нуля? Импортируйте готовый стартовый workflow:</p>
+      <p>
+        <a href="/mini-course/assets/agent-starter-workflow.json" class="btn-cta" style="display:inline-flex">Скачать agent-starter-workflow.json</a>
+      </p>
+      <p style="margin-top:14px; font-size:13px; color:var(--fg-3)">В n8n: «Import from File» → выберите скачанный JSON. Все ноды уже собраны под анкерный кейс. Останется только подставить ваш API-ключ LLM, промпт и credentials для Google Sheets/Telegram.</p>
+      <p style="font-size:12px; color:var(--warning)">⚠️ Trade-off: быстрее результат, но меньше навыка ручной сборки. Рекомендуем пройти путь «с нуля» хотя бы раз.</p>
+    </div>
+  </details>
+
+  <div class="section">
+    <div class="section-label">✅ Чек-поинт</div>
+    <div class="checkpoint">
+      <h4>Само-проверка Дня 4</h4>
+      <ul>
+        <li>✅ Webhook-триггер подключён (Manual Trigger заменён)</li>
+        <li>✅ JSON парсится и поля раскладываются по переменным</li>
+        <li>✅ Данные записываются в таблицу (Google Sheets / n8n Data Table)</li>
+        <li>✅ Уведомление (email / Telegram) отправляется с черновиком ответа</li>
+        <li>✅ Полный авто-прогон: тестовый POST → запись + уведомление — без ручного запуска</li>
+      </ul>
+      <div class="rubric">
+        <strong>Рубрика «выполнено хорошо»:</strong> полный авто-прогон с записью в таблицу и уведомлением. Все поля (category, priority, client_name, summary, draft_reply) корректно записаны.
+      </div>
+    </div>
+  </div>
+
+  <details class="collapse">
+    <summary>🔀 Адаптировать под себя</summary>
+    <div class="content">
+      <p><strong>Новичок:</strong> собирайте анкерный кейс как есть. Webhook + Google Sheets + Telegram.</p>
+      <p><strong>Своя задача:</strong> триггер и действия под вашу задачу — возможно, вам нужен Gmail Trigger или запись в другую систему (Airtable, Notion, CRM). Схема та же: триггер → LLM → парсинг JSON → действия.</p>
+      <p><strong>Express:</strong> импортируйте <a href="/mini-course/assets/agent-starter-workflow.json" style="color:var(--teal)">agent-starter-workflow.json</a> и заполните только свои ключи и промпт.</p>
+    </div>
+  </details>
+
+</div>
+
+<section class="next-lesson">
+  <div class="container">
+    <div class="hint">Завтра откроется новый урок</div>
+    <a href="/mini-course/day-5/" class="btn-next">День 5: Запуск, надёжность и что дальше →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 LeadUp AI</span>
+    <span class="signature">Владимир Нагин · основатель LeadUp AI</span>
+    <a href="https://t.me/neurosborka" target="_blank" rel="noopener">@neurosborka</a>
+  </div>
+</footer>
+
+</body>
+</html>
