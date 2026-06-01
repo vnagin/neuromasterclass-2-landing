@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+  <meta name="description" content="Дайджест «Нейросборка» — раз в неделю: кейсы AI-автоматизации, новые модели, разборы внедрений. 12 000+ подписчиков.">
+  <meta property="og:title" content="Дайджест «Нейросборка» — LeadUp AI" />
+  <meta property="og:description" content="Раз в неделю: кейсы AI-автоматизации, новые модели, разборы внедрений. 12 000+ подписчиков." />
+  <meta property="og:image" content="/intensive/assets/og-image.png" />
+  <meta property="og:type" content="website" />
+  <title>Дайджест «Нейросборка» — LeadUp AI</title>
+  <link rel="stylesheet" href="/design-system/colors_and_type.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-1);
+      color: var(--fg-1);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,15,13,0.72);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--border-1);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 16px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.025em; }
+    .nav-logo span { color: var(--teal); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal); color: #061210;
+      font-weight: 600; font-size: 13px;
+      padding: 8px 16px; border-radius: var(--r-lg, 10px);
+      text-decoration: none;
+      transition: background 120ms var(--ease), box-shadow 120ms var(--ease), transform 120ms var(--ease);
+    }
+    .nav-cta:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--grad-glow);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 600px; position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-2);
+      padding: 6px 14px;
+      border: 1px solid var(--border-2);
+      border-radius: 100px;
+      background: rgba(20,27,24,0.5);
+      backdrop-filter: blur(8px);
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px var(--teal);
+    }
+
+    .subscriber-count {
+      font-family: var(--font-mono);
+      font-size: 13px; color: var(--fg-3);
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .subscriber-count span {
+      font-weight: 600; color: var(--teal);
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      margin-bottom: 16px;
+    }
+    h1 em { color: var(--teal); font-style: normal; }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      color: var(--fg-2);
+      margin-bottom: 40px;
+    }
+
+    form {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    form input {
+      padding: 14px 16px;
+      background: var(--bg-4);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r-lg);
+      color: var(--fg-1);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      transition: border-color 120ms var(--ease);
+    }
+    form input:focus { outline: none; border-color: var(--teal); box-shadow: var(--ring-focus); }
+    form input::placeholder { color: var(--fg-4); }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--teal); color: #061210;
+      padding: 14px 32px;
+      border-radius: var(--r-lg);
+      font-size: 15px;
+      font-weight: 600;
+      border: none; cursor: pointer;
+      transition: background 120ms var(--ease), box-shadow 120ms var(--ease), transform 120ms var(--ease);
+      font-family: var(--font-sans);
+      width: 100%;
+    }
+    .cta-btn:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+
+    .privacy-line { font-size: 12px; color: var(--fg-4); text-align: center; margin-top: 4px; }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    section h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .topic-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      text-align: center;
+    }
+    .topic-card .icon {
+      font-size: 32px; margin-bottom: 12px;
+    }
+    .topic-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+    .topic-card p { font-size: 13px; color: var(--fg-3); line-height: 1.5; }
+
+    .testimonial {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--r-2xl);
+      padding: 32px;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .testimonial .quote {
+      font-size: 17px; color: var(--fg-2);
+      font-style: italic; margin-bottom: 16px;
+      line-height: 1.55;
+    }
+    .testimonial .author { font-size: 13px; color: var(--fg-3); }
+
+    .final-cta {
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--grad-glow);
+      pointer-events: none;
+    }
+    .final-cta h2 { position: relative; margin-bottom: 16px; }
+    .final-cta p {
+      position: relative;
+      color: var(--fg-2);
+      margin-bottom: 32px;
+      max-width: 500px; margin-inline: auto;
+    }
+    .final-cta form { max-width: 440px; margin: 0 auto; position: relative; }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--fg-3);
+      font-size: 13px;
+      border-top: 1px solid var(--border-1);
+    }
+    footer a { color: var(--fg-2); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+
+    .tg-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--fg-2);
+      margin-top: 20px;
+      font-size: 13px;
+      text-decoration: none;
+      transition: color 120ms var(--ease);
+    }
+    .tg-link:hover { color: var(--teal); }
+    .tg-link svg { width: 18px; height: 18px; stroke: var(--teal); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">LeadUp <span>AI</span></span>
+    <a href="#cta" class="nav-cta">Подписаться</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Weekly Newsletter</div>
+      <div class="subscriber-count"><span>12 000+</span> инженеров и CTO уже читают</div>
+      <h1>Дайджест<br><em>«Нейросборка»</em></h1>
+      <p class="hero-sub">Раз в неделю: кейсы AI-автоматизации, новые модели, разборы внедрений и готовые промпты. Без воды.</p>
+      <form id="newsletter-form" style="display: flex; gap: 8px; flex-direction: row;">
+        <input type="email" name="email" placeholder="Email" required style="flex: 1;">
+        <button type="submit" class="cta-btn" style="width: auto;">Подписаться →</button>
+      </form>
+      <p class="privacy-line" style="margin-top: 8px;">Раз в неделю. Никакого спама. Отписка в один клик.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>О чём пишем</h2>
+    <div class="topics">
+      <div class="topic-card">
+        <div class="icon">📊</div>
+        <h3>Кейсы внедрений</h3>
+        <p>Реальные метрики: +22% конверсия, $42/мес экономии, 200 тикетов в день на автопилоте.</p>
+      </div>
+      <div class="topic-card">
+        <div class="icon">🤖</div>
+        <h3>Новые модели</h3>
+        <p>DeepSeek, Claude 4, Gemini 2.5 — тестируем и показываем что реально работает.</p>
+      </div>
+      <div class="topic-card">
+        <div class="icon">⚙️</div>
+        <h3>n8n-воркфлоу</h3>
+        <p>Готовые шаблоны: Slack-дайджест, трекинг тикетов, RAG Q&A-бот — import за 1 клик.</p>
+      </div>
+      <div class="topic-card">
+        <div class="icon">🔬</div>
+        <h3>Eval-метрики</h3>
+        <p>Как оценивать AI-агентов: quality score, retry rate, cost per task, confidence.</p>
+      </div>
+      <div class="topic-card">
+        <div class="icon">📝</div>
+        <h3>System prompts</h3>
+        <p>Примеры production-промптов для классификации, суммаризации и routing.</p>
+      </div>
+      <div class="topic-card">
+        <div class="icon">🎯</div>
+        <h3>AI-стратегия</h3>
+        <p>Выбор пилотного процесса, команда, KPI, бюджет — пошаговый фреймворк.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="testimonial">
+      <p class="quote">«Единственная AI-рассылка, которую я реально открываю каждую неделю. Никакой теории — только цифры и production-промпты.»</p>
+      <p class="author">Анна Воронина, CTO · Flow Retail</p>
+    </div>
+  </section>
+
+  <div class="final-cta" id="cta">
+    <h2>Присоединяйтесь к 12 000+ инженеров</h2>
+    <p>Раз в неделю — лучшее из мира AI-автоматизации. Читается за 5 минут.</p>
+    <form id="newsletter-form-bottom">
+      <input type="email" name="email" placeholder="Email" required style="margin-bottom: 12px;">
+      <button type="submit" class="cta-btn">Подписаться на дайджест →</button>
+    </form>
+    <a href="https://t.me/neurosborka" target="_blank" class="tg-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2.5L2.5 10.5l6.5 2.5"/><path d="M9 13l3.5 7.5 4.5-14"/></svg>
+      Или подпишитесь на Telegram @neurosborka
+    </a>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 LeadUp AI · <a href="/">Все лендинги</a> · <a href="https://t.me/neurosborka" target="_blank">@neurosborka</a></p>
+  </footer>
+
+  <script>
+    var WEBHOOK = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+    ['newsletter-form', 'newsletter-form-bottom'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var btn = el.querySelector('button');
+        btn.textContent = 'Подписываем...';
+        btn.disabled = true;
+        try {
+          var email = el.querySelector('[name="email"]').value;
+          var res = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'newsletter' }) });
+          if (res.ok) {
+            btn.textContent = 'Подписаны!';
+            btn.style.background = 'var(--success)';
+          } else throw new Error();
+        } catch(err) {
+          btn.textContent = 'Ошибка. Попробуйте ещё раз';
+          btn.style.background = 'var(--danger)';
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

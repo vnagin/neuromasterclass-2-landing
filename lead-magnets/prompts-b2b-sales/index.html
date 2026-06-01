@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+  <meta name="description" content="42 промпта для B2B-продаж, email-рассылок и квалификации лидов. Бесплатный PDF-гайд от LeadUp AI.">
+  <meta property="og:title" content="42 промпта для B2B-продаж — LeadUp AI" />
+  <meta property="og:description" content="42 промпта для B2B-продаж, email-рассылок и квалификации лидов. Бесплатный PDF-гайд." />
+  <meta property="og:image" content="/intensive/assets/og-image.png" />
+  <meta property="og:type" content="website" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "42 промпта для B2B-продаж",
+    "description": "Бесплатный PDF-гайд с 42 промптами для B2B-продаж, email-рассылок и квалификации лидов от LeadUp AI.",
+    "publisher": { "@type": "Organization", "name": "LeadUp AI" }
+  }
+  </script>
+  <title>42 промпта для B2B-продаж — LeadUp AI</title>
+  <link rel="stylesheet" href="/design-system/colors_and_type.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-1);
+      color: var(--fg-1);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,15,13,0.72);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--border-1);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { font-size: 16px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.025em; }
+    .nav-logo span { color: var(--teal); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal); color: #061210;
+      font-weight: 600; font-size: 13px;
+      padding: 8px 16px; border-radius: var(--r-lg, 10px);
+      text-decoration: none;
+      transition: background 120ms var(--ease, ease), box-shadow 120ms var(--ease, ease), transform 120ms var(--ease, ease);
+    }
+    .nav-cta:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--grad-glow);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line, rgba(255,255,255,0.03)) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line, rgba(255,255,255,0.03)) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 720px; position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-2);
+      padding: 6px 14px;
+      border: 1px solid var(--border-2);
+      border-radius: 100px;
+      background: rgba(20,27,24,0.5);
+      backdrop-filter: blur(8px);
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 10px var(--teal);
+    }
+
+    .hero-icon {
+      width: 80px; height: 80px;
+      margin: 0 auto 24px;
+      background: var(--teal-tint);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r-2xl);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-icon svg { width: 36px; height: 36px; stroke: var(--teal); }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
+      color: var(--fg-1);
+    }
+    h1 em { color: var(--teal); font-style: normal; }
+
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--fg-2);
+      margin-bottom: 20px;
+      max-width: 520px;
+      margin-inline: auto;
+    }
+
+    .hero-meta {
+      display: flex; align-items: center; justify-content: center; gap: 24px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--fg-3);
+      font-family: var(--font-mono);
+    }
+    .hero-meta-item svg { width: 16px; height: 16px; stroke: var(--teal); }
+
+    form {
+      max-width: 440px;
+      margin: 0 auto;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    form input {
+      padding: 14px 16px;
+      background: var(--bg-4);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r-lg);
+      color: var(--fg-1);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      transition: border-color 120ms var(--ease);
+    }
+    form input:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: var(--ring-focus);
+    }
+    form input::placeholder { color: var(--fg-4); }
+
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--teal); color: #061210;
+      padding: 14px 32px;
+      border-radius: var(--r-lg, 12px);
+      font-size: 15px;
+      font-weight: 600;
+      border: none; cursor: pointer;
+      transition: background 120ms var(--ease), box-shadow 120ms var(--ease), transform 120ms var(--ease);
+      font-family: var(--font-sans);
+      width: 100%;
+    }
+    .cta-btn:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+
+    .privacy-line {
+      font-size: 12px; color: var(--fg-4);
+      text-align: center; margin-top: 4px;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    section h2 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+      text-align: center;
+      color: var(--fg-1);
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .preview-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-1);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      transition: border-color 200ms var(--ease);
+    }
+    .preview-card:hover { border-color: var(--border-2); }
+    .preview-card .num {
+      font-family: var(--font-mono);
+      font-size: 11px; color: var(--teal);
+      font-weight: 500; margin-bottom: 8px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .preview-card h3 {
+      font-size: 16px; font-weight: 600;
+      margin-bottom: 6px; color: var(--fg-1);
+    }
+    .preview-card p {
+      font-size: 13px; color: var(--fg-3);
+      line-height: 1.5;
+    }
+
+    .final-cta {
+      text-align: center;
+      padding: 100px 24px;
+      position: relative;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--grad-glow);
+      pointer-events: none;
+    }
+    .final-cta h2 {
+      position: relative;
+      margin-bottom: 16px;
+    }
+    .final-cta p {
+      position: relative;
+      color: var(--fg-2);
+      margin-bottom: 32px;
+      max-width: 500px; margin-inline: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--fg-3);
+      font-size: 13px;
+      border-top: 1px solid var(--border-1);
+    }
+    footer a { color: var(--fg-2); text-decoration: none; }
+    footer a:hover { color: var(--teal); }
+
+    @media (max-width: 640px) {
+      .hero-meta { flex-direction: column; gap: 10px; }
+      .preview-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">LeadUp <span>AI</span></span>
+    <a href="#cta" class="nav-cta">Скачать PDF</a>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Бесплатный PDF-гайд</div>
+      <div class="hero-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14,2 14,8 20,8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+          <polyline points="10,9 9,9 8,9"/>
+        </svg>
+      </div>
+      <h1>42 промпта<br>для <em>B2B-продаж</em></h1>
+      <p class="hero-sub">От первого касания до закрытия сделки: холодные письма, квалификация, работа с возражениями, рассылки и фоллоу-апы.</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          PDF · 38 страниц
+        </span>
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+          10 минут на изучение
+        </span>
+        <span class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          3 000+ скачиваний
+        </span>
+      </div>
+      <form id="lead-form">
+        <input type="text" name="name" placeholder="Имя" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <button type="submit" class="cta-btn">Скачать PDF бесплатно →</button>
+        <p class="privacy-line">Никакого спама. Отписка в один клик.</p>
+      </form>
+    </div>
+  </div>
+
+  <section id="whats-inside">
+    <h2>Что внутри</h2>
+    <div class="preview-grid">
+      <div class="preview-card">
+        <div class="num">01</div>
+        <h3>Холодные письма</h3>
+        <p>8 промптов для первого касания: исследование клиента, персонализация, A/B-варианты subject lines.</p>
+      </div>
+      <div class="preview-card">
+        <div class="num">02</div>
+        <h3>Квалификация лидов</h3>
+        <p>6 промптов для BANT/CHAMP-квалификации и scoring-матриц.</p>
+      </div>
+      <div class="preview-card">
+        <div class="num">03</div>
+        <h3>Email-рассылки</h3>
+        <p>10 промптов для прогревающих цепочек, кейс-писем и триггерных сценариев.</p>
+      </div>
+      <div class="preview-card">
+        <div class="num">04</div>
+        <h3>Работа с возражениями</h3>
+        <p>7 промптов: цена, конкуренты, «подумать», «нет бюджета».</p>
+      </div>
+      <div class="preview-card">
+        <div class="num">05</div>
+        <h3>Фоллоу-апы</h3>
+        <p>6 промптов для автоматизации follow-up писем после встреч и демо.</p>
+      </div>
+      <div class="preview-card">
+        <div class="num">06</div>
+        <h3>Закрытие сделки</h3>
+        <p>5 промптов: договор, коммерческое предложение, финальный пуш.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="final-cta">
+    <h2>Скачайте бесплатно</h2>
+    <p>42 промпта — копируйте, вставляйте, адаптируйте. Работает с ChatGPT, Claude, DeepSeek.</p>
+    <form id="lead-form-bottom" style="max-width: 440px; margin: 0 auto;">
+      <input type="email" name="email" placeholder="Email" required style="margin-bottom: 12px;">
+      <button type="submit" class="cta-btn">Получить PDF →</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 LeadUp AI · <a href="/">Все лендинги</a> · <a href="https://t.me/neurosborka" target="_blank">@neurosborka</a></p>
+  </footer>
+
+  <script>
+    const WEBHOOK_URL = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+    function setupForm(formId) {
+      document.getElementById(formId)?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        btn.textContent = 'Отправляем...';
+        btn.disabled = true;
+        try {
+          const fd = new FormData(e.target);
+          const payload = { name: fd.get('name') || '', email: fd.get('email'), source: 'prompts-b2b-sales' };
+          const res = await fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            btn.textContent = 'Готово! Проверьте почту';
+            btn.style.background = 'var(--success)';
+          } else {
+            throw new Error('Network error');
+          }
+        } catch (err) {
+          btn.textContent = 'Ошибка. Попробуйте ещё раз';
+          btn.style.background = 'var(--danger)';
+          btn.disabled = false;
+        }
+      });
+    }
+    setupForm('lead-form');
+    setupForm('lead-form-bottom');
+  </script>
+
+</body>
+</html>
