@@ -31,7 +31,7 @@
 
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(10,15,13,0.72);
+      background: color-mix(in srgb, var(--bg-1) 72%, transparent);  /* frosted nav — --bg-1 @72% */
       backdrop-filter: blur(18px) saturate(160%);
       -webkit-backdrop-filter: blur(18px) saturate(160%);
       border-bottom: 1px solid var(--border-1);
@@ -42,7 +42,7 @@
     .nav-logo span { color: var(--teal); }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--teal); color: #061210;
+      background: var(--teal); color: var(--on-teal);
       font-weight: 600; font-size: 13px;
       padding: 8px 16px; border-radius: var(--r-lg, 10px);
       text-decoration: none;
@@ -86,7 +86,7 @@
       padding: 6px 14px;
       border: 1px solid var(--border-2);
       border-radius: 100px;
-      background: rgba(20,27,24,0.5);
+      background: color-mix(in srgb, var(--bg-3) 50%, transparent);  /* frosted badge — --bg-3 @50% */
       backdrop-filter: blur(8px);
       margin-bottom: 28px;
     }
@@ -142,7 +142,7 @@
 
     .cta-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      background: var(--teal); color: #061210;
+      background: var(--teal); color: var(--on-teal);
       padding: 14px 32px;
       border-radius: var(--r-lg);
       font-size: 15px;
