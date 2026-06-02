@@ -16,6 +16,7 @@
   --teal-tint:       rgba(0, 229, 199, 0.12);
   --teal-tint-2:     rgba(0, 229, 199, 0.20);
   --teal-glow:       0 0 24px rgba(0, 229, 199, 0.45);
+  --on-teal:         #061210;   /* near-black text/icon on teal fills (CTA labels) — theme-stable */
 
   /* ---------- COLORS: Surfaces (dark-first) ---------- */
   --bg-0:            #050807;   /* deepest — outside body */
