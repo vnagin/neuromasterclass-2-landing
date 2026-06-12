@@ -37,8 +37,8 @@
       padding: 14px 24px;
       display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { font-size: 16px; font-weight: 700; color: var(--fg-1); letter-spacing: -0.025em; }
-    .nav-logo span { color: var(--teal); }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 26px; width: auto; filter: brightness(10); }
     .nav-cta {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--teal); color: var(--on-teal);
@@ -141,7 +141,8 @@
     }
     .hero-form-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
     .hero-form-card .form-sub { font-size: 13px; color: var(--fg-3); margin-bottom: 24px; }
-    .hero-form-card input {
+    .hero-form-card input,
+    .final-cta form input {
       width: 100%;
       padding: 14px 16px;
       background: var(--bg-4);
@@ -153,8 +154,10 @@
       margin-bottom: 12px;
       transition: border-color 120ms var(--ease);
     }
-    .hero-form-card input:focus { outline: none; border-color: var(--teal); box-shadow: var(--ring-focus); }
-    .hero-form-card input::placeholder { color: var(--fg-4); }
+    .hero-form-card input:focus,
+    .final-cta form input:focus { outline: none; border-color: var(--teal); box-shadow: var(--ring-focus); }
+    .hero-form-card input::placeholder,
+    .final-cta form input::placeholder { color: var(--fg-4); }
 
     .cta-btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -230,14 +233,13 @@
       margin: 0 auto;
     }
     .instructor-avatar {
-      width: 64px; height: 64px;
-      background: var(--teal-tint);
+      width: 72px; height: 72px;
       border: 2px solid var(--teal);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px; font-weight: 700; color: var(--teal);
+      overflow: hidden;
       flex-shrink: 0;
     }
+    .instructor-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .instructor-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
     .instructor-card .role { font-size: 13px; color: var(--fg-3); margin-bottom: 6px; }
     .instructor-card .bio { font-size: 13px; color: var(--fg-2); line-height: 1.5; }
@@ -267,7 +269,7 @@
 <body>
 
   <nav>
-    <span class="nav-logo">LeadUp <span>AI</span></span>
+    <a href="/" class="nav-logo"><img src="/design-system/assets/logo-leadup-raw.png" alt="LeadUp AI"></a>
     <a href="#cta" class="nav-cta">Записаться</a>
   </nav>
 
@@ -337,11 +339,11 @@
   <section>
     <h2>Кто ведёт</h2>
     <div class="instructor-card">
-      <div class="instructor-avatar">ВН</div>
+      <div class="instructor-avatar"><img src="speaker.jpg" alt="Владимир Нагин — CEO LeadUp AI"></div>
       <div>
         <h3>Владимир Нагин</h3>
-        <p class="role">CEO · LeadUp AI</p>
-        <p class="bio">Внедрения AI в бизнесах от 2 до 200+ человек. Каждый урок — из реальной практики.</p>
+        <p class="role">CEO &amp; Founder · LeadUp AI</p>
+        <p class="bio">Предприниматель и эксперт по AI-автоматизации. Построил LeadUp AI — платформу для запуска многоагентных команд без кода. Десятки внедрений AI в бизнесах от 2 до 200+ человек. Каждый урок — из реальной практики.</p>
       </div>
     </div>
   </section>
@@ -357,7 +359,7 @@
   </div>
 
   <footer>
-    <p>&copy; 2026 LeadUp AI · <a href="/">Все лендинги</a> · <a href="mailto:hello@leadup.guru">hello@leadup.guru</a> · <a href="https://t.me/neurosborka" target="_blank">@neurosborka</a></p>
+    <p>&copy; 2026 LeadUp AI · <a href="/">Все лендинги</a> · <a href="mailto:hello@leadup.guru">hello@leadup.guru</a> · <a href="https://t.me/aibusinesshub" target="_blank" rel="noopener noreferrer">Нейросборка</a></p>
   </footer>
 
   <script>
