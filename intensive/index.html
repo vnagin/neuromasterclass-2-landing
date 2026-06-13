@@ -1091,16 +1091,18 @@
 
         var urlParams = new URLSearchParams(window.location.search);
         var tier = tierSelect.value === 'vip' ? 'vip' : 'standard';
+        // UTM-5tuple passthrough → n8n (LEA-3117). См. README §UTM-стандарт.
         var payload = {
           firstname:    form.firstname.value.trim(),
           lastname:     '',
           email:        form.email.value.trim(),
           phone:        form.phone.value.trim(),
           tier:         tier,
-          tg_username:  tgUsernameNorm,
-          utm_source:   urlParams.get('utm_source') || '',
-          utm_campaign: urlParams.get('utm_campaign') || ''
+          tg_username:  tgUsernameNorm
         };
+        ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+          var v = urlParams.get(k); if (v) payload[k] = v;
+        });
 
         var fallbackRedirect = tier === 'vip'
           ? '/intensive/thank-you-vip.html'

@@ -358,6 +358,17 @@
     var WEBHOOK = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
     var PDF_URL = 'guide-8-ai-cases.pdf';
 
+    // UTM-5tuple passthrough → n8n → record_lead_magnet_download (LEA-3117).
+    // Канон по README §UTM-стандарт: snake_case, отсутствующие — не отправляем.
+    function getUtm() {
+      var p = new URLSearchParams(window.location.search);
+      var out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+        var v = p.get(k); if (v) out[k] = v;
+      });
+      return out;
+    }
+
     function deliverPdf(formEl) {
       // мгновенная доставка: same-origin → атрибут download форсирует скачивание
       var dl = document.createElement('a');
@@ -388,7 +399,7 @@
         btn.disabled = true;
         try {
           var fd = new FormData(el);
-          var payload = { name: fd.get('name') || '', email: fd.get('email'), source: 'guide-8-cases' };
+          var payload = Object.assign({ name: fd.get('name') || '', email: fd.get('email'), source: 'guide-8-cases' }, getUtm());
           var res = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           if (res.ok) {
             btn.textContent = 'Готово! Скачивание началось ↓';

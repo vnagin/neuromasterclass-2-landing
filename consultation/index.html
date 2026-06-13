@@ -376,6 +376,17 @@
 
   <script>
     const WEBHOOK_URL = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+
+    // UTM-5tuple passthrough → n8n (LEA-3117). См. README §UTM-стандарт.
+    function getUtm() {
+      var p = new URLSearchParams(window.location.search);
+      var out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+        var v = p.get(k); if (v) out[k] = v;
+      });
+      return out;
+    }
+
     ['consultation-form', 'consultation-form-bottom'].forEach(function(id) {
       var el = document.getElementById(id);
       if (!el) return;
@@ -386,13 +397,13 @@
         btn.disabled = true;
         try {
           var fd = new FormData(el);
-          var payload = {
+          var payload = Object.assign({
             name: fd.get('name') || '',
             email: fd.get('email'),
             company: fd.get('company') || '',
             context: fd.get('context') || '',
             source: 'consultation'
-          };
+          }, getUtm());
           var res = await fetch(WEBHOOK_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
           if (res.ok) {
             btn.textContent = 'Заявка принята! Свяжемся в течение дня';

@@ -362,6 +362,18 @@
 
   <script>
     const WEBHOOK_URL = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+
+    // UTM-5tuple passthrough → n8n → record_lead_magnet_download (LEA-3117).
+    // Канон по README §UTM-стандарт: snake_case, отсутствующие — не отправляем.
+    function getUtm() {
+      const p = new URLSearchParams(window.location.search);
+      const out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach((k) => {
+        const v = p.get(k); if (v) out[k] = v;
+      });
+      return out;
+    }
+
     function setupForm(formId) {
       document.getElementById(formId)?.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -370,7 +382,7 @@
         btn.disabled = true;
         try {
           const fd = new FormData(e.target);
-          const payload = { name: fd.get('name') || '', email: fd.get('email'), source: 'prompts-b2b-sales' };
+          const payload = Object.assign({ name: fd.get('name') || '', email: fd.get('email'), source: 'prompts-b2b-sales' }, getUtm());
           const res = await fetch(WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

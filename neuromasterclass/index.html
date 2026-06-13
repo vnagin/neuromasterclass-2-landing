@@ -664,6 +664,16 @@
   // ===== FORM SUBMISSION =====
   const WEBHOOK_URL = window.WEBHOOK_URL || 'https://n8n.flowstudio.cloud/webhook/neuromasterclass-leads';
 
+  // UTM-5tuple passthrough → n8n (LEA-3117). См. README §UTM-стандарт.
+  function getUtm() {
+    const p = new URLSearchParams(window.location.search);
+    const out = {};
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach((k) => {
+      const v = p.get(k); if (v) out[k] = v;
+    });
+    return out;
+  }
+
   document.getElementById('leadForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -671,7 +681,7 @@
     btn.disabled = true;
     btn.textContent = 'Отправляем...';
 
-    const data = {
+    const data = Object.assign({
       name: document.getElementById('name').value,
       company: document.getElementById('company').value,
       position: document.getElementById('position').value,
@@ -680,7 +690,7 @@
       email: document.getElementById('email').value,
       source: 'neuromasterclass-landing',
       timestamp: new Date().toISOString()
-    };
+    }, getUtm());
 
     try {
       if (WEBHOOK_URL) {
