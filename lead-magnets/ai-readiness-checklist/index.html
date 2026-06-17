@@ -467,6 +467,17 @@
     }
 
     var WEBHOOK_URL = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+
+    // UTM-5tuple passthrough → n8n (канон LEA-3117): snake_case, отсутствующие — не отправляем.
+    function getUtm() {
+      var p = new URLSearchParams(window.location.search);
+      var out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+        var v = p.get(k); if (v) out[k] = v;
+      });
+      return out;
+    }
+
     document.getElementById('lead-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       var btn = e.target.querySelector('button');
@@ -475,12 +486,12 @@
       try {
         var fd = new FormData(e.target);
         var score = document.querySelectorAll('.check-item.checked').length;
-        var payload = {
+        var payload = Object.assign({
           name: fd.get('name') || '',
           email: fd.get('email'),
           source: 'ai-readiness-checklist',
           score: score
-        };
+        }, getUtm());
         var res = await fetch(WEBHOOK_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
