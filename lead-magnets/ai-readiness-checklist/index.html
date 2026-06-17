@@ -243,6 +243,38 @@
 
     .result-cta .actions { display: flex; gap: var(--sp-3); justify-content: center; flex-wrap: wrap; }
 
+    .lead-form {
+      max-width: 420px; margin: var(--sp-4) auto 0;
+      display: flex; flex-direction: column; gap: var(--sp-3);
+    }
+    .lead-form input {
+      padding: 13px var(--sp-4);
+      background: var(--bg-4);
+      border: 1px solid var(--border-2);
+      border-radius: var(--r-lg);
+      color: var(--fg-1);
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      transition: border-color 120ms var(--ease);
+    }
+    .lead-form input:focus { outline: none; border-color: var(--teal); box-shadow: var(--ring-focus); }
+    .lead-form input::placeholder { color: var(--fg-4); }
+    .lead-form button {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+      background: var(--teal); color: var(--on-teal);
+      padding: 13px var(--sp-6);
+      border-radius: var(--r-lg);
+      font-size: 14px; font-weight: 600;
+      border: none; cursor: pointer; width: 100%;
+      font-family: var(--font-sans);
+      transition: background 120ms var(--ease), box-shadow 120ms var(--ease), transform 120ms var(--ease);
+    }
+    .lead-form button:hover:not(:disabled) { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+    .lead-form button:disabled { opacity: 0.7; cursor: default; }
+    .privacy-line { font-size: 12px; color: var(--fg-4); text-align: center; margin-top: 2px; }
+    .form-success { display: none; margin-top: var(--sp-3); font-size: var(--text-sm); color: var(--success); line-height: 1.5; }
+    .form-success.show { display: block; }
+
     footer {
       text-align: center;
       padding: var(--sp-10) var(--sp-6);
@@ -381,7 +413,17 @@
       <div class="result-cta" id="result-cta">
         <h3 id="result-title">Готовность: низкая</h3>
         <p id="result-desc">Рекомендуем начать с бесплатного разбора — поможем подготовить фундамент для AI-пилота.</p>
-        <div class="actions">
+
+        <form class="lead-form" id="lead-form">
+          <input type="text" name="name" placeholder="Имя" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <button type="submit">Получить персональный разбор на email →</button>
+          <p class="privacy-line">Пришлём детальную расшифровку результата и план действий. Никакого спама, отписка в один клик.</p>
+        </form>
+
+        <p class="form-success" id="form-success">✓ Готово! Отправили персональный разбор на ваш email. Проверьте входящие в течение пары минут.</p>
+
+        <div class="actions" style="margin-top: var(--sp-4);">
           <a href="/consultation/" class="cta-btn">Записаться на разбор →</a>
           <a href="/newsletter/" class="cta-btn-ghost">Подписаться на дайджест</a>
         </div>
@@ -394,6 +436,10 @@
   </footer>
 
   <script>
+    var WEBHOOK = 'https://n8n.flowstudio.cloud/webhook/intensiv-register';
+    var currentScore = 0;
+    var currentLevel = 'начальная';
+
     var items = document.querySelectorAll('.check-item');
     items.forEach(function(item) {
       item.addEventListener('click', function() {
@@ -404,6 +450,7 @@
 
     function updateScore() {
       var checked = document.querySelectorAll('.check-item.checked').length;
+      currentScore = checked;
       document.getElementById('score').textContent = checked;
       document.getElementById('progress-fill').style.width = (checked / 12 * 100) + '%';
       var cta = document.getElementById('result-cta');
@@ -415,22 +462,61 @@
         cta.classList.remove('show');
         msg.textContent = 'Отметьте пункты выше';
       } else if (checked <= 4) {
+        currentLevel = 'начальная';
         cta.classList.add('show');
         title.textContent = 'Готовность: начальная (' + checked + '/12)';
         desc.textContent = 'Фундамент пока слабый. Рекомендуем бесплатный разбор — поможем выстроить процессы и данные для AI-пилота.';
         msg.textContent = '';
       } else if (checked <= 8) {
+        currentLevel = 'средняя';
         cta.classList.add('show');
         title.textContent = 'Готовность: средняя (' + checked + '/12)';
         desc.textContent = 'Хорошая база, но есть пробелы. Можно начинать пилот — разберём риски и подберём первый процесс на консультации.';
         msg.textContent = '';
       } else {
+        currentLevel = 'высокая';
         cta.classList.add('show');
         title.textContent = 'Готовность: высокая (' + checked + '/12)';
         desc.textContent = 'Отличный фундамент для AI-трансформации. Готовы к пилоту — запишитесь на разбор, подберём процесс и обсудим план на разборе.';
         msg.textContent = '';
       }
     }
+
+    // UTM-5tuple passthrough → n8n (канон LEA-3117): snake_case, отсутствующие — не отправляем.
+    function getUtm() {
+      var p = new URLSearchParams(window.location.search);
+      var out = {};
+      ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
+        var v = p.get(k); if (v) out[k] = v;
+      });
+      return out;
+    }
+
+    var leadForm = document.getElementById('lead-form');
+    leadForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = leadForm.querySelector('button');
+      btn.textContent = 'Отправляем...';
+      btn.disabled = true;
+      try {
+        var fd = new FormData(leadForm);
+        var payload = Object.assign({
+          name: fd.get('name') || '',
+          email: fd.get('email'),
+          source: 'ai-readiness-checklist',
+          score: currentScore,
+          level: currentLevel
+        }, getUtm());
+        var res = await fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        if (!res.ok) throw new Error();
+        leadForm.style.display = 'none';
+        document.getElementById('form-success').classList.add('show');
+      } catch(err) {
+        btn.textContent = 'Ошибка. Попробуйте ещё раз';
+        btn.style.background = 'var(--danger)';
+        btn.disabled = false;
+      }
+    });
   </script>
 
 </body>
