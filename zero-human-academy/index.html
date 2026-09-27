@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/assets/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicons/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="/assets/favicons/site.webmanifest" />
+  <title>Zero-Human Академия by LeadUp AI — компания на AI-агентах без найма</title>
+  <meta name="description" content="Когортная программа «Zero-Human Академия»: постройте компанию, которая работает на AI-агентах. Маркетинг, продажи, поддержка, финансы — без новых сотрудников. Лишь 50 основателей в поток." />
+
+  <link rel="stylesheet" href="/design-system/colors_and_type.css" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-1);
+      color: var(--fg-1);
+      line-height: var(--lh-relaxed);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 var(--sp-6); }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 28px; border-radius: var(--r-lg); font-weight: var(--fw-semibold); font-size: 15px;
+      cursor: pointer; text-decoration: none; border: 1px solid transparent;
+      transition: background var(--dur-1) var(--ease), color var(--dur-1) var(--ease),
+                  box-shadow var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
+                  border-color var(--dur-1) var(--ease);
+    }
+    .btn-primary { background: var(--teal); color: #061210; }
+    .btn-primary:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--teal); border-color: var(--border-3); }
+    .btn-outline:hover { background: var(--teal-tint); border-color: var(--teal); color: var(--teal-hover); }
+
+    .tag {
+      display: inline-block; padding: 5px 12px; border-radius: var(--r-full);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs); font-weight: var(--fw-medium);
+      letter-spacing: var(--tracking-wide); text-transform: uppercase;
+      background: var(--teal-tint); color: var(--teal);
+      border: 1px solid var(--border-2);
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: var(--fw-bold);
+      line-height: var(--lh-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--fg-1);
+    }
+    .section-sub { font-size: var(--text-md); color: var(--fg-2); margin-top: 12px; line-height: var(--lh-normal); }
+    .text-accent { color: var(--teal); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 15, 13, 0.72);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      border-bottom: 1px solid var(--border-1);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-size: var(--text-md); font-weight: var(--fw-bold); color: var(--fg-1); text-decoration: none; letter-spacing: -0.025em; }
+    .logo span { color: var(--teal); }
+    .nav-cta { font-size: var(--text-sm); padding: 9px 18px; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; background: var(--grad-glow); position: relative; overflow: hidden; }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+      background-size: var(--grid-size) var(--grid-size);
+      mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; text-align: center; max-width: 820px; margin: 0 auto; }
+    .hero-eyebrow { margin-bottom: 24px; }
+    .hero-title { font-size: clamp(36px, 6vw, 68px); font-weight: var(--fw-bold); line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); margin-bottom: 24px; }
+    .hero-title em { font-style: normal; color: var(--teal); }
+    .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--fg-2); max-width: 660px; margin: 0 auto 40px; line-height: var(--lh-normal); }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+    .hero-proof { display: flex; gap: 44px; justify-content: center; flex-wrap: wrap; }
+    .proof-item { text-align: center; }
+    .proof-num { font-family: var(--font-sans); font-size: var(--text-2xl); font-weight: var(--fw-bold); color: var(--teal); letter-spacing: var(--tracking-tight); }
+    .proof-label { font-size: var(--text-sm); color: var(--fg-3); margin-top: 4px; }
+
+    /* PROGRAM */
+    .program { padding: 100px 0; background: var(--bg-2); }
+    .program-header { text-align: center; margin-bottom: 56px; }
+    .module { margin-bottom: 40px; }
+    .module-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 20px; }
+    .module-num { font-family: var(--font-mono); font-size: var(--text-sm); color: var(--teal); font-weight: var(--fw-semibold); letter-spacing: var(--tracking-mono); }
+    .module-title { font-size: var(--text-xl); font-weight: var(--fw-semibold); color: var(--fg-1); letter-spacing: var(--tracking-snug); }
+    .module-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .t-card { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 22px 20px; transition: border-color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease); }
+    .t-card:hover { border-color: var(--border-3); transform: translateY(-2px); }
+    .t-sub { font-size: var(--text-sm); color: var(--fg-3); margin-bottom: 10px; font-family: var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+    .t-name { font-size: var(--text-base); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 8px; }
+    .t-count { font-size: var(--text-xs); color: var(--teal); font-family: var(--font-mono); }
+
+    /* WHY / OFFER */
+    .offers { padding: 100px 0; }
+    .offers-header { text-align: center; margin-bottom: 56px; }
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .offer-card { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-2xl); padding: 28px 24px; }
+    .offer-card.featured { border-color: var(--teal); box-shadow: var(--shadow-teal); }
+    .offer-icon { font-size: 26px; margin-bottom: 14px; }
+    .offer-title { font-size: var(--text-md); font-weight: var(--fw-semibold); margin-bottom: 8px; color: var(--fg-1); }
+    .offer-text { font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-normal); }
+
+    /* FORMAT */
+    .format { padding: 100px 0; background: var(--bg-2); }
+    .format-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+    .format-steps { display: flex; gap: 0; position: relative; margin-top: 48px; }
+    @media (max-width: 768px) { .format-steps { flex-direction: column; gap: 32px; } }
+    .fstep { flex: 1; text-align: center; padding: 0 16px; position: relative; }
+    .fstep-num { width: 60px; height: 60px; border-radius: var(--r-full); margin: 0 auto 16px; background: var(--bg-3); border: 1px solid var(--teal); color: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: var(--text-lg); font-weight: var(--fw-semibold); position: relative; z-index: 1; }
+    .fstep-title { font-size: var(--text-md); font-weight: var(--fw-semibold); margin-bottom: 8px; color: var(--fg-1); }
+    .fstep-text { font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-normal); }
+
+    /* FAQ */
+    .faq { padding: 100px 0; }
+    .faq-header { text-align: center; margin-bottom: 48px; }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-xl); overflow: hidden; transition: border-color var(--dur-2) var(--ease); }
+    .faq-q { padding: 18px 22px; font-size: var(--text-base); font-weight: var(--fw-semibold); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; color: var(--fg-1); }
+    .faq-arrow { transition: transform var(--dur-2) var(--ease); flex-shrink: 0; color: var(--teal); }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height var(--dur-3) var(--ease); font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-relaxed); }
+    .faq-item.open .faq-a { max-height: 400px; }
+    .faq-a-inner { padding: 0 22px 18px; }
+
+    /* CONTACT */
+    .contact { padding: 100px 0; background: var(--bg-2); }
+    .contact-inner { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-3xl); padding: 56px 44px; max-width: 620px; margin: 0 auto; text-align: center; position: relative; box-shadow: var(--shadow-3); }
+    .contact-inner::before { content: ''; position: absolute; inset: 0; border-radius: var(--r-3xl); background: var(--grad-glow); pointer-events: none; opacity: 0.5; }
+    .contact-inner > * { position: relative; }
+    @media (max-width: 600px) { .contact-inner { padding: 40px 24px; } }
+    .contact-title { font-size: clamp(26px, 4vw, 38px); font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); margin-bottom: 12px; color: var(--fg-1); }
+    .contact-sub { font-size: var(--text-base); color: var(--fg-2); margin-bottom: 32px; line-height: var(--lh-normal); }
+    .form-group { margin-bottom: 14px; text-align: left; }
+    .form-group label { display: block; font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--fw-medium); letter-spacing: var(--tracking-wide); text-transform: uppercase; margin-bottom: 6px; color: var(--fg-3); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 14px; background: var(--bg-4); border: 1px solid var(--border-2); border-radius: var(--r-lg);
+      color: var(--fg-1); font-size: var(--text-base); font-family: var(--font-sans); transition: border-color var(--dur-1) var(--ease), box-shadow var(--dur-1) var(--ease);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--fg-4); }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px var(--teal-tint); }
+    .form-group select { cursor: pointer; }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-submit { width: 100%; font-size: var(--text-md); padding: 15px; margin-top: 8px; }
+    .form-note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-3); margin-top: 12px; letter-spacing: var(--tracking-mono); }
+
+    /* FOOTER */
+    footer { padding: 40px 0; border-top: 1px solid var(--border-1); background: var(--bg-1); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-logo { font-size: var(--text-base); font-weight: var(--fw-bold); color: var(--fg-1); letter-spacing: -0.025em; }
+    .footer-logo span { color: var(--teal); }
+    .footer-copy { font-size: var(--text-sm); color: var(--fg-3); }
+
+    /* STICKY CTA */
+    .sticky-cta { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 99; display: none; background: rgba(15, 21, 18, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-3); border-radius: var(--r-full); padding: 10px 20px; gap: 16px; align-items: center; box-shadow: var(--shadow-3); white-space: nowrap; }
+    .sticky-cta.visible { display: flex; }
+    .sticky-cta-text { font-size: var(--text-sm); color: var(--fg-2); }
+    .sticky-cta .btn { padding: 9px 18px; font-size: var(--text-sm); }
+    @media (max-width: 500px) { .sticky-cta-text { display: none; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="/" class="logo">LeadUp <span>AI</span></a>
+    <a href="#cta" class="btn btn-primary nav-cta">Занять место в потоке</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="tag">Когортная программа · лимит 50 основателей</span></div>
+      <h1 class="hero-title">
+        Постройте компанию,<br/>
+        которая работает <em>на AI-агентах</em><br/>
+        без новых наймов
+      </h1>
+      <p class="hero-sub">
+        «Zero-Human Академия» — программа для владельцев бизнеса: маркетинг, продажи, поддержка,
+        администрирование и финансы на AI-агентах. Операционку берёт команда агентов —
+        вы остаётесь CEO и задаёте направление.
+      </p>
+      <div class="hero-cta">
+        <a href="#cta" class="btn btn-primary">Занять место в следующем потоке</a>
+        <a href="#program" class="btn btn-outline">Программа</a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item"><div class="proof-num">4 модуля</div><div class="proof-label">от основы до оркестрации</div></div>
+        <div class="proof-item"><div class="proof-num">50 человек</div><div class="proof-label">лимит набора в поток</div></div>
+        <div class="proof-item"><div class="proof-num">Доказано практикой</div><div class="proof-label">LeadUp AI — zero-human компания</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program" id="program">
+  <div class="container">
+    <div class="program-header">
+      <span class="tag">Программа</span>
+      <h2 class="section-title" style="margin-top:16px;">Чему научитесь</h2>
+      <p class="section-sub">Четыре модуля — от карты вашего бизнеса до работающей zero-human операционки.</p>
+    </div>
+
+    <div class="module">
+      <div class="module-head"><span class="module-num">01</span><span class="module-title">Основа</span></div>
+      <div class="module-cards">
+        <div class="t-card"><div class="t-sub">Фундамент</div><div class="t-name">Бизнес как система процессов</div><div class="t-count">Карта того, как работа движется по компании</div></div>
+        <div class="t-card"><div class="t-sub">Логика</div><div class="t-name">Как работает автоматизация</div><div class="t-count">Простая логика снятия рутины с ваших рук</div></div>
+        <div class="t-card"><div class="t-sub">Агенты</div><div class="t-name">Чем агенты отличаются от «если-то»</div><div class="t-count">От скриптов к реальному принятию решений</div></div>
+        <div class="t-card"><div class="t-sub">Стек</div><div class="t-name">Инструменты zero-human компании</div><div class="t-count">n8n, агенты, платформа оркестрации</div></div>
+        <div class="t-card"><div class="t-sub">Данные</div><div class="t-name">Мозг компании</div><div class="t-count">Общая нервная система данных для агентов</div></div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-head"><span class="module-num">02</span><span class="module-title">Операционка</span></div>
+      <div class="module-cards">
+        <div class="t-card"><div class="t-sub">Кейсы</div><div class="t-name">Примеры и разборы</div><div class="t-count">Как автоматизировали сервисы и магазины</div></div>
+        <div class="t-card"><div class="t-sub">Рост</div><div class="t-name">Маркетинг и контент</div><div class="t-count">Контент-конвейер, который растёт без вас</div></div>
+        <div class="t-card"><div class="t-sub">Доход</div><div class="t-name">Продажи и сопровождение</div><div class="t-count">Ни один лид не остывает: автоквалификация</div></div>
+        <div class="t-card"><div class="t-sub">Клиенты</div><div class="t-name">Онбординг и поддержка</div><div class="t-count">80% обращений без человека в окне</div></div>
+        <div class="t-card"><div class="t-sub">Бэк-офис</div><div class="t-name">Администрирование и финансы</div><div class="t-count">Отчёты и денежный поток без таблиц</div></div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-head"><span class="module-num">03</span><span class="module-title">Основатель</span></div>
+      <div class="module-cards">
+        <div class="t-card"><div class="t-sub">Фокус</div><div class="t-name">Личная продуктивность</div><div class="t-count">Автоматизируйте свой день вокруг системы</div></div>
+        <div class="t-card"><div class="t-sub">Люди</div><div class="t-name">«Человеческое исключение»</div><div class="t-count">Когда нанимать людей всё-таки стоит</div></div>
+      </div>
+    </div>
+
+    <div class="module">
+      <div class="module-head"><span class="module-num">04</span><span class="module-title">Оркестрация</span></div>
+      <div class="module-cards">
+        <div class="t-card"><div class="t-sub">Система</div><div class="t-name">Собираем всё вместе</div><div class="t-count">Отделы «говорят» без совещаний</div></div>
+        <div class="t-card"><div class="t-sub">Роадмап</div><div class="t-name">Запуск и рост за 90 дней</div><div class="t-count">Дорожная карта вашей zero-human системы</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / OFFERS -->
+<section class="offers">
+  <div class="container">
+    <div class="offers-header">
+      <span class="tag">Почему мы</span>
+      <h2 class="section-title" style="margin-top:16px;">Не «продажа теории»</h2>
+      <p class="section-sub">Мы строим ровно то, чем живём сами.</p>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card featured">
+        <div class="offer-icon">⚙️</div>
+        <div class="offer-title">Доказательство на практике</div>
+        <div class="offer-text">LeadUp AI управляется командой AI-агентов на нашей собственной платформе оркестрации. Это текущая операционка, а не презентация будущего.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🧭</div>
+        <div class="offer-title">Честно о границах</div>
+        <div class="offer-text">Стратегия, голос бренда и ключевые решения — за вами. Агенты исполняют под надзором. Кто продаёт «полностью без вас» — продаёт сказку.</div>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">🔒</div>
+        <div class="offer-title">Безопасность по умолчанию</div>
+        <div class="offer-text">Доступ только на чтение по умолчанию, журнал действий, согласования на критических путях, принципы защиты персональных данных (GDPR).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format">
+  <div class="container">
+    <div class="format-inner">
+      <span class="tag">Формат</span>
+      <h2 class="section-title" style="margin-top:16px;">Как проходит обучение</h2>
+      <div class="format-steps">
+        <div class="fstep">
+          <div class="fstep-num">01</div>
+          <div class="fstep-title">Когорта</div>
+          <div class="fstep-text">В потоке до 50 основателей — чтобы каждому хватило внимания.</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-num">02</div>
+          <div class="fstep-title">Практика на вашем бизнесе</div>
+          <div class="fstep-text">Каждый модуль ложится на реальные процессы вашей компании.</div>
+        </div>
+        <div class="fstep">
+          <div class="fstep-num">03</div>
+          <div class="fstep-title">90 дней до результата</div>
+          <div class="fstep-text">Дорожная карта сборки вашей zero-human операционки.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="tag">FAQ</span>
+      <h2 class="section-title" style="margin-top:16px;">Частые вопросы</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Это правда «без людей»?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Стратегия, голос бренда и ключевые решения остаются за вами. AI-агенты берут операционку под надзором. «Полностью без вас» не бывает — и мы это говорим честно.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Сколько стоит программа?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Стоимость следующего потока объявим на старте набора. Оставьте заявку — пришлём условия и слот для вопросов первыми.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Кому подходит?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Владельцам малого и среднего бизнеса, сервисов и магазинов, которые хотят расти без постоянного расширения штата и тратить время на систему, а не на рутину.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Нужна ли техническая подготовка?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Нет. Программа начинается с «Бизнес как система процессов» и ведёт до инструментов и оркестрации. Техника — по шагам, на практике.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Что будет после программы?<svg class="faq-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Система останется у вас: сценарии, документация и стек прозрачны. По запросу — выгрузка workflows, чтобы вы могли вести её самостоятельно.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact" id="cta">
+  <div class="container">
+    <div class="contact-inner">
+      <span class="tag">Следующий поток</span>
+      <h2 class="contact-title" style="margin-top:16px;">
+        Займите место в<br/>следующем потоке
+      </h2>
+      <p class="contact-sub">
+        Лимит — 50 основателей. Оставьте заявку: пришлём условия набора<br/>
+        и слот для вопросов первыми.
+      </p>
+      <form id="leadForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Имя *</label>
+          <input type="text" name="name" placeholder="Иван Иванов" required />
+        </div>
+        <div class="form-group">
+          <label>Email *</label>
+          <input type="email" name="email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>Телефон или Telegram</label>
+          <input type="text" name="phone" placeholder="+7 999 000 00 00 или @username" />
+        </div>
+        <div class="form-group">
+          <label>Ваш бизнес *</label>
+          <select name="business" required>
+            <option value="" disabled selected>Выберите тип</option>
+            <option>Розничная торговля / интернет-магазин</option>
+            <option>Услуги для бизнеса (B2B)</option>
+            <option>Образование / онлайн-школа</option>
+            <option>Недвижимость</option>
+            <option>Медицина / красота</option>
+            <option>Строительство / ремонт</option>
+            <option>Маркетинг / реклама</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Какую операционку хотите перевести на агентов</label>
+          <textarea name="task" placeholder="Например: обработка заявок, поддержка клиентов, отчёты и финансы..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">
+          Занять место в следующем потоке
+        </button>
+        <div class="form-note">Ответим в течение рабочего дня · без обязательств</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-logo">LeadUp <span>AI</span> — Zero-Human Академия</div>
+    <div class="footer-copy">© 2026 LeadUp AI · <a href="/" style="color:var(--fg-3)">Все лендинги</a> · <a href="https://leadup.guru/ru/zero-human-company" style="color:var(--fg-3)">Zero-human компания под ключ</a></div>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <span class="sticky-cta-text">Лимит 50 основателей в поток</span>
+  <a href="#cta" class="btn btn-primary">Занять место</a>
+</div>
+
+<script>
+  // =============================================
+  // КОНФИГ — канал Zero-Human Академия
+  // =============================================
+  var CRM_WEBHOOK = 'https://n8n.flowstudio.cloud/webhook/zero-human-academy-leads'; // n8n: ZHC Академия лиды → HubSpot + Саша
+  // =============================================
+
+  // === UTM CAPTURE — читаем параметры из URL и кладём в sessionStorage ===
+  (function() {
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var p = new URLSearchParams(window.location.search);
+    keys.forEach(function(k){ if (p.get(k)) sessionStorage.setItem(k, p.get(k)); });
+  })();
+
+  function getUtm() {
+    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+    var obj = {};
+    keys.forEach(function(k){ var v = sessionStorage.getItem(k); if (v) obj[k] = v; });
+    return obj;
+  }
+
+  // Sticky CTA
+  const hero = document.querySelector('.hero');
+  const stickyCta = document.getElementById('stickyCta');
+  if (hero && stickyCta && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([e]) => {
+      stickyCta.classList.toggle('visible', !e.isIntersecting);
+    }, { threshold: 0.1 });
+    observer.observe(hero);
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('[type=submit]');
+
+    var data = {};
+    new FormData(e.target).forEach(function(v,k){ data[k] = v; });
+    Object.assign(data, getUtm());
+    data.source = 'zero-human-academy';
+
+    // Unified tracking bundle fires HubSpot PageView; here we push Lead event
+    if (window.fbq) window.fbq('track', 'Lead');
+    if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { source: 'zero-human-academy' });
+
+    if (CRM_WEBHOOK) {
+      fetch(CRM_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(function(err) { console.error('Webhook error:', err); });
+    }
+
+    btn.textContent = '✓ Заявка принята! Ответим в течение рабочего дня';
+    btn.disabled = true;
+    btn.style.background = 'var(--success)';
+    btn.style.color = '#061210';
+  }
+</script>
+
+<script src="/assets/js/leadup-tracking.js" defer></script>
+
+</body>
+</html>
