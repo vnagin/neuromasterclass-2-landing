@@ -44,6 +44,8 @@
   <link rel="stylesheet" href="/design-system/colors_and_type.css" />
 
   <style>
+    :root { --z-sticky: 100; --z-nav: 200; }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
@@ -67,8 +69,8 @@
                   box-shadow var(--dur-1) var(--ease), transform var(--dur-1) var(--ease),
                   border-color var(--dur-1) var(--ease);
     }
-    .btn-primary { background: var(--teal); color: #061210; }
-    .btn-primary:hover { background: var(--teal-hover); box-shadow: var(--teal-glow); transform: translateY(-1px); }
+    .btn-primary { background: var(--fg-1); color: var(--on-teal); }
+    .btn-primary:hover { background: var(--teal-hover); color: var(--on-teal); box-shadow: var(--teal-glow); transform: translateY(-1px); }
     .btn-outline { background: transparent; color: var(--teal); border-color: var(--border-3); }
     .btn-outline:hover { background: var(--teal-tint); border-color: var(--teal); color: var(--teal-hover); }
 
@@ -93,15 +95,15 @@
 
     /* NAV */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: var(--z-nav);
       background: rgba(10, 15, 13, 0.72);
       backdrop-filter: blur(18px) saturate(160%);
       -webkit-backdrop-filter: blur(18px) saturate(160%);
       border-bottom: 1px solid var(--border-1);
     }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .logo { font-size: var(--text-md); font-weight: var(--fw-bold); color: var(--fg-1); text-decoration: none; letter-spacing: -0.025em; }
-    .logo span { color: var(--teal); }
+    .logo { display: inline-flex; align-items: center; text-decoration: none; }
+    .logo img { height: 26px; width: auto; display: block; filter: brightness(10); }
     .nav-cta { font-size: var(--text-sm); padding: 9px 18px; }
 
     /* HERO */
@@ -125,7 +127,7 @@
     .hero-proof { display: flex; gap: 44px; justify-content: center; flex-wrap: wrap; }
     .proof-item { text-align: center; }
     .proof-num { font-family: var(--font-sans); font-size: var(--text-2xl); font-weight: var(--fw-bold); color: var(--teal); letter-spacing: var(--tracking-tight); }
-    .proof-label { font-size: var(--text-sm); color: var(--fg-3); margin-top: 4px; }
+    .proof-label { font-size: var(--text-sm); color: var(--fg-2); margin-top: 4px; }
 
     /* PROGRAM */
     .program { padding: 100px 0; background: var(--bg-2); }
@@ -140,19 +142,20 @@
     .case-metric { display: inline-block; margin-top: 8px; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-3); border: 1px dashed var(--border-3); border-radius: var(--r-full); padding: 2px 10px; }
     .t-card { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 22px 20px; transition: border-color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease); }
     .t-card:hover { border-color: var(--border-3); transform: translateY(-2px); }
-    .t-sub { font-size: var(--text-sm); color: var(--fg-3); margin-bottom: 10px; font-family: var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
+    .t-sub { font-size: var(--text-sm); color: var(--fg-2); margin-bottom: 10px; font-family: var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
     .t-name { font-size: var(--text-base); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 8px; }
-    .t-count { font-size: var(--text-xs); color: var(--teal); font-family: var(--font-mono); }
+    .t-count { font-size: var(--text-xs); color: var(--fg-2); font-family: var(--font-mono); }
 
     /* WHY / OFFER */
     .offers { padding: 100px 0; }
     .offers-header { text-align: center; margin-bottom: 56px; }
     .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
     .offer-card { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-2xl); padding: 28px 24px; }
-    .offer-card.featured { border-color: var(--teal); box-shadow: var(--shadow-teal); }
-    .offer-icon { font-size: 26px; margin-bottom: 14px; }
+    .offer-card.featured { border-color: var(--teal); }
+    .offer-icon { color: var(--teal); line-height: 0; margin-bottom: 14px; }
+    .offer-icon svg { width: 28px; height: 28px; display: block; }
     .offer-title { font-size: var(--text-md); font-weight: var(--fw-semibold); margin-bottom: 8px; color: var(--fg-1); }
-    .offer-text { font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-normal); }
+    .offer-text { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
 
     /* SPEAKER — Кто ведёт программу */
     .speaker { padding: 100px 0; background: var(--bg-2); }
@@ -195,7 +198,7 @@
     .fstep { flex: 1; text-align: center; padding: 0 16px; position: relative; }
     .fstep-num { width: 60px; height: 60px; border-radius: var(--r-full); margin: 0 auto 16px; background: var(--bg-3); border: 1px solid var(--teal); color: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: var(--text-lg); font-weight: var(--fw-semibold); position: relative; z-index: 1; }
     .fstep-title { font-size: var(--text-md); font-weight: var(--fw-semibold); margin-bottom: 8px; color: var(--fg-1); }
-    .fstep-text { font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-normal); }
+    .fstep-text { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
 
     /* FAQ */
     .faq { padding: 100px 0; }
@@ -217,8 +220,6 @@
     /* CONTACT */
     .contact { padding: 100px 0; background: var(--bg-2); }
     .contact-inner { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-3xl); padding: 56px 44px; max-width: 620px; margin: 0 auto; text-align: center; position: relative; box-shadow: var(--shadow-3); }
-    .contact-inner::before { content: ''; position: absolute; inset: 0; border-radius: var(--r-3xl); background: var(--grad-glow); pointer-events: none; opacity: 0.5; }
-    .contact-inner > * { position: relative; }
     @media (max-width: 600px) { .contact-inner { padding: 40px 24px; } }
     .contact-title { font-size: clamp(26px, 4vw, 38px); font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); margin-bottom: 12px; color: var(--fg-1); }
     .contact-sub { font-size: var(--text-base); color: var(--fg-2); margin-bottom: 32px; line-height: var(--lh-normal); }
@@ -233,21 +234,35 @@
     .form-group select { cursor: pointer; }
     .form-group textarea { resize: vertical; min-height: 90px; }
     .form-submit { width: 100%; font-size: var(--text-md); padding: 15px; margin-top: 8px; }
-    .form-note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-3); margin-top: 12px; letter-spacing: var(--tracking-mono); }
+    .form-note { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-2); margin-top: 12px; letter-spacing: var(--tracking-mono); }
+    .form-consent { text-align: left; }
+    .form-consent label { display: flex; align-items: flex-start; gap: 10px; font-family: var(--font-sans); font-size: var(--text-xs); font-weight: var(--fw-regular); letter-spacing: normal; text-transform: none; color: var(--fg-2); margin-bottom: 0; cursor: pointer; }
+    .form-consent input[type="checkbox"] { width: auto; flex-shrink: 0; margin-top: 2px; accent-color: var(--teal); cursor: pointer; }
+    .form-consent a { color: var(--teal); text-decoration: underline; }
 
     /* FOOTER */
     footer { padding: 40px 0; border-top: 1px solid var(--border-1); background: var(--bg-1); }
     .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-    .footer-logo { font-size: var(--text-base); font-weight: var(--fw-bold); color: var(--fg-1); letter-spacing: -0.025em; }
+    .footer-logo { display: inline-flex; align-items: center; gap: 10px; font-size: var(--text-base); font-weight: var(--fw-bold); color: var(--fg-1); letter-spacing: -0.025em; }
+    .footer-logo img { height: 22px; width: auto; display: block; filter: brightness(10); }
     .footer-logo span { color: var(--teal); }
     .footer-copy { font-size: var(--text-sm); color: var(--fg-3); }
 
     /* STICKY CTA */
-    .sticky-cta { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 99; display: none; background: rgba(15, 21, 18, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-3); border-radius: var(--r-full); padding: 10px 20px; gap: 16px; align-items: center; box-shadow: var(--shadow-3); white-space: nowrap; }
+    .sticky-cta { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: var(--z-sticky); display: none; background: rgba(15, 21, 18, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--border-3); border-radius: var(--r-full); padding: 10px 20px; gap: 16px; align-items: center; box-shadow: var(--shadow-3); white-space: nowrap; }
     .sticky-cta.visible { display: flex; }
     .sticky-cta-text { font-size: var(--text-sm); color: var(--fg-2); }
     .sticky-cta .btn { padding: 9px 18px; font-size: var(--text-sm); }
     @media (max-width: 500px) { .sticky-cta-text { display: none; } }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn-primary:hover, .t-card:hover { transform: none; }
+      .btn-primary:hover { box-shadow: none; }
+      .t-card.case-card { box-shadow: none; }
+      .faq-arrow, .faq-a { transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -255,7 +270,7 @@
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
-    <a href="/" class="logo">LeadUp <span>AI</span></a>
+    <a href="/" class="logo"><img src="/design-system/assets/logo-leadup-raw.png" alt="LeadUp AI"></a>
     <a href="#cta" class="btn btn-primary nav-cta">Занять место в потоке</a>
   </div>
 </nav>
@@ -280,7 +295,7 @@
       <div class="hero-proof">
         <div class="proof-item"><div class="proof-num">4 модуля</div><div class="proof-label">от основы до оркестрации</div></div>
         <div class="proof-item"><div class="proof-num">50 человек</div><div class="proof-label">лимит набора в поток</div></div>
-        <div class="proof-item"><div class="proof-num">Доказано практикой</div><div class="proof-label">LeadUp AI — zero-human компания</div></div>
+        <div class="proof-item"><div class="proof-num">26 агентов</div><div class="proof-label">операционка на AI-агентах</div></div>
       </div>
     </div>
   </div>
@@ -299,7 +314,7 @@
       <div class="module-head"><span class="module-num">01</span><span class="module-title">Основа</span><span class="module-count">23 урока</span></div>
       <div class="module-cards">
         <div class="t-card"><div class="t-sub">Фундамент</div><div class="t-name">Бизнес как система процессов</div><div class="t-count">Карта того, как работа движется по компании</div></div>
-        <div class="t-card"><div class="t-sub">Логика</div><div class="t-name">Как работает автоматизация</div><div class="t-count">Простая логика снятия рутины с ваших рук</div></div>
+        <div class="t-card"><div class="t-sub">Логика</div><div class="t-name">Как работает автоматизация</div><div class="t-count">Логика снятия рутины с ваших рук</div></div>
         <div class="t-card"><div class="t-sub">Агенты</div><div class="t-name">Чем агенты отличаются от «если-то»</div><div class="t-count">От скриптов к реальному принятию решений</div></div>
         <div class="t-card"><div class="t-sub">Стек</div><div class="t-name">Инструменты zero-human компании</div><div class="t-count">n8n, агенты, платформа оркестрации</div></div>
         <div class="t-card"><div class="t-sub">Данные</div><div class="t-name">Мозг компании</div><div class="t-count">Общая нервная система данных для агентов</div></div>
@@ -312,7 +327,7 @@
         <div class="t-card"><div class="t-sub">Кейсы</div><div class="t-name">Примеры и разборы</div><div class="t-count">Как автоматизировали сервисы и магазины</div></div>
         <div class="t-card"><div class="t-sub">Рост</div><div class="t-name">Маркетинг и контент</div><div class="t-count">Контент-конвейер, который растёт без вас</div></div>
         <div class="t-card"><div class="t-sub">Доход</div><div class="t-name">Продажи и сопровождение</div><div class="t-count">Ни один лид не остывает: автоквалификация</div></div>
-        <div class="t-card"><div class="t-sub">Клиенты</div><div class="t-name">Онбординг и поддержка</div><div class="t-count">80% обращений без человека в окне</div></div>
+        <div class="t-card"><div class="t-sub">Клиенты</div><div class="t-name">Онбординг и поддержка</div><div class="t-count">Лид не остывает: автоквалификация и сопровождение</div></div>
         <div class="t-card"><div class="t-sub">Бэк-офис</div><div class="t-name">Администрирование и финансы</div><div class="t-count">Отчёты и денежный поток без таблиц</div></div>
         <div class="t-card case-card">
           <div class="t-sub">Кейс · мы сами</div>
@@ -350,17 +365,17 @@
     </div>
     <div class="offers-grid">
       <div class="offer-card featured">
-        <div class="offer-icon">⚙️</div>
+        <div class="offer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><circle cx="15" cy="15" r="2"></circle><path d="M11 9h4v2M13 15H9v-2"></path></svg></div>
         <div class="offer-title">Доказательство на практике</div>
         <div class="offer-text">LeadUp AI управляется командой AI-агентов на нашей собственной платформе оркестрации. Это текущая операционка, а не презентация будущего.</div>
       </div>
       <div class="offer-card">
-        <div class="offer-icon">🧭</div>
+        <div class="offer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path><circle cx="5" cy="12" r="2"></circle></svg></div>
         <div class="offer-title">Честно о границах</div>
         <div class="offer-text">Стратегия, голос бренда и ключевые решения — за вами. Агенты исполняют под надзором. Кто продаёт «полностью без вас» — продаёт сказку.</div>
       </div>
       <div class="offer-card">
-        <div class="offer-icon">🔒</div>
+        <div class="offer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5.5-3.8 10.7-8 12-4.2-1.3-8-6.5-8-12V6l8-4z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
         <div class="offer-title">Безопасность по умолчанию</div>
         <div class="offer-text">Доступ только на чтение по умолчанию, журнал действий, согласования на критических путях, принципы защиты персональных данных (GDPR).</div>
       </div>
@@ -432,6 +447,16 @@
   </div>
 </section>
 
+<!-- BRIDGE CTA — под ключ -->
+<section class="bridge">
+  <div class="container">
+    <div class="bridge-inner">
+      <p class="bridge-text">Не хотите строить систему сами? Мы соберём её для вас — под ключ.</p>
+      <a href="https://leadup.guru/ru/zero-human-company" class="btn btn-primary" target="_blank" rel="noopener">Zero-human компания под ключ →</a>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq">
   <div class="container">
@@ -464,16 +489,6 @@
   </div>
 </section>
 
-<!-- BRIDGE CTA — под ключ -->
-<section class="bridge">
-  <div class="container">
-    <div class="bridge-inner">
-      <p class="bridge-text">Не хотите строить систему сами? Мы соберём её для вас — под ключ.</p>
-      <a href="https://leadup.guru/ru/zero-human-company" class="btn btn-outline" target="_blank" rel="noopener">Zero-human компания под ключ →</a>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT FORM -->
 <section class="contact" id="cta">
   <div class="container">
@@ -497,7 +512,7 @@
         </div>
         <div class="form-group">
           <label>Телефон или Telegram</label>
-          <input type="text" name="phone" placeholder="+7 999 000 00 00 или @username" />
+          <input type="tel" name="phone" placeholder="Telegram или телефон с кодом страны" />
         </div>
         <div class="form-group">
           <label>Ваш бизнес *</label>
@@ -517,6 +532,12 @@
           <label>Какую операционку хотите перевести на агентов</label>
           <textarea name="task" placeholder="Например: обработка заявок, поддержка клиентов, отчёты и финансы..."></textarea>
         </div>
+        <div class="form-group form-consent">
+          <label>
+            <input type="checkbox" name="consent" required />
+            <span>Согласен(на) на обработку персональных данных и принимаю <a href="/privacy" target="_blank" rel="noopener">политику конфиденциальности</a>.</span>
+          </label>
+        </div>
         <button type="submit" class="btn btn-primary form-submit">
           Занять место в следующем потоке
         </button>
@@ -529,7 +550,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="container footer-inner">
-    <div class="footer-logo">LeadUp <span>AI</span> — Архитектор Zero-Human компании</div>
+    <div class="footer-logo"><img src="/design-system/assets/logo-leadup-raw.png" alt="LeadUp AI"><span>Архитектор Zero-Human компании</span></div>
     <div class="footer-copy">© 2026 LeadUp AI · <a href="/" style="color:var(--fg-3)">Все лендинги</a> · <a href="https://leadup.guru/ru/zero-human-company" style="color:var(--fg-3)">Zero-human компания под ключ</a></div>
   </div>
 </footer>
@@ -589,6 +610,7 @@
 
     var data = {};
     new FormData(e.target).forEach(function(v,k){ data[k] = v; });
+    data.consent = !!(e.target.consent && e.target.consent.checked);
     Object.assign(data, getUtm());
     data.source = 'zero-human-academy';
 
@@ -607,7 +629,7 @@
     btn.textContent = '✓ Заявка принята! Ответим в течение рабочего дня';
     btn.disabled = true;
     btn.style.background = 'var(--success)';
-    btn.style.color = '#061210';
+    btn.style.color = 'var(--on-teal)';
   }
 </script>
 
