@@ -154,6 +154,39 @@
     .offer-title { font-size: var(--text-md); font-weight: var(--fw-semibold); margin-bottom: 8px; color: var(--fg-1); }
     .offer-text { font-size: var(--text-sm); color: var(--fg-3); line-height: var(--lh-normal); }
 
+    /* SPEAKER — Кто ведёт программу */
+    .speaker { padding: 100px 0; background: var(--bg-2); }
+    .speaker .tag { margin-bottom: 20px; }
+    .speaker .section-title { max-width: 18ch; margin-bottom: 40px; }
+    .speaker-card {
+      display: flex; gap: 40px; align-items: flex-start;
+      background: var(--bg-3); border: 1px solid var(--border-1);
+      border-radius: var(--r-2xl); padding: 40px;
+      transition: border-color var(--dur-2) var(--ease);
+    }
+    .speaker-card:hover { border-color: var(--border-3); }
+    .speaker-avatar {
+      width: 148px; height: 148px; border-radius: var(--r-full);
+      flex-shrink: 0; overflow: hidden; background: var(--bg-4);
+      border: 2px solid var(--teal);
+      box-shadow: 0 0 32px rgba(0, 229, 199, 0.18);
+    }
+    .speaker-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+    .speaker-name { font-size: var(--text-2xl); font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); color: var(--fg-1); margin-bottom: 6px; }
+    .speaker-role { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: var(--fw-medium); letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--teal); margin-bottom: 18px; }
+    .speaker-bio { font-size: var(--text-base); color: var(--fg-2); line-height: var(--lh-relaxed); max-width: 62ch; margin-bottom: 28px; }
+    .speaker-stats { display: flex; flex-wrap: wrap; gap: 44px; padding-top: 24px; border-top: 1px solid var(--border-1); }
+    .stat-num { font-size: var(--text-2xl); font-weight: var(--fw-bold); color: var(--teal); letter-spacing: var(--tracking-tight); line-height: 1.1; }
+    .stat-label { font-size: var(--text-sm); color: var(--fg-2); margin-top: 4px; max-width: 22ch; }
+    @media (max-width: 720px) {
+      .speaker { padding: 72px 0; }
+      .speaker-card { flex-direction: column; align-items: center; text-align: center; gap: 24px; padding: 32px 22px; }
+      .speaker-avatar { width: 120px; height: 120px; }
+      .speaker-bio { margin-left: auto; margin-right: auto; }
+      .speaker-stats { justify-content: center; gap: 28px 36px; width: 100%; }
+      .stat-label { margin-left: auto; margin-right: auto; }
+    }
+
     /* FORMAT */
     .format { padding: 100px 0; background: var(--bg-2); }
     .format-inner { max-width: 820px; margin: 0 auto; text-align: center; }
@@ -330,6 +363,43 @@
         <div class="offer-icon">🔒</div>
         <div class="offer-title">Безопасность по умолчанию</div>
         <div class="offer-text">Доступ только на чтение по умолчанию, журнал действий, согласования на критических путях, принципы защиты персональных данных (GDPR).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKER — Кто ведёт программу -->
+<section class="speaker" id="speaker">
+  <div class="container">
+    <div class="tag">Ведущий</div>
+    <h2 class="section-title">Кто ведёт программу</h2>
+
+    <div class="speaker-card">
+      <div class="speaker-avatar">
+        <img src="speaker.jpg" alt="Владимир Нагин — CEO &amp; Founder LeadUp AI">
+      </div>
+      <div class="speaker-info">
+        <h3 class="speaker-name">Владимир Нагин</h3>
+        <div class="speaker-role">CEO &amp; Founder · LeadUp AI</div>
+        <p class="speaker-bio">
+          Предприниматель и эксперт по AI-автоматизации. Построил LeadUp AI — платформу
+          для запуска многоагентных команд без кода. 20+ лет в маркетинге, MBA,
+          корпоративные программы по AI для компаний.
+        </p>
+        <div class="speaker-stats">
+          <div class="stat">
+            <div class="stat-num">20+</div>
+            <div class="stat-label">лет в маркетинге</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">внедрений AI в бизнесах</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">участников интенсивов</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
