@@ -301,26 +301,6 @@
       .stat-label { margin-left: auto; margin-right: auto; }
     }
 
-    @media (max-width: 720px) {
-      .program { padding: 72px 0 56px; }
-      .diff, .week0, .checkpoints, .modules, .stack, .labs, .takeaways, .format-info, .audience { padding: 64px 0; }
-      .week0-card { padding: 28px 22px; }
-      .week0-cols { grid-template-columns: 1fr; gap: 24px; }
-      .week0-title { font-size: var(--text-xl); }
-      .metrics { gap: 10px; }
-      .metric { min-width: calc(50% - 5px); flex: 1; padding: 14px 12px; }
-      .metric-num { font-size: var(--text-xl); }
-      .acc-head { padding: 18px 16px; gap: 12px; }
-      .acc-title { font-size: var(--text-base); }
-      .acc-body-inner { padding: 4px 16px 22px; }
-      .lesson-grid { grid-template-columns: 1fr; }
-      .tl-item { gap: 18px; }
-      .stack-row { grid-template-columns: 1fr; gap: 8px; }
-      .aud-grid { grid-template-columns: 1fr; }
-      .mid-inner { flex-direction: column; align-items: stretch; text-align: center; }
-      .mid-inner .btn { width: 100%; }
-    }
-
     /* FORMAT / НАГРУЗКА / РАСХОДЫ */
     .format-info { padding: 100px 0; background: var(--bg-1); }
     .format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 40px; }
@@ -352,6 +332,26 @@
     .mid-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-2xl); padding: 28px 32px; }
     .mid-text { font-size: var(--text-md); color: var(--fg-1); max-width: 52ch; line-height: var(--lh-normal); }
     .mid-text span { color: var(--fg-2); font-size: var(--text-sm); display: block; margin-top: 4px; }
+
+    @media (max-width: 720px) {
+      .program { padding: 72px 0 56px; }
+      .diff, .week0, .checkpoints, .modules, .stack, .labs, .takeaways, .format-info, .audience { padding: 64px 0; }
+      .week0-card { padding: 28px 22px; }
+      .week0-cols { grid-template-columns: 1fr; gap: 24px; }
+      .week0-title { font-size: var(--text-xl); }
+      .metrics { gap: 10px; }
+      .metric { min-width: calc(50% - 5px); flex: 1; padding: 14px 12px; }
+      .metric-num { font-size: var(--text-xl); }
+      .acc-head { padding: 18px 16px; gap: 12px; }
+      .acc-title { font-size: var(--text-base); }
+      .acc-body-inner { padding: 4px 16px 22px; }
+      .lesson-grid { grid-template-columns: 1fr; }
+      .tl-item { gap: 18px; }
+      .stack-row { grid-template-columns: 1fr; gap: 8px; }
+      .aud-grid { grid-template-columns: 1fr; }
+      .mid-inner { flex-direction: column; align-items: stretch; text-align: center; }
+      .mid-inner .btn { width: 100%; }
+    }
 
     /* FAQ */
     .faq { padding: 100px 0; }
