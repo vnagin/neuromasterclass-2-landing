@@ -154,12 +154,11 @@
     .diff-icon svg { width: 22px; height: 22px; }
     .diff-title { font-size: var(--text-md); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 8px; }
     .diff-text { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
-    .diff-card.is-accent { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal-tint); }
+    .diff-card.is-accent { border-color: var(--teal); }
 
     /* НЕДЕЛЯ 0 */
     .week0 { padding: 100px 0; background: var(--bg-1); }
     .week0-card { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-3xl); padding: 44px; position: relative; overflow: hidden; }
-    .week0-card::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 90% at 100% 0%, rgba(0,229,199,0.10) 0%, transparent 55%); }
     .week0-card > * { position: relative; }
     .week0-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
     .week0-num { font-family: var(--font-mono); font-size: var(--text-sm); font-weight: var(--fw-semibold); color: var(--teal); letter-spacing: var(--tracking-mono); }
@@ -181,7 +180,7 @@
     .spec-item .mono { color: var(--teal); }
 
     /* КОНТРОЛЬНЫЕ ТОЧКИ (timeline) */
-    .checkpoints { padding: 100px 0; background: var(--bg-2); }
+    .checkpoints { padding: 100px 0; background: var(--bg-1); }
     .timeline { position: relative; margin-top: 8px; }
     .timeline::before { content: ''; position: absolute; left: 27px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(180deg, transparent, var(--teal-tint-2) 12%, var(--teal-tint-2) 88%, transparent); }
     .tl-item { position: relative; display: flex; gap: 28px; padding: 18px 0; }
@@ -195,7 +194,7 @@
     .timeline-note { margin-top: 28px; font-size: var(--text-sm); color: var(--fg-3); max-width: 70ch; }
 
     /* МОДУЛИ (аккордеон) */
-    .modules { padding: 100px 0; background: var(--bg-1); }
+    .modules { padding: 100px 0; background: var(--bg-2); }
     .modules-summary { display: inline-flex; align-items: center; gap: 10px; margin: 0 auto 40px; padding: 8px 16px; border-radius: var(--r-full); background: var(--bg-3); border: 1px solid var(--border-2); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--fg-2); letter-spacing: var(--tracking-mono); }
     .modules-summary svg { width: 14px; height: 14px; color: var(--teal); }
     .accordion { display: flex; flex-direction: column; gap: 12px; }
@@ -228,7 +227,7 @@
     .acc-note strong { color: var(--fg-1); }
 
     /* СТЕК */
-    .stack { padding: 100px 0; background: var(--bg-2); }
+    .stack { padding: 100px 0; background: var(--bg-1); }
     .stack-table { display: flex; flex-direction: column; gap: 12px; margin-top: 40px; }
     .stack-row { display: grid; grid-template-columns: 150px 220px 1fr; gap: 24px; align-items: center; background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-xl); padding: 20px 24px; }
     .stack-role { display: flex; align-items: center; gap: 12px; font-size: var(--text-sm); color: var(--fg-3); font-family: var(--font-mono); letter-spacing: var(--tracking-mono); text-transform: uppercase; }
@@ -244,8 +243,8 @@
     .labs-strip { display: flex; flex-direction: column; gap: 0; margin-top: 8px; }
     .lab { display: grid; grid-template-columns: 64px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border-1); }
     .lab:last-child { border-bottom: 0; }
-    .lab-week { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: var(--r-xl); background: var(--bg-3); border: 1px solid var(--border-2); font-size: var(--text-lg); font-weight: var(--fw-bold); color: var(--teal); line-height: 1; }
-    .lab-week span { font-family: var(--font-mono); font-size: 8px; letter-spacing: var(--tracking-mono); color: var(--fg-3); text-transform: uppercase; margin-top: 3px; }
+    .lab-week { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: var(--r-xl); background: var(--bg-3); border: 1px solid var(--border-2); font-size: var(--text-lg); font-weight: var(--fw-bold); color: var(--teal); line-height: 1; }
+    .lab-week span { font-family: var(--font-mono); font-size: 8px; letter-spacing: var(--tracking-mono); color: var(--fg-3); text-transform: uppercase; margin-bottom: 2px; }
     .lab-title { font-size: var(--text-base); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 4px; }
     .lab-text { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
 
@@ -283,7 +282,6 @@
       width: 148px; height: 148px; border-radius: var(--r-full);
       flex-shrink: 0; overflow: hidden; background: var(--bg-4);
       border: 2px solid var(--teal);
-      box-shadow: 0 0 32px rgba(0, 229, 199, 0.18);
     }
     .speaker-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
     .speaker-name { font-size: var(--text-2xl); font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); color: var(--fg-1); margin-bottom: 6px; }
@@ -305,7 +303,7 @@
     .format-info { padding: 100px 0; background: var(--bg-1); }
     .format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 40px; }
     .format-card { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-2xl); padding: 28px 26px; }
-    .format-card.is-accent { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal-tint); }
+    .format-card.is-accent { border-color: var(--teal); }
     .format-card h4 { font-size: var(--text-md); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
     .format-card h4 svg { width: 18px; height: 18px; color: var(--teal); }
     .format-card p { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-relaxed); }
@@ -318,7 +316,7 @@
     .audience { padding: 100px 0; background: var(--bg-2); }
     .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
     .aud-col { background: var(--bg-3); border: 1px solid var(--border-1); border-radius: var(--r-2xl); padding: 30px 26px; }
-    .aud-col.yes { border-color: var(--teal); box-shadow: 0 0 0 1px var(--teal-tint); }
+    .aud-col.yes { border-color: var(--teal); }
     .aud-col h3 { display: flex; align-items: center; gap: 12px; font-size: var(--text-lg); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 18px; letter-spacing: var(--tracking-snug); }
     .aud-badge { width: 32px; height: 32px; border-radius: var(--r-full); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .aud-badge.yes { background: var(--teal-tint); color: var(--teal); border: 1px solid var(--border-2); }
@@ -415,7 +413,6 @@
       html { scroll-behavior: auto; }
       .btn-primary:hover, .diff-card:hover { transform: none; }
       .btn-primary:hover { box-shadow: none; }
-      .diff-card.is-accent, .aud-col.yes, .format-card.is-accent { box-shadow: none; }
       .diff-card, .take-item, .acc-arrow, .acc-body, .faq-arrow, .faq-a { transition: none; }
     }
   </style>
@@ -448,41 +445,20 @@
         <a href="#program" class="btn btn-secondary">Программа</a>
       </div>
       <div class="hero-proof">
-        <div class="proof-item"><div class="proof-num">5 модулей</div><div class="proof-label">от основы до оркестрации</div></div>
-        <div class="proof-item"><div class="proof-num">50 человек</div><div class="proof-label">лимит набора в поток</div></div>
         <div class="proof-item"><div class="proof-num">26 агентов</div><div class="proof-label">операционка на AI-агентах</div></div>
+        <div class="proof-item"><div class="proof-num">до 50 основателей</div><div class="proof-label">лимит набора в поток</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 1. ВЕРХНЯЯ ПОЛОСА ═══════════ -->
-<section class="program" id="program">
-  <div class="container">
-    <div class="program-header">
-      <span class="tag">Программа</span>
-      <h2 class="section-title" style="margin-top:16px;">Чему научитесь</h2>
-      <p class="section-sub">
-        Пять модулей за 13 недель и неделя подготовки: от карты вашей компании до системы агентов,
-        которой вы доверяете. Не автопилот «без вас», а управляемая операционка под вашим контролем.
-        Всё разворачиваем на вашем облачном сервере и на открытых инструментах, поэтому систему можно забрать.
-      </p>
-      <div class="metrics">
-        <div class="metric"><div class="metric-num">5</div><div class="metric-label"><strong>модулей</strong></div></div>
-        <div class="metric"><div class="metric-num">13</div><div class="metric-label"><strong>недель</strong> + неделя 0</div></div>
-        <div class="metric"><div class="metric-num">4</div><div class="metric-label">контрольные точки</div></div>
-        <div class="metric"><div class="metric-num">до 50</div><div class="metric-label">основателей в потоке</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 2. КАК ЭТА ПРОГРАММА УСТРОЕНА ИНАЧЕ ═══════════ -->
-<section class="diff">
+<!-- ═══════════ 1. КАК ЭТА ПРОГРАММА УСТРОЕНА ИНАЧЕ ═══════════ -->
+<section class="diff" id="program">
   <div class="container">
     <div class="diff-header">
       <span class="tag">Подход</span>
       <h2 class="section-title">Как эта программа устроена иначе</h2>
+      <p class="section-sub" style="max-width:64ch;">Пять модулей за 13 недель и неделя подготовки: от карты вашей компании до системы агентов, которой вы доверяете. Неделя 0 — разворачиваем на вашем сервере, на открытых инструментах, поэтому систему можно забрать.</p>
     </div>
     <div class="diff-grid">
       <div class="diff-card is-accent">
@@ -517,59 +493,7 @@
   </div>
 </section>
 
-<!-- ═══════════ 3. НЕДЕЛЯ 0 ═══════════ -->
-<section class="week0">
-  <div class="container">
-    <div class="week0-card">
-      <div class="week0-head">
-        <span class="week0-num">Неделя 0</span>
-        <h3 class="week0-title">Готовим сервер</h3>
-      </div>
-      <p class="week0-lead">
-        До старта вы разворачиваете рабочую среду на облачном сервере (VPS). Это делаем вместе
-        на живой сессии, по пошаговой инструкции и готовому шаблону развёртывания.
-      </p>
-      <div class="week0-result">
-        <strong>Результат недели 0:</strong> рабочий сервер, закрытый по чек-листу безопасности,
-        запущенный Paperclip, подключённый Hermes, выданные ключи и выставленные лимиты расходов у провайдера.
-      </div>
-
-      <div class="week0-cols">
-        <div class="week0-col">
-          <h4>Чек-лист безопасности сервера</h4>
-          <ul class="check-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Вход по SSH-ключу, вход по паролю отключён</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Файрвол: снаружи доступны только SSH и HTTPS</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Панель агентов слушает только локальный адрес через защищённый туннель или Tailscale</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Каждый агент работает под отдельным пользователем с минимальными правами</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Ключи хранятся в переменных окружения, а не в открытых файлах</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Агенты, которые обрабатывают внешний ввод, работают в изолированной среде</li>
-          </ul>
-        </div>
-        <div class="week0-col">
-          <h4>Что понадобится</h4>
-          <ul class="need-list">
-            <li>аккаунт у провайдера VPS и банковская карта для оплаты</li>
-            <li>ключ хотя бы одного провайдера AI-моделей</li>
-            <li>3–5 часов на подготовку, из них одна живая сессия установки</li>
-          </ul>
-          <p class="week0-lead" style="margin-top:22px;font-size:var(--text-sm);color:var(--fg-3);">
-            Если провайдер моделей недоступен в вашей стране, на неделе 0 вы получите
-            список рабочих вариантов и план Б.
-          </p>
-        </div>
-      </div>
-
-      <div class="week0-spec">
-        <div class="spec-item">Ориентир по серверу: <b>от 4 vCPU и 8 ГБ RAM</b> для всего стека</div>
-        <div class="spec-item">Минимум: Paperclip — <span class="mono">2 vCPU / 4 ГБ</span></div>
-        <div class="spec-item">Hermes — <span class="mono">от 2 ГБ RAM</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════ 4. КОНТРОЛЬНЫЕ ТОЧКИ ═══════════ -->
+<!-- ═══════════ 2. КОНТРОЛЬНЫЕ ТОЧКИ ═══════════ -->
 <section class="checkpoints">
   <div class="container">
     <div class="section-head">
@@ -613,7 +537,7 @@
   </div>
 </section>
 
-<!-- ═══════════ 5. МОДУЛИ ═══════════ -->
+<!-- ═══════════ 3. МОДУЛИ ═══════════ -->
 <section class="modules">
   <div class="container">
     <div class="section-head">
@@ -814,12 +738,13 @@
   </div>
 </section>
 
-<!-- ═══════════ 6. СТЕК ═══════════ -->
-<section class="stack">
+<!-- ═══════════ 4. СТЕК КУРСА (инструменты + лаборатория) ═══════════ -->
+<section class="stack" id="stack">
   <div class="container">
     <div class="section-head">
       <span class="tag">Стек</span>
-      <h2 class="section-title">Инструменты, на которых работаем мы и которым учим вас</h2>
+      <h2 class="section-title">Стек курса</h2>
+      <p class="section-sub" style="max-width:680px;margin:16px auto 0;">Инструменты, на которых работаем мы и которым учим вас, и практикумы внутри живых сессий.</p>
     </div>
     <div class="stack-table">
       <div class="stack-row">
@@ -830,7 +755,7 @@
       <div class="stack-row">
         <div class="stack-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Агенты</div>
         <div class="stack-tool">Hermes, OpenClaw</div>
-        <div class="stack-what">Hermes хранит память и навыки, OpenClaw работает в чатах и мессенджерах.</div>
+        <div class="stack-what">Hermes — основной фронт-агент, хранит память и навыки; OpenClaw — для сравнения в чатах и мессенджерах.</div>
       </div>
       <div class="stack-row">
         <div class="stack-role"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Исполнители</div>
@@ -849,30 +774,25 @@
       <div class="stack-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Версии инструментов фиксируются на время потока.</div>
       <div class="stack-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Принципы курса не привязаны к инструментам: при смене инструмента вы переносите логику, а не начинаете заново.</div>
     </div>
-  </div>
-</section>
 
-<!-- ═══════════ 7. ЛАБОРАТОРИЯ ═══════════ -->
-<section class="labs">
-  <div class="container">
-    <div class="section-head">
+    <div class="section-head" style="margin-top:64px;margin-bottom:32px;">
       <span class="tag">Практика</span>
-      <h2 class="section-title">Лаборатория инструментов</h2>
+      <h2 class="section-title" style="font-size:clamp(22px,3vw,30px);">Лаборатория инструментов</h2>
       <p class="section-sub" style="max-width:620px;margin:16px auto 0;">Семь практикумов внутри живых сессий: вы работаете на своём сервере и на задачах своего бизнеса.</p>
     </div>
     <div class="labs-strip">
-      <div class="lab"><div class="lab-week">0<span>нед</span></div><div><div class="lab-title">Сервер</div><div class="lab-text">VPS, чек-лист безопасности, Paperclip, Hermes, ключи и лимиты расходов.</div></div></div>
-      <div class="lab"><div class="lab-week">3<span>нед</span></div><div><div class="lab-title">Первый агент</div><div class="lab-text">Hermes в Paperclip в режиме отчётности, файлы агента, расписание пробуждений.</div></div></div>
-      <div class="lab"><div class="lab-week">4<span>нед</span></div><div><div class="lab-title">Процессы на n8n</div><div class="lab-text">Сценарий от триггера до действия: заявка в CRM, еженедельный отчёт.</div></div></div>
-      <div class="lab"><div class="lab-week">5<span>нед</span></div><div><div class="lab-title">Адаптеры и выбор модели</div><div class="lab-text">Сравниваем Claude Code, Codex, Hermes с несколькими провайдерами и Grok через адаптер сообщества на ваших 30–50 задачах. Ставим лимиты бюджета.</div></div></div>
-      <div class="lab"><div class="lab-week">7<span>нед</span></div><div><div class="lab-title">OpenClaw как фронт-агент</div><div class="lab-text">Чат-канал клиента, границы, эскалации, изоляция.</div></div></div>
-      <div class="lab"><div class="lab-week">9<span>нед</span></div><div><div class="lab-title">Управление и сбои</div><div class="lab-text">Журнал, аудит, резервные адаптеры, аварийная остановка.</div></div></div>
-      <div class="lab"><div class="lab-week">11<span>нед</span></div><div><div class="lab-title">Оргструктура и дашборд</div><div class="lab-text">Оргструктура агентов, CEO-агент, центр управления.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>0</div><div><div class="lab-title">Сервер</div><div class="lab-text">VPS, чек-лист безопасности, Paperclip, Hermes, ключи и лимиты расходов.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>3</div><div><div class="lab-title">Первый агент</div><div class="lab-text">Hermes в Paperclip в режиме отчётности, файлы агента, расписание пробуждений.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>4</div><div><div class="lab-title">Процессы на n8n</div><div class="lab-text">Сценарий от триггера до действия: заявка в CRM, еженедельный отчёт.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>5</div><div><div class="lab-title">Адаптеры и выбор модели</div><div class="lab-text">Сравниваем Claude Code, Codex, Hermes с несколькими провайдерами и Grok через адаптер сообщества на ваших 30–50 задачах. Ставим лимиты бюджета.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>7</div><div><div class="lab-title">Hermes как фронт-агент</div><div class="lab-text">Основной фронт-агент в чате клиента — Hermes, OpenClaw — для сравнения. Границы, эскалации, изоляция.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>9</div><div><div class="lab-title">Управление и сбои</div><div class="lab-text">Журнал, аудит, резервные адаптеры, аварийная остановка.</div></div></div>
+      <div class="lab"><div class="lab-week"><span>Неделя</span>11</div><div><div class="lab-title">Оргструктура и дашборд</div><div class="lab-text">Оргструктура агентов, CEO-агент, центр управления.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ 8. ЧТО ВЫ УНЕСЁТЕ ═══════════ -->
+<!-- ═══════════ 5. ЧТО ВЫ УНЕСЁТЕ ═══════════ -->
 <section class="takeaways">
   <div class="container">
     <div class="section-head">
@@ -902,7 +822,7 @@
       <div class="offer-card featured">
         <div class="offer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><circle cx="15" cy="15" r="2"></circle><path d="M11 9h4v2M13 15H9v-2"></path></svg></div>
         <div class="offer-title">Доказательство на практике</div>
-        <div class="offer-text">LeadUp AI управляется командой AI-агентов на нашей собственной платформе оркестрации. Это текущая операционка, а не презентация будущего.</div>
+        <div class="offer-text">LeadUp AI управляется командой AI-агентов, построенной на открытой платформе оркестрации Paperclip, агентах Hermes и OpenClaw и процессах на n8n. Это текущая операционка, а не презентация будущего.</div>
       </div>
       <div class="offer-card">
         <div class="offer-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path><circle cx="5" cy="12" r="2"></circle></svg></div>
@@ -993,6 +913,45 @@
       <div class="format-card">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>Расходы на инфраструктуру</h4>
         <p>Облачный сервер и API моделей оплачиваются отдельно. Ориентировочную смету на сервер и расходы на модели мы дадим до старта потока, лимиты вы задаёте сами.</p>
+      </div>
+    </div>
+
+    <div class="week0-card" style="margin-top:32px;">
+      <div class="week0-head">
+        <span class="week0-num">Неделя 0</span>
+        <h3 class="week0-title">Готовим сервер</h3>
+      </div>
+      <p class="week0-lead">
+        До старта разворачиваем рабочую среду на вашем облачном сервере (VPS) — вместе, на живой сессии,
+        по пошаговой инструкции и готовому шаблону развёртывания.
+      </p>
+      <div class="week0-result">
+        <strong>Результат недели 0:</strong> рабочий сервер, закрытый по чек-листу безопасности,
+        запущенный Paperclip, подключённый Hermes, выданные ключи и выставленные лимиты расходов у провайдера.
+      </div>
+      <div class="week0-cols">
+        <div class="week0-col">
+          <h4>Безопасность сервера</h4>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Вход по SSH-ключу, вход по паролю отключён</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Файрвол: снаружи доступны только SSH и HTTPS</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Панель агентов — только локально, через защищённый туннель или Tailscale</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Ключи хранятся в переменных окружения, а не в открытых файлах</li>
+          </ul>
+        </div>
+        <div class="week0-col">
+          <h4>Что понадобится</h4>
+          <ul class="need-list">
+            <li>аккаунт у провайдера VPS и банковская карта для оплаты</li>
+            <li>ключ хотя бы одного провайдера AI-моделей</li>
+            <li>3–5 часов на подготовку, из них одна живая сессия установки</li>
+          </ul>
+        </div>
+      </div>
+      <div class="week0-spec">
+        <div class="spec-item">Ориентир по серверу: <b>от 4 vCPU и 8 ГБ RAM</b> для всего стека</div>
+        <div class="spec-item">Минимум: Paperclip — <span class="mono">2 vCPU / 4 ГБ</span></div>
+        <div class="spec-item">Hermes — <span class="mono">от 2 ГБ RAM</span></div>
       </div>
     </div>
   </div>
