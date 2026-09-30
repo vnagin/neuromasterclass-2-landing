@@ -249,11 +249,19 @@
     .acc-item.open .acc-arrow { transform: rotate(180deg); background: var(--teal-tint); }
     .acc-arrow svg { width: 18px; height: 18px; }
     .acc-body { max-height: 0; overflow: hidden; transition: max-height var(--dur-4) var(--ease); }
-    .acc-item.open .acc-body { max-height: 1600px; }
+    .acc-item.open .acc-body { max-height: 2800px; }
     .acc-body-inner { padding: 4px 24px 28px 68px; }
-    .acc-result { display: flex; gap: 10px; align-items: flex-start; padding: 14px 18px; margin-bottom: 6px; background: var(--bg-4); border-radius: var(--r-lg); font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
+    .acc-intro { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-relaxed); max-width: 68ch; margin-bottom: 16px; }
+    .acc-result { display: flex; gap: 10px; align-items: flex-start; padding: 14px 18px; margin-bottom: 22px; background: var(--bg-4); border-radius: var(--r-lg); font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
     .acc-result svg { width: 16px; height: 16px; color: var(--teal); flex-shrink: 0; margin-top: 2px; }
     .acc-result strong { color: var(--fg-1); }
+    .lesson-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 8px 28px; }
+    .lesson { display: flex; gap: 12px; align-items: baseline; font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); padding: 5px 0; }
+    .lesson-idx { font-family: var(--font-mono); font-size: 11px; color: var(--fg-3); flex-shrink: 0; min-width: 20px; text-align: right; }
+    .lesson-group { grid-column: 1 / -1; font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--fg-3); margin: 16px 0 4px; padding-top: 12px; border-top: 1px solid var(--border-1); }
+    .lesson-group:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+    .acc-note { margin-top: 20px; padding: 14px 18px; border-radius: var(--r-lg); border: 1px dashed var(--border-2); font-size: var(--text-sm); color: var(--fg-2); }
+    .acc-note strong { color: var(--fg-1); }
 
     /* ═══════════════ 7. СТЕК И ЛАБОРАТОРИИ ═══════════════ */
     .stack { padding: 88px 0; background: var(--bg-1); }
@@ -438,6 +446,7 @@
       .acc-head { padding: 18px 16px; gap: 12px; }
       .acc-title { font-size: var(--text-base); }
       .acc-body-inner { padding: 4px 16px 22px; }
+      .lesson-grid { grid-template-columns: 1fr; }
       .stack-row { grid-template-columns: 1fr; gap: 8px; }
       .lab { grid-template-columns: 84px 1fr; gap: 14px; }
       .lab-week { width: 84px; }
@@ -643,7 +652,21 @@
           <div class="acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="acc-body"><div class="acc-body-inner">
+          <p class="acc-intro">Вы разберёте свою компанию как систему процессов, посчитаете, сколько стоит рутина, и определите, что можно поручить агентам, а что должно остаться за вами.</p>
           <div class="acc-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><strong>Результат:</strong> карта процессов, скоринг применимости, матрица решений.</span></div>
+          <div class="lesson-grid">
+            <div class="lesson"><span class="lesson-idx">01</span><span>Из чего состоит Zero-Human компания</span></div>
+            <div class="lesson"><span class="lesson-idx">02</span><span>Где модель работает, а где ломается</span></div>
+            <div class="lesson"><span class="lesson-idx">03</span><span>Скоринг: подходит ли ваш бизнес</span></div>
+            <div class="lesson"><span class="lesson-idx">04</span><span>Как читать кейсы: подтверждено, заявлено, неизвестно</span></div>
+            <div class="lesson"><span class="lesson-idx">05</span><span>Карта потоков: как работа движется по вашей компании</span></div>
+            <div class="lesson"><span class="lesson-idx">06</span><span>Кто что делает и где прячется ручная работа</span></div>
+            <div class="lesson"><span class="lesson-idx">07</span><span>Замер: сколько времени на самом деле уходит на рутину</span></div>
+            <div class="lesson"><span class="lesson-idx">08</span><span>Экономика агента: сколько стоит выполненная задача</span></div>
+            <div class="lesson"><span class="lesson-idx">09</span><span>Что остаётся за человеком — всегда</span></div>
+            <div class="lesson"><span class="lesson-idx">10</span><span>Матрица решений: что агент делает сам, а что только с вашего согласия</span></div>
+            <div class="lesson"><span class="lesson-idx">11</span><span>Минимум соответствия: раскрытие ИИ, данные, согласия</span></div>
+          </div>
         </div></div>
       </div>
       <div class="acc-item">
@@ -656,7 +679,26 @@
           <div class="acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="acc-body"><div class="acc-body-inner">
+          <p class="acc-intro">Вы запустите первого агента в Paperclip, дадите ему базу знаний вашей компании и выберете AI-модель по проверке на ваших задачах, а не по рейтингам.</p>
           <div class="acc-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><strong>Результат:</strong> агент в режиме отчётности, база регламентов, матрица выбора модели.</span></div>
+          <div class="lesson-grid">
+            <div class="lesson"><span class="lesson-idx">01</span><span>Сценарий автоматизации или агент: что подойдёт вам</span></div>
+            <div class="lesson"><span class="lesson-idx">02</span><span>Триггеры, условия, действия</span></div>
+            <div class="lesson"><span class="lesson-idx">03</span><span>Четыре файла, из которых состоит агент</span></div>
+            <div class="lesson"><span class="lesson-idx">04</span><span>Цикл «оценить — решить — выполнить — измерить»</span></div>
+            <div class="lesson"><span class="lesson-idx">05</span><span>Первый агент: Hermes в Paperclip</span></div>
+            <div class="lesson"><span class="lesson-idx">06</span><span>Почему агенты ошибаются без контекста</span></div>
+            <div class="lesson"><span class="lesson-idx">07</span><span>Регламенты, по которым агент работает</span></div>
+            <div class="lesson"><span class="lesson-idx">08</span><span>База знаний: где хранить то, что знает ваша компания</span></div>
+            <div class="lesson"><span class="lesson-idx">09</span><span>Журнал решений: память всей компании</span></div>
+            <div class="lesson"><span class="lesson-idx">10</span><span>Как сделать так, чтобы агент отвечал по вашим документам</span></div>
+            <div class="lesson"><span class="lesson-idx">11</span><span>Какую AI-модель выбрать: обзор вариантов</span></div>
+            <div class="lesson"><span class="lesson-idx">12</span><span>Проверяем модели на ваших 30–50 реальных задачах</span></div>
+            <div class="lesson"><span class="lesson-idx">13</span><span>Где хранятся ваши данные и кто их видит</span></div>
+            <div class="lesson"><span class="lesson-idx">14</span><span>Маршрутизация моделей и цена выполненной задачи</span></div>
+            <div class="lesson"><span class="lesson-idx">15</span><span>Что делать, если модель недоступна в вашей стране</span></div>
+            <div class="lesson"><span class="lesson-idx">16</span><span>Бюджет агента: лимиты, порог 80% и аварийный выключатель</span></div>
+          </div>
         </div></div>
       </div>
       <div class="acc-item">
@@ -669,7 +711,33 @@
           <div class="acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="acc-body"><div class="acc-body-inner">
+          <p class="acc-intro">Вы вводите в работу два процесса: клиентский отдел по вашему направлению и финансовую отчётность. Параллельно запускаете канал привлечения клиентов и видите, как устроена наша собственная операционка.</p>
           <div class="acc-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><strong>Результат:</strong> цель модуля — запустить два процесса под журналом действий и подготовить еженедельный отчёт для совета директоров.</span></div>
+          <div class="lesson-grid">
+            <div class="lesson-group">Клиентский отдел — уроки выбираются по вашему направлению</div>
+            <div class="lesson"><span class="lesson-idx">01</span><span>Где теряются лиды</span></div>
+            <div class="lesson"><span class="lesson-idx">02</span><span>Захват и автоквалификация лидов</span></div>
+            <div class="lesson"><span class="lesson-idx">03</span><span>Путь клиента от оплаты до первого результата</span></div>
+            <div class="lesson"><span class="lesson-idx">04</span><span>Первый фронт-агент в чате: границы и тон</span></div>
+            <div class="lesson"><span class="lesson-idx">05</span><span>Чистые эскалации к человеку</span></div>
+            <div class="lesson"><span class="lesson-idx">06</span><span>Раннее предупреждение о рисковых клиентах</span></div>
+            <div class="lesson"><span class="lesson-idx">07</span><span>Раскрытие ИИ клиенту и поддержка на нескольких языках</span></div>
+            <div class="lesson"><span class="lesson-idx">08</span><span>Человеческое исключение: когда нанимать людей</span></div>
+            <div class="lesson-group">Финансы</div>
+            <div class="lesson"><span class="lesson-idx">09</span><span>Еженедельный отчёт для совета директоров</span></div>
+            <div class="lesson"><span class="lesson-idx">10</span><span>Счета и напоминания об оплате</span></div>
+            <div class="lesson"><span class="lesson-idx">11</span><span>Агент поиска аномалий</span></div>
+            <div class="lesson"><span class="lesson-idx">12</span><span>Налоги и оплата клиентов из разных стран</span></div>
+            <div class="lesson-group">Привлечение клиентов</div>
+            <div class="lesson"><span class="lesson-idx">13</span><span>Выбор канала на вашем рынке</span></div>
+            <div class="lesson"><span class="lesson-idx">14</span><span>Контент-конвейер под контролем основателя</span></div>
+            <div class="lesson"><span class="lesson-idx">15</span><span>Позиционирование и честность про ИИ</span></div>
+            <div class="lesson"><span class="lesson-idx">16</span><span>Первые 10 клиентов: что нельзя отдавать агентам</span></div>
+            <div class="lesson-group">LeadUp AI изнутри</div>
+            <div class="lesson"><span class="lesson-idx">17</span><span>Как устроена наша операционка: отделы, агенты, циклы</span></div>
+            <div class="lesson"><span class="lesson-idx">18</span><span>Что работало, что ломалось, что мы вернули людям</span></div>
+          </div>
+          <div class="acc-note"><strong>Дополнительно</strong> в программе есть факультативная библиотека: администрирование и договоры, ассистент основателя, расширенный маркетинг и отраслевые кейсы.</div>
         </div></div>
       </div>
       <div class="acc-item">
@@ -682,7 +750,19 @@
           <div class="acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="acc-body"><div class="acc-body-inner">
+          <p class="acc-intro">Вы научитесь держать систему под контролем и разберётесь, какие правила действуют на рынках ваших клиентов, где бы вы сами ни жили.</p>
           <div class="acc-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><strong>Результат:</strong> комплаенс-матрица и реестр требований.</span></div>
+          <div class="lesson-grid">
+            <div class="lesson"><span class="lesson-idx">01</span><span>Надёжность: повторы, резервные модели, аварийный режим</span></div>
+            <div class="lesson"><span class="lesson-idx">02</span><span>Инциденты: как разбирать сбой</span></div>
+            <div class="lesson"><span class="lesson-idx">03</span><span>Четыре оси юрисдикции: страна клиента, данных, провайдера, компании</span></div>
+            <div class="lesson"><span class="lesson-idx">04</span><span>ЕС: AI Act и GDPR, что применимо к вашей компании</span></div>
+            <div class="lesson"><span class="lesson-idx">05</span><span>США и Великобритания: карта подходов</span></div>
+            <div class="lesson"><span class="lesson-idx">06</span><span>Страны, где данные хранят у себя и маркируют ИИ-контент</span></div>
+            <div class="lesson"><span class="lesson-idx">07</span><span>Ограничения для сделок и сервисов: санкции, экспортный контроль, условия провайдеров</span></div>
+            <div class="lesson"><span class="lesson-idx">08</span><span>Практикум: комплаенс-матрица вашей компании</span></div>
+            <div class="lesson"><span class="lesson-idx">09</span><span>Как следить за изменениями законов: реестр требований в базе знаний</span></div>
+          </div>
         </div></div>
       </div>
       <div class="acc-item">
@@ -695,7 +775,19 @@
           <div class="acc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
         </div>
         <div class="acc-body"><div class="acc-body-inner">
+          <p class="acc-intro">Вы спроектируете оргструктуру агентов, соберёте центр управления и защитите проект перед потоком.</p>
           <div class="acc-result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span><strong>Результат:</strong> дашборд, отчёт совету директоров, план на 90 дней.</span></div>
+          <div class="lesson-grid">
+            <div class="lesson"><span class="lesson-idx">01</span><span>Оргструктура: совет, CEO-агент, департаменты, исполнители</span></div>
+            <div class="lesson"><span class="lesson-idx">02</span><span>Начинаем с трёх–пяти агентов</span></div>
+            <div class="lesson"><span class="lesson-idx">03</span><span>Чистые передачи и общий контекст</span></div>
+            <div class="lesson"><span class="lesson-idx">04</span><span>Как несколько агентов работают вместе</span></div>
+            <div class="lesson"><span class="lesson-idx">05</span><span>Центр управления: метрики, расходы, инциденты</span></div>
+            <div class="lesson"><span class="lesson-idx">06</span><span>Отчёт совету директоров</span></div>
+            <div class="lesson"><span class="lesson-idx">07</span><span>Рост без роста численности</span></div>
+            <div class="lesson"><span class="lesson-idx">08</span><span>План на следующие 90 дней</span></div>
+            <div class="lesson"><span class="lesson-idx">09</span><span>Подготовка к защите</span></div>
+          </div>
         </div></div>
       </div>
     </div>
