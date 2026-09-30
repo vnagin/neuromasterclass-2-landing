@@ -152,6 +152,7 @@
       display: block; margin-bottom: 10px; letter-spacing: var(--tracking-mono);
     }
     .sit-bridge { text-align: center; margin-top: 32px; font-size: var(--text-md); color: var(--fg-2); }
+    .take-bridge { text-align: center; max-width: 720px; margin: 32px auto 0; font-size: var(--text-md); color: var(--fg-2); line-height: var(--lh-normal); }
 
     /* ═══════════════ 3. ЧТО ВЫ УНЕСЁТЕ ═══════════════ */
     .takeaways { padding: 88px 0; background: var(--bg-1); }
@@ -292,7 +293,6 @@
     .proof-card h4 { display: flex; align-items: center; gap: 10px; font-size: var(--text-md); font-weight: var(--fw-semibold); color: var(--fg-1); margin-bottom: 12px; }
     .proof-card h4 svg { width: 20px; height: 20px; color: var(--teal); flex-shrink: 0; }
     .proof-card p { font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-normal); }
-    .metric-pending { display: inline-block; margin-top: 12px; font-family: var(--font-mono); font-size: 10px; letter-spacing: var(--tracking-mono); text-transform: uppercase; color: var(--warning); border: 1px dashed var(--warning); border-radius: var(--r-full); padding: 3px 9px; }
 
     /* ═══════════════ 9. КТО ВЕДЁТ ═══════════════ */
     .speaker { padding: 88px 0; background: var(--bg-1); }
@@ -506,7 +506,7 @@
     <div class="section-head">
       <span class="tag">Ситуации</span>
       <h2 class="section-title">Когда вам нужна эта программа</h2>
-      <p class="section-sub" style="max-width:640px;margin:16px auto 0;">Ниже — шесть рабочих ситуаций. Если узнаёте хотя бы одну, программа вам подходит.</p>
+      <p class="section-sub" style="max-width:640px;margin:16px auto 0;">Программа будет особенно полезна, если вы узнаёте свою компанию хотя бы в одной из этих ситуаций.</p>
     </div>
     <div class="sit-grid">
       <div class="sit-card"><span class="sit-idx">01</span>Когда заявки остывают, потому что отвечать некому, а вы отвлечены.</div>
@@ -526,7 +526,7 @@
     <div class="section-head">
       <span class="tag">Результат</span>
       <h2 class="section-title">Что вы унесёте</h2>
-      <p class="section-sub" style="max-width:560px;margin:16px auto 0;">Шесть артефактов. В каждой карточке — артефакт и одна строка «Что это даст».</p>
+      <p class="section-sub" style="max-width:560px;margin:16px auto 0;">К концу программы у вас будет шесть рабочих элементов системы — от карты процессов до дашборда и плана следующих 90 дней.</p>
     </div>
     <div class="take-grid">
       <div class="take-item"><span class="take-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span><span class="take-body"><span class="take-name">Работающий сервер с системой агентов</span><span class="take-why">Система живёт на вашем сервере и переносится без привязки к платформе курса.</span></span></div>
@@ -536,6 +536,7 @@
       <div class="take-item"><span class="take-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span><span class="take-body"><span class="take-name">Комплаенс-матрица под рынки ваших клиентов</span><span class="take-why">Понимание, какие правила действуют на рынках ваших клиентов. Помогает определить вопросы для проверки и не заменяет юридическую консультацию.</span></span></div>
       <div class="take-item"><span class="take-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg></span><span class="take-body"><span class="take-name">Отчёт совету директоров, дашборд и план на 90 дней</span><span class="take-why">Регулярный обзор операционки и понятный следующий шаг после программы.</span></span></div>
     </div>
+    <p class="take-bridge">Вместо постоянного переключения между рутиной вы получаете один контур контроля: что произошло, где нужен человек и сколько система потратила.</p>
   </div>
 </section>
 
@@ -853,25 +854,22 @@
 <section class="proof">
   <div class="container">
     <div class="section-head">
-      <span class="tag">Доказательство</span>
-      <h2 class="section-title">Доказательство: наша операционка</h2>
+      <span class="tag">Изнутри</span>
+      <h2 class="section-title">LeadUp AI изнутри</h2>
     </div>
     <p class="proof-lead">LeadUp AI управляется командой AI-агентов на Paperclip, Hermes, OpenClaw и n8n. Это наша текущая операционка: <strong>26 агентных ролей</strong> используются в повседневной работе компании.</p>
     <div class="proof-grid">
       <div class="proof-card">
-        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Что работает</h4>
-        <p>Оркестрация ролей и бюджеты на Paperclip, память и навыки на Hermes, интеграции и отчёты на n8n, фронт-агент в канале клиента.</p>
-        <span class="metric-pending">добавить метрики с датой</span>
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>Что автоматизировали</h4>
+        <p>Оркестрацию ролей и бюджеты на Paperclip, память и навыки на Hermes, интеграции и отчёты на n8n, а также фронт-агента в канале клиента.</p>
       </div>
       <div class="proof-card">
-        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6A2 2 0 0 0 22 18L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Что ломалось</h4>
-        <p>Сбои агентов, инциденты на провайдерских контурах, ошибки эскалации в чате клиента. Примеры без чисел, из журнала действий.</p>
-        <span class="metric-pending">добавить метрики с датой</span>
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 2 18a2 2 0 0 0 1.7 3h16.6A2 2 0 0 0 22 18L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>Что пошло не так</h4>
+        <p>Сбои агентов, инциденты на провайдерских контурах, ошибки эскалации в чате клиента — из журнала действий, без приукрашивания.</p>
       </div>
       <div class="proof-card">
-        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Что мы вернули людям</h4>
-        <p>То, что требует эмпатии и суждения; часть рутины вернули на ручной контроль после инцидентов.</p>
-        <span class="metric-pending">добавить метрики с датой</span>
+        <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Какой контроль добавили после инцидента</h4>
+        <p>Часть рутины вернули на ручной контроль, расширили журнал действий и аудит, настроили резервные адаптеры и аварийную остановку.</p>
       </div>
     </div>
   </div>
@@ -944,12 +942,12 @@
     <div class="format-grid">
       <div class="format-card is-accent">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Нагрузка</h4>
-        <div class="big">5–7 часов в неделю</div>
-        <p>Короткие уроки по 8–12 минут, живая сессия раз в неделю по 90 минут в двух временных слотах (с записью) и 3–4 часа практики на вашем бизнесе. Живая сессия входит в эти 5–7 часов. Неделя 0 — ещё 3–5 часов.</p>
+        <div class="big">5–7 часов в неделю суммарно</div>
+        <p>Короткие уроки, одна 90-минутная живая сессия и практика на вашем бизнесе. Неделя 0 потребует дополнительно 3–5 часов.</p>
       </div>
       <div class="format-card">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/><path d="M7 6v12"/></svg>Расходы</h4>
-        <p>Сервер (VPS), использование API моделей, интеграции при необходимости. «Ориентировочную смету дадим до старта потока. Лимиты задаёте вы».</p>
+        <p>Сервер (VPS), использование API моделей, интеграции при необходимости. Ориентировочную смету дадим до старта потока. Лимиты задаёте вы.</p>
       </div>
       <div class="format-card">
         <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.3 8 10 4.6-1.7 8-5 8-10V6l-8-4Z"/></svg>Живые сессии</h4>
@@ -998,7 +996,7 @@
       </div>
       <div class="aud-col">
         <h3><span class="aud-badge no"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span>Не подойдёт</h3>
-        <p>Если вы ищете кнопку «включил и работает без меня», не готовы выделить хотя бы 3 часа в неделю, не хотите работать с облачным сервером даже с пошаговой помощью или у вас пока нет ни клиентов, ни процессов.</p>
+        <p>Если вы ищете кнопку «включил и работает без меня», не готовы выделять 5–7 часов в неделю в течение программы, не хотите работать с облачным сервером даже с пошаговой помощью или у вас пока нет ни клиентов, ни процессов.</p>
         <p>Для последнего случая есть учебная компания-кейс, но результат в реальном бизнесе будет меньше.</p>
       </div>
     </div>
@@ -1018,7 +1016,7 @@
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Нужна ли техническая подготовка?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Нет. Практика идёт на двух уровнях — без кода и технический. С развёртыванием сервера помогаем на живой сессии недели 0 по пошаговой инструкции.</div></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что будет после программы?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Сервер, ключи и данные остаются у вас. Вы уходите с системой, матрицей решений, комплаенс-матрицей, отчётом совету директоров и планом на 90 дней. Дальше самостоятельность агентов расширяется на следующих контрольных точках.</div></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что с доступом в сообщество через 12 месяцев?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">12 месяцев Нейросборки PRO входят в стоимость программы. После этого доступ не продлевается автоматически — решение о продолжении за вами.</div></div></div>
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Какие данные получает AI-провайдер и как это контролировать?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Данные передаются внешнему провайдеру при выборе модели — условия обработки разбираем на контрольной точке выбора модели. Сервер и ключи под вашим контролем, лимиты расходов задаёте вы. <em>[Уточнить: список провайдеров и условия по странам]</em></div></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Какие данные получает AI-провайдер и как это контролировать?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Данные передаются внешнему провайдеру при выборе модели — условия обработки разбираем на контрольной точке выбора модели. Сервер и ключи под вашим контролем, лимиты расходов задаёте вы.</div></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что делать, если нужный мне AI-провайдер недоступен в моей стране?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">На неделе 0 вы получите список рабочих вариантов и план Б. Матрица выбора модели строится на проверке моделей на ваших задачах, а не на одном провайдере.</div></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что если мой бизнес не подходит?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">На первых уроках вы составите карту процессов и скоринг применимости — это покажет, подходит ли ваш бизнес. Если нет, вы узнаете об этом рано и не заплатите за то, что вам не нужно.</div></div></div>
     </div>
