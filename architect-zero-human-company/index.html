@@ -382,6 +382,15 @@
     .faq-item.open .faq-a { max-height: 500px; }
     .faq-a-inner { padding: 0 22px 22px; font-size: var(--text-sm); color: var(--fg-2); line-height: var(--lh-relaxed); max-width: 74ch; }
     .faq-a-inner em { color: var(--fg-3); }
+    .faq-a-inner p + p { margin-top: 12px; }
+
+    /* ═══════════════ CTA BRIDGE ═══════════════ */
+    .bridge { padding: 0 0 88px; background: var(--bg-1); }
+    .bridge-card { background: var(--bg-3); border: 1px solid var(--border-2); border-radius: var(--r-2xl); padding: 32px 36px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+    .bridge-title { font-size: clamp(20px,2.6vw,28px); font-weight: var(--fw-bold); letter-spacing: var(--tracking-tight); line-height: var(--lh-tight); }
+    .bridge-sub { margin-top: 8px; font-size: var(--text-base); color: var(--fg-2); }
+    .bridge-link { color: var(--teal); border-color: var(--teal-tint-2); }
+    .bridge-link:hover { background: var(--teal-tint); border-color: var(--teal); color: var(--teal); }
 
     /* ═══════════════ 14. ФОРМА ═══════════════ */
     .contact { padding: 88px 0 104px; background: var(--bg-2); }
@@ -406,6 +415,8 @@
     .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--teal); box-shadow: var(--ring-focus); }
     .field input::placeholder, .field textarea::placeholder { color: var(--fg-4); }
     .field textarea { resize: vertical; min-height: 84px; }
+    .field select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--fg-3) 50%), linear-gradient(135deg, var(--fg-3) 50%, transparent 50%); background-position: calc(100% - 20px) center, calc(100% - 15px) center; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 40px; cursor: pointer; }
+    .field select option { background: var(--bg-3); color: var(--fg-1); }
     .form .btn { width: 100%; margin-top: 6px; }
     .form-note { margin-top: 12px; font-size: var(--text-xs); color: var(--fg-3); }
     .form-consent label { display: flex; align-items: flex-start; gap: 10px; font-family: var(--font-sans); font-size: var(--text-xs); font-weight: var(--fw-regular); letter-spacing: normal; text-transform: none; color: var(--fg-2); margin-bottom: 0; cursor: pointer; line-height: var(--lh-normal); }
@@ -456,6 +467,8 @@
       .week0-block { padding: 28px 22px; }
       .aud-grid { grid-template-columns: 1fr; }
       .contact-card { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
+      .bridge { padding: 0 0 64px; }
+      .bridge-card { flex-direction: column; align-items: flex-start; gap: 20px; padding: 26px 22px; }
       .container { padding: 0 var(--gutter-mobile); }
       .nav-cta, .sticky-cta .btn { min-height: 44px; padding: 12px 20px; }
     }
@@ -898,8 +911,11 @@
           <a class="speaker-link" href="https://www.linkedin.com/in/vladimirnagin-ai-automation/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05C19.6 8 21 10.1 21 13.9V23h-4v-8.1c0-1.93-.03-4.4-2.68-4.4-2.68 0-3.09 2.09-3.09 4.26V23H8V8z"/></svg>LinkedIn
           </a>
-          <a class="speaker-link" href="https://www.youtube.com/@businessaihub" target="_blank" rel="noopener">
+          <a class="speaker-link" href="https://www.youtube.com/@BusinessAIHub" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>YouTube
+          </a>
+          <a class="speaker-link" href="https://t.me/aibusinesshub" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>Telegram
           </a>
         </div>
       </div>
@@ -1018,7 +1034,20 @@
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что с доступом в сообщество через 12 месяцев?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">12 месяцев Нейросборки PRO входят в стоимость программы. После этого доступ не продлевается автоматически — решение о продолжении за вами.</div></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Какие данные получает AI-провайдер и как это контролировать?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Данные передаются внешнему провайдеру при выборе модели — условия обработки разбираем на контрольной точке выбора модели. Сервер и ключи под вашим контролем, лимиты расходов задаёте вы.</div></div></div>
       <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что делать, если нужный мне AI-провайдер недоступен в моей стране?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">На неделе 0 вы получите список рабочих вариантов и план Б. Матрица выбора модели строится на проверке моделей на ваших задачах, а не на одном провайдере.</div></div></div>
-      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что если мой бизнес не подходит?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">На первых уроках вы составите карту процессов и скоринг применимости — это покажет, подходит ли ваш бизнес. Если нет, вы узнаете об этом рано и не заплатите за то, что вам не нужно.</div></div></div>
+      <div class="faq-item"><div class="faq-q" role="button" tabindex="0" aria-expanded="false">Что если мой бизнес не подходит?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner"><p>Это можно проверить ещё до оплаты. После заявки мы предложим короткий разговор и честно скажем, подходит ли программа вашему бизнесу. Если сомнения останутся, на первых уроках вы составите карту процессов и скоринг применимости: он покажет, какие функции можно передавать агентам, а какие лучше оставить людям.</p><p>Если ваш бизнес только отчасти подходит, например часть работы требует суждения или регулируется законом, вы автоматизируете то, что можно, и оставите остальное за собой. Если процессов или клиентов пока нет, можно пройти программу на учебной компании-кейсе, но результат в реальном бизнесе будет меньше.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BRIDGE -->
+<section class="bridge">
+  <div class="container">
+    <div class="bridge-card">
+      <div>
+        <h2 class="bridge-title">Не хотите строить систему сами?</h2>
+        <p class="bridge-sub">Мы соберём её для вас — под ключ.</p>
+      </div>
+      <a class="btn btn-secondary bridge-link" href="https://leadup.guru/ru/zero-human-company" target="_blank" rel="noopener">Zero-human компания под ключ →</a>
     </div>
   </div>
 </section>
@@ -1048,7 +1077,18 @@
         </div>
         <div class="field">
           <label for="f-business">Тип бизнеса *</label>
-          <input id="f-business" type="text" name="business" placeholder="Чем занимается ваша компания" required />
+          <select id="f-business" name="business" required>
+            <option value="" selected disabled>Выберите тип бизнеса</option>
+            <option>Услуги и консалтинг</option>
+            <option>E-commerce и розница</option>
+            <option>Онлайн-школа / образование</option>
+            <option>Агентство / маркетинг</option>
+            <option>IT / SaaS / цифровой продукт</option>
+            <option>Производство</option>
+            <option>Медицина / клиники</option>
+            <option>Финансы / недвижимость</option>
+            <option>Другое</option>
+          </select>
         </div>
         <div class="field">
           <label for="f-task">Описание текущей операционки</label>
